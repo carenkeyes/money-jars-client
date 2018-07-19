@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from '../Navbar/navbar';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
@@ -9,7 +9,7 @@ import Child from '../Child/child';
 import Parent from '../Parent/parent';
 import Privacy from '../Privacy/privacy';
 
-class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
       <Router>
@@ -17,6 +17,7 @@ class App extends Component {
           <Navbar />
           <Header />
           <main role="main">
+            <h1>Hopefully this works</h1>
             <Switch>
               <Route exact path="/" component={Home} />
               <Router exact path="/parent" component={Parent} />
@@ -31,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default App;
+
