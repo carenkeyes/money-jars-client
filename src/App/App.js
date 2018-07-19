@@ -15,16 +15,16 @@ export default class App extends React.Component {
       <Router>
         <div>
           <Navbar />
-          <Header />
+          <Header />          
           <main role="main">
             <h1>Hopefully this works</h1>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Router exact path="/parent" component={Parent} />
+              <Route exact path="/parent" component={Parent} />
               <Route exact path="/child" component={Child} />
               <Route exact path="/privacy" component={Privacy} />
             </Switch>
-          </main>
+          </main>          
           <Footer />
         </div>
       </Router>

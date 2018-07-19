@@ -1,7 +1,23 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Navbar(){
     return (
-        <p>Navbar</p>
+            <div className='navbar'>
+                <ul>
+                    <li>
+                        <Link to='/'>Home</Link>
+                    </li>
+                    <li>
+                        <Link to='/parent'>Parent Dashboard</Link>
+                    </li>
+                    <li>
+                        <Link to='/child'>Child Account</Link>
+                    </li>
+                    <li>
+                        <Link to='/privacy'>Privacy Policy</Link>
+                    </li>
+                </ul>
+            </div>
     )
 }
