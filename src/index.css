@@ -88,7 +88,7 @@ h2{
     margin: 10px;
 }
 
-h2{
+h3{
     font-weight: bold;
     font-size: 1.5em;
     line-height: 2em;
@@ -98,4 +98,19 @@ h2{
 p{
     line-height: 1.4em;
     text-align: center;
+}
+
+section{
+    padding: 20px;
+    min-height: 200px;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+section:nth-child(even){
+    background-color: #aaa;
 }
