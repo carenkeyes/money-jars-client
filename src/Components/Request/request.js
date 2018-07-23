@@ -1,5 +1,5 @@
 import React from 'react';
-import API_BASE_URL from '../../../config';
+import API_BASE_URL from '../../config';
 
 export default class Request extends React.Component{
     constructor(props){
@@ -13,7 +13,7 @@ export default class Request extends React.Component{
     }
 
     componenetDidMount(){
-        this.getUrl
+        this.getUrl()
     }
 
     getUrl(){
