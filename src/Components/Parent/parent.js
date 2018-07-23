@@ -1,7 +1,11 @@
 import React from 'react';
+import Request from '../Request/request'
 
 export default function Parent(){
     return (
-        <p>Parent</p>
+        <div>
+            <p>Parent</p>
+            <Request />
+        </div>
     )
 }
