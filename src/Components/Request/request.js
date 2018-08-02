@@ -13,7 +13,7 @@ export default class Request extends React.Component{
             error: null,
             loading: false,
             url: `https://app.youneedabudget.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=code`,
-            authorized: true,
+            authorized: false,
             budget: false
         }
 
