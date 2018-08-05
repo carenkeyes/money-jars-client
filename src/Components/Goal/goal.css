@@ -1,0 +1,15 @@
+.goalContent{
+    max-width: 800px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.goalImage{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

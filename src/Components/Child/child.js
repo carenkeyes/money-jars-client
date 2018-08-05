@@ -1,7 +1,11 @@
 import React from 'react';
+import Goal from '../Goal/goal'
 
 export default function Child(){
     return (
-        <p>Child</p>
+        <div>
+            <Goal/>
+            <Goal/>
+        </div>
     )
 }
