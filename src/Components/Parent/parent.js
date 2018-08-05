@@ -1,7 +1,13 @@
 import React from 'react';
+import Request from '../Request/request'
+import Section from '../Section/section'
 
 export default function Parent(){
     return (
-        <p>Parent</p>
+        <div>
+            <Request />
+            <Section />
+            <Section />
+        </div>
     )
 }
