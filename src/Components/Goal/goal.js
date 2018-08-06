@@ -20,10 +20,11 @@ export default function Goal(props){
                     <ProgressBar />
                 </div>
             </div> 
-            <GoalDetails 
-                goalAmount='10.00'
-                savedAmount='3.00'
-                leftAmount='7.00'
+            <GoalDetails
+                showDetail={props.showDetail}
+                goalAmount={props.goalAmount}
+                savedAmount={props.savedAmount}
+                leftAmount={props.leftAmount}
             />
         </section>
     )
