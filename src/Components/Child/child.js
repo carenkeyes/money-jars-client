@@ -3,7 +3,7 @@ import Goal from '../Goal/goal'
 
 export default function Child(){
     const goal1 = {
-        goalName: goal1,
+        goalName: 'Goal 1',
         showDetail: true,
         goalAmount: 10,
         savedAmount: 3,
@@ -11,7 +11,7 @@ export default function Child(){
     }
 
     const goal2 = {
-            goalName: goal2,
+            goalName: 'Goal 2',
             showDetail: false,
             goalAmount: 15,
             savedAmount: 13,

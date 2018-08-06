@@ -2,11 +2,7 @@ language: node_js
 node_js: node
 cache:
   directories:
-<<<<<<< HEAD
   - node_modules
-=======
-    - node_modules
->>>>>>> ynab-api
 deploy:
   provider: heroku
   app: money-jars
