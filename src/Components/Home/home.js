@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route, Switch, Redirect} from 'react-router-dom';
 import RegistrationForm from '../RegistrationForm/registration-form';
 import LoginForm from '../LoginForm/login-form';
 
@@ -14,12 +14,18 @@ export function Home(props){
     return (
         <div>
             <section>
-                <h2>Log In</h2>
-                <LoginForm />
+                <h2>Welcome</h2>
+                <p>Blah blah blah</p>
             </section>
             <section>
-                <h2> Register </h2>
-                <RegistrationForm />
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={RegistrationForm}/>
+                        <Route exact path="/login" component={LoginForm} />
+                    </Switch>
+                </Router>
+                    <Link to='/register'>Register</Link>
+                    <Link to='/login'>Log In</Link>                
             </section>
         </div>
     );
