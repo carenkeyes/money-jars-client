@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import Navbar from '../Navbar/navbar';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
@@ -9,7 +9,7 @@ import Child from '../Child/child';
 import Parent from '../Parent/parent';
 import Privacy from '../Privacy/privacy';
 import {refreshAuthToken} from '../../actions/auth';
-import { connect } from 'http2';
+import { connect } from 'react-redux';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps){
