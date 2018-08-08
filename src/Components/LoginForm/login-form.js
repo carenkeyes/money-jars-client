@@ -1,7 +1,7 @@
 import React from 'react';
-import {Field, reduxform, focus} from 'redux-form';
-import Input from './input';
-import login from '../../actions/auth';
+import {Field, reduxForm, focus} from 'redux-form';
+import Input from '../Input/input';
+import {login} from '../../actions/auth';
 import {required, nonEmpty} from '../../validators';
 
 export class LoginForm extends React.Component {
@@ -47,7 +47,7 @@ export class LoginForm extends React.Component {
     }
 }
 
-export default reduxform({
+export default reduxForm({
     form: 'login',
     onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(LoginForm);

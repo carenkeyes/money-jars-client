@@ -34,7 +34,15 @@ export const authError = error => ({
 });
 
 const storeAuthInfo = (authToken, dispatch) => {
-    displatch(authRequest());
+    const decodedToken = jwtDecode(authToken);
+    dispatch(setAuthToken(authToken));
+    dispatch(authSuccess(decodedToken.user));
+    saveAuthToken(authToken);
+};
+
+
+export const login = (username, password) => dispatch => {
+    dispatch(authRequest());
     return(
         fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
@@ -48,7 +56,7 @@ const storeAuthInfo = (authToken, dispatch) => {
         })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
-        .then(({authToken}) => storeAuthInfo(authToken, displatch))
+        .then(({authToken}) => storeAuthInfo(authToken, dispatch))
         .catch(err => {
             const {code} = err;
             const message = 

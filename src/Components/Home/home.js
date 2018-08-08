@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+import RegistrationForm from '../RegistrationForm/registration-form';
+import LoginForm from '../LoginForm/login-form';
 
 
 
@@ -10,7 +12,16 @@ export function Home(props){
         return <Redirect to='/parent' />;
     }
     return (
-        <p>Home</p>
+        <div>
+            <section>
+                <h2>Log In</h2>
+                <LoginForm />
+            </section>
+            <section>
+                <h2> Register </h2>
+                <RegistrationForm />
+            </section>
+        </div>
     );
 }
 
