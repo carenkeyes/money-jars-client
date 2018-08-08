@@ -4,14 +4,14 @@ import {registerUser} from '../../actions';
 import {login} from '../../actions/auth';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
-import { normalizeResponseErrors } from '../../actions/utils';
+//import { normalizeResponseErrors } from '../../actions/utils';
 
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
     onSubmit(values){
-        const {usernmae, password, firstName, lastName} = values;
+        const {username, password, firstName, lastName} = values;
         const user = {username, password, firstName, lastName};
         return this.props
             .dispatch(registerUser(user))
@@ -45,7 +45,7 @@ export class RegistrationForm extends React.Component {
                 />
                 <button
                     type="submit"
-                    disables={this.props.pristing || this.props.submitting}>
+                    disabled={this.props.pristing || this.props.submitting}>
                     Register
                 </button>
             </form>
