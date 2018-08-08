@@ -8,8 +8,37 @@ import Home from '../Home/home';
 import Child from '../Child/child';
 import Parent from '../Parent/parent';
 import Privacy from '../Privacy/privacy';
+import {refreshAuthToken} from '../../actions/auth';
+import { connect } from 'http2';
 
-export default class App extends React.Component {
+export class App extends React.Component {
+  componentDidUpdate(prevProps){
+    if(!prevProps.logginIn && this.props.logginIn){
+      this.startPeriodicRefresh();
+    }else if (prevProps.logginIn && !this.props.logginIn){
+      this.stopPeriodicRefresh();
+    }
+  }
+
+  componentWillUnmount(){
+    this.stopPeriodicRefresh();
+  }
+
+  startPeriodicRefresh(){
+    this.refreshInterval = setInterval(
+      () => this.props.dispatch(refreshAuthToken()),
+      60*60*1000
+    );
+  }
+
+  stopPeriodicRefresh(){
+    if(!this.refreshInterval){
+      return;
+    }
+
+    clearInterval(this.refreshInterval);
+  }
+
   render() {
     return (
       <Router>
@@ -30,5 +59,12 @@ export default class App extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  hasAuthToken: state.auth.authToken !==null,
+  loggedIn: state.auth.currentUser !==null
+});
+
+export default withRouter(connect(mapStateToProps)(App));
 
 
