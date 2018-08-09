@@ -1,9 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter as Router, Link, Route, Switch, Redirect} from 'react-router-dom';
-import RegistrationForm from '../RegistrationForm/registration-form';
-import LoginForm from '../LoginForm/login-form';
-
+import {BrowserRouter as Redirect, Link} from 'react-router-dom';
+//import RegistrationForm from '../RegistrationForm/registration-form';
+//import LoginForm from '../LoginForm/login-form';
+import Header from '../Header/header';
+import RegistrationPage from '../RegistrationPage/registration-page';
 
 
 
@@ -13,19 +14,14 @@ export function Home(props){
     }
     return (
         <div>
+            <Header title="Money Jars"/>
             <section>
                 <h2>Welcome</h2>
                 <p>Blah blah blah</p>
             </section>
             <section>
-                <Router>
-                    <Switch>
-                        <Route exact path="/" component={RegistrationForm}/>
-                        <Route exact path="/login" component={LoginForm} />
-                    </Switch>
-                </Router>
-                    <Link to='/register'>Register</Link>
-                    <Link to='/login'>Log In</Link>                
+                <RegistrationPage />
+                <Link to='/login'>Login</Link>            
             </section>
         </div>
     );

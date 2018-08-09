@@ -1,15 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 
-import RegistrationForm from './registration-form';
+import RegistrationForm from '../RegistrationForm/registration-form';
 
 export function RegistrationPage(props){
     return(
         <div>
             <h2>Ready to Sign Up?</h2>
             <RegistrationForm />
-            <Link to='/'>Login</Link>
         </div>
     )
 }

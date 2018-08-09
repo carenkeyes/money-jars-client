@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import Navbar from '../Navbar/navbar';
-import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import Home from '../Home/home';
 import Child from '../Child/child';
@@ -43,8 +42,7 @@ export class App extends React.Component {
     return (
       <Router>
         <div className="app">
-          <Navbar />
-          <Header />          
+          <Navbar />       
           <main role="main">
             <Switch>
               <Route exact path="/" component={Home} />
