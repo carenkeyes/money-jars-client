@@ -1,17 +1,10 @@
 import React from 'react';
-import Message from '../Message/message';
 
 
-export default function Header(){
+export default function Header(props){
     return (
         <div>
-            <h1>Header</h1>
-            <Message
-                parent={true}
-                name="Johnny"
-                amount="30"
-                goal="bicycle"
-            />
+            <h1>{props.title}</h1>
         </div>
     )
 }
