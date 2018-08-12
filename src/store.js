@@ -5,6 +5,8 @@ import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
+import {composeWithDevTools} from 'redux-devtools-extension';
+
 
 const store = createStore(
     combineReducers({
@@ -12,8 +14,8 @@ const store = createStore(
         auth: authReducer,
         protectedData: protectedDataReducer
     }),
+    composeWithDevTools(),
     applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 const authToken = loadAuthToken();

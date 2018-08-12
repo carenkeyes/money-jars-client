@@ -56,7 +56,10 @@ export const login = (username, password) => dispatch => {
         })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
-        .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+        .then(res => {
+            const authToken=res.token.split(' ')[1]
+            storeAuthInfo(authToken, dispatch)
+        })
         .catch(err => {
             const {code} = err;
             const message = 

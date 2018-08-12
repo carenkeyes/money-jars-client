@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-d
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 import Home from '../Home/home';
+import RegistrationPage from '../RegistrationPage/registration-page'
 import Child from '../Child/child';
 import Parent from '../Parent/parent';
 import Privacy from '../Privacy/privacy';
@@ -46,6 +47,7 @@ export class App extends React.Component {
           <main role="main">
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/register" component={RegistrationPage} />
               <Route exact path="/parent" component={Parent} />
               <Route exact path="/child" component={Child} />
               <Route exact path="/privacy" component={Privacy} />

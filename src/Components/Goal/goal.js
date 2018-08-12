@@ -3,7 +3,7 @@ import Button from '../Button/button';
 import Avatar from '../Avatar/avatar';
 import ProgressBar from '../ProgressBar/progress-bar';
 import GoalDetails from '../GoalDetails/goal-details';
-import ModifyForm from '../ModifyForm/modify-form';
+import SimpleForm from '../SimpleForm/simple-form';
 import './goal.css';
 
 export default function Goal(props){
@@ -27,11 +27,12 @@ export default function Goal(props){
                 savedAmount={props.savedAmount}
                 leftAmount={props.leftAmount}
             />
-            <ModifyForm
+            <SimpleForm
                 displayForm={true} 
-                input='add-funds'
-                label='How much would you like to add?'
+                name='add-funds'
+                label='Add funds'
                 type='number'
+                submit='Add'
             />
         </section>
     )

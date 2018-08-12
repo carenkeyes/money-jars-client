@@ -1,8 +1,10 @@
 import React from 'react';
 import './button.css';
 
-export default function Button(props){
-    return(
-        <button>{props.label}</button>
-    )
+export default class Button extends React.Component{
+    render(){
+        return(
+            <button>{this.props.label}</button>
+        )
+    }
 }
