@@ -5,19 +5,19 @@ import './navbar.css';
 
 export function Navbar(){
     return (
-            <div className='navbar'>
-                <ul>
-                    <li>
-                        <Link to='/home'>Home</Link>
-                    </li>
-                    <li>
-                        <Link to={`/register/signup`}><button type="button">Register</button></Link>
-                    </li>
-                    <li>
-                        <Link to={`/register/login`}><button type="button">Login</button></Link>
-                    </li>
-                </ul>
+        <div className='navbar'>
+            <Link to='/home'>
+                <button type="button">Home</button>
+            </Link>
+            <div className='log-buttons'>
+                <Link to={`/register/signup`}>
+                    <button type="button">Register</button>
+                </Link>
+                <Link to={`/register/login`}>
+                    <button type="button">Login</button>
+                </Link>
             </div>
+        </div>
     )
 }
 
