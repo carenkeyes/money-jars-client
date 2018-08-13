@@ -1,0 +1,16 @@
+label{
+    font-size: 20px;
+    padding: .4em 1em;
+    max-width: 400px;
+    margin: .5em 0;
+}
+
+input{
+    font-size: 20px;
+    padding: .4em 1em;
+    background: #edeff0;
+    border-radius: 4px;
+    border: 1px solid black;
+    max-width: 400px;
+    margin: .5em 0;
+}
