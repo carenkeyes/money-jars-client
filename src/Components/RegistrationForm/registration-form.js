@@ -4,6 +4,7 @@ import {registerUser} from '../../actions/users';
 import {login} from '../../actions/auth';
 import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
+import {Link} from 'react-router-dom';
 //import { normalizeResponseErrors } from '../../actions/utils';
 
 const passwordLength = length({min: 10, max: 72});
@@ -20,43 +21,47 @@ export class RegistrationForm extends React.Component {
 
     render(){
         return (
-            <form  
-                className="login-form"
-                onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-                <label htmlFor="username">Username</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="username"
-                    validate={[required, nonEmpty, isTrimmed]}
-                />
-                <label htmlFor="email">Email Address</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="email"
-                    validate={[required, nonEmpty, isTrimmed]}
-                />
-                <label htmlFor="password">Password</label>
-                <Field
-                    component={Input}
-                    type="password"
-                    name="password"
-                    validate={[required, passwordLength, isTrimmed]}
-                />
-                <label htmlFor="passwordConfirm">Confirm password</label>
-                <Field  
-                    component={Input}
-                    type="password"
-                    name="passwordConfirm"
-                    validate={[required, nonEmpty, matchesPassword]}
-                />
-                <button
-                    type="submit"
-                    disabled={this.props.pristine || this.props.submitting}>
-                    Register
-                </button>
-            </form>
+            <div>
+                <h2>Sign up for Money Jars</h2>
+                <p> or <Link to='/register/login'>login to your account</Link></p>
+                <form  
+                    className="login-form"
+                    onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+                    <label htmlFor="username">Username</label>
+                    <Field
+                        component={Input}
+                        type="text"
+                        name="username"
+                        validate={[required, nonEmpty, isTrimmed]}
+                    />
+                    <label htmlFor="email">Email Address</label>
+                    <Field
+                        component={Input}
+                        type="text"
+                        name="email"
+                        validate={[required, nonEmpty, isTrimmed]}
+                    />
+                    <label htmlFor="password">Password</label>
+                    <Field
+                        component={Input}
+                        type="password"
+                        name="password"
+                        validate={[required, passwordLength, isTrimmed]}
+                    />
+                    <label htmlFor="passwordConfirm">Confirm password</label>
+                    <Field  
+                        component={Input}
+                        type="password"
+                        name="passwordConfirm"
+                        validate={[required, nonEmpty, matchesPassword]}
+                    />
+                    <button
+                        type="submit"
+                        disabled={this.props.pristine || this.props.submitting}>
+                        Register
+                    </button>
+                </form>
+            </div>
         );
     }
 }
