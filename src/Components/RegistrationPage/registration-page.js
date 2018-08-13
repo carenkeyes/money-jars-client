@@ -1,12 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import './registration-page.css';
 
 import RegistrationForm from '../RegistrationForm/registration-form';
 import LoginForm from '../LoginForm/login-form';
 
 export function RegistrationPage(props){
+    if(props.loggedIn){
+        console.log('already loggin in');
+        return <Redirect to="/child" />;
+    }
+
     return(
         <div className='registration'>
             <Route exact path={`${props.match.url}/login`} component={LoginForm} />

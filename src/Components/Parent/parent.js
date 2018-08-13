@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 import requiresLogin from '../RequiresLogin/requires-login';
 //import Request from '../Request/request'
 //import Section from '../Section/section'
-import { fetchProtectData } from '../../actions/protected-data';
+import { fetchProtectedData } from '../../actions/protected-data';
 import Header from '../Header/header';
 
 export class Parent extends React.Component {
     componentDidMount(){
-        this.props.dispatch(fetchProtectData());
+        this.props.dispatch(fetchProtectedData());
     }
 
     render(){
@@ -24,6 +24,7 @@ export class Parent extends React.Component {
 
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
+    console.log(currentUser);
     return {
         username: state.auth.currentUser.username,
         };

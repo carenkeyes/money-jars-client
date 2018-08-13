@@ -6,7 +6,7 @@ import './navbar.css';
 export function Navbar(){
     return (
         <div className='navbar'>
-            <Link to='/home'>
+            <Link to='/'>
                 <button type="button">Home</button>
             </Link>
             <div className='log-buttons'>

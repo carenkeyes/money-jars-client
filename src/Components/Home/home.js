@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Link, Route, Redirect} from 'react-router-dom';
-import RegistrationForm from '../RegistrationForm/registration-form';
-import LoginForm from '../LoginForm/login-form';
+import { Redirect} from 'react-router-dom';
+//import RegistrationForm from '../RegistrationForm/registration-form';
+//import LoginForm from '../LoginForm/login-form';
 import Header from '../Header/header';
 //import RegistrationPage from '../RegistrationPage/registration-page';
 
@@ -20,14 +20,19 @@ export function Home(props){
                 <p>Blah blah blah</p>
             </section>
             <section>
-                    <Route exact path={`${props.match.url}/login`} component={LoginForm} />
-                    <Route exact path={`${props.match.url}/register`} component={RegistrationForm} />
-                <Link to={`${props.match.url}/login`}>Login</Link>
-                <Link to={`${props.match.url}/register`}>Register</Link>           
+         
             </section>
         </div>
     );
 }
+
+
+/*<section>
+        <Route exact path={`${props.match.url}/login`} component={LoginForm} />
+        <Route exact path={`${props.match.url}/register`} component={RegistrationForm} />
+    <Link to={`${props.match.url}/login`}>Login</Link>
+    <Link to={`${props.match.url}/register`}>Register</Link>           
+</section>*/
 
 const mapStatetoProps = state => ({
     loggedIn: state.auth.currentUser !== null

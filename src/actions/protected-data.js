@@ -7,13 +7,13 @@ export const fetchProtectedDataSuccess = data => ({
     data
 });
 
-export const FETCH_PROTECTED_DATA_ERROR = 'FETCH_PROTECTED_DATA_ERRE';
+export const FETCH_PROTECTED_DATA_ERROR = 'FETCH_PROTECTED_DATA_ERROR';
 export const fetchProtectedDataError = error => ({
     type: FETCH_PROTECTED_DATA_ERROR,
     error
 });
 
-export const fetchProtectData = () => (dispatch, getState) => {
+export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/protected`, {
         method: 'GET',
