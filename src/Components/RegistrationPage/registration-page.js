@@ -9,7 +9,7 @@ import LoginForm from '../LoginForm/login-form';
 export function RegistrationPage(props){
     if(props.loggedIn){
         console.log('already loggin in');
-        return <Redirect to="/child" />;
+        return <Redirect to="/dashboard" />;
     }
 
     return(

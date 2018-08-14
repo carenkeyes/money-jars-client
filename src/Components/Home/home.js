@@ -10,7 +10,7 @@ import Header from '../Header/header';
 
 export function Home(props){
     if(props.loggedIn){
-        return <Redirect to='/child' />;
+        return <Redirect to='/dashboard' />;
     }
     return (
         <div>
