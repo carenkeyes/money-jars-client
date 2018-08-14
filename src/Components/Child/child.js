@@ -1,7 +1,14 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Goal from '../Goal/goal'
+import {Redirect} from 'react-router-dom';
 
-export default function Child(){
+export function Child(props){
+
+    /*if(!props.loggedIn){
+        return <Redirect to='/' />;
+    }*/
+
     const goal1 = {
         goalName: 'Goal 1',
         showDetail: true,
@@ -37,3 +44,9 @@ export default function Child(){
         </div>
     )
 }
+    
+    const mapStatetoProps = state => ({
+        loggedIn: state.auth.currentUser !==null
+    })
+    
+    export default connect(mapStatetoProps)(Child)

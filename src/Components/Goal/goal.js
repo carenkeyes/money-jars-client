@@ -1,12 +1,17 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Button from '../Button/button';
 import Avatar from '../Avatar/avatar';
 import ProgressBar from '../ProgressBar/progress-bar';
 import GoalDetails from '../GoalDetails/goal-details';
-import SimpleForm from '../SimpleForm/simple-form';
+import {Redirect} from 'react-router-dom';
 import './goal.css';
 
-export default function Goal(props){
+export function Goal(props){
+    if(!(props.loggedIn)){
+        return <Redirect to='/' />;
+    }
+
     return(
         <section>
             <div>
@@ -27,13 +32,14 @@ export default function Goal(props){
                 savedAmount={props.savedAmount}
                 leftAmount={props.leftAmount}
             />
-            <SimpleForm
-                displayForm={true} 
-                name='add-funds'
-                label='Add funds'
-                type='number'
-                submit='Add'
-            />
+            
+
         </section>
     )
 }
+
+const mapStatetoProps = state => ({
+    loggedIn: state.auth.currentUser !==null
+})
+
+export default connect(mapStatetoProps)(Goal)

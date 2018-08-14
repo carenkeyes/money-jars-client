@@ -27,10 +27,10 @@ export class RegistrationForm extends React.Component {
                 <form  
                     className="login-form"
                     onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-                    <label htmlFor="username">Username</label>
                     <Field
                         component={Input}
                         type="text"
+                        label="Username"
                         name="username"
                         validate={[required, nonEmpty, isTrimmed]}
                     />

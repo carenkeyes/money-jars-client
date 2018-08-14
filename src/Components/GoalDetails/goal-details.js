@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../Button/button';
+import SimpleForm from '../SimpleForm/simple-form';
 import './goal-details.css';
 
 export default function GoalDetails(props){
@@ -16,6 +17,27 @@ export default function GoalDetails(props){
                     <Button label="Move" />
                     <Button label="Withdraw" />
                 </div>
+                <SimpleForm className='add-funds'
+                    displayForm={true} 
+                    name='add-funds'
+                    label='Add funds'
+                    type='number'
+                    submit='Add'
+                />
+                <SimpleForm className='move-funds'
+                    displayForm={true} 
+                    name='move-funds'
+                    label='Move funds'
+                    type='number'
+                    submit='Move'
+                />
+                <SimpleForm className='withdraw-funds'
+                    displayForm={true} 
+                    name='withdraw-funds'
+                    label='Withdraw funds'
+                    type='number'
+                    submit='Withdraw'
+                />
             </div>  
         )
     }
