@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Goal from '../Goal/goal'
-import {Redirect} from 'react-router-dom';
+import Goal from '../Goal/goal';
+import Header from '../Header/header';
+import AddGoal from '../AddGoal/addgoal';
 
 export function Child(props){
 
@@ -26,21 +27,25 @@ export function Child(props){
     }
 
     return (
-        <div>
-            <Goal
-                goalName={goal1.goalName}
-                showDetail={goal1.showDetail}
-                goalAmount={goal1.goalAmount}
-                savedAmount={goal1.savedAmount}
-                leftAmount={goal1.leftAmount}
-            />
-            <Goal
-                goalName={goal2.goalName}
-                showDetail={goal2.showDetail}
-                goalAmount={goal2.goalAmount}
-                savedAmount={goal2.savedAmount}
-                leftAmount={goal2.leftAmount}
-            />
+        <div className="child-page">;
+            <Header />
+            <AddGoal form='new-goal'/>
+            <div>
+                <Goal
+                    goalName={goal1.goalName}
+                    showDetail={goal1.showDetail}
+                    goalAmount={goal1.goalAmount}
+                    savedAmount={goal1.savedAmount}
+                    leftAmount={goal1.leftAmount}
+                />
+                <Goal
+                    goalName={goal2.goalName}
+                    showDetail={goal2.showDetail}
+                    goalAmount={goal2.goalAmount}
+                    savedAmount={goal2.savedAmount}
+                    leftAmount={goal2.leftAmount}
+                />
+            </div>
         </div>
     )
 }

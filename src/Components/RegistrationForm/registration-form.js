@@ -5,7 +5,6 @@ import {login} from '../../actions/auth';
 import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
 import {Link} from 'react-router-dom';
-//import { normalizeResponseErrors } from '../../actions/utils';
 
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
@@ -34,24 +33,24 @@ export class RegistrationForm extends React.Component {
                         name="username"
                         validate={[required, nonEmpty, isTrimmed]}
                     />
-                    <label htmlFor="email">Email Address</label>
                     <Field
                         component={Input}
                         type="text"
+                        lable="email"
                         name="email"
                         validate={[required, nonEmpty, isTrimmed]}
                     />
-                    <label htmlFor="password">Password</label>
                     <Field
                         component={Input}
                         type="password"
+                        label="Password"
                         name="password"
                         validate={[required, passwordLength, isTrimmed]}
                     />
-                    <label htmlFor="passwordConfirm">Confirm password</label>
                     <Field  
                         component={Input}
                         type="password"
+                        label="Confirm Password"
                         name="passwordConfirm"
                         validate={[required, nonEmpty, matchesPassword]}
                     />

@@ -7,7 +7,6 @@ import Child from '../Child/child';
 export default function Dashboard(){
     return(
         <div className='dashboard'>
-            <Header />
             <Child />
         </div>
     )
