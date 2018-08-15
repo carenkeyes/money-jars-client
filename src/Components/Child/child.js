@@ -4,54 +4,37 @@ import Goal from '../Goal/goal';
 import Header from '../Header/header';
 import AddGoal from '../AddGoal/addgoal';
 
-export function Child(props){
+export class Child extends React.Component{
 
-    /*if(!props.loggedIn){
-        return <Redirect to='/' />;
-    }*/
+    render(){
+        console.log(this.props.goals);
+        /*const goals = this.props.goals.map((goal, index) => (
+            <li key={index}>
+                {goal}
+            </li>
+        ))*/
 
-    const goal1 = {
-        goalName: 'Goal 1',
-        showDetail: true,
-        goalAmount: 10,
-        savedAmount: 3,
-        leftAmount: 7,
-    }
+        /*let goals = this.props.goals.map(goal =>
+            <h4 key={goal.title}>{goal.title}</h4>)*/
 
-    const goal2 = {
-            goalName: 'Goal 2',
-            showDetail: false,
-            goalAmount: 15,
-            savedAmount: 13,
-            leftAmount: 2,
-    }
+        let goals = this.props.goals.map(goal =>
+            <Goal key={goal.title} {...goal} />
+        )
 
-    return (
-        <div className="child-page">;
-            <Header />
-            <AddGoal form='new-goal'/>
-            <div>
-                <Goal
-                    goalName={goal1.goalName}
-                    showDetail={goal1.showDetail}
-                    goalAmount={goal1.goalAmount}
-                    savedAmount={goal1.savedAmount}
-                    leftAmount={goal1.leftAmount}
-                />
-                <Goal
-                    goalName={goal2.goalName}
-                    showDetail={goal2.showDetail}
-                    goalAmount={goal2.goalAmount}
-                    savedAmount={goal2.savedAmount}
-                    leftAmount={goal2.leftAmount}
-                />
+        return (
+            <div className="child-page">;
+                <Header />
+                <AddGoal form='new-goal'/>
+                <div>
+                    {goals}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
     
     const mapStatetoProps = state => ({
-        loggedIn: state.auth.currentUser !==null
-    })
+        goals: state.goal.goals
+    });
     
     export default connect(mapStatetoProps)(Child)

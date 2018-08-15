@@ -7,7 +7,7 @@ const initialState = {
             amount: 80,
             saved: 10,
             category: "saving",
-            showDetails: false,
+            showDetails: true,
             showForm: false,
         },
         {
@@ -19,7 +19,7 @@ const initialState = {
             showForm: false,
         },
         {
-            title: "Dad\'s birthday",
+            title: "Dad's birthday",
             amount: 10,
             saved: 9,
             category: "giving",

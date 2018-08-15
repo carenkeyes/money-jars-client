@@ -17,6 +17,7 @@ export default function GoalDetails(props){
                     <Button label="Move" />
                     <Button label="Withdraw" />
                 </div>
+                
                 <SimpleForm className='add-funds'
                     displayForm={true} 
                     name='add-funds'
@@ -24,6 +25,7 @@ export default function GoalDetails(props){
                     type='number'
                     submit='Add'
                 />
+
                 <SimpleForm className='move-funds'
                     displayForm={true} 
                     name='move-funds'

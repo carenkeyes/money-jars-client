@@ -6,14 +6,13 @@ import ProgressBar from '../ProgressBar/progress-bar';
 import GoalDetails from '../GoalDetails/goal-details';
 import './goal.css';
 
-export class Goal extends React.Component{
+export default function Goal(props){
+        let togo = props.amount-props.saved;
 
-    render(){
-        let togo = this.props.amount-this.props.saved;
         return(
             <section>
                 <div>
-                    <h3>{this.props.title}</h3>
+                    <h3>{props.title}</h3>
                 </div>
                 <div className = 'goalContent'>
                     <div className='goalImage'>
@@ -25,18 +24,11 @@ export class Goal extends React.Component{
                     </div>
                 </div> 
                 <GoalDetails
-                    goalAmount={this.props.amount}
-                    savedAmount={this.props.saved}
+                    showDetail={props.showDetails}
+                    goalAmount={props.amount}
+                    savedAmount={props.saved}
                     leftAmount={togo}
                 />            
             </section>
         )
-    }
 }
-
-const mapStatetoProps = state => ({
-    loggedIn: state.auth.currentUser !==null
-    
-})
-
-export default connect(mapStatetoProps)(Goal)
