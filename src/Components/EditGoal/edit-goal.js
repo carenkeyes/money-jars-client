@@ -1,13 +1,20 @@
 import React from 'react';
 import Button from '../Button/button';
+import {Link} from 'react-router-dom';
 
 export default function EditGoal(props){
-    
+
     return(
         <div className="actions">
-            <Button label="Add" />
-            <Button label="Move" />
-            <Button label="Withdraw" />
+            <Link to={`${props.match.url}/add`}>
+                <button type="button">Add</button>
+            </Link>
+            <Link to={`${props.match.url}/move`}>
+                <button type="button">Move</button>
+            </Link>            
+            <Link to={`${props.match.url}/withdraw`}>
+                <button type="button">Withdraw</button>
+            </Link>
         </div>
     )
 }

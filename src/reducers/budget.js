@@ -1,6 +1,7 @@
-import * as actions from '../actions/goal';
+import * as actions from '../actions/budget';
 
 const initialState = {
+    total: 200,
     goals: [
         {
             title: "Bicycle",

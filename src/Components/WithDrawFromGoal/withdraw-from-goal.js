@@ -1,5 +1,5 @@
 import React from 'react';
-import SimpleFrom from '../SimpleForm/simple-form';
+import SimpleForm from '../SimpleForm/simple-form';
 
 export default function WithdrawFromGoal(props){
     return(

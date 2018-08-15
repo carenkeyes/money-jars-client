@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
-import goalReducers from './reducers/goal';
+import budgetReducer from './reducers/budget';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
@@ -14,7 +14,7 @@ const store = createStore(
         form: formReducer,
         auth: authReducer,
         protectedData: protectedDataReducer,
-        goal: goalReducers,
+        budget: budgetReducer,
     }),
     composeWithDevTools(),
     applyMiddleware(thunk),

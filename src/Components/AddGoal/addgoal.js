@@ -1,5 +1,5 @@
 import React from 'react';
-import {addGoal} from '../../actions/goal';
+import {addGoal} from '../../actions/budget';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from '../Input/input';
 

@@ -1,47 +1,40 @@
 import React from 'react';
-import Button from '../Button/button';
-import SimpleForm from '../SimpleForm/simple-form';
+import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import EditGoal from '../EditGoal/edit-goal';
+import AddToGoal from '../AddToGoal/add-to-goal';
+import WithdrawFromGoal from '../WithDrawFromGoal/withdraw-from-goal';
+import MoveFromGoal from '../MoveFromGoal/move-from-goal';
+
 import './goal-details.css';
 
-export default function GoalDetails(props){
+export function GoalDetails(props){
     if (props.showDetail){
         return(
-            <div className="goalDetails">
-                <div className="goalInfo">
-                    <p>Your goal is ${props.goalAmount}</p>
-                    <p>You saved ${props.savedAmount}</p>
-                    <p>You still need ${props.leftAmount} to reach your goal!</p>
+            <Router>
+                <div className="goalDetails">
+                    <div className="goalInfo">
+                        <p>Your goal is ${props.goalAmount}</p>
+                        <p>You saved ${props.savedAmount}</p>
+                        <p>You still need ${props.leftAmount} to reach your goal!</p>
+                    </div>
+                    <div className="edit-goals">
+                        <Switch>
+                            <Route exact path={`${props.match.url}/`} component={EditGoal} />
+                            <Route exact path={`${props.match.url}/add`} component={AddToGoal} />
+                            <Route exact path={`${props.match.url}/move`} component={MoveFromGoal} />
+                            <Route exact path={`${props.match.url}/withdraw`} component={WithdrawFromGoal} />
+                        </Switch>
+                    </div>  
                 </div>
-                <div className="actions">
-                    <Button label="Add" />
-                    <Button label="Move" />
-                    <Button label="Withdraw" />
-                </div>
-                
-                <SimpleForm className='add-funds'
-                    displayForm={true} 
-                    name='add-funds'
-                    label='Add funds'
-                    type='number'
-                    submit='Add'
-                />
-
-                <SimpleForm className='move-funds'
-                    displayForm={true} 
-                    name='move-funds'
-                    label='Move funds'
-                    type='number'
-                    submit='Move'
-                />
-                <SimpleForm className='withdraw-funds'
-                    displayForm={true} 
-                    name='withdraw-funds'
-                    label='Withdraw funds'
-                    type='number'
-                    submit='Withdraw'
-                />
-            </div>  
+            </Router>
         )
     }
     return null;
 }
+
+const mapStateToProps = (state) =>{
+    return {}
+}
+
+export default withRouter(connect(mapStateToProps)(GoalDetails))
