@@ -19,7 +19,7 @@ export class AddToGoal extends React.Component{
         return(
             <div className="add-to-goal">
             <form
-                    className='add-funds-form'
+                    className='edit-goal-form'
                     onSubmit={this.props.handleSubmit(values =>
                         this.onSubmit(values)
                 )}>
