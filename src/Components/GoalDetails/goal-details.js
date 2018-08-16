@@ -9,7 +9,7 @@ import MoveFromGoal from '../MoveFromGoal/move-from-goal';
 import './goal-details.css';
 
 export function GoalDetails(props){
-    //if (props.showDetail){
+
         return(
             <Router>
                 <div className="goalDetails">
@@ -29,8 +29,7 @@ export function GoalDetails(props){
                 </div>
             </Router>
         )
-    //}
-    //return null;
+
 }
 
 const mapStateToProps = (state) =>{
