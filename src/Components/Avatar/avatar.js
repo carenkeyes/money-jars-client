@@ -3,10 +3,9 @@ import './avatar.css';
 
 
 export default function Avatar(props){
-    console.log(props.image);
     return(
         <div className='avatarImage'>
-            <img src={props.image} />
+            <img src={props.image} alt=''/>
         </div>
     )
 }

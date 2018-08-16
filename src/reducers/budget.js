@@ -1,7 +1,7 @@
 import * as actions from '../actions/budget';
 
 const initialState = {
-    total: 200,
+    total: 25,
     goals: [
         {
             title: "Bicycle",
@@ -35,7 +35,9 @@ export default function reduce(state=initialState, action){
                 ...state.goals, {
                     title: action.title.title,
                     amount: action.title.amount,
-                    category: action.title.category
+                    saved: 0,
+                    category: action.title.category,
+                    imageurl: action.title.imageurl,
                 }
             ]
         });

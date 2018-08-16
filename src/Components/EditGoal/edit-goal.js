@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../Button/button';
 import {Link} from 'react-router-dom';
 
 export default function EditGoal(props){

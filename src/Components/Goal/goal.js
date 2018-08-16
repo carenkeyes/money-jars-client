@@ -1,6 +1,6 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
+//import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
+//import {connect} from 'react-redux';
 import Button from '../Button/button';
 import Avatar from '../Avatar/avatar';
 import ProgressBar from '../ProgressBar/progress-bar';
@@ -50,7 +50,10 @@ export default class Goal extends React.Component{
                                     onClick={this.handleClick}/>
                             </div>
                             <div className='goalProgress'>
-                                <ProgressBar />
+                                <ProgressBar 
+                                    goalAmount={this.props.amount}
+                                    savedAmount={this.props.saved}    
+                                />
                             </div>
                         </div> 
                         <GoalDetails
@@ -76,7 +79,10 @@ export default class Goal extends React.Component{
                             onClick={this.handleClick}/>
                     </div>
                     <div className='goalProgress'>
-                        <ProgressBar />
+                        <ProgressBar 
+                            goalAmount={this.props.amount}
+                            savedAmount={this.props.saved} 
+                        />
                     </div>
                 </div>          
             </section>
