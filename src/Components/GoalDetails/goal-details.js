@@ -21,7 +21,7 @@ export function GoalDetails(props){
                     <div className="edit-goals">
                         <Switch>
                             <Route exact path={`${props.match.url}/`} component={EditGoal} />
-                            <Route exact path={`${props.match.url}/add`} component={AddToGoal} />
+                            <Route exact path={`${props.match.url}/add`} render={() => <AddToGoal id={props.id} />} />
                             <Route exact path={`${props.match.url}/move`} component={MoveFromGoal} />
                             <Route exact path={`${props.match.url}/withdraw`} component={WithdrawFromGoal} />
                         </Switch>

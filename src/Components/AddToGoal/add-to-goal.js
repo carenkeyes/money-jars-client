@@ -1,14 +1,47 @@
 import React from 'react';
-import SimpleForm from '../SimpleForm/simple-form';
+import Input from '../Input/input';
+import {Field, reduxForm} from 'redux-form';
+import {updateGoal} from '../../actions/budget';
 
-export default function AddToGoal(props){
-    return(
-        <SimpleForm className='add-funds'
-            displayForm={true} 
-            name='add-funds'
-            label='Add funds'
-            type='number'
-            submit='Add'
-        />
-    )
+export class AddToGoal extends React.Component{
+
+    onSubmit(values){
+        console.log(values);
+        const data = {}
+        data.amount = parseInt(values.amount)
+        data.id = this.props.id
+        console.log(data)
+        return this.props
+            .dispatch(updateGoal(data))
+    }
+
+    render(){
+        return(
+            <div className="add-to-goal">
+            <form
+                    className='add-funds-form'
+                    onSubmit={this.props.handleSubmit(values =>
+                        this.onSubmit(values)
+                )}>
+                    <Field
+                        component={Input}
+                        type='number'
+                        id={this.props.id}
+                        label='How much would you like to add?'
+                        name='amount'
+                    />
+                    <button
+                        type="submit">
+                        Add
+                    </button>
+                    <button
+                        type="button">
+                        Cancel
+                    </button>
+                </form>
+            </div>
+        )
+    }
 }
+
+export default reduxForm({form: 'addToGoal'})(AddToGoal);

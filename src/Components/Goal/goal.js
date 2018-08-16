@@ -60,6 +60,7 @@ export default class Goal extends React.Component{
                             goalAmount={this.props.amount}
                             savedAmount={this.props.saved}
                             leftAmount={togo}
+                            id={this.props.id}
                         />       
                     </section>
             )
