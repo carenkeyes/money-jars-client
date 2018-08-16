@@ -1,11 +1,12 @@
 import React from 'react';
 import Button from '../Button/button';
+import './header.css';
 
 export default function Header(props){
     return (
-        <div>
+        <div className='header'>
             <h1>{props.title}</h1>
-            <p>{props.message}</p>
+            {props.message}
             <Button 
                 label={props.label}
                 onClick={props.onClick}

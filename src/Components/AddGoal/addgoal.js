@@ -27,7 +27,8 @@ export class AddGoal extends React.Component {
     render(){
         if(this.props.addNew){
             return(
-                <div>
+                <div className='wrapper'>
+                <div className='add-goal'>
                     <h2>Add a new Goal</h2>
                     <form 
                         className="add-goal-form"
@@ -67,6 +68,7 @@ export class AddGoal extends React.Component {
                             Cancel
                         </button>
                     </form>
+                </div>
                 </div>
             )
         }

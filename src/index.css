@@ -103,7 +103,7 @@ p{
 section{
     padding: 20px;
     min-height: 200px;
-    background-color: #ddd;
+    background-color: #FFF7DB;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,5 +112,11 @@ section{
 
 
 section:nth-child(even){
-    background-color: #aaa;
+    background-color: #FAF2D6;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
 }

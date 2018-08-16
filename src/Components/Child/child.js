@@ -31,7 +31,6 @@ export class Child extends React.Component{
     }
 
     render(){
-        console.log(this.props.goals);
 
         let goals = this.props.goals.map(goal =>
             <Goal key={goal.title} {...goal} />
@@ -46,12 +45,27 @@ export class Child extends React.Component{
         let toBudget = (this.props.total)-budgeted;
 
         console.log(`toBudget: ${toBudget}`)
+        let message;
+        if(!this.props.goals){
+            message =
+                <div className='budget-message'>
+                    <p> You have ${toBudget} that needs a job!</p>
+                    <p> Would you like to make a savings goal now? </p>
+                </div>
+        }else{
+            message = 
+                <div className='budget-message'>
+                    <p> You have ${toBudget} that needs a job! </p>
+                    <p> You can make a new goal or add it to something you are already saving for </p>
+                </div>
+        }
+
 
         return (
             <div className='child-page'>;
                 <Header 
                     title={'Welcome [name]!'}
-                    message={`You have $${toBudget} to give jobs to today`}
+                    message={message}
                     label={this.state.label}
                     onClick={this.handleClick}    
                 />
