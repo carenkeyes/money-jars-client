@@ -4,6 +4,8 @@ import {Field, reduxForm} from 'redux-form';
 import Input from '../Input/input';
 import Button from '../Button/button';
 
+import './addgoal.css'
+
 export class AddGoal extends React.Component {
     /*constructor(props){
         super(props)
