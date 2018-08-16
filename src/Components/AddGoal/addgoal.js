@@ -2,7 +2,7 @@ import React from 'react';
 import {addGoal} from '../../actions/budget';
 import {Field, reduxForm} from 'redux-form';
 import Input from '../Input/input';
-import Button from '../Button/button';
+//import Button from '../Button/button';
 
 import './addgoal.css'
 

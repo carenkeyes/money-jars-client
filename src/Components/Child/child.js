@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Goal from '../Goal/goal';
 import Header from '../Header/header';
 import AddGoal from '../AddGoal/addgoal';
+import './child.css';
 
 export class Child extends React.Component{
     constructor(){
@@ -69,6 +70,9 @@ export class Child extends React.Component{
                     label={this.state.label}
                     onClick={this.handleClick}    
                 />
+                <div className='content-heading'>
+                    <h2>My Savings Goals</h2>
+                </div>
                 <AddGoal 
                     form='new-goal'
                     addNew={this.state.addNew}
