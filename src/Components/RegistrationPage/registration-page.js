@@ -8,7 +8,6 @@ import LoginForm from '../LoginForm/login-form';
 
 export function RegistrationPage(props){
     if(props.loggedIn){
-        console.log('already loggin in');
         return <Redirect to="/dashboard" />;
     }
 
