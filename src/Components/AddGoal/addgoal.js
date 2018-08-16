@@ -14,6 +14,9 @@ export class AddGoal extends React.Component {
         console.log(values)
         const {title, amount, category, imageurl} = values;
         const goal = {title, amount, category, imageurl};
+        goal.amount = parseInt(goal.amount);
+        //goal.amount = num;
+        //console.log(num);
         console.log(goal);
         return this.props
             .dispatch(addGoal(goal))            
