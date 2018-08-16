@@ -21,25 +21,24 @@ export class LoginForm extends React.Component {
             );
         }
         return (
-            <div>                
+            <div className='user-form'>                
                 <h2>Log in to your account</h2>
-                <p> or <Link to='/register/signup'>Create a new account</Link></p>
                 <form
                     className='login-form'
                     onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
                     {error}
-                    <label htmlFor='username'>Username</label>
                     <Field
                         component={Input}
                         type='text'
+                        label='Username'
                         name='username'
                         id='username'
                         validate={[required, nonEmpty]}
                     />
-                    <label htmlFor="password">Password</label>
                     <Field
                         component={Input}
                         type="password"
+                        label="Password"
                         name="password"
                         id="password"
                         validate={[required,nonEmpty]}
@@ -48,6 +47,7 @@ export class LoginForm extends React.Component {
                         Log in
                     </button>
                 </form>
+                <p> or <Link to='/register/signup'>Create a new account</Link></p>
             </div>
         );
     }

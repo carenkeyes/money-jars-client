@@ -20,9 +20,9 @@ export class RegistrationForm extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className='user-form'>
                 <h2>Sign up for Money Jars</h2>
-                <p> or <Link to='/register/login'>login to your account</Link></p>
+                
                 <form  
                     className="login-form"
                     onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
@@ -60,6 +60,7 @@ export class RegistrationForm extends React.Component {
                         Register
                     </button>
                 </form>
+                <p> or <Link to='/register/login'>login to your account</Link></p>
             </div>
         );
     }

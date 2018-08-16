@@ -27,7 +27,9 @@ export function Navbar(props){
                 <button type="button">Home</button>
             </Link>
             <div className='log-buttons'>
-                <button type="button">Switch User</button>
+                <Link to={`/register/login`}>
+                    <button type="button">Switch User</button>
+                </Link>
                 <button type="button">Logout</button> 
             </div>
         </div>

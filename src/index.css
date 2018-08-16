@@ -53,6 +53,8 @@ table {
 
 body{
     font-family: sans-serif;
+    background-color: #FFF7DB;
+    margin: 0;
 }
 
 nav, footer{
@@ -85,7 +87,8 @@ h1{
 h2{
     font-weight: bold;
     font-size: 3em;
-    margin: 10px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 h3{
