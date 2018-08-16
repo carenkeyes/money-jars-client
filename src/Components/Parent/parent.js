@@ -7,14 +7,17 @@ import { fetchProtectedData } from '../../actions/protected-data';
 import Header from '../Header/header';
 
 export class Parent extends React.Component {
-    componentDidMount(){
+    /*componentDidMount(){
         this.props.dispatch(fetchProtectedData());
-    }
+    }*/
 
     render(){
+
+        let greeting=`Welcome ${this.props.user}!`
+
         return(
             <div>
-                <Header title={this.props.username} />
+                <Header title={greeting} />
                 <section></section>
                 <section></section>
             </div>
@@ -22,12 +25,8 @@ export class Parent extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    const {currentUser} = state.auth;
-    console.log(currentUser);
-    return {
-        username: state.auth.currentUser.username,
-        };
-};
+const mapStateToProps = state => ({
+    user: state.auth.currentUser
+});
 
-export default requiresLogin()(connect(mapStateToProps)(Parent));
+export default connect(mapStateToProps)(Parent);

@@ -10,7 +10,7 @@ export function Navbar(props){
                 <Link to='/'>
                     <button type="button">Home</button>
                 </Link>
-                <div className='log-buttons'>
+                <div className='nav-buttons'>
                     <Link to={`/register/signup`}>
                         <button type="button">Register</button>
                     </Link>
@@ -26,11 +26,13 @@ export function Navbar(props){
             <Link to='/'>
                 <button type="button">Home</button>
             </Link>
-            <div className='log-buttons'>
-                <Link to={`/register/login`}>
-                    <button type="button">Switch User</button>
+            <div className='nav-buttons'>
+                <Link to={`/dashboard/child`}>
+                    <button type="button">Child</button>
                 </Link>
-                <button type="button">Logout</button> 
+                <Link to={`/dashboard/parent`}>
+                    <button type="button">Parent</button>
+                </Link>
             </div>
         </div>
     )
