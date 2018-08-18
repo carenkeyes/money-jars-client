@@ -31,3 +31,39 @@ button{
     color: white;
     border:solid 3px white;
 }
+
+.header-buttons{
+    width: 80%;
+    padding: 10px 20px; 
+    margin: 5px;
+    display: flex;
+}
+
+.home-button{
+    flex: auto;
+    height: 80px;
+    font-size: 48px;
+    box-shadow: 4px 4px 4px black;
+    margin: 0 5px;
+}
+
+.pink{
+    background-color: rgb(255,124,179);
+}
+
+.home-button:active{
+    box-shadow: 0 4px 4px black;
+    transform: translateY(4px);
+}
+
+.green{
+    background-color: rgb(153,204,51)
+}
+
+.orange{
+    background-color: rgb(255,102,51)
+}
+
+.blue{
+    background-color: rgb(46, 182, 217)
+}

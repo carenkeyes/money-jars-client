@@ -17,7 +17,18 @@ export class Parent extends React.Component {
 
         return(
             <div>
-                <Header title={greeting} />
+                <Header 
+                    title={greeting} 
+                    className='header-parent'
+                    leftImage='parent-left-image'
+                    but1Label='Approve'
+                    but2Label='Deny'
+                    but1Type='button'
+                    but2Type='button'
+                    but1Class='home-button green'
+                    but2Class='home-button orange'
+                />
+                    
                 <section></section>
                 <section></section>
             </div>

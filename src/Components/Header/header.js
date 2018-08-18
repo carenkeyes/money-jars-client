@@ -16,11 +16,20 @@ export default function Header(props){
             <div className='header-info'>
                 <h1>{props.title}</h1>
                 {props.message}
-                <Button 
-                    label={props.label}
-                    onClick={props.onClick}
-                    style={buttonStyle}
-                />
+                <div className='header-buttons'>
+                    <Button 
+                        label={props.but1Label}
+                        onClick={props.but1OnClick}
+                        type={props.but1Type}
+                        className={props.but1Class}
+                    />
+                    <Button 
+                        label={props.but2Label}
+                        onClick={props.but2onClick}
+                        type={props.but2Type}
+                        className={props.but2Class}
+                    />
+                </div>
             </div>
             <Avatar className={`header-image ${props.rightImage}`} />
         </div>

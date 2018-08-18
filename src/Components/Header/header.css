@@ -1,5 +1,4 @@
 .header{
-    padding-top: 100px;
     height: 66vh;
     display: flex;
     align-items: center;
@@ -19,20 +18,22 @@ p{
 }
 
 .header-home{
-    background-color: rgb(170, 214, 204);
+    background-color: rgb(153,204,51);
 }
 
 .header-parent{
-    background-color: rgb(232,230,90);
+    background-color: rgb(170, 214, 204);
 }
 
 .header-child{
-    background-color: rgb(46,182,217);
+    background-color: rgb(153,204,51);
 }
 
 .header-info{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    width: 70%;
 }
 

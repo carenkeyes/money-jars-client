@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Redirect} from 'react-router-dom';
+import {Router, Redirect} from 'react-router-dom';
 //import RegistrationForm from '../RegistrationForm/registration-form';
 //import LoginForm from '../LoginForm/login-form';
 import Header from '../Header/header';
@@ -8,27 +8,47 @@ import Header from '../Header/header';
 
 
 
-export function Home(props){
-    if(props.loggedIn){
-        return <Redirect to='/dashboard' />;
+export class Home extends React.Component{
+
+    handleClick(){
+        console.log('Need to reroute this');
+        return <Redirect to='/register/signup' />
     }
-    return (
-        <div>
-            <Header 
-                title="Money Jars" 
-                className='header-home'
-                leftImage='home-left-image'
-                rightImage='home-right-image'
-            />
-            <section>
-                <h2>Welcome</h2>
-                <p>Blah blah blah</p>
-            </section>
-            <section>
-         
-            </section>
-        </div>
-    );
+
+    render(){
+        let message = 
+            <div className='home-message'>
+                <p>When kids learn to boss their money around,
+                    everyone is happy!
+                </p>
+            </div>
+        if(this.props.loggedIn){
+            return <Redirect to='/dashboard' />;
+        }
+        return (
+            <div>
+                {this.renderRedirect}
+                <Header 
+                    title='Money Jars' 
+                    className='header-home'
+                    leftImage='home-left-image'
+                    rightImage='home-right-image'
+                    but1Label='Sign Up Now'
+                    but1Type='button'
+                    but1Class='home-button pink'
+                    but1OnClick={this.handleClick}
+                    message={message}
+                />
+                <section>
+                    <h2>Welcome</h2>
+                    <p>Blah blah blah</p>
+                </section>
+                <section>
+            
+                </section>
+            </div>
+        );
+}
 }
 
 
