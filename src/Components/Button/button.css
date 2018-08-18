@@ -1,5 +1,33 @@
+
+
 button{
     height: 50px;
     min-width: 75px;
     margin: .5em 0;
+}
+
+.home{
+    background: url('./home-button.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border: none;
+    color: transparent;
+    width: 180px;
+    margin-top: 10px;
+}
+
+.nav-button{
+    background-color: white;
+    border: solid 3px rgb(46, 182, 217);
+    color: rgb(46, 182, 217);
+    font-size: 32px;
+    border-radius: 2px;
+    margin-left: 20px;
+}
+
+.nav-button:hover{
+    background-color: rgb(46, 182, 217);
+    color: white;
+    border:solid 3px white;
 }

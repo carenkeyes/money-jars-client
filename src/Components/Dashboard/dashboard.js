@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './dashboard.css'
 
@@ -9,13 +9,11 @@ import Child from '../Child/child';
 
 export function Dashboard(){
     return(
-        <Router>
             <div className='dashboard'>
                 <h2>Dashboard</h2>
                 <Route exact path={`/dashboard/child`} component={Child} />
                 <Route exact path={`/dashboard/parent`} component={Parent} />
             </div>
-        </Router>
     )
 }
 

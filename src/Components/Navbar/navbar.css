@@ -2,15 +2,16 @@
     position: fixed;
     width: 100%;
     height: 80px;
-    padding: 10px 20px;
-    background-color: rgba(25, 52, 97, .4);
+    padding: 0 20px;
+    background-color: rgb(60, 78, 66);
     display: flex;
     justify-content: space-between;
     align-content: center;
+    box-shadow: 0 3px 3px black;
 }
 
-.nav-buttons{
-    width: 180px;
+.nav-group{
     display: flex;
     justify-content: space-between;
+    align-content: center;
 }

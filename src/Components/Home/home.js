@@ -14,7 +14,12 @@ export function Home(props){
     }
     return (
         <div>
-            <Header title="Money Jars"/>
+            <Header 
+                title="Money Jars" 
+                className='header-home'
+                leftImage='home-left-image'
+                rightImage='home-right-image'
+            />
             <section>
                 <h2>Welcome</h2>
                 <p>Blah blah blah</p>

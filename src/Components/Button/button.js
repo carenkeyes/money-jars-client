@@ -3,11 +3,16 @@ import './button.css';
 
 export default class Button extends React.Component{
     render(){
-        if(!this.props.label){
+        if(!this.props.type){
             return null;
         }
         return(
-            <button onClick={this.props.onClick}>{this.props.label}</button>
+            <button 
+                onClick={this.props.onClick}
+                className={this.props.className}
+                type={this.props.type}>
+                {this.props.label}
+            </button>
         )
     }
 }

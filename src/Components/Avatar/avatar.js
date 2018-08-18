@@ -4,8 +4,8 @@ import './avatar.css';
 
 export default function Avatar(props){
     return(
-        <div className='avatarImage'>
-            <img src={props.image} alt=''/>
+        <div className={`${props.className}`}>
+
         </div>
     )
 }

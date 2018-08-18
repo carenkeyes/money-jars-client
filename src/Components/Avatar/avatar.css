@@ -7,3 +7,22 @@ img{
     width: 100%;
     height: 100%;
 }
+
+.header-image{
+    height: 300px;
+    width: 25%;
+}
+
+.home-left-image{
+    background-image: url('./happy-money.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.home-right-image{
+    background-image: url('./money-bags.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}

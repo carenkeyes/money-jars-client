@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import Button from '../Button/button';
 import './navbar.css';
 
 export function Navbar(props){
@@ -8,14 +9,26 @@ export function Navbar(props){
         return (
             <div className='navbar'>
                 <Link to='/'>
-                    <button type="button">Home</button>
+                    <Button
+                        className='home'
+                        type='button'
+                        label=''
+                    />
                 </Link>
-                <div className='nav-buttons'>
+                <div className='nav-group'>
                     <Link to={`/register/signup`}>
-                        <button type="button">Register</button>
+                        <Button 
+                            type="button" 
+                            label='Sign Up'
+                            className='nav-button'
+                        />
                     </Link>
                     <Link to={`/register/login`}>
-                        <button type="button">Login</button>
+                        <Button 
+                            type="button" 
+                            label='Log In'
+                            className='nav-button'
+                        />
                     </Link>
                 </div>
             </div>
@@ -26,7 +39,7 @@ export function Navbar(props){
             <Link to='/'>
                 <button type="button">Home</button>
             </Link>
-            <div className='nav-buttons'>
+            <div className='nav-group'>
                 <Link to={`/dashboard/child`}>
                     <button type="button">Child</button>
                 </Link>

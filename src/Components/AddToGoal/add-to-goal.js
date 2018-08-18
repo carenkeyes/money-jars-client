@@ -28,7 +28,8 @@ export class AddToGoal extends React.Component{
                         type='number'
                         id={this.props.id}
                         label='How much would you like to add?'
-                        name='amount' 
+                        name='amount'
+                        InputProps={{inputProps: {min: 0, max: 10}}} 
                     />
                     <button
                         type="submit">
