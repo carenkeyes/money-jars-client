@@ -13,6 +13,8 @@ export class RegistrationForm extends React.Component {
     onSubmit(values){
         const {username, password, email} = values;
         const user = {username, password, email};
+        user.type = 'parent';
+        console.log(user);
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
@@ -36,7 +38,7 @@ export class RegistrationForm extends React.Component {
                     <Field
                         component={Input}
                         type="text"
-                        lable="email"
+                        label="Email"
                         name="email"
                         validate={[required, nonEmpty, isTrimmed]}
                     />

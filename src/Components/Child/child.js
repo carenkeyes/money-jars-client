@@ -15,7 +15,6 @@ export class Child extends React.Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
-
     handleClick(){
         console.log('edit state ran');
         if(this.state.addNew){

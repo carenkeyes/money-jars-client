@@ -32,10 +32,6 @@ export default function reduce(state = initialState, action){
         return Object.assign({}, state, {
             loading: false,
             currentUser: action.currentUser,
-            userType: action.usertype,
-            budget_id: action.budget_id,
-            category_id: action.category_id,
-            children: action.children,
         });
     }else if (action.type === AUTH_ERROR){
         return Object.assign({}, state, {
