@@ -2,10 +2,14 @@ import React from 'react';
 import './avatar.css';
 
 
-export default function Avatar(props){
-    return(
-        <div className={`${props.className}`}>
-
-        </div>
-    )
+export default class Avatar extends React.Component{
+    render(){
+        if(!this.props.className){
+            return null;
+        }
+        return(
+            <div className={`avatarImage ${this.props.className}`}>
+            </div>
+        )
+    }
 }

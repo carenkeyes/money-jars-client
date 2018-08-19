@@ -4,6 +4,7 @@ button{
     height: 50px;
     min-width: 75px;
     margin: .5em 0;
+    border-radius: 5px;
 }
 
 .home{
@@ -42,6 +43,7 @@ button{
 .home-button{
     flex: auto;
     height: 80px;
+    max-width: 400px;
     font-size: 48px;
     box-shadow: 4px 4px 4px black;
     margin: 0 5px;
@@ -66,4 +68,23 @@ button{
 
 .blue{
     background-color: rgb(46, 182, 217)
+}
+
+.ynab-button{
+    background-image: url('./ynab.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 150px;
+    width: 150px;
+}
+
+.click{
+    box-shadow: 4px 4px 4px black;
+    margin: 0 5px;
+}
+
+.click:active{
+    box-shadow: 0 4px 4px black;
+    transform: translateY(4px);
 }

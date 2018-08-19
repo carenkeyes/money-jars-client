@@ -31,8 +31,8 @@ export class Home extends React.Component{
                 <Header 
                     title='Money Jars' 
                     className='header-home'
-                    leftImage='home-left-image'
-                    rightImage='home-right-image'
+                    leftImage='header-image home-left-image'
+                    rightImage='header-image home-right-image'
                     but1Label='Sign Up Now'
                     but1Type='button'
                     but1Class='home-button pink'

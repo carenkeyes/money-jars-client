@@ -5,14 +5,9 @@ import './header.css';
 
 export default function Header(props){
 
-    const buttonStyle = {
-        width: '250px',
-        color: 'red'
-    }
-
     return (
         <div className={`header ${props.className}`}>
-            <Avatar className={`header-image ${props.leftImage}`} />
+            <Avatar className={props.leftImage} />
             <div className='header-info'>
                 <h1>{props.title}</h1>
                 {props.message}
@@ -31,7 +26,7 @@ export default function Header(props){
                     />
                 </div>
             </div>
-            <Avatar className={`header-image ${props.rightImage}`} />
+            <Avatar className={props.rightImage} />
         </div>
     )
 }

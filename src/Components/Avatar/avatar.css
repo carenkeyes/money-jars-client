@@ -9,20 +9,23 @@ img{
 }
 
 .header-image{
-    height: 300px;
-    width: 25%;
+    height: 80%;
+    flex: auto;
+    
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .home-left-image{
     background-image: url('./happy-money.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
 }
 
 .home-right-image{
     background-image: url('./money-bags.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
 }
+
+.money-tree{
+    background-image: url('./money-tree.png');
+}
+

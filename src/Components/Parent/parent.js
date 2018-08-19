@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 //import requiresLogin from '../RequiresLogin/requires-login';
-//import Request from '../Request/request'
+import Request from '../Request/request'
 //import Section from '../Section/section'
 //import { fetchProtectedData } from '../../actions/protected-data';
 import Header from '../Header/header';
@@ -14,18 +14,19 @@ export class Parent extends React.Component {
     render(){
 
         let greeting=`Welcome ${this.props.user}!`
+        let message = <Request />
+
+        
 
         return(
             <div>
                 <Header 
-                    title={greeting} 
+                    title={greeting}
+                    message={message} 
                     className='header-parent'
-                    leftImage='parent-left-image'
-                    but1Label='Approve'
-                    but2Label='Deny'
-                    but1Type='button'
+                    leftImage='header-image money-tree'
+                    but2Label='Add Child'
                     but2Type='button'
-                    but1Class='home-button green'
                     but2Class='home-button orange'
                 />
                     

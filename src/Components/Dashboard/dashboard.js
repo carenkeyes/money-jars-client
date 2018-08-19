@@ -10,7 +10,6 @@ import Child from '../Child/child';
 export function Dashboard(){
     return(
             <div className='dashboard'>
-                <h2>Dashboard</h2>
                 <Route exact path={`/dashboard/child`} component={Child} />
                 <Route exact path={`/dashboard/parent`} component={Parent} />
             </div>

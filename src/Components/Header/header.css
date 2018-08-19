@@ -1,8 +1,8 @@
 .header{
     height: 66vh;
     display: flex;
-    align-items: center;
     margin-top: 120px;
+    align-items: flex-end;
     box-shadow: 0 3px 3px black;
     justify-content: space-around;
 }
@@ -35,5 +35,11 @@ p{
     justify-content: space-around;
     align-items: center;
     width: 70%;
+    height: 90%;
+}
+
+.header-buttons{
+    display: flex;
+    justify-content: center;
 }
 
