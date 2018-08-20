@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { fetchProtectedData } from '../../actions/protected-data';
 import './dashboard.css'
@@ -14,6 +14,10 @@ export class Dashboard extends React.Component{
     }
 
     render(){
+        if(this.props.parent){
+            return  <Redirect to='/dashboard/parent' />
+        }
+
         return(
                 <div className='dashboard'>
                     <Route exact path={`/dashboard/child`} component={Child} />
@@ -28,7 +32,8 @@ const mapStatetoProps = state => ({
 });
 
 const mapStateToProps = state => ({
-    user: state.auth.currentUser
+    user: state.auth.currentUser,
+    parent: state.protectedData.parent
 });
 
 export default connect(mapStatetoProps)(Dashboard)

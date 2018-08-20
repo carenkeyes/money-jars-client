@@ -36,7 +36,7 @@ export const authError = error => ({
 const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
     dispatch(setAuthToken(authToken));
-    dispatch(authSuccess(decodedToken._id));
+    dispatch(authSuccess(decodedToken.username));
     saveAuthToken(authToken);
 };
 

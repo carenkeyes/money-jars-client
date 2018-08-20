@@ -37,14 +37,26 @@ export function Navbar(props){
     return(
         <div className='navbar'>
             <Link to='/'>
-                <button type="button">Home</button>
+                <Button
+                    className='home'
+                    type='button'
+                    label=''
+                />
             </Link>
             <div className='nav-group'>
                 <Link to={`/dashboard/child`}>
-                    <button type="button">Child</button>
+                    <Button 
+                        type='button'
+                        label='Child'
+                        className='nav-button' 
+                />
                 </Link>
                 <Link to={`/dashboard/parent`}>
-                    <button type="button">Parent</button>
+                    <Button 
+                        type='button'
+                        label='Parent'
+                        className='nav-button' 
+                    />
                 </Link>
             </div>
         </div>

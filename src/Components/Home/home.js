@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Router, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+
 //import RegistrationForm from '../RegistrationForm/registration-form';
 //import LoginForm from '../LoginForm/login-form';
 import Header from '../Header/header';
@@ -9,11 +10,20 @@ import Header from '../Header/header';
 
 
 export class Home extends React.Component{
-
-    handleClick(){
-        console.log('Need to reroute this');
-        return <Redirect to='/register/signup' />
+    constructor(){
+        super()
+        this.state = {
+            register: false,
+        }
     }
+
+    handleClick = () => {
+        console.log('Need to reroute this');
+        this.setState({
+            register: true,
+        })
+    }
+
 
     render(){
         let message = 
@@ -24,6 +34,9 @@ export class Home extends React.Component{
             </div>
         if(this.props.loggedIn){
             return <Redirect to='/dashboard' />;
+        }
+        else if(this.state.register){
+            return <Redirect to='/register/signup' />
         }
         return (
             <div>
