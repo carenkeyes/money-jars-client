@@ -6,14 +6,14 @@ import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
 import {Link} from 'react-router-dom';
 
-const passwordLength = length({min: 10, max: 72});
+const passwordLength = length({min: 7, max: 12});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
     onSubmit(values){
-        const {username, password, email} = values;
-        const user = {username, password, email};
-        user.type = 'parent';
+        const {username, password} = values;
+        const user = {username, password};
+        user.type = 'child';
         console.log(user);
         return this.props
             .dispatch(registerUser(user))
@@ -22,8 +22,8 @@ export class RegistrationForm extends React.Component {
 
     render(){
         return (
-            <div className='user-form'>
-                <h2>Sign up for Money Jars</h2>
+            <div className='child-form'>
+                <h2>Register a Child Account</h2>
                 
                 <form  
                     className="login-form"
@@ -33,13 +33,6 @@ export class RegistrationForm extends React.Component {
                         type="text"
                         label="Username"
                         name="username"
-                        validate={[required, nonEmpty, isTrimmed]}
-                    />
-                    <Field
-                        component={Input}
-                        type="text"
-                        label="Email"
-                        name="email"
                         validate={[required, nonEmpty, isTrimmed]}
                     />
                     <Field
@@ -62,7 +55,6 @@ export class RegistrationForm extends React.Component {
                         Register
                     </button>
                 </form>
-                <p> or <Link to='/register/login'>login to your account</Link></p>
             </div>
         );
     }

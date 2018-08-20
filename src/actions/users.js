@@ -18,7 +18,7 @@ export const registerUser = user => dispatch => {
         if (reason === 'ValidationError'){
             return Promise.reject(
                 new SubmissionError({
-                    [location]: message //what is this for?
+                    [location]: message 
                 })
             );
         }

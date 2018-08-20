@@ -1,5 +1,31 @@
 .avatarImage{
     height: 200px;
     width: 200px;
-    background-color: white;
 }
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+.header-image{
+    height: 80%;
+    flex: auto;
+    
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.home-left-image{
+    background-image: url('./happy-money.png');
+}
+
+.home-right-image{
+    background-image: url('./money-bags.png');
+}
+
+.money-tree{
+    background-image: url('./money-tree.png');
+}
+

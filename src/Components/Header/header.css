@@ -1,0 +1,45 @@
+.header{
+    height: 66vh;
+    display: flex;
+    margin-top: 120px;
+    align-items: flex-end;
+    box-shadow: 0 3px 3px black;
+    justify-content: space-around;
+}
+
+p{
+    font-size: 36px;
+}
+
+.budget-message{
+    width: 66%;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.header-home{
+    background-color: #AAD6CC;
+}
+
+.header-parent{
+    background-color: rgb(170, 214, 204);
+}
+
+.header-child{
+    background-color: rgb(153,204,51);
+}
+
+.header-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    height: 90%;
+}
+
+.header-buttons{
+    display: flex;
+    justify-content: center;
+}
+

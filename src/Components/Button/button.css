@@ -1,4 +1,90 @@
+
+
 button{
     height: 50px;
     min-width: 75px;
+    margin: .5em 0;
+    border-radius: 5px;
+}
+
+.home{
+    background: url('./home-button.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border: none;
+    color: transparent;
+    width: 180px;
+    margin-top: 10px;
+}
+
+.nav-button{
+    background-color: white;
+    border: solid 3px rgb(46, 182, 217);
+    color: rgb(46, 182, 217);
+    font-size: 32px;
+    border-radius: 2px;
+    margin-left: 20px;
+}
+
+.nav-button:hover{
+    background-color: rgb(46, 182, 217);
+    color: white;
+    border:solid 3px white;
+}
+
+.header-buttons{
+    width: 80%;
+    padding: 10px 20px; 
+    margin: 5px;
+    display: flex;
+}
+
+.home-button{
+    flex: auto;
+    height: 80px;
+    max-width: 400px;
+    font-size: 48px;
+    box-shadow: 4px 4px 4px black;
+    margin: 0 5px;
+}
+
+.pink{
+    background-color: rgb(255,124,179);
+}
+
+.home-button:active{
+    box-shadow: 0 4px 4px black;
+    transform: translateY(4px);
+}
+
+.green{
+    background-color: rgb(153,204,51)
+}
+
+.orange{
+    background-color: rgb(255,102,51)
+}
+
+.blue{
+    background-color: rgb(46, 182, 217)
+}
+
+.ynab-button{
+    background-image: url('./ynab.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 150px;
+    width: 150px;
+}
+
+.click{
+    box-shadow: 4px 4px 4px black;
+    margin: 0 5px;
+}
+
+.click:active{
+    box-shadow: 0 4px 4px black;
+    transform: translateY(4px);
 }

@@ -5,17 +5,18 @@ import './registration-page.css';
 
 import RegistrationForm from '../RegistrationForm/registration-form';
 import LoginForm from '../LoginForm/login-form';
+import registrationChild from '../RegistrationChild/registration-child';
 
 export function RegistrationPage(props){
     if(props.loggedIn){
-        console.log('already loggin in');
-        return <Redirect to="/child" />;
+        return <Redirect to="/dashboard" />;
     }
 
     return(
         <div className='registration'>
             <Route exact path={`${props.match.url}/login`} component={LoginForm} />
             <Route exact path={`${props.match.url}/signup`} component={RegistrationForm} />
+            <Route exact path={`${props.match.url}/signup/child`} component={registrationChild} />
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import {API_BASE_URL} from '../../config';
 import Dropdown from '../Dropdown/dropdown'
+import Button from '../Button/button';
+import './request.css';
 
 const clientId = `524cb6ed48eb7037b8391bc45974590dace8e9b2434cc03e5ae595b54412cced`
 const redirectUrl = 'urn:ietf:wg:oauth:2.0:oob'
@@ -71,18 +73,26 @@ export default class Request extends React.Component{
         let authURL = this.state.url;
         if(!this.state.authorized && !this.state.budget){
             return(
-                <section>
-                    <p>These will be one in production</p>
-                    <p><a href={authURL} target="_blank">Authorize YNAB</a></p>
-                    <p><button onClick={this.getToken}>Pretend response to oauth request</button></p>
-                </section>
+                <div className='new-user'>
+                    <div className='ynab-option'>
+                        <p className='auth-message'>If you would like to synch accounts, please authorize <a href={authURL} target="_blank">YNAB</a> first.</p>
+                        <Button
+                            onClick={this.getToken}
+                            className='ynab-button click'
+                            type='button'
+                        />
+                    </div>
+                    <div>
+                        <p>Or just starting setting up kid's accounts</p>
+                    </div>
+                </div>
             )
         }else if(this.state.authorized && !this.state.budget){
              return(
-                <section>
+                <div>
                     <p><button onClick={this.getBudgets}>Choose a Budget</button></p>
                     <Dropdown />   
-                </section>
+                </div>
             )
         }
 

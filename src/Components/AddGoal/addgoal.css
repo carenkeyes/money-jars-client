@@ -1,0 +1,19 @@
+.add-goal{
+    margin: 0 auto;
+    padding: 3em;
+    background-color: #E4F718;;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    border: 2px solid #233561;
+    box-shadow: 5px 10px 10px #233561;
+    
+}
+
+.wrapper{
+    background-color: #6BA2D9;
+    padding: 30px;
+}

@@ -1,52 +1,95 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Goal from '../Goal/goal'
-import {Redirect} from 'react-router-dom';
+import Goal from '../Goal/goal';
+import Header from '../Header/header';
+import AddGoal from '../AddGoal/addgoal';
+import './child.css';
 
-export function Child(props){
-
-    /*if(!props.loggedIn){
-        return <Redirect to='/' />;
-    }*/
-
-    const goal1 = {
-        goalName: 'Goal 1',
-        showDetail: true,
-        goalAmount: 10,
-        savedAmount: 3,
-        leftAmount: 7,
+export class Child extends React.Component{
+    constructor(){
+        super()
+        this.state = {
+            addNew: false,
+            label: 'New Goal'
+        }
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    const goal2 = {
-            goalName: 'Goal 2',
-            showDetail: false,
-            goalAmount: 15,
-            savedAmount: 13,
-            leftAmount: 2,
+    handleClick(){
+        console.log('edit state ran');
+        if(this.state.addNew){
+            this.setState({
+                addNew: false,
+                label: 'New Goal'
+            })
+        }
+        else if(!this.state.addNew){
+            this.setState({
+                addNew: true,
+                label: 'Close'
+        })}
     }
 
-    return (
-        <div>
-            <Goal
-                goalName={goal1.goalName}
-                showDetail={goal1.showDetail}
-                goalAmount={goal1.goalAmount}
-                savedAmount={goal1.savedAmount}
-                leftAmount={goal1.leftAmount}
-            />
-            <Goal
-                goalName={goal2.goalName}
-                showDetail={goal2.showDetail}
-                goalAmount={goal2.goalAmount}
-                savedAmount={goal2.savedAmount}
-                leftAmount={goal2.leftAmount}
-            />
-        </div>
-    )
+    render(){
+
+        let goals = this.props.goals.map(goal =>
+            <Goal key={goal.title} {...goal} />
+        )
+
+        let budgeted = 0;
+
+        for(let i=0; i<goals.length; i++){
+            budgeted = budgeted+this.props.goals[i].saved
+        }
+
+        let toBudget = (this.props.total)-budgeted;
+
+        console.log(`toBudget: ${toBudget}`)
+        let message;
+        if(!this.props.goals){
+            message =
+                <div className='budget-message'>
+                    <p> You have ${toBudget} that needs a job!</p>
+                    <p> Would you like to make a savings goal now? </p>
+                </div>
+        }else{
+            message = 
+                <div className='budget-message'>
+                    <p> You have <span className='amount-to-budget'>${toBudget}</span> </p>
+                    <p> What should it do? </p>
+                </div>
+        }
+
+
+        return (
+            <div className='child-page'>;
+                <Header 
+                    title={`Hi ${this.props.userName}!`}
+                    className='header-child'
+                    message={message}
+                    but1Label={this.state.label}
+                    but1OnClick={this.handleClick}
+                    but1Class='home-button blue'
+                />
+                <div className='content-heading'>
+                    <h2>My Savings Goals</h2>
+                </div>
+                <AddGoal 
+                    form='new-goal'
+                    addNew={this.state.addNew}
+                />
+                <div>
+                    {goals}
+                </div>
+            </div>
+        )
+    }
 }
     
     const mapStatetoProps = state => ({
-        loggedIn: state.auth.currentUser !==null
-    })
+        goals: state.budget.goals,
+        total: state.budget.total,
+        currentUser: state.auth.currentUser,
+    });
     
     export default connect(mapStatetoProps)(Child)

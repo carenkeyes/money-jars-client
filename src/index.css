@@ -53,6 +53,8 @@ table {
 
 body{
     font-family: sans-serif;
+    background-color: #FFF7DB;
+    margin: 0;
 }
 
 nav, footer{
@@ -85,7 +87,8 @@ h1{
 h2{
     font-weight: bold;
     font-size: 3em;
-    margin: 10px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 h3{
@@ -103,7 +106,7 @@ p{
 section{
     padding: 20px;
     min-height: 200px;
-    background-color: #ddd;
+    background-color: #FFF7DB;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,5 +115,11 @@ section{
 
 
 section:nth-child(even){
-    background-color: #aaa;
+    background-color: #FAF2D6;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
 }
