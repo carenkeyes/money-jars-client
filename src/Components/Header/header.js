@@ -20,7 +20,7 @@ export default function Header(props){
                     />
                     <Button 
                         label={props.but2Label}
-                        onClick={props.but2onClick}
+                        onClick={props.but2OnClick}
                         type={props.but2Type}
                         className={props.but2Class}
                     />

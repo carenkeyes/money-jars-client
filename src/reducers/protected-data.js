@@ -6,7 +6,7 @@ import {
 const initialState = {
     data: '',
     error: null,
-    parent: true,
+    usertype: 'parent',
 };
 
 export default function reducer(state = initialState, action){
