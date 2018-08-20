@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+import SelectInput from '../SelectInput/select-input';
 import {addGoal} from '../../actions/budget';
 import {Field, reduxForm} from 'redux-form';
 import Input from '../Input/input';
 //import Button from '../Button/button';
 
 import './addgoal.css'
+
+const goalTypes = [
+    {value: 'savings', label: 'Savings'},
+    {value: 'spending', label: 'Spending'},
+    {value: 'giving', label: 'Giving'},
+]
 
 export class AddGoal extends React.Component {
     /*constructor(props){
@@ -48,10 +55,11 @@ export class AddGoal extends React.Component {
                             name='amount'
                         />
                         <Field
-                            component={Input}
+                            component={SelectInput}
                             type='text'
                             label='Category'
                             name='category'
+                            options={goalTypes}
                         />
                         <Field
                             component={Input}

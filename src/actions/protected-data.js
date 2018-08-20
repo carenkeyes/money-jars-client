@@ -19,7 +19,7 @@ export const fetchProtectedData = () => (dispatch, getState) => {
     return fetch(`${API_BASE_URL}/user/protected`, {
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${authToken}`
+            Authorization: `JWT ${authToken}`
         }
     })
     .then(res => normalizeResponseErrors(res))

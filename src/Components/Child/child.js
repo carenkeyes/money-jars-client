@@ -69,7 +69,7 @@ export class Child extends React.Component{
                     message={message}
                     but1Label={this.state.label}
                     but1OnClick={this.handleClick}
-                    but1Class='home-button orange'
+                    but1Class='home-button blue'
                 />
                 <div className='content-heading'>
                     <h2>My Savings Goals</h2>
