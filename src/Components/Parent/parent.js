@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 //import requiresLogin from '../RequiresLogin/requires-login';
 import Request from '../Request/request'
-//import Section from '../Section/section'
 //import { fetchProtectedData } from '../../actions/protected-data';
 import Header from '../Header/header';
 
