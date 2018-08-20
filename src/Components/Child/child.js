@@ -55,8 +55,8 @@ export class Child extends React.Component{
         }else{
             message = 
                 <div className='budget-message'>
-                    <p> You have ${toBudget} that needs a job! </p>
-                    <p> You can make a new goal or add it to something you are already saving for </p>
+                    <p> You have <span className='amount-to-budget'>${toBudget}</span> </p>
+                    <p> What should it do? </p>
                 </div>
         }
 
@@ -64,10 +64,12 @@ export class Child extends React.Component{
         return (
             <div className='child-page'>;
                 <Header 
-                    title={'Welcome [name]!'}
+                    title={`Hi ${this.props.userName}!`}
+                    className='header-child'
                     message={message}
-                    label={this.state.label}
-                    onClick={this.handleClick}    
+                    but1Label={this.state.label}
+                    but1OnClick={this.handleClick}
+                    but1Class='home-button orange'
                 />
                 <div className='content-heading'>
                     <h2>My Savings Goals</h2>
@@ -87,6 +89,7 @@ export class Child extends React.Component{
     const mapStatetoProps = state => ({
         goals: state.budget.goals,
         total: state.budget.total,
+        currentUser: state.auth.currentUser,
     });
     
     export default connect(mapStatetoProps)(Child)

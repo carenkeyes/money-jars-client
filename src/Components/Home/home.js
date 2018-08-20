@@ -18,7 +18,6 @@ export class Home extends React.Component{
     }
 
     handleClick = () => {
-        console.log('Need to reroute this');
         this.setState({
             register: true,
         })
