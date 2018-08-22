@@ -18,13 +18,31 @@ export const fetchProtectedData = () => (dispatch, getState) => {
     return fetch(`${API_BASE_URL}/user/protected`, {
         method: 'GET',
         headers: {
+            // Provide our auth token as credentials
             Authorization: `JWT ${authToken}`
         }
     })
-    .then(res => normalizeResponseErrors(res))
-    .then(res => (res.json()))
-    .then(({data}) => {dispatch(fetchProtectedDataSuccess(data)), console.log(data)})
-    .catch(err => {
-        dispatch(fetchProtectedDataError(err));
-    });
-}
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(res => dispatch(fetchProtectedDataSuccess(res)))
+        .catch(err => {
+            dispatch(fetchProtectedDataError(err));
+        });
+};
+
+/*export const fetchProtectedData = () => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/user/protected`, {
+        method: 'GET',
+        headers: {
+            // Provide our auth token as credentials
+            Authorization: `JWT ${authToken}`
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
+        .catch(err => {
+            dispatch(fetchProtectedDataError(err));
+        });
+};*/
