@@ -9,21 +9,32 @@ import Parent from '../Parent/parent';
 import Child from '../Child/child';
 
 export class Dashboard extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            usertype: 'child'
+        }
+    }
     componentDidMount(){
-        this.props.dispatch(fetchProtectedData());
+        this.props.dispatch(fetchProtectedData())
+        .then(console.log(this.props.usertype))
+        .then(this.setState = {usertype: this.props.usertype})
     }
 
     render(){
-        if(this.props.parent){
-            return  <Redirect to='/dashboard/parent' />
-        }
+        console.log(this.props.usertype)    
 
-        return(
-                <div className='dashboard'>
-                    <Route exact path={`/dashboard/child`} component={Child} />
-                    <Route exact path={`/dashboard/parent`} component={Parent} />
-                </div>
-        )
+        if(this.state.usertype === 'parent'){
+            console.log('parent')
+            return (
+                <Redirect to={`/parent/`} />
+            )
+        }else if(this.state.usertype ==='child'){
+            console.log('child')
+            return (
+                <Redirect to={`/child`} />
+            )
+        }
     }
 }
 
@@ -33,7 +44,7 @@ const mapStatetoProps = state => ({
 
 const mapStateToProps = state => ({
     user: state.auth.currentUser,
-    parent: state.protectedData.parent
+    usertype: state.protectedData.usertype
 });
 
 export default connect(mapStatetoProps)(Dashboard)

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Goal from '../Goal/goal';
 import Header from '../Header/header';
@@ -31,6 +32,12 @@ export class Child extends React.Component{
     }
 
     render(){
+
+        if(!this.props.loggedIn){
+            return(
+                <Redirect to='/register/login' />
+            )
+        }
 
         let goals = this.props.goals.map(goal =>
             <Goal key={goal.title} {...goal} />
@@ -90,6 +97,7 @@ export class Child extends React.Component{
         goals: state.budget.goals,
         total: state.budget.total,
         currentUser: state.auth.currentUser,
+        loggedIn: state.auth.currentUser !==null,
     });
     
     export default connect(mapStatetoProps)(Child)

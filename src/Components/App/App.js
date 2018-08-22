@@ -6,6 +6,8 @@ import Footer from '../Footer/footer';
 import Home from '../Home/home';
 import RegistrationPage from '../RegistrationPage/registration-page';
 import Dashboard from '../Dashboard/dashboard';
+import Child from '../Child/child';
+import Parent from '../Parent/parent';
 import Privacy from '../Privacy/privacy';
 import {refreshAuthToken} from '../../actions/auth';
 import { connect } from 'react-redux';
@@ -48,6 +50,8 @@ export class App extends React.Component {
               <Route exact path="/" component={Home} />
               <Route path="/register" component={RegistrationPage} />
               <Route path="/dashboard" component={Dashboard} />
+              <Route path='/child' component={Child} />
+              <Route path='/parent' component={Parent} />
               <Route exact path="/privacy" component={Privacy} />
             </Switch>
           </main>          

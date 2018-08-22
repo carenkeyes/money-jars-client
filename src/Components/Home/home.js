@@ -31,10 +31,8 @@ export class Home extends React.Component{
                     everyone is happy!
                 </p>
             </div>
-        if(this.props.loggedIn){
-            return <Redirect to='/dashboard' />;
-        }
-        else if(this.state.register){
+
+        if(this.state.register){
             return <Redirect to='/register/signup' />
         }
         return (

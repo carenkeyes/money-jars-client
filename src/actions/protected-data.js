@@ -15,7 +15,6 @@ export const fetchProtectedDataError = error => ({
 
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    const userId = getState().auth.currentUser;
     return fetch(`${API_BASE_URL}/user/protected`, {
         method: 'GET',
         headers: {
@@ -23,8 +22,8 @@ export const fetchProtectedData = () => (dispatch, getState) => {
         }
     })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
-    .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
+    .then(res => (res.json()))
+    .then(({data}) => {dispatch(fetchProtectedDataSuccess(data)), console.log(data)})
     .catch(err => {
         dispatch(fetchProtectedDataError(err));
     });
