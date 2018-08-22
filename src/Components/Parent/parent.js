@@ -26,7 +26,7 @@ export class Parent extends React.Component {
 
     render(){
         if(this.state.register){
-            return <Redirect to='/register/signup/child' /> 
+            return <Redirect to='/register-child' /> 
         }
 
         let greeting=`Welcome ${this.props.user}!`

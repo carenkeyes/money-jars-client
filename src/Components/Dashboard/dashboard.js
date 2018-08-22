@@ -17,34 +17,30 @@ export class Dashboard extends React.Component{
     }
     componentDidMount(){
         this.props.dispatch(fetchProtectedData())
-        .then(console.log(this.props.usertype))
-        .then(this.setState = {usertype: this.props.usertype})
     }
 
     render(){
-        console.log(this.props.usertype)    
+        console.log(this.props.data)    
 
-        if(this.state.usertype === 'parent'){
+        if(this.props.data.usertype === 'parent'){
             console.log('parent')
             return (
                 <Redirect to={`/parent/`} />
             )
-        }else if(this.state.usertype ==='child'){
+        }else if(this.props.data.usertype ==='child'){
             console.log('child')
             return (
                 <Redirect to={`/child`} />
             )
         }
+
+        return null;
     }
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.auth.currentUser !==null
-});
-
-const mapStateToProps = state => ({
-    user: state.auth.currentUser,
-    usertype: state.protectedData.usertype
+    loggedIn: state.auth.currentUser !==null,
+    data: state.protectedData.data,
 });
 
 export default connect(mapStatetoProps)(Dashboard)

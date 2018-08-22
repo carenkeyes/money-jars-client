@@ -71,7 +71,7 @@ export class Child extends React.Component{
         return (
             <div className='child-page'>;
                 <Header 
-                    title={`Hi ${this.props.userName}!`}
+                    title={`Hi ${this.props.currentUser}!`}
                     className='header-child'
                     message={message}
                     but1Label={this.state.label}
