@@ -1,7 +1,7 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import {registerUser} from '../../actions/users';
-import {login} from '../../actions/auth';
+import {addChild} from '../../actions/users';
 import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
 import {Link} from 'react-router-dom';
@@ -16,7 +16,8 @@ export class RegistrationForm extends React.Component {
         user.type = 'child';
         console.log(user);
         return this.props
-            .dispatch(registerUser(user))
+            .dispatch(registerUser(username))
+            .then(() => this.props.dispatch(addChild(username)));
     }
 
     render(){
@@ -61,6 +62,6 @@ export class RegistrationForm extends React.Component {
 
 export default reduxForm({
     form: 'registration',
-    onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('registration', Object.keys(errors)[0]))
+    //onSubmitFail: (errors, dispatch) =>
+        //dispatch(focus('registration', Object.keys(errors)[0]))
 })(RegistrationForm);

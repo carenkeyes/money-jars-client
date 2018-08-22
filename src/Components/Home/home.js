@@ -27,8 +27,7 @@ export class Home extends React.Component{
     render(){
         let message = 
             <div className='home-message'>
-                <p>When kids learn to boss their money around,
-                    everyone is happy!
+                <p>Teach your kids to boss their money around!
                 </p>
             </div>
 
