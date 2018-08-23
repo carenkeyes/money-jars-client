@@ -1,19 +1,22 @@
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
-import {routerMiddleware} from 'react-router-redux';
+import {connectRouter, routerMiddleware} from 'connected-react-router';
 import thunk from 'redux-thunk';
-import middleware from './middleware';
-import createHistory from 'history/createBrowserHistory';
+import apiMiddleware from './middleware';
+import createBrowserHistory from 'history/createBrowserHistory';
 import config from './config';
-import mainReducer from './reducers/index.reducer';
+//import mainReducer from './reducers/index.reducer';
+import {reducer as reduxFormReducer} from 'redux-form';
+import appState from './appState.reducer';
+import user from './user.reducer';
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 const initialState = {};
 const enhancers = [];
 const Middleware = [
-    thunk,
-    middleware,
     routerMiddleware(history),
+    thunk,
+    apiMiddleware,
 ];
 
 const {devToolsExtension} = window;
@@ -24,13 +27,19 @@ const composedEnhancers = compose(
     ...enhancers,
 )
 
+//console.log(mainReducer);
+
 const store = createStore(
     combineReducers({
-        mainReducer,
-        initialState,
-        composedEnhancers,
-    })
+        appState,
+        user,
+        form: reduxFormReducer,
+    }),
+    //connectRouter(history)(mainReducer),
+    initialState,
+    composedEnhancers,
 )
+
 /*const store = createStore(
     combineReducers({
         form: formReducer,

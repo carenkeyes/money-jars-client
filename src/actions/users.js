@@ -1,5 +1,5 @@
 import config from '../config';
-import {push} from 'react-router-redux';
+import {push} from 'connected-react-router';
 
 export const FETCH_USER_BASIC_INFO_REQUEST_TRIGGERED = 'FETCH_USER_BASIC_INFO_REQUEST_TRIGGERED';
 export const FETCH_USER_BASIC_INFO_REQUEST_SUCCESS = 'FETCH_USER_BASIC_INFO_REQUEST_SUCCESS';

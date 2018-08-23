@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router';
 import Home from '../Home/home';
 import GlobalLoader from '../GlobalLoader/global-loader';
 import RegistrationPage from '../RegistrationPage/registration-page';
@@ -16,14 +16,14 @@ export default function App(props){
       <main role="main">
         <React.Fragment>
           <Switch>
-
+            <GlobalLoader>
               <Route exact path="/" component={Home} />
               <Route path="/register" component={RegistrationPage} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path='/child' component={Child} />
               <Route path='/parent' component={Parent} />
               <Route exact path="/privacy" component={Privacy} />
-
+            </GlobalLoader>
           </Switch>
         </React.Fragment>
       </main>
