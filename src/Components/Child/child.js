@@ -96,8 +96,8 @@ export class Child extends React.Component{
     const mapStatetoProps = state => ({
         goals: state.budget.goals,
         total: state.budget.total,
-        currentUser: state.auth.currentUser,
-        loggedIn: state.auth.currentUser !==null,
+        //currentUser: state.auth.currentUser,
+        //loggedIn: state.auth.currentUser !==null,
     });
     
     export default connect(mapStatetoProps)(Child)

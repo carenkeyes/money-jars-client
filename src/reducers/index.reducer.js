@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 import {reducer as reduxFormReducer} from 'redux-form';
-import appState from '../appState.reducer';
+import appState from './appState.reducer';
 import user from './user.reducer';
 
 const mainReducer = combineReducers({

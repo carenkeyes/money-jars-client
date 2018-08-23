@@ -1,5 +1,5 @@
 import React from 'react';
-import {API_BASE_URL} from '../../config';
+import config from '../../config';
 import Dropdown from '../Dropdown/dropdown'
 import Button from '../Button/button';
 import './request.css';
@@ -28,7 +28,7 @@ export default class Request extends React.Component{
             error: null,
             loading: true
         });
-        return fetch(`${API_BASE_URL}/ynab/auth`, {method: 'POST'})
+        return fetch(`${config.API_BASE_URL}/ynab/auth`, {method: 'POST'})
             .then(res => {
                 if(!res.ok){
                     return Promise.reject(res.statusText);
@@ -51,7 +51,7 @@ export default class Request extends React.Component{
             error: null,
             loading: true
         });
-        return fetch(`${API_BASE_URL}/ynab/budgets`)
+        return fetch(`${config.API_BASE_URL}/ynab/budgets`)
             .then(res => {
                 if(!res.ok){
                     return Promise.reject(res.statusText);

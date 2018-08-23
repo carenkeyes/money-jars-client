@@ -21,7 +21,7 @@ export function RegistrationPage(props){
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    //loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStatetoProps)(RegistrationPage);

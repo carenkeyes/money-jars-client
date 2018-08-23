@@ -1,7 +1,7 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import {registerUser} from '../../actions/users';
-import {login} from '../../actions/auth';
+import {createUser} from '../../actions/users';
+//import {login} from '../../actions/auth';
 import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
 import {Link} from 'react-router-dom';
@@ -17,8 +17,8 @@ export class RegistrationForm extends React.Component {
         user.type = 'parent';
         console.log(user);
         return this.props
-            .dispatch(registerUser(user))
-            .then(() => this.props.dispatch(login(username, password)));
+            .dispatch(createUser(user))
+            //.then(() => this.props.dispatch(login(username, password)));
     }
 
     render(){

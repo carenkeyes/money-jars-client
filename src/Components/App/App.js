@@ -1,4 +1,38 @@
 import React from 'react';
+import {Switch, Route} from 'react-router-dom';
+import Home from '../Home/home';
+import GlobalLoader from '../GlobalLoader/global-loader';
+import RegistrationPage from '../RegistrationPage/registration-page';
+import Dashboard from '../Dashboard/dashboard';
+import Child from '../Child/child';
+import Parent from '../Parent/parent';
+import Privacy from '../Privacy/privacy'
+import Navbar from '../Navbar/navbar';
+
+export default function App(props){
+  return(
+    <div className="app">
+    <Navbar />
+      <main role="main">
+        <React.Fragment>
+          <Switch>
+
+              <Route exact path="/" component={Home} />
+              <Route path="/register" component={RegistrationPage} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path='/child' component={Child} />
+              <Route path='/parent' component={Parent} />
+              <Route exact path="/privacy" component={Privacy} />
+
+          </Switch>
+        </React.Fragment>
+      </main>
+    </div>
+  )
+}
+
+
+/*import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import Navbar from '../Navbar/navbar';
@@ -9,7 +43,7 @@ import Dashboard from '../Dashboard/dashboard';
 import Child from '../Child/child';
 import Parent from '../Parent/parent';
 import Privacy from '../Privacy/privacy';
-import {refreshAuthToken} from '../../actions/auth';
+//import {refreshAuthToken} from '../../actions/auth';
 import { connect } from 'react-redux';
 import registrationChild from '../RegistrationChild/registration-child';
 
@@ -41,7 +75,7 @@ export class App extends React.Component {
     clearInterval(this.refreshInterval);
   }
 
-  render() {
+ render() {
     return (
       <Router>
         <div className="app">
@@ -69,6 +103,6 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !==null
 });
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps)(App));*/
 
 

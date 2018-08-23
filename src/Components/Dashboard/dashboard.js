@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { fetchProtectedData } from '../../actions/protected-data';
+import {fetchUserBasicInfo} from '../../actions/users';
 import './dashboard.css'
 
 //import Header from '../Header/header';
@@ -16,7 +16,7 @@ export class Dashboard extends React.Component{
         }
     }
     componentDidMount(){
-        this.props.dispatch(fetchProtectedData())
+        this.props.dispatch(fetchUserBasicInfo())
     }
 
     render(){
@@ -39,8 +39,8 @@ export class Dashboard extends React.Component{
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.auth.currentUser !==null,
-    data: state.protectedData.data,
+    //loggedIn: state.auth.currentUser !==null,
+    //data: state.protectedData.data,
 });
 
 export default connect(mapStatetoProps)(Dashboard)
