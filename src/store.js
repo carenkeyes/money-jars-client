@@ -1,15 +1,35 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux';
-import {reducer as formReducer} from 'redux-form';
+import {createStore, applyMiddleware, compose} from 'redux';
+import {routerMiddleware} from 'react-router-redux';
 import thunk from 'redux-thunk';
-import {loadAuthToken} from './local-storage';
-import authReducer from './reducers/auth';
-import protectedDataReducer from './reducers/protected-data';
-import budgetReducer from './reducers/budget';
-import {setAuthToken, refreshAuthToken} from './actions/auth';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import middleware from './middleware';
+import createHistory from 'history/createBrowserHistory';
+import config from './config';
+import mainReducer from './reducers/index.reducer';
 
+export const history = createHistory();
+
+const initialState = {};
+const enhancers = [];
+const Middleware = [
+    thunk,
+    middleware,
+    routerMiddleware(history),
+];
+
+const {devToolsExtension} = window;
+enhancers.push(devToolsExtension);
+
+const composedEnhancers = compose(
+    applyMiddleware(...Middleware),
+    ...enhancers,
+)
 
 const store = createStore(
+    mainReducer,
+    initialState,
+    composedEnhancers,
+)
+/*const store = createStore(
     combineReducers({
         form: formReducer,
         auth: authReducer,
@@ -25,6 +45,6 @@ if (authToken){
     const token = authToken;
     store.dispatch(setAuthToken(token));
     store.dispatch(refreshAuthToken());
-}
+}*/
 
 export default store;
