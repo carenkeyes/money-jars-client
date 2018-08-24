@@ -1,12 +1,9 @@
 import React from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchUserBasicInfo} from '../../actions/users';
 import './dashboard.css'
 
-//import Header from '../Header/header';
-import Parent from '../Parent/parent';
-import Child from '../Child/child';
 
 export class Dashboard extends React.Component{
     constructor(props){

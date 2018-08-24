@@ -39,7 +39,8 @@ export default function apiMiddleware({dispatch, getState}){
             promise, onRequest, onSuccess, onFailure, ...rest
         } = action;
         if(!promise){
-            return next(action);
+            //return next(action);
+            return null;
         }
 
         if(typeof onRequest === 'function'){
