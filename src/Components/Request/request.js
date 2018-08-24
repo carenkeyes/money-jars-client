@@ -7,6 +7,8 @@ import './request.css';
 const clientId = `524cb6ed48eb7037b8391bc45974590dace8e9b2434cc03e5ae595b54412cced`
 const redirectUrl = 'urn:ietf:wg:oauth:2.0:oob'
 
+//https://app.youneedabudget.com/oauth/authorize?client_id=524cb6ed48eb7037b8391bc45974590dace8e9b2434cc03e5ae595b54412cced&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code
+
 export default class Request extends React.Component{
     constructor(props){
         super(props);

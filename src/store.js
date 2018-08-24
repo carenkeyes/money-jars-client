@@ -1,5 +1,6 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import {connectRouter, routerMiddleware} from 'connected-react-router';
+//import {routerMiddleware} from 'react-router-redux';
 import thunk from 'redux-thunk';
 import apiMiddleware from './middleware';
 import createHistory from 'history/createBrowserHistory';
@@ -36,17 +37,12 @@ const store = createStore(
 )
 
 /*const store = createStore(
-    combineReducers({
-        form: formReducer,
-        auth: authReducer,
-        protectedData: protectedDataReducer,
-        budget: budgetReducer,
-    }),
+    mainReducer,
     composeWithDevTools(),
     applyMiddleware(thunk),
-);
+);*/
 
-const authToken = loadAuthToken();
+/*const authToken = loadAuthToken();
 if (authToken){
     const token = authToken;
     store.dispatch(setAuthToken(token));

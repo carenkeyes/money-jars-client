@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 //import requiresLogin from '../RequiresLogin/requires-login';
 import Request from '../Request/request'
 import {Redirect} from 'react-router-dom'
+import RegistrationChild from '../RegistrationChild/registration-child';
 //import { fetchProtectedData } from '../../actions/protected-data';
 import Header from '../Header/header';
 
@@ -20,21 +21,18 @@ export class Parent extends React.Component {
     handleClick = () => {
         console.log('reroute to child');
         this.setState({
-            register: true,
+            register: !this.state.register
         })
     }
 
     render(){
-        if(this.state.register){
-            return <Redirect to='/register-child' /> 
-        }
 
-        let greeting=`Welcome ${this.props.user}!`
+        let greeting=`Welcome ${this.props.user.username}!`
         let message = <Request />
         
-        if(!this.props.loggedIn){
+        /*if(!this.props.loggedIn){
             return <Redirect to='/register/login' />
-        }
+        }*/
 
         return(
             <div>
@@ -43,12 +41,14 @@ export class Parent extends React.Component {
                     message={message} 
                     className='header-parent'
                     leftImage='header-image money-tree'
-                    but2Label='Add Child'
+                    but2Label={this.state.register ? 'Cancel' : 'Add Child'}
                     but2Type='button'
                     but2Class='home-button orange'
                     but2OnClick={this.handleClick}
                 />
-                    
+                <div>
+                    <RegistrationChild show={this.state.register} />
+                </div>   
                 <section></section>
                 <section></section>
             </div>
@@ -57,8 +57,7 @@ export class Parent extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.auth.currentUser,
-    loggedIn: state.auth.currentUser !==null,
+    user: state.user
 });
 
 export default connect(mapStateToProps)(Parent);

@@ -7,7 +7,7 @@ import {createUser} from '../../actions'
 const passwordLength = length({min: 7, max: 12});
 const matchesPassword = matches('password');
 
-export class RegistrationForm extends React.Component {
+export class RegistrationChild extends React.Component {
     onSubmit(values){
         const {username, password} = values;
         const user = {username, password};
@@ -19,6 +19,9 @@ export class RegistrationForm extends React.Component {
     }
 
     render(){
+        if(!this.props.show){
+            return null;
+        }
         return (
             <div className='child-form'>
                 <h2>Register a Child Account</h2>
@@ -59,7 +62,7 @@ export class RegistrationForm extends React.Component {
 }
 
 export default reduxForm({
-    form: 'registration',
+    form: 'child-registration',
     //onSubmitFail: (errors, dispatch) =>
         //dispatch(focus('registration', Object.keys(errors)[0]))
-})(RegistrationForm);
+})(RegistrationChild);

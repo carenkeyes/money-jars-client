@@ -1,6 +1,7 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import {createUser} from '../../actions/users';
+import {connect} from 'react-redux';
 //import {login} from '../../actions/auth';
 import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
@@ -71,8 +72,12 @@ export class RegistrationForm extends React.Component {
     }
 }
 
+const mapStatetoProps = state => ({
+
+});
+
 export default reduxForm({
     form: 'registration',
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('registration', Object.keys(errors)[0]))
-})(RegistrationForm);
+})(connect(mapStatetoProps, {createUser})(RegistrationForm));

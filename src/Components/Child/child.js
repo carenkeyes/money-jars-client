@@ -33,11 +33,11 @@ export class Child extends React.Component{
 
     render(){
 
-        if(!this.props.loggedIn){
+        /*if(!this.props.loggedIn){
             return(
                 <Redirect to='/register/login' />
             )
-        }
+        }*/
 
         let goals = this.props.goals.map(goal =>
             <Goal key={goal.title} {...goal} />

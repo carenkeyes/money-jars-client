@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {ConnectedRouter} from 'connected-react-router';
+//import {ConnectedRouter} from 'react-router-redux';
 import {Provider} from 'react-redux';
 import './index.css';
 import App from './Components/App/App';
@@ -13,6 +14,7 @@ const Main = () => (
       </ConnectedRouter>
     </Provider>
   );
+
 
 const rootE1 = document.getElementById('root');
 

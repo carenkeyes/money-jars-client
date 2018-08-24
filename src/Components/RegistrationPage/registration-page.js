@@ -5,7 +5,6 @@ import './registration-page.css';
 
 import RegistrationForm from '../RegistrationForm/registration-form';
 import LoginForm from '../LoginForm/login-form';
-import registrationChild from '../RegistrationChild/registration-child';
 
 export function RegistrationPage(props){
     if(props.loggedIn){
