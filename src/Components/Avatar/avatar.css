@@ -9,7 +9,7 @@ img{
 }
 
 .header-image{
-    height: 80%;
+    height: 100%;
     flex: auto;
     
     background-repeat: no-repeat;
@@ -29,3 +29,6 @@ img{
     background-image: url('./money-tree.png');
 }
 
+.counting-money{
+    background-image: url('./counting-money.png');
+}

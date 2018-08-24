@@ -5,3 +5,9 @@
     background-color: #233561;
     color: white;
 }
+
+.amount-to-budget{
+    font-size: 2em;
+    color: #FF6633;
+    font-weight: bold;
+}

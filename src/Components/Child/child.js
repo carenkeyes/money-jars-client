@@ -11,24 +11,14 @@ export class Child extends React.Component{
         super()
         this.state = {
             addNew: false,
-            label: 'New Goal'
         }
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(){
-        console.log('edit state ran');
-        if(this.state.addNew){
-            this.setState({
-                addNew: false,
-                label: 'New Goal'
-            })
-        }
-        else if(!this.state.addNew){
-            this.setState({
-                addNew: true,
-                label: 'Close'
-        })}
+        this.setState({
+            addNew: !this.state.addNew
+        })
     }
 
     render(){
@@ -56,7 +46,7 @@ export class Child extends React.Component{
         if(!this.props.goals){
             message =
                 <div className='budget-message'>
-                    <p> You have ${toBudget} that needs a job!</p>
+                    <p> You have <span className='amount-to-budget'>${toBudget}</span> that needs a job!</p>
                     <p> Would you like to make a savings goal now? </p>
                 </div>
         }else{
@@ -74,13 +64,11 @@ export class Child extends React.Component{
                     title={`Hi ${this.props.currentUser}!`}
                     className='header-child'
                     message={message}
-                    but1Label={this.state.label}
+                    but1Label={this.state.addNew ? 'Cancel' : 'Add New Goal'}
                     but1OnClick={this.handleClick}
                     but1Class='home-button blue'
+                    rightImage='header-image counting-money'
                 />
-                <div className='content-heading'>
-                    <h2>My Savings Goals</h2>
-                </div>
                 <AddGoal 
                     form='new-goal'
                     addNew={this.state.addNew}
