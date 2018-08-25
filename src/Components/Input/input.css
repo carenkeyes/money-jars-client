@@ -14,3 +14,7 @@ input{
     margin-top: .2em;
     margin-bottom: 1em;
 }
+
+.edit-goal-input{
+    width: 350px;
+}

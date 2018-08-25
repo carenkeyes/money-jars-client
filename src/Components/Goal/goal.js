@@ -19,7 +19,7 @@ export default class Goal extends React.Component{
     handleClick(){
         console.log('edit state ran');
         this.setState({
-            options: !this.props.options
+            options: !this.state.options
         })
     }
 
@@ -42,7 +42,9 @@ export default class Goal extends React.Component{
                             <p className='goal-text'> I need: <span className='money-value'> ${this.props.amount} </span> </p>
                             <Button 
                             label={this.state.options ? 'Close': 'Options'}
-                            onClick={this.handleClick}/>
+                            onClick={this.handleClick}
+                            className='blue click'
+                        />                            
                         </div>
                         <div className='goal-progress-bar'>
                             <ProgressBar 
@@ -56,7 +58,9 @@ export default class Goal extends React.Component{
                         <p className='goal-text'><span className='money-value'> ${togo} </span> left to save! </p>
                         </div>
                     </div>
-                </div>          
+                    
+                </div>
+                <GoalDetails options={this.state.options} />          
             </section>
         )
     }
