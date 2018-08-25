@@ -25,6 +25,7 @@ export class MoveFromGoal extends React.Component{
                         onSubmit={this.props.handleSubmit(values =>
                             this.onSubmit(values)
                     )}>
+                        <div className='form-input-fields'>
                         <Field
                             component={Input}
                             className='edit-goal-input'
@@ -41,6 +42,7 @@ export class MoveFromGoal extends React.Component{
                             label='Where are you moving your money?'
                             name='category'
                         />
+                        </div>
                         <button
                             className='submit-edit-goal click green'
                             type="submit">

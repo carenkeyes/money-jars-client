@@ -5,6 +5,7 @@ import EditGoal from '../EditGoal/edit-goal';
 import AddToGoal from '../AddToGoal/add-to-goal';
 import WithdrawFromGoal from '../WithDrawFromGoal/withdraw-from-goal';
 import MoveFromGoal from '../MoveFromGoal/move-from-goal';
+import Deletegoal, { DeleteGoal } from '../DeleteGoal/delete-goal';
 import Button from '../Button/button'
 
 import './goal-details.css';
@@ -53,6 +54,7 @@ export class GoalDetails extends React.Component{
                         <AddToGoal editType={this.state.editType}/>
                         <WithdrawFromGoal editType={this.state.editType}/>
                         <MoveFromGoal editType={this.state.editType}/>
+                        <DeleteGoal editType={this.state.editType} />
                     </div>
                     <div>
                         <div className='edit-goal-button-group'>
