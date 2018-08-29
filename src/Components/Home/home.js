@@ -70,7 +70,7 @@ export class Home extends React.Component{
 </section>*/
 
 const mapStatetoProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+
 });
 
 export default connect(mapStatetoProps)(Home)

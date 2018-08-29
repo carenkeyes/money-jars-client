@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware} from 'redux';
-import { connectRouter, routerMiddleware } from 'connect-react-router';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import apiMiddleware from './api-middleware';
 import createHistory from 'history/createBrowserHistory';
-import rootReducer from '../../reducers/root.reducer';
+import rootReducer from './reducers/root.reducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 

@@ -70,12 +70,12 @@ const handleCreateUserResponse = (response, dispatch) => {
 };
   
 
-export function fetchUserLogin(email, password) {
+export function fetchUserLogin(username, password) {
   const promise = fetch(`${config.USER_ENDPOINT}`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        email,
+        username,
         password,
       }),
   });

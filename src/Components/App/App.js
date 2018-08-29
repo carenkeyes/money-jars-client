@@ -9,12 +9,12 @@ import Dashboard from '../Dashboard/dashboard';
 import Child from '../Child/child';
 import Parent from '../Parent/parent';
 import Privacy from '../Privacy/privacy';
-import {refreshAuthToken} from '../../actions/auth';
+//import {refreshAuthToken} from '../../actions/auth';
 import { connect } from 'react-redux';
 import registrationChild from '../RegistrationChild/registration-child';
 
 export class App extends React.Component {
-  componentDidUpdate(prevProps){
+  /*componentDidUpdate(prevProps){
     if(!prevProps.logginIn && this.props.logginIn){
       this.startPeriodicRefresh();
     }else if (prevProps.logginIn && !this.props.logginIn){
@@ -39,7 +39,7 @@ export class App extends React.Component {
     }
 
     clearInterval(this.refreshInterval);
-  }
+  }*/
 
   render() {
     return (
@@ -65,8 +65,7 @@ export class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  hasAuthToken: state.auth.authToken !==null,
-  loggedIn: state.auth.currentUser !==null
+
 });
 
 export default withRouter(connect(mapStateToProps)(App));

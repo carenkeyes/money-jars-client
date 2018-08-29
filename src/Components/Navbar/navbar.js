@@ -5,7 +5,7 @@ import Button from '../Button/button';
 import './navbar.css';
 
 export function Navbar(props){
-    if(!props.loggedIn){
+    /*if(!props.loggedIn){
         return (
             <div className='navbar'>
                 <Link to='/'>
@@ -33,7 +33,7 @@ export function Navbar(props){
                 </div>
             </div>
         )
-    }
+    }*/
     return(
         <div className='navbar'>
             <Link to='/'>
@@ -64,7 +64,7 @@ export function Navbar(props){
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.auth.currentUser !==null
+
 });
 
 export default connect(mapStatetoProps)(Navbar)
