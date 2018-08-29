@@ -3,21 +3,21 @@ import {connectRouter, routerMiddleware} from 'connected-react-router';
 //import {routerMiddleware} from 'react-router-redux';
 import thunk from 'redux-thunk';
 import apiMiddleware from './middleware';
-import createHistory from 'history/createBrowserHistory';
-import mainReducer from './reducers/index.reducer';
+//import createBrowserHistory from 'history/createBrowserHistory';
+import rootReducer from './reducers/index.reducer';
 import {composeWithDevTools} from 'redux-devtools-extension'
 
-export const history = createHistory();
+//export const history = createBrowserHistory();
 
 const initialState = {};
 //const enhancers = [];
 const middleware = [
-    routerMiddleware(history),
     thunk,
     apiMiddleware,
 ];
 
 //const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 
 /*const composedEnhancers = compose(
     applyMiddleware(...middleware),
@@ -31,16 +31,10 @@ const enhancers = composeWithDevTools(
 //console.log(mainReducer);
 
 const store = createStore(
-    connectRouter(history)(mainReducer),
+    rootReducer,
     initialState,
     enhancers,
-)
-
-/*const store = createStore(
-    mainReducer,
-    composeWithDevTools(),
-    applyMiddleware(thunk),
-);*/
+);
 
 /*const authToken = loadAuthToken();
 if (authToken){

@@ -5,6 +5,8 @@ import Goal from '../Goal/goal';
 import Header from '../Header/header';
 import AddGoal from '../AddGoal/addgoal';
 import './child.css';
+import {fetchUserLogin} from '../../actions/users';
+
 
 export class Child extends React.Component{
     constructor(){
@@ -13,6 +15,10 @@ export class Child extends React.Component{
             addNew: false,
         }
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount(){
+        return this.props.dispatch(fetchUserLogin('Ally', 'password'));
     }
 
     handleClick(){
