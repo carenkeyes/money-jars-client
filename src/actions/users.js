@@ -1,6 +1,6 @@
-import {SubmissionError} from 'redux-form';
-import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from './utils';
+//import {SubmissionError} from 'redux-form';
+import config from '../config';
+//import {normalizeResponseErrors} from './utils';
 import {push} from 'connected-react-router';
 
 export const FETCH_USER_BASIC_INFO_REQUEST_TRIGGERED = 'FETCH_USER_BASIC_INFO_REQUEST_TRIGGERED';
@@ -8,10 +8,10 @@ export const FETCH_USER_BASIC_INFO_REQUEST_SUCCESS = 'FETCH_USER_BASIC_INFO_REQU
 export const FETCH_USER_BASIC_INFO_REQUEST_FAILURE = 'FETCH_USER_BASIC_INFO_REQUEST_FAILURE';
 
 export function fetchUserBasicInfo() {
-    const promise = fetch(`${appConfig.USER_ENDPOINT}`, {
+    const promise = fetch(`${config.API_BASE_URL}`, {
         headers: {
             'Content-Type': 'application/json',
-            Authorization: sessionStorage.getItem(appConfig.TOKEN_CONTENT_KEY)
+            Authorization: sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
         }
     });
     return {
@@ -27,7 +27,7 @@ export const FETCH_USER_LOGIN_REQUEST_SUCCESS = 'FETCH_USER_LOGIN_REQUEST_SUCCES
 export const FETCH_USER_LOGIN_REQUEST_FAILURE = 'FETCH_USER_LOGIN_REQUEST_FAILURE';
 
 const handleLoginResponse = (response, dispatch) => {
-  sessionStorage.setItem(appConfig.TOKEN_CONTENT_KEY, response.token);
+  sessionStorage.setItem(config.TOKEN_CONTENT_KEY, response.token);
   dispatch({
       type: FETCH_USER_LOGIN_REQUEST_SUCCESS,
       response,
@@ -41,18 +41,14 @@ export const FETCH_USER_SIGNUP_REQUEST_SUCCESS = 'FETCH_USER_SIGNUP_REQUEST_SUCC
 export const FETCH_USER_SIGNUP_REQUEST_FAILURE = 'FETCH_USER_SIGNUP_REQUEST_FAILURE';
 export const CREATE_USER_REQUEST_SUCCESS = 'CREATE_USER_REQUEST_SUCCESS';
 
-export function createUser(name, email, password, phoneNumber, address, is_driver) {
-    const promise = fetch(`${appConfig.USER_CREATE}`, {
+export function registerUser(name, email, password) {
+    const promise = fetch(`${config.USER_CREATE}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           email,
           name,
           password,
-          phoneNumber,
-          address,
-          password,
-          is_driver,
         }),
     });
     return {
@@ -65,7 +61,7 @@ export function createUser(name, email, password, phoneNumber, address, is_drive
 
 
 const handleCreateUserResponse = (response, dispatch) => {
-    sessionStorage.setItem(appConfig.TOKEN_CONTENT_KEY, response.token);
+    sessionStorage.setItem(config.TOKEN_CONTENT_KEY, response.token);
     dispatch({
         type: CREATE_USER_REQUEST_SUCCESS,
         response,
@@ -75,7 +71,7 @@ const handleCreateUserResponse = (response, dispatch) => {
   
 
 export function fetchUserLogin(email, password) {
-  const promise = fetch(`${appConfig.USER_ENDPOINT}`, {
+  const promise = fetch(`${config.USER_ENDPOINT}`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
