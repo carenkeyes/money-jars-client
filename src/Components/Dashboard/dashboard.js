@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-//import { fetchProtectedData } from '../../actions/protected-data';
+import {fetchUserBasicInfo} from '../../actions/index.actions';
 import './dashboard.css'
 
 //import Header from '../Header/header';
@@ -16,7 +16,7 @@ export class Dashboard extends React.Component{
         }
     }
     /*componentDidMount(){
-        this.props.dispatch(fetchProtectedData())
+        this.props.dispatch(fetchUserBasicInfo())
     }*/
 
     render(){

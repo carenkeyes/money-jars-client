@@ -3,15 +3,20 @@ import config from '../config';
 //import {normalizeResponseErrors} from './utils';
 import {push} from 'connected-react-router';
 
+
 export const FETCH_USER_BASIC_INFO_REQUEST_TRIGGERED = 'FETCH_USER_BASIC_INFO_REQUEST_TRIGGERED';
 export const FETCH_USER_BASIC_INFO_REQUEST_SUCCESS = 'FETCH_USER_BASIC_INFO_REQUEST_SUCCESS';
 export const FETCH_USER_BASIC_INFO_REQUEST_FAILURE = 'FETCH_USER_BASIC_INFO_REQUEST_FAILURE';
 
 export function fetchUserBasicInfo() {
-    const promise = fetch(`${config.API_BASE_URL}`, {
+    console.log(sessionStorage.getItem(config.TOKEN_CONTENT_KEY))
+    const sessionKey = sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
+    const token = sessionKey.split(' ')[1]
+    console.log(token)
+    const promise = fetch(`${config.USER_DATA}`, {
         headers: {
             'Content-Type': 'application/json',
-            Authorization: sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
+            Authorization: `JWT ${token}`
         }
     });
     return {
@@ -33,6 +38,7 @@ const handleLoginResponse = (response, dispatch) => {
       response,
   });
   dispatch(push('/dashboard'));
+  dispatch(fetchUserBasicInfo())
 };
 
 
@@ -41,14 +47,15 @@ export const FETCH_USER_SIGNUP_REQUEST_SUCCESS = 'FETCH_USER_SIGNUP_REQUEST_SUCC
 export const FETCH_USER_SIGNUP_REQUEST_FAILURE = 'FETCH_USER_SIGNUP_REQUEST_FAILURE';
 export const CREATE_USER_REQUEST_SUCCESS = 'CREATE_USER_REQUEST_SUCCESS';
 
-export function registerUser(name, email, password) {
+export function registerUser(user) {
     const promise = fetch(`${config.USER_CREATE}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          email,
-          name,
-          password,
+          username: user.username,
+          email: user.email,
+          password: user.password,
+          type: user.type,
         }),
     });
     return {

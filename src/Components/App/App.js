@@ -43,14 +43,13 @@ export class App extends React.Component {
 
   render() {
     return (
-      <Router>
         <div className="app">
           <Navbar />       
           <main role="main">
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/register" component={RegistrationPage} />
-              <Route path="/dashboard" component={Dashboard} />
+              <Route exact path='/' component={Home} />
+              <Route path='/register' component={RegistrationPage} />
+              <Route path='/dashboard' component={Dashboard} />
               <Route path='/child' component={Child} />
               <Route path='/parent' component={Parent} />
               <Route path='/register-child' component={registrationChild} />
@@ -59,7 +58,6 @@ export class App extends React.Component {
           </main>          
           <Footer />
         </div>
-      </Router>
     );
   }
 }

@@ -44,14 +44,14 @@ export function Navbar(props){
                 />
             </Link>
             <div className='nav-group'>
-                <Link to={`/dashboard/child`}>
+                <Link to={`/child`}>
                     <Button 
                         type='button'
                         label='Child'
                         className='nav-button' 
                 />
                 </Link>
-                <Link to={`/dashboard/parent`}>
+                <Link to={`/parent`}>
                     <Button 
                         type='button'
                         label='Parent'
