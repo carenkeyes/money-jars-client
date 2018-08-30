@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/index.actions';
 
 const initialState = {
-  id: null
+  data: null
 }
 
 export default function user(state=initialState, action) {
@@ -10,8 +10,14 @@ export default function user(state=initialState, action) {
     case actionTypes.FETCH_USER_BASIC_INFO_REQUEST_SUCCESS: {
       return {
         ...state,
-        id: action.response.id,
+        data: action.response.userInfo
       };
+    }
+    case actionTypes.FETCH_USER_LOGIN_REQUEST_SUCCESS: {
+      return {
+        ...state,
+        data: action.response.userInfo
+      }
     }
     default: {
       return state;

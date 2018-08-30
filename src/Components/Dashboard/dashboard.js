@@ -7,39 +7,35 @@ import './dashboard.css'
 //import Header from '../Header/header';
 import Parent from '../Parent/parent';
 import Child from '../Child/child';
+import { stat } from 'fs';
 
 export class Dashboard extends React.Component{
     constructor(props){
         super(props)
-        this.state = {
-            usertype: 'child'
-        }
     }
-    /*componentDidMount(){
+    componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
-    }*/
+    }
 
     render(){
-        console.log(this.props.data)    
-
-        if(this.props.data.usertype === 'parent'){
+        console.log(this.props.usertype)    
+        if(this.props.user.usertype === 'parent'){
             console.log('parent')
             return (
                 <Redirect to={`/parent/`} />
             )
-        }else if(this.props.data.usertype ==='child'){
+        }else if(this.props.user.usertype ==='child'){
             console.log('child')
             return (
                 <Redirect to={`/child`} />
             )
         }
-
         return null;
     }
 }
 
 const mapStatetoProps = state => ({
-
+    user: state.user
 });
 
 export default connect(mapStatetoProps)(Dashboard)

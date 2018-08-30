@@ -9,10 +9,8 @@ export const FETCH_USER_BASIC_INFO_REQUEST_SUCCESS = 'FETCH_USER_BASIC_INFO_REQU
 export const FETCH_USER_BASIC_INFO_REQUEST_FAILURE = 'FETCH_USER_BASIC_INFO_REQUEST_FAILURE';
 
 export function fetchUserBasicInfo() {
-    console.log(sessionStorage.getItem(config.TOKEN_CONTENT_KEY))
     const sessionKey = sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
     const token = sessionKey.split(' ')[1]
-    console.log(token)
     const promise = fetch(`${config.USER_DATA}`, {
         headers: {
             'Content-Type': 'application/json',
@@ -38,7 +36,6 @@ const handleLoginResponse = (response, dispatch) => {
       response,
   });
   dispatch(push('/dashboard'));
-  dispatch(fetchUserBasicInfo())
 };
 
 
