@@ -25,6 +25,13 @@ export class Parent extends React.Component {
     }
 
     render(){
+
+        if(!this.props.loggedIn){
+            return(
+            <Redirect to={'/register/login'} />
+            )
+        }
+
         if(this.state.register){
             return <Redirect to='/register-child' /> 
         }
@@ -57,7 +64,7 @@ export class Parent extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+    loggedIn: state.user.data !== null
 });
 
 export default connect(mapStateToProps)(Parent);
