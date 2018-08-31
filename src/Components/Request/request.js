@@ -1,7 +1,6 @@
 import React from 'react';
 import config from '../../config';
 import Button from '../Button/button';
-import {Link} from 'react-router-dom';
 import './request.css';
 import { connect } from 'react-redux';
 import {fetchUserBasicInfo} from '../../actions/index.actions';

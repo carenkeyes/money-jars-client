@@ -9,7 +9,7 @@ export const FETCH_USER_BASIC_INFO_REQUEST_SUCCESS = 'FETCH_USER_BASIC_INFO_REQU
 export const FETCH_USER_BASIC_INFO_REQUEST_FAILURE = 'FETCH_USER_BASIC_INFO_REQUEST_FAILURE';
 
 export function fetchUserBasicInfo() {
-    console.log('fetch user basic infor')
+    console.log('fetch user basic info')
     const sessionKey = sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
     const token = sessionKey.split(' ')[1]
     const promise = fetch(`${config.USER_DATA}`, {
