@@ -1,7 +1,6 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import {registerUser} from '../../actions/users';
-import {login} from '../../actions/auth';
+import {registerUser, fetchUserLogin} from '../../actions/users';
 import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
 import {Link} from 'react-router-dom';
@@ -10,6 +9,7 @@ const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
+
     onSubmit(values){
         const {username, password, email} = values;
         const user = {username, password, email};
@@ -17,11 +17,12 @@ export class RegistrationForm extends React.Component {
         console.log(user);
         return this.props
             .dispatch(registerUser(user))
-            .then(() => this.props.dispatch(login(username, password)));
+            .then(() => this.props.dispatch(fetchUserLogin(username, password)));
     }
 
     render(){
         return (
+            <div className='registration'>
             <div className='user-form'>
                 <h2>Sign up for Money Jars</h2>
                 
@@ -63,6 +64,7 @@ export class RegistrationForm extends React.Component {
                     </button>
                 </form>
                 <p> or <Link to='/register/login'>login to your account</Link></p>
+            </div>
             </div>
         );
     }

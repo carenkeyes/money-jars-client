@@ -5,7 +5,7 @@ import Button from '../Button/button';
 import './navbar.css';
 
 export function Navbar(props){
-    if(!props.loggedIn){
+    /*if(!props.loggedIn){
         return (
             <div className='navbar'>
                 <Link to='/'>
@@ -33,7 +33,7 @@ export function Navbar(props){
                 </div>
             </div>
         )
-    }
+    }*/
     return(
         <div className='navbar'>
             <Link to='/'>
@@ -44,14 +44,14 @@ export function Navbar(props){
                 />
             </Link>
             <div className='nav-group'>
-                <Link to={`/dashboard/child`}>
+                <Link to={`/child`}>
                     <Button 
                         type='button'
                         label='Child'
                         className='nav-button' 
                 />
                 </Link>
-                <Link to={`/dashboard/parent`}>
+                <Link to={`/parent`}>
                     <Button 
                         type='button'
                         label='Parent'
@@ -64,7 +64,7 @@ export function Navbar(props){
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.auth.currentUser !==null
+
 });
 
 export default connect(mapStatetoProps)(Navbar)

@@ -1,39 +1,51 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { fetchProtectedData } from '../../actions/protected-data';
+import {fetchUserBasicInfo} from '../../actions/index.actions';
 import './dashboard.css'
 
 //import Header from '../Header/header';
 import Parent from '../Parent/parent';
 import Child from '../Child/child';
+import { stat } from 'fs';
 
 export class Dashboard extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            loggedIn: this.props.loggedIn,
+        }
+    }
     componentDidMount(){
-        this.props.dispatch(fetchProtectedData());
+        this.props.dispatch(fetchUserBasicInfo())
     }
 
     render(){
-        if(this.props.parent){
-            return  <Redirect to='/dashboard/parent' />
+
+        if(!this.state.loggedIn){
+            return(
+            <Redirect to={'/register/login'} />
+            )
         }
 
-        return(
-                <div className='dashboard'>
-                    <Route exact path={`/dashboard/child`} component={Child} />
-                    <Route exact path={`/dashboard/parent`} component={Parent} />
-                </div>
-        )
+        if(this.props.user.usertype === 'parent'){
+            console.log('parent')
+            return (
+                <Redirect to={`/parent/`} />
+            )
+        }else if(this.props.user.usertype ==='child'){
+            console.log('child')
+            return (
+                <Redirect to={`/child`} />
+            )
+        }
+        return null;
     }
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.auth.currentUser !==null
-});
-
-const mapStateToProps = state => ({
-    user: state.auth.currentUser,
-    parent: state.protectedData.parent
+    loggedIn: state.user.data !== null,
+    user: state.user.data
 });
 
 export default connect(mapStatetoProps)(Dashboard)

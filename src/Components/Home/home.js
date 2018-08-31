@@ -31,10 +31,8 @@ export class Home extends React.Component{
                     everyone is happy!
                 </p>
             </div>
-        if(this.props.loggedIn){
-            return <Redirect to='/dashboard' />;
-        }
-        else if(this.state.register){
+
+        if(this.state.register){
             return <Redirect to='/register/signup' />
         }
         return (
@@ -72,7 +70,7 @@ export class Home extends React.Component{
 </section>*/
 
 const mapStatetoProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+
 });
 
 export default connect(mapStatetoProps)(Home)

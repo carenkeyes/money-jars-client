@@ -1,30 +1,30 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux';
-import {reducer as formReducer} from 'redux-form';
+import { createStore, applyMiddleware} from 'redux';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
-import {loadAuthToken} from './local-storage';
-import authReducer from './reducers/auth';
-import protectedDataReducer from './reducers/protected-data';
-import budgetReducer from './reducers/budget';
-import {setAuthToken, refreshAuthToken} from './actions/auth';
+import apiMiddleware from './api-middleware';
+import createHistory from 'history/createBrowserHistory';
+import rootReducer from './reducers/root.reducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 
-const store = createStore(
-    combineReducers({
-        form: formReducer,
-        auth: authReducer,
-        protectedData: protectedDataReducer,
-        budget: budgetReducer,
-    }),
-    composeWithDevTools(),
-    applyMiddleware(thunk),
-);
+export const history = createHistory();
 
-const authToken = loadAuthToken();
-if (authToken){
-    const token = authToken;
-    store.dispatch(setAuthToken(token));
-    store.dispatch(refreshAuthToken());
-}
+const initialState = {};
+const middleware = [
+  thunk,
+  apiMiddleware,
+  routerMiddleware(history),
+];
+
+const enhancers = composeWithDevTools(
+    applyMiddleware(...middleware),
+
+)
+
+const store = createStore(
+  connectRouter(history)(rootReducer),
+  initialState,
+  enhancers,
+);
 
 export default store;
