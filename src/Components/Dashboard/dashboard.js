@@ -12,13 +12,22 @@ import { stat } from 'fs';
 export class Dashboard extends React.Component{
     constructor(props){
         super(props)
+        this.state = {
+            loggedIn: this.props.loggedIn,
+        }
     }
     componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
     }
 
     render(){
-        console.log(this.props.usertype)    
+
+        if(!this.state.loggedIn){
+            return(
+            <Redirect to={'/register/login'} />
+            )
+        }
+
         if(this.props.user.usertype === 'parent'){
             console.log('parent')
             return (
@@ -35,7 +44,8 @@ export class Dashboard extends React.Component{
 }
 
 const mapStatetoProps = state => ({
-    user: state.user
+    loggedIn: state.user.data !== null,
+    user: state.user.data
 });
 
 export default connect(mapStatetoProps)(Dashboard)

@@ -9,6 +9,7 @@ export const FETCH_USER_BASIC_INFO_REQUEST_SUCCESS = 'FETCH_USER_BASIC_INFO_REQU
 export const FETCH_USER_BASIC_INFO_REQUEST_FAILURE = 'FETCH_USER_BASIC_INFO_REQUEST_FAILURE';
 
 export function fetchUserBasicInfo() {
+    console.log('fetch user basic infor')
     const sessionKey = sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
     const token = sessionKey.split(' ')[1]
     const promise = fetch(`${config.USER_DATA}`, {
@@ -63,18 +64,48 @@ export function registerUser(user) {
     };
   }
 
+export const ADD_CHILD_TO_PARENT_TRIGGERED = 'ADD_CHILD_TO_PARENT_TRIGGERED';
+export const ADD_CHILD_TO_PARENT_SUCCESS = 'ADD_CHILD_TO_PARENT_SUCCESS';
+export const ADD_CHILD_TO_PARENT_FAILURE = 'ADD_CHILD_TO_PARENT_FAILURE';
 
-const handleCreateUserResponse = (response, dispatch) => {
-    sessionStorage.setItem(config.TOKEN_CONTENT_KEY, response.token);
-    dispatch({
-        type: CREATE_USER_REQUEST_SUCCESS,
-        response,
-    });
-    dispatch(push('/dashboard'));
+const handleCreateUserResponse = (response, dispatch, getState) => {
+    console.log(`usertype: ${response.usertype}`)
+    const usertype = response.usertype;
+    const username = response.username;
+    if(usertype === 'parent'){
+        dispatch({
+            type: CREATE_USER_REQUEST_SUCCESS,
+            response,
+        });
+        //dispatch(push('/dashboard'));
+    }
+    else if (usertype === 'child'){
+        console.log(username)
+        const userId = getState().user.data._id
+        addChildToParent(username, userId)
+        dispatch(push('/parent'));
+    }
 };
+
+function addChildToParent(childname, userId){
+    const promise = fetch(`${config.API_BASE_URL}/user/child/${userId}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          username: childname,
+        }),
+    });
+    return {
+        onRequest: ADD_CHILD_TO_PARENT_TRIGGERED,
+        onSuccess: fetchUserBasicInfo,
+        onFailure: ADD_CHILD_TO_PARENT_FAILURE,
+        promise,
+    };
+  }
   
 
 export function fetchUserLogin(username, password) {
+    console.log('fetch user login');
   const promise = fetch(`${config.USER_ENDPOINT}`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},

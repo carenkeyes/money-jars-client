@@ -2,18 +2,19 @@ import React from 'react';
 import config from '../../config';
 import Button from '../Button/button';
 import './request.css';
+import { connect } from 'react-redux';
 
 const clientId = `524cb6ed48eb7037b8391bc45974590dace8e9b2434cc03e5ae595b54412cced`
 const redirectUrl = 'urn:ietf:wg:oauth:2.0:oob'
 
-export default class Request extends React.Component{
+export class Request extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
             error: null,
             loading: false,
-            url: `https://app.youneedabudget.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=code`,
+            ynabUrl: `https://app.youneedabudget.com/oauth/authorize?client_id=${config.CLIENT_ID}&redirect_uri=${config.REDIRECT_URL}&response_type=code&state=${this.props.userId}`,
             authorized: false,
             budget: false
         }
@@ -22,7 +23,8 @@ export default class Request extends React.Component{
         this.getBudgets = this.getBudgets.bind(this);
     }
 
-    getToken(){
+    //this part will be carried out by ynab
+    /*getToken(){
         this.setState({
             error: null,
             loading: true
@@ -43,7 +45,7 @@ export default class Request extends React.Component{
                     error: 'Could not authorize YNAB',
                     loading: false
                 }))
-    }
+    }*/
 
     getBudgets(){
         this.setState({
@@ -101,3 +103,9 @@ export default class Request extends React.Component{
         )
     }
 }
+
+const mapStatetoProps = state => ({
+    userId: state.user.data._id
+})
+
+export default connect(mapStatetoProps)(Request)
