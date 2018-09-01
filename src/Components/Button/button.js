@@ -3,7 +3,7 @@ import './button.css';
 
 export default class Button extends React.Component{
     render(){
-        if(!this.props.type && !this.props.label){
+        if(!this.props.type && !this.props.label || this.props.type==='null'){
             return null;
         }
         return(

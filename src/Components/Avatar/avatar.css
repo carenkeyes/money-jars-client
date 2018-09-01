@@ -1,6 +1,11 @@
 .avatarImage{
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
+    border: 4px solid black;
+}
+
+.custom-image{
+    border: 4px solid black;
 }
 
 img{
@@ -9,9 +14,8 @@ img{
 }
 
 .header-image{
-    height: 80%;
-    flex: auto;
-    
+    height: 100%;
+    flex: auto;    
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -29,3 +33,27 @@ img{
     background-image: url('./money-tree.png');
 }
 
+.counting-money{
+    background-image: url('./counting-money.png');
+}
+
+.Giving-pig{
+    background-image: url('./orange-pig.png');
+}
+
+.Saving-pig{
+    background-image: url('./green-pig.png');
+}
+
+.Spending-pig{
+    background-image: url('./blue-pig.png');
+}
+
+.piggy-bank{
+    height: 300px;
+    width: 300px;
+    flex: auto;    
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}

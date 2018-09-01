@@ -1,12 +1,18 @@
-.goalDetails{
-    margin-top: 30px;
-    margin-bottom: 20px;
-    max-width: 800px;
-    min-width: 400px;
+.edit-goal-form{
+    display: flex;
+    flex-direction: row;
 }
 
-.actions{
+.goal-options{
+    margin-top: 30px;
     display: flex;
+    width: 80%;
     justify-content: space-between;
-    margin-top: 20px;
+}
+
+.delete-goal-button{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

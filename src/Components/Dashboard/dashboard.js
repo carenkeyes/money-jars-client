@@ -44,4 +44,4 @@ const mapStatetoProps = state => ({
     user: state.user.data
 });
 
-export default connect(mapStatetoProps)(Dashboard)
+export default connect(mapStatetoProps)(Dashboard);

@@ -2,9 +2,12 @@
     height: 66vh;
     display: flex;
     margin-top: 120px;
+    margin-bottom: 10px;
     align-items: flex-end;
     box-shadow: 0 3px 3px black;
     justify-content: space-around;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 p{
@@ -12,7 +15,7 @@ p{
 }
 
 .budget-message{
-    width: 66%;
+    width: 50%;
     margin-top: 3em;
     margin-bottom: 3em;
 }
@@ -22,7 +25,7 @@ p{
 }
 
 .header-parent{
-    background-color: rgb(170, 214, 204);
+    background-color: #2EB6D9;
 }
 
 .header-child{
@@ -34,7 +37,7 @@ p{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 70%;
+    width: 60%;
     height: 90%;
 }
 

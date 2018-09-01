@@ -16,32 +16,35 @@ export class AddToGoal extends React.Component{
     }
 
     render(){
-        return(
-            <div className="add-to-goal">
-            <form
-                    className='edit-goal-form'
-                    onSubmit={this.props.handleSubmit(values =>
-                        this.onSubmit(values)
-                )}>
-                    <Field
-                        component={Input}
-                        type='number'
-                        id={this.props.id}
-                        label='How much would you like to add?'
-                        name='amount'
-                        InputProps={{inputProps: {min: 0, max: 10}}} 
-                    />
-                    <button
-                        type="submit">
-                        Add
-                    </button>
-                    <button
-                        type="button">
-                        Cancel
-                    </button>
-                </form>
-            </div>
-        )
+        if(this.props.editType === 'add'){
+            return(
+                <div className="add-to-goal">
+                <form
+                        className='edit-goal-form'
+                        onSubmit={this.props.handleSubmit(values =>
+                            this.onSubmit(values)
+                    )}>
+                        <div className='form-input-fields'>
+                            <Field
+                                component={Input}
+                                className='edit-goal-input'
+                                type='number'
+                                id={this.props.id}
+                                label='How much would you like to add?'
+                                name='amount'
+                                InputProps={{inputProps: {min: 0, max: 10}}} 
+                            />
+                        </div>
+                        <button
+                            className='submit-edit-goal click green'
+                            type="submit">
+                            Add
+                        </button>
+                    </form>
+                </div>
+            )
+        }
+        return null;
     }
 }
 

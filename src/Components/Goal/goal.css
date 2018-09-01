@@ -1,10 +1,15 @@
+.goal-section{
+    height: 80vh;
+    padding: 80px 0;
+}
+
 .goalContent{
-    max-width: 800px;
-    min-width: 400px;
+    width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .goalImage{
@@ -12,4 +17,37 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.money-value{
+    color: #208E22;
+    font-size: 1.5em;
+}
+
+.goal-text{
+    font-weight: bold;
+    text-align: left;
+}
+
+.goal-info{
+    display: flex;
+    
+}
+
+.goal-progress{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.goal-total{
+    height: 200px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
 }
