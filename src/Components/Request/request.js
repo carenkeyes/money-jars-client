@@ -5,7 +5,7 @@ import './request.css';
 import { connect } from 'react-redux';
 import {fetchUserBasicInfo} from '../../actions/index.actions';
 import {fetchYnabBudgets} from '../../actions/index.actions';
-import { ChooseBudget } from '../ChooseBudget/choose-budget';
+import ChooseBudget from '../ChooseBudget/choose-budget';
 
 const clientId = `524cb6ed48eb7037b8391bc45974590dace8e9b2434cc03e5ae595b54412cced`
 const redirectUrl = 'urn:ietf:wg:oauth:2.0:oob'
@@ -76,7 +76,7 @@ export class Request extends React.Component{
                     </div>
                 </div>
             )
-        }else if(this.props.ynabData === null){
+        }else if(this.props.user.budget_id === null){
             return(
             <div>
                 <p>We're having trouble accessing your ynab account </p>
@@ -90,16 +90,15 @@ export class Request extends React.Component{
         }else if(this.props.ynabData !== null && this.props.ynabData.length >0){
              return(
                 <div>
-                    <ChooseBudget data={this.props.ynabData}/> 
+                    <ChooseBudget 
+                    data={this.props.ynabData}
+                    userId={this.props.user._id}
+                    /> 
                 </div>
             )
         }
 
-        return(
-            <section>
-                <p>Now you can add kids!</p>
-            </section>
-        )
+        return null;
     }
 }
 

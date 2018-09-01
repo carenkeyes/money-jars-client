@@ -121,3 +121,23 @@ export function fetchUserLogin(username, password) {
       promise,
   };
 }
+
+export const UPDATE_USER_PROFILE_TRIGGERED = 'UPDATE_USER_PROFILE_TRIGGERED'
+export const UPDATE_USER_PROFILE_SUCCESS = 'UPDATE_USER_PROFILE_SUCCESS'
+export const UPDATE_USER_PROFILE_FAILURE = 'UPDATE_USER_PROFILE_FAILURE'
+
+export function updateUserProfile(userId, data){
+    console.log(`userId: ${userId}`)
+    console.log(`data: ${data.budget_id}`)
+    const promise = fetch(`${config.API_BASE_URL}/user/${userId}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({data}) 
+    });
+    return {
+        onRequest: UPDATE_USER_PROFILE_TRIGGERED,
+        onSuccess: UPDATE_USER_PROFILE_SUCCESS,
+        onFailure: UPDATE_USER_PROFILE_FAILURE,
+        promise,
+    }
+}

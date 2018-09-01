@@ -24,6 +24,12 @@ export default function user(state=initialState, action) {
         ...state,
       }
     }
+    case actionTypes.UPDATE_USER_PROFILE_SUCCESS: {
+      return {
+        ...state,
+        data: action.data.budget_id  
+      }
+    }
     default: {
       return state;
     }

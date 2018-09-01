@@ -4,6 +4,7 @@ import {registerUser} from '../../actions/users';
 import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
 import {Link} from 'react-router-dom';
+import './registration-child.css';
 
 const passwordLength = length({min: 7, max: 12});
 const matchesPassword = matches('password');
@@ -20,39 +21,41 @@ export class RegistrationForm extends React.Component {
 
     render(){
         return (
-            <div className='child-form'>
-                <h2>Register a Child Account</h2>
-                
-                <form  
-                    className="login-form"
-                    onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-                    <Field
-                        component={Input}
-                        type="text"
-                        label="Username"
-                        name="username"
-                        validate={[required, nonEmpty, isTrimmed]}
-                    />
-                    <Field
-                        component={Input}
-                        type="password"
-                        label="Password"
-                        name="password"
-                        validate={[required, passwordLength, isTrimmed]}
-                    />
-                    <Field  
-                        component={Input}
-                        type="password"
-                        label="Confirm Password"
-                        name="passwordConfirm"
-                        validate={[required, nonEmpty, matchesPassword]}
-                    />
-                    <button
-                        type="submit"
-                        disabled={this.props.pristine || this.props.submitting}>
-                        Register
-                    </button>
-                </form>
+            <div className='child-form-wrapper'>
+                <div className='child-form'>
+                    <h2>Register a Child Account</h2>
+                    
+                    <form  
+                        className='register-child-form'
+                        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+                        <Field
+                            component={Input}
+                            type='text'
+                            label='Username'
+                            name='username'
+                            validate={[required, nonEmpty, isTrimmed]}
+                        />
+                        <Field
+                            component={Input}
+                            type='password'
+                            label='Password'
+                            name='password'
+                            validate={[required, passwordLength, isTrimmed]}
+                        />
+                        <Field  
+                            component={Input}
+                            type='password'
+                            label='Confirm Password'
+                            name='passwordConfirm'
+                            validate={[required, nonEmpty, matchesPassword]}
+                        />
+                        <button
+                            type='submit'
+                            disabled={this.props.pristine || this.props.submitting}>
+                            Register
+                        </button>
+                    </form>
+                </div>
             </div>
         );
     }

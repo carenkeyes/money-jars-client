@@ -36,8 +36,24 @@ export class Parent extends React.Component {
             return <Redirect to='/register-child' /> 
         }
 
+        let message;
         let greeting=`Welcome ${this.props.user.username}!`
-        let message = <Request />
+        
+        if(!this.props.user.budget_id){
+            message = <Request />
+        }
+        else if(this.props.user.budget_id && this.props.user.children.length === 0){
+            greeting = 'Great job!'
+            message = <p> Now you can set up accounts for your children </p>
+        }
+        else if(this.props.user.children.length === 1){
+            message = <p> You can monitor ${this.props.user.children[0].username}'s account
+                activity and withdrawal requests here </p>
+        }
+        else if(this.props.user.children.length < 1){
+            message = <p> You can monitor your children's account activity
+                and withdrawal requests here </p>
+        }
         
         /*if(!this.props.loggedIn){
             return <Redirect to='/register/login' />
@@ -50,7 +66,7 @@ export class Parent extends React.Component {
                     message={message} 
                     className='header-parent'
                     leftImage='header-image money-tree'
-                    but2Label='Add Child'
+                    but2Label={this.props.user.category_id ?'': 'Add Child'}
                     but2Type='button'
                     but2Class='home-button orange'
                     but2OnClick={this.handleClick}
