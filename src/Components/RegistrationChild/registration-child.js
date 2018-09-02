@@ -10,6 +10,10 @@ import SelectInput from '../SelectInput/select-input';
 const passwordLength = length({min: 7, max: 12});
 const matchesPassword = matches('password');
 
+const options = {
+    value: 'I hate myself',
+    label: 'Why is this so hard?',
+}
 
 export class RegistrationChild extends React.Component {
     constructor(){
@@ -17,11 +21,9 @@ export class RegistrationChild extends React.Component {
     }
 
     onSubmit(values){
-        const {username, password} = values;
-        const user = {username, password};
+        const {username, password, group_id, category_id} = values;
+        const user = {username, password, group_id, category_id};
         user.type = 'child';
-        user.budget_id = this.props.budget_id;
-        user.account = this.props.account
         console.log(user);
         return this.props
             .dispatch(registerUser(user))
@@ -37,6 +39,7 @@ export class RegistrationChild extends React.Component {
             })
         }
         console.log(`catGroups: ${catGroups[0].value}`)
+        console.log(this.props.categories)
 
         return (
             <div className='child-form-wrapper'>
@@ -67,6 +70,7 @@ export class RegistrationChild extends React.Component {
                             name='passwordConfirm'
                             validate={[required, nonEmpty, matchesPassword]}
                         />
+                        <h6>Select a category group </h6>
                         <Field 
                             component={SelectInput}
                             type='text'
@@ -74,6 +78,14 @@ export class RegistrationChild extends React.Component {
                             name='group_id'
                             options={catGroups}
                             onChange={this.props.onChange}
+                        />
+                        <h6>Assign a category</h6>
+                        <Field
+                        component={SelectInput}
+                            type='text'
+                            label='Choose Category Group'
+                            name='category_id'
+                            options={this.props.categories}
                         />
                         <button
                             type='submit'

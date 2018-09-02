@@ -11,10 +11,10 @@ export class AddChildWrapper extends React.Component {
         this.state = {
             register: true,
             group_id: null,
-            categories: {
+            categories: [{
                 label: 'choose group first',
                 value: 'placeholder',
-            }
+            }]
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -29,11 +29,25 @@ export class AddChildWrapper extends React.Component {
         console.log(event.value)
         let group_id = event.value
         console.log(group_id)
-        this.setState({group_id: 'test'})
+        const newCategories = []
+        if(group_id){
+            this.setState({group_id: group_id})
+            for(let i=0; i<this.props.data.length; i++){
+                if(this.props.data[i].id === group_id){
+                    for(let j=0; j<this.props.data[i].categories.length; j++){
+                        newCategories.push({
+                            value: this.props.data[i].categories[j].id,
+                            label: this.props.data[i].categories[j].name,
+                        })
+                    }
+                }
+            }
+            this.setState({categories: newCategories})
+        }
     }
 
     render(){
-        //console.log(this.props.ynabData)
+
         if(this.props.user === null){
             return(
                 <Redirect to='/register/login' />
@@ -44,10 +58,11 @@ export class AddChildWrapper extends React.Component {
                 'Waiting on YNAB Categories'
             )
         }
-        if(this.props.ynabData !== null){
+        if(this.props.data !== null){
             return(
                 <RegistrationChild 
-                    data={this.props.ynabData}
+                    data={this.props.data}
+                    categories={this.state.categories}
                     budget_id={this.props.user.budget_id}
                     account={this.props.account}
                     onChange={this.handleChange} 
@@ -61,14 +76,6 @@ export class AddChildWrapper extends React.Component {
 const mapStateToProps = state => ({
     user: state.user.data,
     loading: state.ynab.loading,
-    ynabData: state.ynab.data,
+    data: state.ynab.data,
 })
 export default connect(mapStateToProps)(AddChildWrapper)
-
-/*        return(
-            <RegistrationChild 
-                data={this.props.ynabData}
-                budget_id={this.props.user.budget_id}
-                account={this.props.account} 
-            />
-        )*/
