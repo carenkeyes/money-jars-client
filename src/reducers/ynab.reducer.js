@@ -31,6 +31,14 @@ export default function ynab(state=initialState, action){
                 loading: true,
             }
         }
+        case actionTypes.FETCH_YNAB_CATEGORIES_REQUEST_SUCCESS: {
+            return{
+                ...state,
+                data: action.response,
+                error: false,
+                loading: false,
+            }
+        }
         default: {
             return state;
         }

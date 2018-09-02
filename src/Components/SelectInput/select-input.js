@@ -54,7 +54,7 @@ function multiChangeHandler(e){
 
 function singleChangeHandler(e){
     return function handleSingleChange(value){
-        e(value ? value.value : '');
+        e(value);
     }
 }
 

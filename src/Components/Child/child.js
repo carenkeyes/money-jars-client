@@ -18,10 +18,6 @@ export class Child extends React.Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
-    componentDidMount(){
-        return this.props.dispatch(fetchUserLogin('Ally', 'password'));
-    }
-
     handleClick(){
         this.setState({
             addNew: !this.state.addNew

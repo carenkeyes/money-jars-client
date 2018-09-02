@@ -1,9 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-//import requiresLogin from '../RequiresLogin/requires-login';
 import Request from '../Request/request'
 import {Redirect} from 'react-router-dom'
-//import { fetchProtectedData } from '../../actions/protected-data';
+import {fetchYnabCategories} from '../../actions/index.actions';
 import Header from '../Header/header';
 
 export class Parent extends React.Component {
@@ -13,10 +12,7 @@ export class Parent extends React.Component {
             register: false,
         }
     }
-    /*componentDidMount(){
-        this.props.dispatch(fetchProtectedData());
-    }*/
-
+    
     handleClick = () => {
         console.log('reroute to child');
         this.setState({
