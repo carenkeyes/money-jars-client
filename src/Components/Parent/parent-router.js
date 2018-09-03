@@ -23,9 +23,15 @@ export class ParentRouter extends React.Component {
                 <Redirect to='/setup' />
             )
         }
-            return(
-                <Parent />
-            )
+        let message=<p>See your kids accounts!</p>
+        let greeting=`Welcome ${this.props.user.username}!`
+
+        return(
+            <Parent 
+                message={message}
+                greeting={greeting}
+            />
+        )
     }
 }
 

@@ -84,16 +84,16 @@ export class Parent extends React.Component {
         return(
             <div>
                 <Header 
-                    title={greeting}
-                    message={message} 
+                    title={this.props.greeting}
+                    message={this.props.message} 
                     className='header-parent'
                     leftImage='header-image money-tree'
-                    but1Label={label1}
+                    but1Label={this.props.but1Label}
                     but1Class='home-button yellow'
-                    but1OnClick={this.handleClick}
-                    but2Label={label2}
+                    but1OnClick={this.props.but1OnClick}
+                    but2Label={this.props.but2Label}
                     but2Class='home-button orange'
-                    but2OnClick={this.finishSetUp}
+                    but2OnClick={this.props.but2OnClick}
                 />
                     
                 <section>

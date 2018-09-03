@@ -54,8 +54,6 @@ export function registerUser(user) {
           email: user.email,
           password: user.password,
           type: user.type,
-          category_id: user.category_id.value,
-          budget_id: user.budget_id,
         }),
     });
     return {
