@@ -17,7 +17,7 @@ export class ParentRouter extends React.Component {
                 <Redirect to='/register/login' />
             )
         }
-        if(this.props.user.children.length < 1){
+        if(this.props.user.children.length === 0){
             console.log(this.props.user.children.length)
             return(
                 <Redirect to='/setup' />

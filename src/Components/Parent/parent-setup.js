@@ -15,7 +15,6 @@ export class ParentSetup extends React.Component {
     }
 
 
-
     addChild = () => {
         this.setState({
             register: true,

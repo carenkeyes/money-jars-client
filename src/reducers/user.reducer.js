@@ -13,6 +13,16 @@ export default function user(state=initialState, action) {
         data: action.response.user
       };
     }
+    case actionTypes.FETCH_CHILD_INFO_SUCCESS: {
+      return {
+        ...state,
+        data: {
+            _id: action.response.user._id,
+            username: action.response.username,
+            usertype: action.response.usertype
+        }
+      }
+    }
     case actionTypes.FETCH_USER_LOGIN_REQUEST_SUCCESS: {
       return {
         ...state,

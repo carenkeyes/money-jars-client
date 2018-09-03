@@ -1,4 +1,4 @@
-import * as actions from '../actions/budget';
+import * as actionTypes from '../actions/index.actions';
 
 const initialState = {
     total: 25,
@@ -12,27 +12,19 @@ const initialState = {
             imageurl: 'https://i5.walmartimages.com/asr/c4061a3b-3151-4a9c-b168-5a5449e35d10_1.cb67f779006e94571d75d44a0ddd62aa.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF'
 
         },
-        {
-            id: '2',
-            title: "Christmas",
-            amount: 50,
-            saved: 2,
-            category: "giving",
-            imageurl: 'https://photos.smugmug.com/Web-images/n-dfnXHf/i-8BPTkJv/0/22ac2d0b/S/i-8BPTkJv-S.png'
-        },
-        {
-            id: '3',
-            title: "Dad's birthday",
-            amount: 10,
-            saved: 9,
-            category: "giving",
-            imageurl: 'https://photos.smugmug.com/Web-images/n-dfnXHf/i-8BPTkJv/0/22ac2d0b/S/i-8BPTkJv-S.png'
-        }
     ]
 }
 
 export default function reduce(state=initialState, action){
-    if(action.type === actions.ADD_GOAL){
+    switch(action.type){
+        default: {
+            return state;
+        }
+    }
+}
+
+/*export function reduce(state=initialState, action){
+    if(action.type === actions.CREATE_GOAL_REQUEST_SUCCESS){
         return Object.assign({}, state, {
             goals: [
                 ...state.goals, {
@@ -60,5 +52,5 @@ export default function reduce(state=initialState, action){
         return Object.assign({}, state, {goals});
     }
     return state;
-}
+}*/
 

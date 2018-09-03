@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import SelectInput from '../SelectInput/select-input';
-import {addGoal} from '../../actions/budget';
+import {createGoal} from '../../actions/budget';
 import {Field, reduxForm} from 'redux-form';
 import Input from '../Input/input';
 //import Button from '../Button/button';
@@ -21,14 +21,17 @@ export class AddGoal extends React.Component {
 
     onSubmit(values){
         console.log(values)
+        const userId = this.props.userId
+        console.log(userId)
         const {title, amount, category, imageurl} = values;
         const goal = {title, amount, category, imageurl};
         goal.amount = parseInt(goal.amount);
+        goal.category = goal.category.value;
         //goal.amount = num;
         //console.log(num);
         console.log(goal);
         return this.props
-            .dispatch(addGoal(goal))            
+            .dispatch(createGoal(goal, userId))            
     }
 
     render(){

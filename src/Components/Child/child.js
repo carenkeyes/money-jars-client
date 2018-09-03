@@ -6,7 +6,7 @@ import Goal from '../Goal/goal';
 import Header from '../Header/header';
 import AddGoal from '../AddGoal/addgoal';
 import './child.css';
-import {fetchUserLogin} from '../../actions/users';
+import {fetchChildInfo, fetchUserBasicInfo} from '../../actions/index.actions';
 
 
 export class Child extends React.Component{
@@ -18,6 +18,11 @@ export class Child extends React.Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
+    componentDidMount(){
+        this.props.dispatch(fetchUserBasicInfo())
+        console.log('fetch child info')
+    }
+
     handleClick(){
         this.setState({
             addNew: !this.state.addNew
@@ -26,20 +31,22 @@ export class Child extends React.Component{
 
     render(){
 
-        /*if(!this.props.loggedIn){
+        if(!this.props.loggedIn){
             return(
                 <Redirect to='/register/login' />
             )
-        }*/
+        }
 
-        let goals = this.props.goals.map(goal =>
+        console.log(this.props.user)
+        let goals;
+        goals = this.props.user.goals.map(goal =>
             <Goal key={goal.title} {...goal} />
         )
 
         let budgeted = 0;
 
         for(let i=0; i<goals.length; i++){
-            budgeted = budgeted+this.props.goals[i].saved
+            budgeted = budgeted+this.props.goals[i].saved_amount
         }
 
         let toBudget = (this.props.total)-budgeted;
@@ -57,6 +64,11 @@ export class Child extends React.Component{
                 <div className='budget-message'>
                     <p> You have <span className='amount-to-budget'>${toBudget}</span> </p>
                     <p> What should it do? </p>
+                    <AddGoal 
+                    form='new-goal'
+                    addNew={this.state.addNew}
+                    userId={this.props.user._id}
+                />
                 </div>
         }
 
@@ -64,7 +76,7 @@ export class Child extends React.Component{
         return (
             <div className='child-page'>;
                 <Header 
-                    title={`Hi ${this.props.currentUser}!`}
+                    title={`Hi ${this.props.user.username}!`}
                     className='header-child'
                     message={message}
                     but1Label={this.state.addNew ? 'Cancel' : 'Add New Goal'}
@@ -75,18 +87,21 @@ export class Child extends React.Component{
                 <AddGoal 
                     form='new-goal'
                     addNew={this.state.addNew}
+                    userId={this.props.user._id}
                 />
                 <div>
                     {goals}
                 </div>
             </div>
         )
+
     }
 }
     
     const mapStatetoProps = state => ({
-        goals: state.budget.goals,
-        total: state.budget.total,
+        loggedIn: state.user.data !==null,
+        user: state.user.data,
+        goals: state.user.data.goals,
     });
     
     export default connect(mapStatetoProps)(Child)
