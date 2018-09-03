@@ -63,6 +63,30 @@ export function registerUser(user) {
         promise,
     };
   }
+export const CREATE_CHILD_REQUEST_TRIGGERED = 'CREATE_CHILD_REQUEST_TRIGGERED';
+export const CREATE_CHILD_REQUEST_SUCCESS = 'CREATE_CHILD_REQUEST_SUCCESS';
+export const CREATE_CHILD_REQUEST_FAILURE = 'CREATE_CHILD_REQUEST_FAILURE';
+
+export function registerChild(user) {
+    const promise = fetch(`${config.USER_CREATE}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          username: user.username,
+          email: user.email,
+          password: user.password,
+          type: user.type,
+          budget_id: user.budget_id,
+          category_id: user.category_id,
+        }),
+    });
+    return {
+        onRequest: CREATE_CHILD_REQUEST_TRIGGERED,
+        onSuccess: CREATE_CHILD_REQUEST_SUCCESS,
+        onFailure: CREATE_CHILD_REQUEST_FAILURE,
+        promise,
+    };
+  }
 
 export const ADD_CHILD_TO_PARENT_TRIGGERED = 'ADD_CHILD_TO_PARENT_TRIGGERED';
 export const ADD_CHILD_TO_PARENT_SUCCESS = 'ADD_CHILD_TO_PARENT_SUCCESS';

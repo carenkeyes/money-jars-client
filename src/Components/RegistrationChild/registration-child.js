@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import {registerUser} from '../../actions/users';
+import {registerChild} from '../../actions/users';
 import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
 import './registration-child.css';
@@ -21,7 +21,7 @@ export class RegistrationChild extends React.Component {
         user.category_id = values.category_id.value,
         console.log(user);
         return this.props
-            .dispatch(registerUser(user))
+            .dispatch(registerChild(user))
     }
 
     render(){
