@@ -3,21 +3,19 @@ import config from '../../config';
 import Button from '../Button/button';
 import './request.css';
 import { connect } from 'react-redux';
-import {fetchUserBasicInfo} from '../../actions/index.actions';
-
-const clientId = `524cb6ed48eb7037b8391bc45974590dace8e9b2434cc03e5ae595b54412cced`
-const redirectUrl = 'urn:ietf:wg:oauth:2.0:oob'
+//import {fetchUserBasicInfo} from '../../actions/index.actions';
+import {fetchYnabBudgets} from '../../actions/index.actions';
+import ChooseBudget from '../ChooseBudget/choose-budget';
+import {updateUserProfile} from '../../actions/index.actions';
+import {Redirect} from 'react-router-dom';
 
 export class Request extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
-            error: null,
-            loading: false,
             ynabUrl: `https://app.youneedabudget.com/oauth/authorize?client_id=${config.CLIENT_ID}&redirect_uri=${config.REDIRECT_URL}&response_type=code&state=${this.props.userId}`,
-            authorized: false,
-            budget: false,
+            declined: false,
             initiated: false,
         }
 
@@ -25,36 +23,32 @@ export class Request extends React.Component{
         this.getBudgets = this.getBudgets.bind(this);
     }
 
-    //this part will be carried out by ynab
-    /*getToken(){
-        this.setState({
-            error: null,
-            loading: true
-        });
-        return fetch(`${config.API_BASE_URL}/ynab/auth`, {method: 'POST'})
-            .then(res => {
-                if(!res.ok){
-                    return Promise.reject(res.statusText);
-                }
-                return res.json();
-            })
-            .then(e =>
-                //console.log(e)
-                this.setState({authorized: true})
-            )
-            .catch(err => 
-                this.setState({
-                    error: 'Could not authorize YNAB',
-                    loading: false
-                }))
-    }*/
+    componentDidMount(){
+        console.log(this.props.user.account)
+        console.log(this.props.ynabData)
+        /*if(this.props.user.account){
+            this.setState ={
+                authorized: true
+            }
+        }
+        if(this.props.ynabData !== null){
+            this.setState = {
+                budget: true
+            }
+        }*/
+    }
 
     getToken(){
         console.log('get token clicked')
         console.log(this.state.ynabUrl)
         this.openYnabWindow(this.state.ynabUrl)
-        this.setState = {initiated: true}
-        this.refresh = setTimeout(() => this.props.dispatch(fetchUserBasicInfo), 15000)
+        this.setState({
+            initiated: true,
+        })
+    }
+
+    updateState(){
+        this.refresh = setTimeout(() => this.getBudgets, 15000)
     }
 
     openYnabWindow(url) {
@@ -63,31 +57,37 @@ export class Request extends React.Component{
     }
 
     getBudgets(){
+        this.props.dispatch(fetchYnabBudgets(this.props.user._id))
+    }
+
+    budgetManually(){
+        const data = {budget_id: 'manual'}
+        this.props.dispatch(updateUserProfile(this.props.userId, data))
         this.setState({
-            error: null,
-            loading: true
-        });
-        return fetch(`${config.API_BASE_URL}/ynab/budgets/${this.props.user._id}`)
-            .then(res => {
-                if(!res.ok){
-                    return Promise.reject(res.statusText);
-                }
-                return res.json();
-            })
-            .then(e =>
-                console.log(e)
-                //this.setState({budget: true})
-            )
-            .catch(err => 
-                this.setState({
-                    error: 'Could not load budgets',
-                    loading: false
-                }))
+            declined: true,
+        })
     }
 
     render(){
-        let authURL = this.state.url;
-        if(!this.state.initiated && !this.props.user.account){
+        if(this.state.declined){
+            return(
+                <Redirect to={'/parent'} />
+            )
+        }
+        if(this.state.initiated){
+            return(
+                <div>
+                    <p>We need to fetch your YNAB budgets</p>
+                    <Button 
+                        label='Get Budgets'
+                        className='home-button orange'
+                        type='text'
+                        onClick={this.getBudgets}
+                    />
+                </div>)
+        }
+
+        if(!this.props.user.account && !this.state.initiated){
             return(
                 <div className='new-user'>
                     <div className='ynab-option'>
@@ -100,28 +100,44 @@ export class Request extends React.Component{
                     </div>
                     <div>
                         <p>Or just starting setting up kid's accounts</p>
+                        <Button
+                            label='Budget Manually'
+                            onClick={this.budgetManually}
+                        />
                     </div>
                 </div>
             )
-        }else if(this.props.user.account){
+        }else if(!this.props.user.budget_id && this.props.ynabData === null){
+            return(
+            <div>
+                <p>We need to fetch your YNAB budgets</p>
+                <Button 
+                    label='Get Budgets'
+                    className='home-button orange'
+                    type='text'
+                    onClick={this.getBudgets}
+                />
+            </div>)
+
+        }else if(this.props.ynabData !== null && this.props.ynabData.length >0){
              return(
                 <div>
-                    <p><button onClick={this.getBudgets}>Choose a Budget</button></p> 
+                    <ChooseBudget 
+                    data={this.props.ynabData}
+                    userId={this.props.user._id}
+                    /> 
                 </div>
             )
         }
 
-        return(
-            <section>
-                <p>Now you can add or manage kids!</p>
-            </section>
-        )
+        return null;
     }
 }
 
 const mapStatetoProps = state => ({
     userId: state.user.data._id,
-    user: state.user.data
+    user: state.user.data,
+    ynabData: state.ynab.data
 })
 
 export default connect(mapStatetoProps)(Request)

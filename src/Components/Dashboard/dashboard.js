@@ -4,10 +4,6 @@ import {connect} from 'react-redux';
 import {fetchUserBasicInfo} from '../../actions/index.actions';
 import './dashboard.css'
 
-//import Header from '../Header/header';
-import Parent from '../Parent/parent';
-import Child from '../Child/child';
-import { stat } from 'fs';
 
 export class Dashboard extends React.Component{
     constructor(props){
@@ -48,4 +44,4 @@ const mapStatetoProps = state => ({
     user: state.user.data
 });
 
-export default connect(mapStatetoProps)(Dashboard)
+export default connect(mapStatetoProps)(Dashboard);

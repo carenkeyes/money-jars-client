@@ -27,9 +27,8 @@ export class Home extends React.Component{
     render(){
         let message = 
             <div className='home-message'>
-                <p>When kids learn to boss their money around,
-                    everyone is happy!
-                </p>
+                <p>You budget online.</p>
+                <p>Why shouldn't your kids?</p>
             </div>
 
         if(this.state.register){

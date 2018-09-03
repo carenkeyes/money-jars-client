@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -16,10 +17,6 @@ export class Child extends React.Component{
         }
         this.handleClick = this.handleClick.bind(this);
     }
-
-    /*componentDidMount(){
-        return this.props.dispatch(fetchUserLogin('Ally', 'password'));
-    }*/
 
     handleClick(){
         this.setState({

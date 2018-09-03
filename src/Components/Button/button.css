@@ -1,10 +1,9 @@
-
-
 button{
     height: 50px;
     min-width: 75px;
     margin: .5em 0;
     border-radius: 5px;
+    font-size: 24px;
 }
 
 .home{
@@ -70,6 +69,14 @@ button{
     background-color: rgb(46, 182, 217)
 }
 
+.red{
+    background-color: #D81303;
+}
+
+.yellow{
+    background-color: #FFFF66;
+}
+
 .ynab-button{
     background-image: url('./ynab.png');
     background-repeat: no-repeat;
@@ -87,4 +94,11 @@ button{
 .click:active{
     box-shadow: 0 4px 4px black;
     transform: translateY(4px);
+}
+
+.submit-edit-goal{
+    margin-left: 10px;
+    height: 60px;
+    width: 100px;
+    flex-grow: 1;
 }

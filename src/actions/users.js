@@ -63,6 +63,41 @@ export function registerUser(user) {
         promise,
     };
   }
+export const CREATE_CHILD_REQUEST_TRIGGERED = 'CREATE_CHILD_REQUEST_TRIGGERED';
+export const CREATE_CHILD_REQUEST_SUCCESS = 'CREATE_CHILD_REQUEST_SUCCESS';
+export const CREATE_CHILD_REQUEST_FAILURE = 'CREATE_CHILD_REQUEST_FAILURE';
+
+export function registerChild(user) {
+    const promise = fetch(`${config.USER_CREATE}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          username: user.username,
+          email: user.email,
+          password: user.password,
+          type: user.type,
+          budget_id: user.budget_id,
+          category_id: user.category_id,
+        }),
+    });
+    return {
+        onRequest: CREATE_CHILD_REQUEST_TRIGGERED,
+        onSuccess: handleCreateChild,
+        onFailure: CREATE_CHILD_REQUEST_FAILURE,
+        promise,
+    };
+  }
+
+const handleCreateChild = (response, dispatch, getState) => {
+    const username = response.username;
+    const userId = getState().user.data._id;
+    dispatch({
+        type: CREATE_CHILD_REQUEST_SUCCESS,
+        response,
+    });
+    addChildToParent(username, userId)
+    dispatch(push('/setup'));
+}
 
 export const ADD_CHILD_TO_PARENT_TRIGGERED = 'ADD_CHILD_TO_PARENT_TRIGGERED';
 export const ADD_CHILD_TO_PARENT_SUCCESS = 'ADD_CHILD_TO_PARENT_SUCCESS';
@@ -121,3 +156,28 @@ export function fetchUserLogin(username, password) {
       promise,
   };
 }
+
+export const UPDATE_USER_PROFILE_TRIGGERED = 'UPDATE_USER_PROFILE_TRIGGERED'
+export const UPDATE_USER_PROFILE_SUCCESS = 'UPDATE_USER_PROFILE_SUCCESS'
+export const UPDATE_USER_PROFILE_FAILURE = 'UPDATE_USER_PROFILE_FAILURE'
+
+export function updateUserProfile(userId, data){
+    console.log(`userId: ${userId}`)
+    console.log(`data: ${data.budget_id}`)
+    const promise = fetch(`${config.API_BASE_URL}/user/${userId}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({data}) 
+    });
+    return {
+        onRequest: UPDATE_USER_PROFILE_TRIGGERED,
+        onSuccess: UPDATE_USER_PROFILE_SUCCESS,
+        onFailure: UPDATE_USER_PROFILE_FAILURE,
+        promise,
+    }
+}
+
+export const LOGOUT_USER = 'LOGOUT_USER'
+export const logoutUser = () => ({
+    type: LOGOUT_USER,
+})

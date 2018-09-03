@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Select from 'react-select'
+import Select from 'react-select';
+import './select-input.css';
 
 SelectInput.defaultProps = {
     multi: false,
@@ -9,12 +10,12 @@ SelectInput.defaultProps = {
 
 SelectInput.propTypes = {
     input: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-       value: PropTypes.string.isRequired,
-        onBlur: PropTypes.func.isRequired,
-        onChange: PropTypes.func.isRequired,
-        onFocus: PropTypes.func.isRequired,
-      }).isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func.isRequired,
+    }).isRequired,
     options: PropTypes.array.isRequired,
     multi: PropTypes.bool,
     className: PropTypes.string,
@@ -53,7 +54,7 @@ function multiChangeHandler(e){
 
 function singleChangeHandler(e){
     return function handleSingleChange(value){
-        e(value ? value.value : '');
+        e(value);
     }
 }
 
@@ -68,4 +69,3 @@ function transformValue(value, options, multi){
 
     return multi ? filteredOptions: filteredOptions[0];
 }
-

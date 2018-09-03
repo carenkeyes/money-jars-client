@@ -8,10 +8,12 @@ import RegistrationPage from '../RegistrationPage/registration-page';
 import Dashboard from '../Dashboard/dashboard';
 import Child from '../Child/child';
 import Parent from '../Parent/parent';
+import ParentRouter from '../Parent/parent-router';
+import ParentSetup from '../Parent/parent-setup';
 import Privacy from '../Privacy/privacy';
 //import {refreshAuthToken} from '../../actions/auth';
 import { connect } from 'react-redux';
-import registrationChild from '../RegistrationChild/registration-child';
+import AddChildWrapper from '../AddChildWrapper/add-child-wrapper';
 
 export class App extends React.Component {
   /*componentDidUpdate(prevProps){
@@ -51,8 +53,9 @@ export class App extends React.Component {
               <Route path='/register' component={RegistrationPage} />
               <Route path='/dashboard' component={Dashboard} />
               <Route path='/child' component={Child} />
-              <Route path='/parent' component={Parent} />
-              <Route path='/register-child' component={registrationChild} />
+              <Route path='/parent' component={ParentRouter} />
+              <Route path='/setup' component={ParentSetup} />
+              <Route path='/register-child' component={AddChildWrapper} />
               <Route exact path="/privacy" component={Privacy} />
             </Switch>
           </main>          
