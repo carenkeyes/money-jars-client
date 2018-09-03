@@ -55,7 +55,7 @@ export class AddChildWrapper extends React.Component {
         }
         if(this.props.loading){
             return(
-                'Waiting on YNAB Categories'
+                <p>Waiting on YNAB Categories</p>
             )
         }
         if(this.props.data !== null){

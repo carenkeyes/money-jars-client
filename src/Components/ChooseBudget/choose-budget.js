@@ -13,6 +13,7 @@ export class ChooseBudget extends React.Component {
     }
 
     render(){
+            console.log(this.props.data)
             return(
                 <div className='choose-budget'>
                     <h2> Now select a YNAB budget to use </h2>

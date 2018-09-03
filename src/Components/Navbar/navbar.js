@@ -2,9 +2,19 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Button from '../Button/button';
+import {logoutUser} from '../../actions/index.actions';
 import './navbar.css';
 
 export class Navbar extends React.Component{
+    constructor(){
+        super()
+    }
+
+    /*logOut = () => {
+        console.log('log out');
+        this.props.dispatch(logoutUser());
+    }*/
+
     render(){
     return (
             <div className='navbar'>
@@ -28,6 +38,7 @@ export class Navbar extends React.Component{
                             className='nav-button'
                         />
                     </Link>
+                    
                     <Link to={`/child`}>
                         <Button 
                             type='button'

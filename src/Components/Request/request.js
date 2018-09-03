@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 //import {fetchUserBasicInfo} from '../../actions/index.actions';
 import {fetchYnabBudgets} from '../../actions/index.actions';
 import ChooseBudget from '../ChooseBudget/choose-budget';
+import {updateUserProfile} from '../../actions/index.actions';
+import {Redirect} from 'react-router-dom';
 
 export class Request extends React.Component{
     constructor(props){
@@ -13,8 +15,7 @@ export class Request extends React.Component{
 
         this.state = {
             ynabUrl: `https://app.youneedabudget.com/oauth/authorize?client_id=${config.CLIENT_ID}&redirect_uri=${config.REDIRECT_URL}&response_type=code&state=${this.props.userId}`,
-            authorized: false,
-            budget: false,
+            declined: false,
             initiated: false,
         }
 
@@ -41,7 +42,9 @@ export class Request extends React.Component{
         console.log('get token clicked')
         console.log(this.state.ynabUrl)
         this.openYnabWindow(this.state.ynabUrl)
-        this.updateState()
+        this.setState({
+            initiated: true,
+        })
     }
 
     updateState(){
@@ -57,9 +60,34 @@ export class Request extends React.Component{
         this.props.dispatch(fetchYnabBudgets(this.props.user._id))
     }
 
-    render(){
+    budgetManually(){
+        const data = {budget_id: 'manual'}
+        this.props.dispatch(updateUserProfile(this.props.userId, data))
+        this.setState({
+            declined: true,
+        })
+    }
 
-        if(!this.state.initiated && !this.props.user.account){
+    render(){
+        if(this.state.declined){
+            return(
+                <Redirect to={'/parent'} />
+            )
+        }
+        if(this.state.initiated){
+            return(
+                <div>
+                    <p>We need to fetch your YNAB budgets</p>
+                    <Button 
+                        label='Get Budgets'
+                        className='home-button orange'
+                        type='text'
+                        onClick={this.getBudgets}
+                    />
+                </div>)
+        }
+
+        if(!this.props.user.account && !this.state.initiated){
             return(
                 <div className='new-user'>
                     <div className='ynab-option'>
@@ -72,6 +100,10 @@ export class Request extends React.Component{
                     </div>
                     <div>
                         <p>Or just starting setting up kid's accounts</p>
+                        <Button
+                            label='Budget Manually'
+                            onClick={this.budgetManually}
+                        />
                     </div>
                 </div>
             )

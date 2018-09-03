@@ -82,11 +82,22 @@ export function registerChild(user) {
     });
     return {
         onRequest: CREATE_CHILD_REQUEST_TRIGGERED,
-        onSuccess: CREATE_CHILD_REQUEST_SUCCESS,
+        onSuccess: handleCreateChild,
         onFailure: CREATE_CHILD_REQUEST_FAILURE,
         promise,
     };
   }
+
+const handleCreateChild = (response, dispatch, getState) => {
+    const username = response.username;
+    const userId = getState().user.data._id;
+    dispatch({
+        type: CREATE_CHILD_REQUEST_SUCCESS,
+        response,
+    });
+    addChildToParent(username, userId)
+    dispatch(push('/setup'));
+}
 
 export const ADD_CHILD_TO_PARENT_TRIGGERED = 'ADD_CHILD_TO_PARENT_TRIGGERED';
 export const ADD_CHILD_TO_PARENT_SUCCESS = 'ADD_CHILD_TO_PARENT_SUCCESS';
@@ -165,3 +176,8 @@ export function updateUserProfile(userId, data){
         promise,
     }
 }
+
+export const LOGOUT_USER = 'LOGOUT_USER'
+export const logoutUser = () => ({
+    type: LOGOUT_USER,
+})

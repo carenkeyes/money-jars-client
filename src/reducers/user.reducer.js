@@ -27,7 +27,13 @@ export default function user(state=initialState, action) {
     case actionTypes.UPDATE_USER_PROFILE_SUCCESS: {
       return {
         ...state,
-        data: action.data.budget_id  
+        data: action.data  
+      }
+    }
+    case actionTypes.LOGOUT_USER: {
+      return {
+        ...state,
+        data: null
       }
     }
     default: {
