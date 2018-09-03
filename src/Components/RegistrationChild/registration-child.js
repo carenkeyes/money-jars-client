@@ -3,27 +3,22 @@ import {Field, reduxForm, focus} from 'redux-form';
 import {registerUser} from '../../actions/users';
 import Input from '../Input/input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
-import {Link} from 'react-router-dom';
 import './registration-child.css';
 import SelectInput from '../SelectInput/select-input';
 
 const passwordLength = length({min: 7, max: 12});
 const matchesPassword = matches('password');
 
-const options = {
-    value: 'I hate myself',
-    label: 'Why is this so hard?',
-}
 
 export class RegistrationChild extends React.Component {
-    constructor(){
-        super()
-    }
 
     onSubmit(values){
-        const {username, password, group_id, category_id} = values;
-        const user = {username, password, group_id, category_id};
+        console.log(values)
+        const {username, password} = values;
+        const user = {username, password};
         user.type = 'child';
+        user.group_id = values.group_id.value,
+        user.category_id = values.category_id.value,
         console.log(user);
         return this.props
             .dispatch(registerUser(user))

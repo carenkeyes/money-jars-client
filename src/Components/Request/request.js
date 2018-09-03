@@ -3,12 +3,9 @@ import config from '../../config';
 import Button from '../Button/button';
 import './request.css';
 import { connect } from 'react-redux';
-import {fetchUserBasicInfo} from '../../actions/index.actions';
+//import {fetchUserBasicInfo} from '../../actions/index.actions';
 import {fetchYnabBudgets} from '../../actions/index.actions';
 import ChooseBudget from '../ChooseBudget/choose-budget';
-
-const clientId = `524cb6ed48eb7037b8391bc45974590dace8e9b2434cc03e5ae595b54412cced`
-const redirectUrl = 'urn:ietf:wg:oauth:2.0:oob'
 
 export class Request extends React.Component{
     constructor(props){
@@ -44,7 +41,10 @@ export class Request extends React.Component{
         console.log('get token clicked')
         console.log(this.state.ynabUrl)
         this.openYnabWindow(this.state.ynabUrl)
-        this.setState = {initiated: true}
+        this.updateState()
+    }
+
+    updateState(){
         this.refresh = setTimeout(() => this.getBudgets, 15000)
     }
 
@@ -58,7 +58,6 @@ export class Request extends React.Component{
     }
 
     render(){
-        let authURL = this.state.url;
 
         if(!this.state.initiated && !this.props.user.account){
             return(
@@ -76,12 +75,13 @@ export class Request extends React.Component{
                     </div>
                 </div>
             )
-        }else if(this.props.user.budget_id === null){
+        }else if(!this.props.user.budget_id && this.props.ynabData === null){
             return(
             <div>
-                <p>We're having trouble accessing your ynab account </p>
+                <p>We need to fetch your YNAB budgets</p>
                 <Button 
-                    label='Try again'
+                    label='Get Budgets'
+                    className='home-button orange'
                     type='text'
                     onClick={this.getBudgets}
                 />

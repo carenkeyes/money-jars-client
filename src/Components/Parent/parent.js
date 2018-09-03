@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Request from '../Request/request'
 import {Redirect} from 'react-router-dom'
-import {fetchYnabCategories} from '../../actions/index.actions';
+import {fetchUserBasicInfo} from '../../actions/index.actions';
 import Header from '../Header/header';
 
 export class Parent extends React.Component {
@@ -10,13 +10,25 @@ export class Parent extends React.Component {
         super()
         this.state = {
             register: false,
+            setupComplete: false,
         }
     }
-    
+
+    componentDidMount(){
+        this.props.dispatch(fetchUserBasicInfo())
+    }
+
     handleClick = () => {
         console.log('reroute to child');
         this.setState({
             register: true,
+        })
+    }
+
+    finishSetUp = () => {
+        console.log('finish setup')
+        this.setState({
+            setupComplete: true
         })
     }
 
@@ -32,23 +44,37 @@ export class Parent extends React.Component {
             return <Redirect to='/register-child' /> 
         }
 
-        let message;
+        let message=<p>See your kids accounts!</p>
         let greeting=`Welcome ${this.props.user.username}!`
-        
+        let label1;
+        let label2;
+
         if(!this.props.user.budget_id){
             message = <Request />
         }
-        else if(this.props.user.budget_id && this.props.user.children.length === 0){
+
+        if(this.state.setupComplete && this.props.user.children.length === 1){
+            message = <p>See an overview of{this.props.user.children[0].username}'s
+                 account below </p>
+        }else if(this.state.setupComplete && this.props.user.children.length > 1){
+            message = <p>See an overview of your children's accounts below</p>
+        }
+        else if(this.props.user.children.length === 0){
             greeting = 'Great job!'
             message = <p> Now you can set up accounts for your children </p>
+            label2 = 'Add Child'
         }
-        else if(this.props.user.children.length === 1){
-            message = <p> You can monitor ${this.props.user.children[0].username}'s account
+        else if(!this.state.setupComplete && this.props.user.children.length === 1){
+            message = <p> You can monitor {this.props.user.children[0].username}'s account
                 activity and withdrawal requests here </p>
+                label1 ='Add Child'
+                label2 ='Finish setup'
         }
-        else if(this.props.user.children.length < 1){
+        else if(!this.state.setupComplete && this.props.user.children.length > 1){
             message = <p> You can monitor your children's account activity
                 and withdrawal requests here </p>
+                label1 = 'Add Child'
+                label2 = 'Finish setup'
         }
         
         /*if(!this.props.loggedIn){
@@ -62,14 +88,20 @@ export class Parent extends React.Component {
                     message={message} 
                     className='header-parent'
                     leftImage='header-image money-tree'
-                    but2Label={this.props.user.category_id ?'': 'Add Child'}
-                    but2Type='button'
+                    but1Label={label1}
+                    but1Class='home-button yellow'
+                    but1OnClick={this.handleClick}
+                    but2Label={label2}
                     but2Class='home-button orange'
-                    but2OnClick={this.handleClick}
+                    but2OnClick={this.finishSetUp}
                 />
                     
-                <section></section>
-                <section></section>
+                <section>
+
+                </section>
+                <section>
+
+                </section>
             </div>
         )
     }

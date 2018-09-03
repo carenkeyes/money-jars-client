@@ -1,6 +1,5 @@
 import React from 'react';
-import Input from '../Input/input';
-import {Field, reduxForm} from 'redux-form';
+import {reduxForm} from 'redux-form';
 import {updateGoal} from '../../actions/budget';
 
 export class DeleteGoal extends React.Component{
