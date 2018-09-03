@@ -1,7 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import EditGoal from '../EditGoal/edit-goal';
 import AddToGoal from '../AddToGoal/add-to-goal';
 import WithdrawFromGoal from '../WithDrawFromGoal/withdraw-from-goal';
 import MoveFromGoal from '../MoveFromGoal/move-from-goal';
