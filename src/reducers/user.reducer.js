@@ -37,13 +37,19 @@ export default function user(state=initialState, action) {
     case actionTypes.UPDATE_USER_PROFILE_SUCCESS: {
       return {
         ...state,
-        data: action.data  
+        data: action.response.updatedUser  
       }
     }
     case actionTypes.LOGOUT_USER: {
       return {
         ...state,
         data: null
+      }
+    }
+    case actionTypes.CREATE_GOAL_REQUEST_SUCCESS: {
+      return {
+        ... state,
+      data: action.data  
       }
     }
     default: {

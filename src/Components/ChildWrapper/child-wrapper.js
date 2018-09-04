@@ -68,11 +68,6 @@ export class ChildWrapper extends React.Component{
                 <div className='budget-message'>
                     <p> You have <span className='amount-to-budget'>${toBudget}</span> </p>
                     <p> What should it do? </p>
-                    <AddGoal 
-                    form='new-goal'
-                    addNew={this.state.addNew}
-                    userId={this.props.user._id}
-                />
                 </div>
         }
 
@@ -80,11 +75,12 @@ export class ChildWrapper extends React.Component{
             <Child
                 title={`Hi ${this.props.user.username}!`}
                 message={message}
-                but1Label={this.state.addNew ? 'Cancel' : 'Add New Goal'}
+                but1Label={this.state.addNew ? 'Close Form' : 'Add New Goal'}
                 but1OnClick={this.handleClick}
                 addNew={this.state.addNew}
                 userId={this.props.user._id}
                 goals={goals}
+                max={toBudget}
             />
         )
 

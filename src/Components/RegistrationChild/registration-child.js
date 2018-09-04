@@ -41,7 +41,7 @@ export class RegistrationChild extends React.Component {
 
         return (
             <div className='child-form-wrapper'>
-                <div className='child-form'>
+                <div className='child-form form-single'>
                     <h2>Register a Child Account</h2>
                     
                     <form  
@@ -72,7 +72,6 @@ export class RegistrationChild extends React.Component {
                         <Field 
                             component={SelectInput}
                             type='text'
-                            label='Choose Category Group'
                             name='group_id'
                             options={catGroups}
                             onChange={this.props.onChange}
@@ -81,7 +80,6 @@ export class RegistrationChild extends React.Component {
                         <Field
                         component={SelectInput}
                             type='text'
-                            label='Choose Category Group'
                             name='category_id'
                             options={this.props.categories}
                         />

@@ -98,6 +98,11 @@ h3{
     margin: 10px;
 }
 
+h6{
+    font-size: 20px;
+    margin-bottom: .2em;
+}
+
 p{
     line-height: 1.4em;
     text-align: center;
@@ -118,7 +123,14 @@ section:nth-child(even){
     background-color: #FAF2D6;
 }
 
-form{
+.form-double{
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    justify-content: space-between;
+}
+
+.form-single{
     display: flex;
     flex-direction: column;
     max-width: 320px;

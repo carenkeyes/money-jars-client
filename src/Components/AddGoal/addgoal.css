@@ -1,18 +1,35 @@
 .add-goal{
+    background-color: #E4F718;
     margin: 0 auto;
-    padding: 3em;
-    background-color: #E4F718;;
-    width: 500px;
+    padding: 3em 2em;
+    width: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 1em;
     border: 2px solid #233561;
-    box-shadow: 5px 10px 10px #233561;
-    
+    box-shadow: 5px 10px 10px #233561;   
 }
 
 .wrapper{
     padding: 30px;
+    z-index: 10;
+}
+
+.add-goal-form{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-section{
+    max-width: 300px;
+    padding: .5em;
+}
+
+.double-form-section{
+    display: flex;
+    justify-content: space-between;
 }

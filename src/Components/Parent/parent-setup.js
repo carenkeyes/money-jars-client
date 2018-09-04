@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import Request from '../Request/request';
 import {Redirect} from 'react-router-dom';
 import Parent from '../Parent/parent';
+import {fetchUserBasicInfo} from '../../actions/index.actions';
+import {fetchYnabBudgets} from '../../actions/index.actions';
 
 
 export class ParentSetup extends React.Component {
@@ -12,8 +14,12 @@ export class ParentSetup extends React.Component {
             register: false,
             setupComplete: false,
         }
+        this.getBudgets = this.getBudgets.bind(this);
     }
 
+    componentDidMount(){
+        this.props.dispatch(fetchUserBasicInfo())
+    }
 
     addChild = () => {
         this.setState({
@@ -25,6 +31,11 @@ export class ParentSetup extends React.Component {
         this.setState({
             setupComplete: true,
         })
+    }
+
+    getBudgets(){
+        console.log('button clicked')
+        this.props.dispatch(fetchYnabBudgets(this.props.user._id))
     }
 
     render(){
@@ -47,18 +58,28 @@ export class ParentSetup extends React.Component {
         let label1;
         let label2;
 
-        if(!this.props.user.budget_id){
-            message = <Request />
+        if(!this.props.user.budget_id &&this.props.user.account !== "manual"){
+            message = 
+                <Request 
+                    user_id = {this.props.user._id}
+                    account = {this.props.user.account}
+                    ynabData = {this.props.ynab}
+                    budget_id = {this.props.user.budget_id}
+                    onClick = {this.getBudgets}
+                    label = 'Get Budgets'
+                />
         }
 
-        else if(this.props.user.budget_id && this.props.user.children.length === 0){
+        else if(this.props.user.budget_id && this.props.user.children.length === 0 ||
+                this.props.user.account === "manual" && this.props.user.children.length === 0){
             greeting='Great job!'
             message=<p>Now you can create child accounts</p>
             label1='Add Child'
             label2='Finish Setup'
         }
 
-        else if(this.props.user.budget_id && this.props.user.children.length > 0){
+        else if(this.props.user.budget_id && this.props.user.children.length > 0 ||
+                this.props.user.account === "manual" && this.props.user.children.length === 0){
             greeting='Looking good!'
             message = <p> Would you like to add more children or finish setup?</p>
             label1='Add Child'
@@ -80,7 +101,8 @@ export class ParentSetup extends React.Component {
 
 const mapStateToProps = state => ({
     loggedIn: state.user.data !==null,
-    user: state.user.data
+    user: state.user.data,
+    ynab: state.ynab.data,
 })
 
 export default connect(mapStateToProps)(ParentSetup)

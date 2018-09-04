@@ -3,30 +3,26 @@ import config from '../../config';
 import Button from '../Button/button';
 import './request.css';
 import { connect } from 'react-redux';
-import {fetchUserBasicInfo} from '../../actions/index.actions';
+
 import {fetchYnabBudgets} from '../../actions/index.actions';
 import ChooseBudget from '../ChooseBudget/choose-budget';
 import {updateUserProfile} from '../../actions/index.actions';
 import {Redirect} from 'react-router-dom';
 
-export class Request extends React.Component{
+export default class Request extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
-            ynabUrl: `https://app.youneedabudget.com/oauth/authorize?client_id=${config.CLIENT_ID}&redirect_uri=${config.REDIRECT_URL}&response_type=code&state=${this.props.userId}`,
+            ynabUrl: `https://app.youneedabudget.com/oauth/authorize?client_id=${config.CLIENT_ID}&redirect_uri=${config.REDIRECT_URL}&response_type=code&state=${this.user_id}`,
             declined: false,
             initiated: false,
         }
 
         this.getToken = this.getToken.bind(this);
-        this.getBudgets = this.getBudgets.bind(this);
         this.budgetManually = this.budgetManually.bind(this);
     }
 
-    componentDidMount(){
-        this.props.dispatch(fetchUserBasicInfo())
-    }
 
     getToken(){
         console.log('get token clicked')
@@ -40,11 +36,6 @@ export class Request extends React.Component{
     openYnabWindow(url) {
         const win = window.open(url, '_blank');
         win.focus();
-    }
-
-    getBudgets(){
-        console.log(this)
-        this.props.dispatch(fetchYnabBudgets(this.props.user._id))
     }
 
     budgetManually(){
@@ -75,7 +66,7 @@ export class Request extends React.Component{
                 </div>)
         }
 
-        if(!this.props.user.account && !this.state.initiated){
+        if(!this.props.account && !this.state.initiated){
             return(
                 <div className='new-user'>
                     <div className='ynab-option'>
@@ -95,24 +86,26 @@ export class Request extends React.Component{
                     </div>
                 </div>
             )
-        }else if(!this.props.user.budget_id && this.props.ynabData === null){
+        }else if(!this.props.budget_id && this.props.ynabData === null){
             return(
             <div>
                 <p>We need to fetch your YNAB budgets</p>
                 <Button 
-                    label='Get Budgets'
+                    label={this.props.label}
                     className='home-button orange'
                     type='text'
-                    onClick={this.getBudgets}
+                    onClick={this.props.onClick}
                 />
             </div>)
 
         }else if(this.props.ynabData !== null && this.props.ynabData.length >0){
+            console.log(this.props.ynabData.length)
+            console.log(this.props.user_id)
              return(
                 <div>
                     <ChooseBudget 
                     data={this.props.ynabData}
-                    userId={this.props.user._id}
+                    userId={this.props.user_id}
                     /> 
                 </div>
             )
@@ -122,10 +115,3 @@ export class Request extends React.Component{
     }
 }
 
-const mapStatetoProps = state => ({
-    userId: state.user.data._id,
-    user: state.user.data,
-    ynabData: state.ynab.data
-})
-
-export default connect(mapStatetoProps)(Request)
