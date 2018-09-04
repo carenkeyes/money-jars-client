@@ -41,7 +41,7 @@ export default class Request extends React.Component{
     budgetManually(){
         const data = {budget_id: 'manual'}
         console.log(this)
-        this.props.dispatch(updateUserProfile(this.props.user._id, data))
+        this.props.dispatch(updateUserProfile(this.props.user_id, data))
         this.setState({
             declined: true,
         })

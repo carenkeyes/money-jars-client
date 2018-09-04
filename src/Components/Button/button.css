@@ -22,7 +22,7 @@ button{
     border: solid 3px rgb(46, 182, 217);
     color: rgb(46, 182, 217);
     font-size: 32px;
-    border-radius: 2px;
+    border-radius: 10px;
     margin-left: 20px;
 }
 
@@ -92,7 +92,7 @@ button{
 }
 
 .click:active{
-    box-shadow: 0 4px 4px black;
+    box-shadow: 4px 0 4px black;
     transform: translateY(4px);
 }
 
@@ -101,4 +101,21 @@ button{
     height: 60px;
     width: 100px;
     flex-grow: 1;
+}
+
+.form-button{
+    border: solid 1px black;
+    color: black;
+    box-shadow: 1px 2px 2px black;
+}
+
+.form-button:active{
+    box-shadow: 1px 0px 1px black;
+    transform: translateY(2px);
+}
+
+@media only screen and (min-width: 1000px){
+    .home-button{
+        font-size: 32px;
+    }
 }

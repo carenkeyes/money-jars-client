@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import Request from '../Request/request';
 import {Redirect} from 'react-router-dom';
 import Parent from '../Parent/parent';
-import {fetchUserBasicInfo} from '../../actions/index.actions';
-import {fetchYnabBudgets} from '../../actions/index.actions';
+import {fetchUserBasicInfo, updateUserProfile, fetchYnabBudgets} from '../../actions/index.actions';
 
 
 export class ParentSetup extends React.Component {
@@ -15,6 +14,7 @@ export class ParentSetup extends React.Component {
             setupComplete: false,
         }
         this.getBudgets = this.getBudgets.bind(this);
+        this.budgetManually = this.budgetManually.bind(this);
     }
 
     componentDidMount(){
@@ -36,6 +36,15 @@ export class ParentSetup extends React.Component {
     getBudgets(){
         console.log('button clicked')
         this.props.dispatch(fetchYnabBudgets(this.props.user._id))
+    }
+
+    budgetManually(){
+        const data = {budget_id: 'manual'}
+        console.log(this)
+        this.props.dispatch(updateUserProfile(this.props.user._id, data))
+        this.setState({
+            declined: true,
+        })
     }
 
     render(){
@@ -67,19 +76,18 @@ export class ParentSetup extends React.Component {
                     budget_id = {this.props.user.budget_id}
                     onClick = {this.getBudgets}
                     label = 'Get Budgets'
+                    budgetManually={this.budgetManually}
                 />
         }
 
-        else if(this.props.user.budget_id && this.props.user.children.length === 0 ||
-                this.props.user.account === "manual" && this.props.user.children.length === 0){
+        else if(this.props.user.budget_id && this.props.user.children.length === 0){
             greeting='Great job!'
             message=<p>Now you can create child accounts</p>
             label1='Add Child'
             label2='Finish Setup'
         }
 
-        else if(this.props.user.budget_id && this.props.user.children.length > 0 ||
-                this.props.user.account === "manual" && this.props.user.children.length === 0){
+        else if(this.props.user.budget_id && this.props.user.children.length > 0){
             greeting='Looking good!'
             message = <p> Would you like to add more children or finish setup?</p>
             label1='Add Child'

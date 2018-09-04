@@ -57,7 +57,7 @@ export class ChildWrapper extends React.Component{
         
         console.log(`toBudget: ${toBudget}`)
         let message;
-        if(!this.props.goals){
+        if(!this.props.user.goals){
             message =
                 <div className='budget-message'>
                     <p> You have <span className='amount-to-budget'>${toBudget}</span> that needs a job!</p>
@@ -90,7 +90,6 @@ export class ChildWrapper extends React.Component{
 const mapStatetoProps = state => ({
     loggedIn: state.user.data !==null,
     user: state.user.data,
-    goals: state.user.data.goals,
     budget: state.ynab,
 });
 

@@ -49,7 +49,9 @@ export default function user(state=initialState, action) {
     case actionTypes.CREATE_GOAL_REQUEST_SUCCESS: {
       return {
         ... state,
-      data: action.data  
+      data: {
+        goals: [...user.data.goals, action.response.goal]
+      }  
       }
     }
     default: {
