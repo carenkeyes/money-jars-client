@@ -64,8 +64,9 @@ export class AddChildWrapper extends React.Component {
                     data={this.props.data}
                     categories={this.state.categories}
                     budget_id={this.props.user.budget_id}
-                    account={this.props.account}
-                    onChange={this.handleChange} 
+                    account={this.props.user.account}
+                    onChange={this.handleChange}
+                    account_id={this.props.user.account._id} 
                 />
             )
         }

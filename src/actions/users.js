@@ -78,6 +78,7 @@ export function registerChild(user) {
           type: user.type,
           budget_id: user.budget_id,
           category_id: user.category_id,
+          account: user.account,
         }),
     });
     return {

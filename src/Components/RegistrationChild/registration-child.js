@@ -19,6 +19,8 @@ export class RegistrationChild extends React.Component {
         user.type = 'child';
         user.group_id = values.group_id.value,
         user.category_id = values.category_id.value,
+        user.account = this.props.account
+        user.budget_id = this.props.budget_id
         console.log(user);
         return this.props
             .dispatch(registerChild(user))
@@ -35,6 +37,7 @@ export class RegistrationChild extends React.Component {
         }
         console.log(`catGroups: ${catGroups[0].value}`)
         console.log(this.props.categories)
+        console.log(`account: ${this.props.account}`)
 
         return (
             <div className='child-form-wrapper'>

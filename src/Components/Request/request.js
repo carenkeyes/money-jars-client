@@ -3,7 +3,7 @@ import config from '../../config';
 import Button from '../Button/button';
 import './request.css';
 import { connect } from 'react-redux';
-//import {fetchUserBasicInfo} from '../../actions/index.actions';
+import {fetchUserBasicInfo} from '../../actions/index.actions';
 import {fetchYnabBudgets} from '../../actions/index.actions';
 import ChooseBudget from '../ChooseBudget/choose-budget';
 import {updateUserProfile} from '../../actions/index.actions';
@@ -21,21 +21,11 @@ export class Request extends React.Component{
 
         this.getToken = this.getToken.bind(this);
         this.getBudgets = this.getBudgets.bind(this);
+        this.budgetManually = this.budgetManually.bind(this);
     }
 
     componentDidMount(){
-        console.log(this.props.user.account)
-        console.log(this.props.ynabData)
-        /*if(this.props.user.account){
-            this.setState ={
-                authorized: true
-            }
-        }
-        if(this.props.ynabData !== null){
-            this.setState = {
-                budget: true
-            }
-        }*/
+        this.props.dispatch(fetchUserBasicInfo())
     }
 
     getToken(){
@@ -47,21 +37,19 @@ export class Request extends React.Component{
         })
     }
 
-    updateState(){
-        this.refresh = setTimeout(() => this.getBudgets, 15000)
-    }
-
     openYnabWindow(url) {
         const win = window.open(url, '_blank');
         win.focus();
     }
 
     getBudgets(){
+        console.log(this)
         this.props.dispatch(fetchYnabBudgets(this.props.user._id))
     }
 
     budgetManually(){
         const data = {budget_id: 'manual'}
+        console.log(this)
         this.props.dispatch(updateUserProfile(this.props.user._id, data))
         this.setState({
             declined: true,
