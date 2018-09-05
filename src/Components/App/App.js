@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 import Home from '../Home/home';
 import RegistrationPage from '../RegistrationPage/registration-page';
 import Dashboard from '../Dashboard/dashboard';
-import Child from '../Child/child';
-import Parent from '../Parent/parent';
+import ChildWrapper from '../ChildWrapper/child-wrapper';
 import ParentRouter from '../Parent/parent-router';
 import ParentSetup from '../Parent/parent-setup';
 import Privacy from '../Privacy/privacy';
@@ -52,7 +51,7 @@ export class App extends React.Component {
               <Route exact path='/' component={Home} />
               <Route path='/register' component={RegistrationPage} />
               <Route path='/dashboard' component={Dashboard} />
-              <Route path='/child' component={Child} />
+              <Route path='/child' component={ChildWrapper} />
               <Route path='/parent' component={ParentRouter} />
               <Route path='/setup' component={ParentSetup} />
               <Route path='/register-child' component={AddChildWrapper} />

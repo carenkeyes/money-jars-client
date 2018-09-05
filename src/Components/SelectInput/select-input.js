@@ -5,7 +5,7 @@ import './select-input.css';
 
 SelectInput.defaultProps = {
     multi: false,
-    className: "",
+    className: 'select-input',
 }
 
 SelectInput.propTypes = {

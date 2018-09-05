@@ -1,14 +1,15 @@
 import React, {PropTypes} from 'react';
 import SelectInput from '../SelectInput/select-input';
-import {addGoal} from '../../actions/budget';
-import {Field, reduxForm} from 'redux-form';
+import {createGoal} from '../../actions/budget';
+import {Field, reduxForm, reset} from 'redux-form';
 import Input from '../Input/input';
+import Button from '../Button/button';
 //import Button from '../Button/button';
 
 import './addgoal.css'
 
 const goalTypes = [
-    {value: 'savings', label: 'Savings'},
+    {value: 'saving', label: 'Savings'},
     {value: 'spending', label: 'Spending'},
     {value: 'giving', label: 'Giving'},
 ]
@@ -20,15 +21,13 @@ export class AddGoal extends React.Component {
     }*/
 
     onSubmit(values){
-        console.log(values)
+        const userId = this.props.userId
         const {title, amount, category, imageurl} = values;
         const goal = {title, amount, category, imageurl};
-        goal.amount = parseInt(goal.amount);
-        //goal.amount = num;
-        //console.log(num);
-        console.log(goal);
+        goal.amount = parseInt(goal.amount)*1000;
+        goal.category = goal.category.value;
         return this.props
-            .dispatch(addGoal(goal))            
+            .dispatch(createGoal(goal, userId))          
     }
 
     render(){
@@ -38,43 +37,50 @@ export class AddGoal extends React.Component {
                 <div className='add-goal'>
                     <h2>Add a new Goal</h2>
                     <form 
-                        className="add-goal-form"
+                        className='add-goal-form'
                         onSubmit={this.props.handleSubmit(values =>
-                        this.onSubmit(values)
-                    )}> 
-                        <Field
-                            component={Input}
-                            type='text'
-                            label='Name of goal'
-                            name='title'
+                            this.onSubmit(values)
+                    )}>
+                        <div className='double-form-section'> 
+                            <div className='form-section'>
+                                <Field
+                                    component={Input}
+                                    type='text'
+                                    label='Name of goal'
+                                    name='title'
+                                />
+                                <Field
+                                    component={Input}
+                                    type='number'
+                                    label='How much does it cost?'
+                                    name='amount'
+                                />
+                            </div>
+                            <div className='form-section'>
+                                <label> Choose category </label>
+                                <Field
+                                    component={SelectInput}
+                                    type='text'
+                                    label='Category'
+                                    name='category'
+                                    options={goalTypes}
+                                    min={0}
+                                    step={0.01}
+                                />
+                                <Field
+                                    component={Input}
+                                    type='text'
+                                    label='Image URL'
+                                    name='imageurl'
+                                />
+                            </div>
+                        </div>
+                        <Button
+                            type='submit'
+                            className='form-button pink'
+                            label='Create goal'
                         />
-                        <Field
-                            component={Input}
-                            type='number'
-                            label='Amount'
-                            name='amount'
-                        />
-                        <Field
-                            component={SelectInput}
-                            type='text'
-                            label='Category'
-                            name='category'
-                            options={goalTypes}
-                        />
-                        <Field
-                            component={Input}
-                            type='text'
-                            label='Image URL'
-                            name='imageurl'
-                        />
-                        <button
-                            type="submit">
-                            Create goal
-                        </button>
-                        <button
-                            type="button">
-                            Cancel
-                        </button>
+
                     </form>
                 </div>
                 </div>
@@ -85,4 +91,4 @@ export class AddGoal extends React.Component {
     }
 }
 
-export default reduxForm ()(AddGoal);
+export default reduxForm ('add-goal-form')(AddGoal);

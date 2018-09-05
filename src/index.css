@@ -98,13 +98,18 @@ h3{
     margin: 10px;
 }
 
+h6{
+    font-size: 20px;
+    margin-bottom: .2em;
+}
+
 p{
     line-height: 1.4em;
     text-align: center;
 }
 
 section{
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
     min-height: 200px;
     background-color: #FFF7DB;
     display: flex;
@@ -115,11 +120,19 @@ section{
 
 
 section:nth-child(even){
-    background-color: #FAF2D6;
+    background-color: white;
 }
 
-form{
+.form-double{
     display: flex;
     flex-direction: column;
-    max-width: 320px;
+    max-width: 800px;
+    justify-content: space-between;
+}
+
+.form-single{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 1.5em;
 }

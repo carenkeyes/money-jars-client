@@ -1,0 +1,16 @@
+select{
+    font-size: 20px;
+    padding: .4em 1em;
+    background: #edeff0;
+    border-radius: 4px;
+    border: 1px solid black;
+    width: 100%;
+    margin-top: .2em;
+    margin-bottom: 1em;
+}
+
+.select-input{
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}

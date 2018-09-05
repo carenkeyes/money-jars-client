@@ -38,21 +38,6 @@ export class Navbar extends React.Component{
                             className='nav-button'
                         />
                     </Link>
-                    
-                    <Link to={`/child`}>
-                        <Button 
-                            type='button'
-                            label='Child'
-                            className='nav-button' 
-                    />
-                    </Link>
-                    <Link to={`/parent`}>
-                        <Button 
-                            type='button'
-                            label='Parent'
-                            className='nav-button' 
-                        />
-                    </Link>
                 </div>
             </div>
         )

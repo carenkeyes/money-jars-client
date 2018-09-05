@@ -2,6 +2,7 @@ import React from 'react';
 import SelectInput from '../SelectInput/select-input';
 import {Field, reduxForm} from 'redux-form';
 import {updateUserProfile} from '../../actions/index.actions';
+import Button from '../Button/button';
 
 
 export class ChooseBudget extends React.Component {
@@ -29,10 +30,11 @@ export class ChooseBudget extends React.Component {
                             name='budget_id'
                             options={this.props.data}
                         />
-                        <button
-                            type="submit">
-                            Assign
-                        </button>
+                        <Button
+                            type='submit'
+                            label='Assign'
+                            className='form-button orange'
+                        />
                     </form>
                 </div>
             )

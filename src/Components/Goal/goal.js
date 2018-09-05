@@ -1,19 +1,21 @@
 import React from 'react';
 //import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
-//import {connect} from 'react-redux';
+import {connect} from 'react-redux';
 import Button from '../Button/button';
 import Avatar from '../Avatar/avatar';
 import ProgressBar from '../ProgressBar/progress-bar';
 import GoalDetails from '../GoalDetails/goal-details';
+import {deleteGoal} from '../../actions/index.actions';
 import './goal.css';
 
-export default class Goal extends React.Component{
+export class Goal extends React.Component{
     constructor(){
         super()
         this.state = {
             options: false
         }
         this.handleClick = this.handleClick.bind(this);
+        this.handleDeleteGoal = this.handleDeleteGoal.bind(this);
     }
 
     handleClick(){
@@ -23,12 +25,18 @@ export default class Goal extends React.Component{
         })
     }
 
+    handleDeleteGoal(){
+        this.props.dispatch(deleteGoal(this.props.key, this.props.userId))
+    }
+
     render(){
+        console.log(this.props._id)
+        console.log(this.key)
         let togo = this.props.amount-this.props.saved;
         return(
             <section className='goal-section'>
                 <div>
-                    <h3 className='goal-title'>{this.props.category}: {this.props.title}</h3>
+                    <h2 className='goal-title'>{this.props.title}: <span className={`${this.props.category}-title`}>{this.props.category}</span></h2>
                 </div>
                 <div className = 'goalContent'>
                     <div className='goalImage'>
@@ -39,11 +47,11 @@ export default class Goal extends React.Component{
                     </div>
                     <div className='goal-info'>
                         <div className='goal-total'>
-                            <p className='goal-text'> I need: <span className='money-value'> ${this.props.amount} </span> </p>
+                            <p className='goal-text'> I need: <span className='money-value'> ${this.props.amount/1000} </span> </p>
                             <Button 
                             label={this.state.options ? 'Close': 'Options'}
                             onClick={this.handleClick}
-                            className='blue click'
+                            className={`${this.props.category}-button click`}
                         />                            
                         </div>
                         <div className='goal-progress-bar'>
@@ -54,93 +62,24 @@ export default class Goal extends React.Component{
                             />
                         </div>
                         <div className='goal-progress'>
-                        <p className='goal-text'>I have: <span className='money-value'> ${this.props.saved} </span> </p> 
-                        <p className='goal-text'><span className='money-value'> ${togo} </span> left to save! </p>
+                        <p className='goal-text'>I have: <span className='money-value'> ${this.props.saved/1000} </span> </p> 
+                        <p className='goal-text'><span className='money-value'> ${togo/1000} </span> left to save! </p>
                         </div>
                     </div>
                     
                 </div>
-                <GoalDetails options={this.state.options} />          
+                <GoalDetails 
+                    options={this.state.options}
+                    goalId={this.props._id}
+                    userId={this.props.userId}
+                    handledeleteGoal={this.handleDeleteGoal}
+                     />          
             </section>
         )
     }
 }
+const mapStatetoProps = state => ({
+    user: state.user.data,
+});
 
-
-/*export class Goal extends React.Component{
-    constructor(){
-        super()
-        this.state = {
-            detail: false,
-            label: 'Details'
-        }
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(){
-        console.log('edit state ran');
-        if(this.state.detail){
-            this.setState({
-                detail: false,
-                label: 'Details'
-            })
-        }
-        else if(!this.state.detail){
-            this.setState({
-                detail: true,
-                label: 'Close'
-        })}
-    }
-
-    render(){
-        let togo = this.props.amount-this.props.saved;
-        if(this.state.detail){
-            return(
-                    <section>
-                        <div>
-                            <h3>{this.props.title}</h3>
-                        </div>
-                        <div className = 'goalContent'>
-                            <div className='goalImage'>
-                                <Avatar />
-                                <Button 
-                                    label={this.state.label}
-                                    onClick={this.handleClick}/>
-                            </div>
-                            <div className='goalProgress'>
-                                <ProgressBar />
-                            </div>
-                        </div> 
-
-                        <Route exact path={`${this.props.match.url}/edit/`} 
-                            component={Avatar} /> 
-        
-                    </section>
-            )
-        }
-        return(
-            <section>
-                <div>
-                    <h3>{this.props.title}</h3>
-                </div>
-                <div className = 'goalContent'>
-                    <div className='goalImage'>
-                        <Avatar />
-                        <Button 
-                            label={this.state.label}
-                            onClick={this.handleClick}/>
-                    </div>
-                    <div className='goalProgress'>
-                        <ProgressBar />
-                    </div>
-                </div>          
-            </section>
-        )
-    }
-}
-
-const mapStateToProps = (state) =>{
-    return {}
-}
-
-export default withRouter(connect(mapStateToProps)(Goal))*/
+export default connect(mapStatetoProps)(Goal)

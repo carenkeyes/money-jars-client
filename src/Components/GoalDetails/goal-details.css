@@ -16,3 +16,7 @@
     display: flex;
     justify-content: center;
 }
+
+.submit-edit-goal{
+    flex: auto;
+}

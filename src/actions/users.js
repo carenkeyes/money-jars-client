@@ -49,12 +49,7 @@ export function registerUser(user) {
     const promise = fetch(`${config.USER_CREATE}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          username: user.username,
-          email: user.email,
-          password: user.password,
-          type: user.type,
-        }),
+        body: JSON.stringify({user}),
     });
     return {
         onRequest: FETCH_USER_SIGNUP_REQUEST_TRIGGERED,
@@ -68,17 +63,11 @@ export const CREATE_CHILD_REQUEST_SUCCESS = 'CREATE_CHILD_REQUEST_SUCCESS';
 export const CREATE_CHILD_REQUEST_FAILURE = 'CREATE_CHILD_REQUEST_FAILURE';
 
 export function registerChild(user) {
+    console.log(user)
     const promise = fetch(`${config.USER_CREATE}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          username: user.username,
-          email: user.email,
-          password: user.password,
-          type: user.type,
-          budget_id: user.budget_id,
-          category_id: user.category_id,
-        }),
+        body: JSON.stringify({user}),
     });
     return {
         onRequest: CREATE_CHILD_REQUEST_TRIGGERED,

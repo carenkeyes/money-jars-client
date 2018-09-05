@@ -17,8 +17,15 @@ export class RegistrationChild extends React.Component {
         const {username, password} = values;
         const user = {username, password};
         user.type = 'child';
-        user.group_id = values.group_id.value,
-        user.category_id = values.category_id.value,
+        if(!this.props.manual){
+            user.group_id = values.group_id.value,
+            user.category_id = values.category_id.value,
+            user.account = this.props.account
+            user.budget_id = this.props.budget_id
+        } else if (this.props.manual){
+            user.budget_id = 'manual'
+            user.balance = parseInt(values.balance)*1000
+        }
         console.log(user);
         return this.props
             .dispatch(registerChild(user))
@@ -26,19 +33,18 @@ export class RegistrationChild extends React.Component {
 
     render(){
         const catGroups = []
-        
-        for(let i=0; i< this.props.data.length; i++){
-            catGroups.push({
-                value: this.props.data[i].id,
-                label: this.props.data[i].name
-            })
+        if(!this.props.manual){
+            for(let i=0; i< this.props.data.length; i++){
+                catGroups.push({
+                    value: this.props.data[i].id,
+                    label: this.props.data[i].name
+                })
+            }
         }
-        console.log(`catGroups: ${catGroups[0].value}`)
-        console.log(this.props.categories)
 
         return (
             <div className='child-form-wrapper'>
-                <div className='child-form'>
+                <div className='child-form form-single'>
                     <h2>Register a Child Account</h2>
                     
                     <form  
@@ -65,24 +71,34 @@ export class RegistrationChild extends React.Component {
                             name='passwordConfirm'
                             validate={[required, nonEmpty, matchesPassword]}
                         />
-                        <h6>Select a category group </h6>
-                        <Field 
+                        {!this.props.manual && <div>
+                            <label>Select a category group </label>
+                            <Field 
+                                component={SelectInput}
+                                type='text'
+                                name='group_id'
+                                options={catGroups}
+                                onChange={this.props.onChange}
+                            />
+                            <label>Assign a category</label>
+                            <Field
                             component={SelectInput}
-                            type='text'
-                            label='Choose Category Group'
-                            name='group_id'
-                            options={catGroups}
-                            onChange={this.props.onChange}
-                        />
-                        <h6>Assign a category</h6>
-                        <Field
-                        component={SelectInput}
-                            type='text'
-                            label='Choose Category Group'
-                            name='category_id'
-                            options={this.props.categories}
-                        />
+                                type='text'
+                                name='category_id'
+                                options={this.props.categories}
+                            />
+                        </div>}
+                        {this.props.manual && <div>
+                            <Field
+                                component={Input}
+                                type='number'
+                                label='Starting balance'
+                                name='balance'
+                            />
+                            </div>
+                        }
                         <button
+                            className='form-button green'
                             type='submit'
                             disabled={this.props.pristine || this.props.submitting}>
                             Register

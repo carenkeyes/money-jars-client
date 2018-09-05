@@ -5,6 +5,8 @@ const initialState = {
     loading: false,
     error: false,
     data: null,
+    balance: null,
+    toBudget: null,
 }
 
 export default function ynab(state=initialState, action){
@@ -39,6 +41,14 @@ export default function ynab(state=initialState, action){
                 loading: false,
             }
         }
+        //this should go in the budget reducer
+        case actionTypes.FETCH_YNAB_CATEGORY_BALANCE_SUCCESS:{
+                return{
+                    ...state,
+                    balance: action.response
+                }
+        }
+
         default: {
             return state;
         }

@@ -20,9 +20,8 @@ export class AddChildWrapper extends React.Component {
     }
 
     componentDidMount(){
-        console.log(this.props.user._id)
-        console.log(this.props.user.budget_id)
-        this.props.dispatch(fetchYnabCategories(this.props.user._id, this.props.user.budget_id));
+        if(this.props.user.budget_id !== 'manual'){
+        this.props.dispatch(fetchYnabCategories(this.props.user._id, this.props.user.budget_id));}
     }
 
     handleChange(event){
@@ -58,14 +57,16 @@ export class AddChildWrapper extends React.Component {
                 <p>Waiting on YNAB Categories</p>
             )
         }
-        if(this.props.data !== null){
+        if(this.props.data !== null || this.props.user.budget_id==='manual'){
             return(
                 <RegistrationChild 
                     data={this.props.data}
                     categories={this.state.categories}
                     budget_id={this.props.user.budget_id}
-                    account={this.props.account}
-                    onChange={this.handleChange} 
+                    account={this.props.user.account}
+                    onChange={this.handleChange}
+                    account_id={this.props.user.budget_id==='manual'?'null': this.props.user.account._id}
+                    manual={this.props.user.budget_id==='manual'?true:false} 
                 />
             )
         }

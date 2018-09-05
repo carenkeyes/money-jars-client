@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Request from '../Request/request';
 import {Redirect} from 'react-router-dom';
 import Parent from '../Parent/parent';
+import {fetchUserBasicInfo, updateUserProfile, fetchYnabBudgets} from '../../actions/index.actions';
 
 
 export class ParentSetup extends React.Component {
@@ -12,9 +13,13 @@ export class ParentSetup extends React.Component {
             register: false,
             setupComplete: false,
         }
+        this.getBudgets = this.getBudgets.bind(this);
+        this.budgetManually = this.budgetManually.bind(this);
     }
 
-
+    componentDidMount(){
+        this.props.dispatch(fetchUserBasicInfo())
+    }
 
     addChild = () => {
         this.setState({
@@ -25,6 +30,20 @@ export class ParentSetup extends React.Component {
     finishSetUp = () => {
         this.setState({
             setupComplete: true,
+        })
+    }
+
+    getBudgets(){
+        console.log('button clicked')
+        this.props.dispatch(fetchYnabBudgets(this.props.user._id))
+    }
+
+    budgetManually(){
+        const data = {budget_id: 'manual'}
+        console.log(this)
+        this.props.dispatch(updateUserProfile(this.props.user._id, data))
+        this.setState({
+            declined: true,
         })
     }
 
@@ -48,8 +67,17 @@ export class ParentSetup extends React.Component {
         let label1;
         let label2;
 
-        if(!this.props.user.budget_id){
-            message = <Request />
+        if(!this.props.user.budget_id &&this.props.user.account !== "manual"){
+            message = 
+                <Request 
+                    user_id = {this.props.user._id}
+                    account = {this.props.user.account}
+                    ynabData = {this.props.ynab}
+                    budget_id = {this.props.user.budget_id}
+                    onClick = {this.getBudgets}
+                    label = 'Get Budgets'
+                    budgetManually={this.budgetManually}
+                />
         }
 
         else if(this.props.user.budget_id && this.props.user.children.length === 0){
@@ -81,7 +109,8 @@ export class ParentSetup extends React.Component {
 
 const mapStateToProps = state => ({
     loggedIn: state.user.data !==null,
-    user: state.user.data
+    user: state.user.data,
+    ynab: state.ynab.data,
 })
 
 export default connect(mapStateToProps)(ParentSetup)

@@ -12,14 +12,14 @@
     transition: width .2s ease-in;
 }
 
-.Saving{
+.saving{
     background-color: #99CC33;
 }
 
-.Giving{
+.giving{
     background-color: #EC762A;
 }
 
-.Spending{
+.spending{
     background-color: #2EB6D9;
 }

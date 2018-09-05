@@ -27,7 +27,7 @@ export class RegistrationForm extends React.Component {
                 <h2>Sign up for Money Jars</h2>
                 
                 <form  
-                    className="login-form"
+                    className="login-form form-single"
                     onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
                     <Field
                         component={Input}
