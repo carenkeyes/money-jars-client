@@ -29,7 +29,7 @@ export class Navbar extends React.Component{
                     <Link to={`/register/signup`}>
                         <Button 
                             label={this.props.loggedIn? '':'Sign Up'}
-                            className='nav-button'
+                            className='nav-button visuallyhidden'
                         />
                     </Link>
                     <Link to={`/register/login`}>

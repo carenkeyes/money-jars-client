@@ -70,9 +70,10 @@ export default class Request extends React.Component{
                                 type='button'
                             />
                     </div>
-                    <div>
+                    <div className='manual-budget-section'>
                         <p>Or just starting setting up kid's accounts</p>
                         <Button
+                            className='manual-budget-button'
                             label='Budget Manually'
                             onClick={this.props.budgetManually}
                         />

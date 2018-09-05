@@ -18,17 +18,17 @@ export class RegistrationChild extends React.Component {
         const user = {username, password};
         user.type = 'child';
         if(!this.props.manual){
+            console.log('ynab')
             user.group_id = values.group_id.value,
             user.category_id = values.category_id.value,
-            user.account = this.props.account
             user.budget_id = this.props.budget_id
         } else if (this.props.manual){
+            console.log('manual')
             user.budget_id = 'manual'
             user.balance = parseInt(values.balance)*1000
         }
         console.log(user);
-        return this.props
-            .dispatch(registerChild(user))
+        return this.props.dispatch(registerChild(user))
     }
 
     render(){

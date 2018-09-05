@@ -22,7 +22,7 @@ export function createGoal(goal, userId){
     }
 }
 
-export const FETCH_GOAL_INFO_TRIGGERED = 'FETCH_GOAL_INFO_TRIGGERED'
+/*export const FETCH_GOAL_INFO_TRIGGERED = 'FETCH_GOAL_INFO_TRIGGERED'
 export const FETCH_GOAL_INFO_SUCCESS = 'FETCH_GOAL_INFO_SUCCESS'
 export const FETCH_GOAL_INFO_FAILURE = 'FETCH_GOAL_INFO_FAILURE'
 
@@ -42,7 +42,7 @@ export function fetchGoalInfo() {
         onFailure: FETCH_GOAL_INFO_FAILURE,
         promise,
     };
-}
+}*/
 
 export const DELETE_GOAL_TRIGGERED = 'DELETE_GOAL_TRIGGERED'
 export const DELETE_GOAL_SUCCESS = 'DELETE_GOAL_SUCCESS'

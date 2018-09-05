@@ -5,20 +5,17 @@ import {Link} from 'react-router-dom';
 export default function Footer(){
     return (
         <div className='footer'>
-        <ul>
-                    <li>
-                        <p>Created by Caren Keyes</p>
-                    </li>
-                    <li>
-                        <Link to={`/register`}>Register</Link>
-                    </li>
-                    <li>
-                        <Link to={`$/register/login`}>Login</Link>
-                    </li>
-                    <li>
-                        <Link to={`/privacy`}>Privacy Policy</Link>
-                    </li>
-                </ul>
+            <div className='footer-credit'>
+                <h4 className='footer-credit-text'>Created by Caren Keyes</h4>
+            </div>
+            <ul>
+                <li>
+                    <Link to={`$/register/login`}>Logout</Link>
+                </li>
+                <li>
+                    <Link to={`/privacy`}>Privacy Policy</Link>
+                </li>
+            </ul>
         </div>
     )
 }

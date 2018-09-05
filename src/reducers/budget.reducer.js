@@ -13,17 +13,31 @@ export default function budget(state=initialState, action){
                 goals: [...state.goals, action.response.goal]
             }
         }
-        case actionTypes.FETCH_GOAL_INFO_SUCCESS:{
+        /*case actionTypes.FETCH_GOAL_INFO_SUCCESS:{
             console.log('goal info success reducer')
             return {
                 ...state,
                 goals: action.response.user.goals
             }
-        }
+        }*/
         case actionTypes.DELETE_GOAL_SUCCESS: {
             return {
                 ...state,
                 goals: action.response.data
+            }
+        }
+        case actionTypes.FETCH_USER_LOGIN_REQUEST_SUCCESS: {
+            return {
+                ...state,
+                total: action.response.userInfo.balance,
+                goals: action.response.userInfo.goals,
+            }
+        }
+        case actionTypes.FETCH_USER_BASIC_INFO_REQUEST_SUCCESS: {
+            return {
+                ...state,
+                total: action.response.user.balance,
+                goals: action.response.user.goals
             }
         }
         default: {
