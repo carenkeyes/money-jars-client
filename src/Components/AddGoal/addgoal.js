@@ -9,7 +9,7 @@ import Button from '../Button/button';
 import './addgoal.css'
 
 const goalTypes = [
-    {value: 'savings', label: 'Savings'},
+    {value: 'saving', label: 'Savings'},
     {value: 'spending', label: 'Spending'},
     {value: 'giving', label: 'Giving'},
 ]
@@ -52,12 +52,12 @@ export class AddGoal extends React.Component {
                                 <Field
                                     component={Input}
                                     type='number'
-                                    label='Amount'
+                                    label='How much does it cost?'
                                     name='amount'
                                 />
                             </div>
                             <div className='form-section'>
-                                <h6> Choose category </h6>
+                                <label> Choose category </label>
                                 <Field
                                     component={SelectInput}
                                     type='text'

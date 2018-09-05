@@ -20,7 +20,7 @@ export default class Request extends React.Component{
         }
 
         this.getToken = this.getToken.bind(this);
-        this.budgetManually = this.budgetManually.bind(this);
+
     }
 
 
@@ -38,14 +38,7 @@ export default class Request extends React.Component{
         win.focus();
     }
 
-    budgetManually(){
-        const data = {budget_id: 'manual'}
-        console.log(this)
-        this.props.dispatch(updateUserProfile(this.props.user_id, data))
-        this.setState({
-            declined: true,
-        })
-    }
+
 
     render(){
         if(this.state.declined){
@@ -81,7 +74,7 @@ export default class Request extends React.Component{
                         <p>Or just starting setting up kid's accounts</p>
                         <Button
                             label='Budget Manually'
-                            onClick={this.budgetManually}
+                            onClick={this.props.budgetManually}
                         />
                     </div>
                 </div>

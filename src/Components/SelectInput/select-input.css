@@ -8,3 +8,9 @@ select{
     margin-top: .2em;
     margin-bottom: 1em;
 }
+
+.select-input{
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}

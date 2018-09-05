@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
 import {CREATE_GOAL_REQUEST_SUCCESS} from '../actions/index.actions';
 //import { routerReducer } from 'connected-react-router';
-//import budgetReducer from './budget';
+import budgetReducer from './budget.reducer';
 import userReducer from './user.reducer';
 import ynabReducer from './ynab.reducer';
 import appState from './appState.reducer';
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   //routing: routerReducer,
   //form: reduxFormReducer,
-  //budget: budgetReducer,
+  budget: budgetReducer,
   ynab: ynabReducer,
   form: reduxFormReducer.plugin({
     'new-goal' : (state, action) => {

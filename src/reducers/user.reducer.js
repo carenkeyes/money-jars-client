@@ -47,12 +47,18 @@ export default function user(state=initialState, action) {
       }
     }
     case actionTypes.CREATE_GOAL_REQUEST_SUCCESS: {
-      return {
-        ... state,
-      data: {
-        goals: [...user.data.goals, action.response.goal]
-      }  
-      }
+      const newState = {...state};
+      console.log(newState)
+      newState.data.goals = [
+        ...newState.data.goals, action.response.goal
+      ];
+      return newState
+    }
+    case actionTypes.DELETE_GOAL_SUCCESS: {
+      const newState = {...state};
+      console.log(action.response.data)
+      newState.data.goals = action.response.data
+      return newState
     }
     default: {
       return state;

@@ -109,7 +109,7 @@ p{
 }
 
 section{
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
     min-height: 200px;
     background-color: #FFF7DB;
     display: flex;
@@ -120,7 +120,7 @@ section{
 
 
 section:nth-child(even){
-    background-color: #FAF2D6;
+    background-color: white;
 }
 
 .form-double{

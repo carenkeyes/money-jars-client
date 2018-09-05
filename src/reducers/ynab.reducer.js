@@ -41,6 +41,7 @@ export default function ynab(state=initialState, action){
                 loading: false,
             }
         }
+        //this should go in the budget reducer
         case actionTypes.FETCH_YNAB_CATEGORY_BALANCE_SUCCESS:{
                 return{
                     ...state,

@@ -17,7 +17,9 @@ export class ChildWrapper extends React.Component{
     }
 
     componentDidMount(){
-        this.props.dispatch(fetchYnabCategoryBalance(this.props.user._id))
+        if(this.props.user.budget_id !== 'manual'){
+            this.props.dispatch(fetchYnabCategoryBalance(this.props.user._id))
+        }
     }
 
     handleClick(){
@@ -36,26 +38,35 @@ export class ChildWrapper extends React.Component{
 
         let goals;
         goals = this.props.user.goals.map(goal =>
-            <Goal key={goal.title} {...goal} />
+            <Goal 
+                key={goal._id}
+                category={goal.category}
+                title={goal.title}
+                amount={goal.goal_amount}
+                saved={goal.saved_amount}
+                imgUrl={goal.goal_image ? goal.goal_image: null}
+                userId={this.props.user._id}
+             {...goal} />
         )
 
         let budgeted = 0;
 
         for(let i=0; i<goals.length; i++){
-            budgeted = budgeted+this.props.goals[i].saved_amount
+            budgeted = budgeted+this.props.user.goals[i].saved_amount
         }
-
-        console.log(this.props.budget)
 
         let toBudget;
         
+        if(this.props.user.budget_id !== 'manual'){
+            toBudget=(this.props.budget.balance)-budgeted;
+        }
+        else if(this.props.user.balance){
+            toBudget=(this.props.user.balance)-budgeted;
 
-        toBudget=(this.props.budget.balance)-budgeted;
-        console.log(this.props.budget.balance)
-        console.log(budgeted)
+        }
+
         toBudget=toBudget/1000
-        
-        console.log(`toBudget: ${toBudget}`)
+
         let message;
         if(!this.props.user.goals){
             message =
@@ -80,7 +91,6 @@ export class ChildWrapper extends React.Component{
                 addNew={this.state.addNew}
                 userId={this.props.user._id}
                 goals={goals}
-                max={toBudget}
             />
         )
 
