@@ -54,7 +54,7 @@ export class Parent extends React.Component {
         }
 
         if(this.state.setupComplete && this.props.user.children.length === 1){
-            message = <p>See an overview of{this.props.user.children[0].username}'s
+            message = <p>See an overview of{this.props.user.children[0]}'s
                  account below </p>
         }else if(this.state.setupComplete && this.props.user.children.length > 1){
             message = <p>See an overview of your children's accounts below</p>
@@ -65,7 +65,7 @@ export class Parent extends React.Component {
             label2 = 'Add Child'
         }
         else if(!this.state.setupComplete && this.props.user.children.length === 1){
-            message = <p> You can monitor {this.props.user.children[0].username}'s account
+            message = <p> You can monitor {this.props.user.children[0]}'s account
                 activity and withdrawal requests here </p>
                 label1 ='Add Child'
                 label2 ='Finish setup'
@@ -108,8 +108,9 @@ export class Parent extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.user.data !== null,
-    user: state.user.data
+    loggedIn: state.user._id !== null,
+    user: state.user,
+    children: state.children,
 });
 
 export default connect(mapStateToProps)(Parent);

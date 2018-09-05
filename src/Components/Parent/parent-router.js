@@ -24,7 +24,7 @@ export class ParentRouter extends React.Component {
             )
         }
         let message=<p>See your kids accounts!</p>
-        let greeting=`Welcome ${this.props.user.username}!`
+        let greeting=`Welcome ${this.props.username}!`
 
         return(
             <Parent 
@@ -38,6 +38,7 @@ export class ParentRouter extends React.Component {
 const mapStateToProps = state => ({
     loggedIn: state.user._id !==null,
     user: state.user,
+    children: state.children,
 })
 
 export default connect(mapStateToProps)(ParentRouter);

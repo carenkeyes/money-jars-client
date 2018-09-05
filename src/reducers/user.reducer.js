@@ -6,6 +6,7 @@ const initialState = {
   usertype: null,
   budget_id: null,
   setupComplete: null,
+  children: null,
 }
 
 export default function user(state=initialState, action) {
@@ -19,6 +20,7 @@ export default function user(state=initialState, action) {
         usertype: action.response.user.usertype,
         budget_id: action.response.user.budget_id,
         setupComplete: action.response.user.setupComplete,
+        children: action.response.user.children,
       }
     }
     case actionTypes.FETCH_USER_LOGIN_REQUEST_SUCCESS: {
@@ -29,6 +31,7 @@ export default function user(state=initialState, action) {
         usertype: action.response.userInfo.usertype,
         budget_id: action.response.userInfo.budget_id,
         setupComplete: action.response.userInfo.setupComplete,
+        children: action.response.userInfo.children,
       }
     }
     //should make a child reducer
@@ -40,11 +43,9 @@ export default function user(state=initialState, action) {
     case actionTypes.UPDATE_USER_PROFILE_SUCCESS: {
       return {
         ...state,
-        _id: action.response.updatedUser._id,
-        username: action.response.updatedUser.username,
-        usertype: action.response.updatedUser.usertype,
         budget_id: action.response.updatedUser.budget_id,
-        setupComplete: action.response.updatedUser.setupComplete,  
+        setupComplete: action.response.updatedUser.setupComplete,
+        children: action.response.updatedUser.children, 
       }
     }
     case actionTypes.LOGOUT_USER: {
