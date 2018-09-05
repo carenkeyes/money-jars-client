@@ -1,4 +1,5 @@
 import config from '../config'
+import GoalDetails from '../Components/GoalDetails/goal-details';
 
 export const CREATE_GOAL_REQUEST_TRIGGERED = 'CREATE_GOAL_REQUEST_TRIGGERED'
 export const CREATE_GOAL_REQUEST_SUCCESS = 'CREATE_GOAL_REQUEST_SUCCESS'
@@ -63,14 +64,25 @@ export function deleteGoal(dataId, userId){
     }
 }
 
-export const ADD_GOAL = 'ADD_GOAL';
-export const addGoal= (goal) => ({
-    type: ADD_GOAL,
-    goal
-})
+export const UPDATE_GOAL_TRIGGERED = 'UPDATE_GOAL_TRIGGERED'
+export const UPDATE_GOAL_SUCCESS = 'UPDATE_GOAL_SUCCESS'
+export const UPDATE_GOAL_FAILURE = 'UPDATE_GOAL_FAILURE'
 
-export const UPDATE_GOAL = 'UPDATE_GOAL';
-export const updateGoal = (data) => ({
-    type: UPDATE_GOAL,
-    data
-})
+export function updateGoal(goalId, userId, amount){
+    const promise = fetch(`${config.API_BASE_URL}/goal/${goalId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userId: userId,
+            change: amount,
+        })
+    })
+    return{
+        onRequest: UPDATE_GOAL_TRIGGERED,
+        onSuccess: UPDATE_GOAL_SUCCESS,
+        onFailure: UPDATE_GOAL_FAILURE,
+        promise,
+    }
+}

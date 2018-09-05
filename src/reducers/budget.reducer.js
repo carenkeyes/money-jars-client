@@ -40,6 +40,13 @@ export default function budget(state=initialState, action){
                 goals: action.response.user.goals
             }
         }
+        case actionTypes.UPDATE_GOAL_SUCCESS: {
+            console.log(action.response)
+            return{
+                ...state,
+                goals: action.response
+            }
+        }
         default: {
             return state;
         }

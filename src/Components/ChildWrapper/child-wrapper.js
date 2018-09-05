@@ -65,7 +65,9 @@ export class ChildWrapper extends React.Component{
             toBudget=(this.props.user.balance)-budgeted;
 
         }*/
-        toBudget=(this.props.budget.totla)-budgeted;
+        console.log(this.props.budget.total)
+        console.log(budgeted)
+        toBudget=(this.props.budget.total)-budgeted;
 
         toBudget=toBudget/1000
 

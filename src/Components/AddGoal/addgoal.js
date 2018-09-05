@@ -70,7 +70,7 @@ export class AddGoal extends React.Component {
                                 <Field
                                     component={Input}
                                     type='text'
-                                    label='Image URL'
+                                    label='Image URL (optional)'
                                     name='imageurl'
                                 />
                             </div>

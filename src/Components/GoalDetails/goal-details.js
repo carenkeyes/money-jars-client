@@ -45,9 +45,21 @@ export default class GoalDetails extends React.Component{
             return(
                 <div className='goal-options'>
                     <div className='change-goal'>
-                        <AddToGoal editType={this.state.editType}/>
-                        <WithdrawFromGoal editType={this.state.editType}/>
-                        <MoveFromGoal editType={this.state.editType}/>
+                        <AddToGoal 
+                            editType={this.state.editType}
+                            userId={this.props.userId}
+                            goalId={this.props.goalId}
+                        />
+                        <WithdrawFromGoal 
+                            editType={this.state.editType}
+                            userId={this.props.userId}
+                            goalId={this.props.goalId}
+                        />
+                        <MoveFromGoal 
+                            editType={this.state.editType}
+                            userId={this.props.userId}
+                            goalId={this.props.goalId}
+                        />
                         <DeleteGoal 
                             editType={this.state.editType}
                             userId={this.props.userId}

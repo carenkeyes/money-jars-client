@@ -6,13 +6,18 @@ import {updateGoal} from '../../actions/budget';
 export class WithdrawFromGoal extends React.Component{
 
     onSubmit(values){
-        console.log(values);
-        const data = {}
-        data.amount = parseInt(values.amount)
-        data.id = this.props.id
-        console.log(data)
-        return this.props
-            .dispatch(updateGoal(data))
+        console.log(values)
+        console.log(this.props)
+        this.onSubmitWithProps(values, this.props)
+    }
+
+   onSubmitWithProps(values, props){
+        console.log(values)
+        let amount=(-parseInt(values.amount)*1000)
+        console.log(amount)
+        console.log(props.userId)
+        console.log(props.goalId)
+        return this.props.dispatch(updateGoal(props.goalId, props.userId, amount))
     }
 
     render(){
