@@ -40,7 +40,7 @@ export default class GoalDetails extends React.Component{
     }
 
     render(){ 
-
+        
         if(this.props.options){
             return(
                 <div className='goal-options'>

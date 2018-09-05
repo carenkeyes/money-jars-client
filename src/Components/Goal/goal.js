@@ -15,7 +15,6 @@ export class Goal extends React.Component{
             options: false
         }
         this.handleClick = this.handleClick.bind(this);
-        this.handleDeleteGoal = this.handleDeleteGoal.bind(this);
     }
 
     handleClick(){
@@ -25,13 +24,8 @@ export class Goal extends React.Component{
         })
     }
 
-    handleDeleteGoal(){
-        this.props.dispatch(deleteGoal(this.props.key, this.props.userId))
-    }
-
     render(){
         console.log(this.props._id)
-        console.log(this.key)
         let togo = this.props.amount-this.props.saved;
         return(
             <section className='goal-section'>
@@ -72,14 +66,13 @@ export class Goal extends React.Component{
                     options={this.state.options}
                     goalId={this.props._id}
                     userId={this.props.userId}
-                    handledeleteGoal={this.handleDeleteGoal}
                      />          
             </section>
         )
     }
 }
 const mapStatetoProps = state => ({
-    user: state.user.data,
+    user: state.user,
 });
 
 export default connect(mapStatetoProps)(Goal)

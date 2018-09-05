@@ -36,8 +36,8 @@ export class ParentRouter extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.user.data !==null,
-    user: state.user.data,
+    loggedIn: state.user._id !==null,
+    user: state.user,
 })
 
 export default connect(mapStateToProps)(ParentRouter);

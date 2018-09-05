@@ -22,7 +22,7 @@ export class LoginForm extends React.Component {
             );
         }
         return (
-            <div className='user-form'>                
+            <div className='user-form log-in'>                
                 <h2>Log in to your account</h2>
                 <form
                     className='login-form form-single'

@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import Input from '../Input/input';
 
@@ -32,4 +32,4 @@ export class SimpleForm extends React.Component{
 export default reduxForm({
     form: 'simpleform',
 
-})(SimpleForm)
+})(SimpleForm)*/

@@ -5,7 +5,7 @@ import Goal from '../Goal/goal';
 import Child from '../Child/child';
 import AddGoal from '../AddGoal/addgoal';
 
-import {fetchYnabCategoryBalance, fetchUserBasicInfo} from '../../actions/index.actions';
+import {fetchYnabCategoryBalance, fetchGoalInfo} from '../../actions/index.actions';
 
 export class ChildWrapper extends React.Component{
     constructor(){
@@ -20,6 +20,7 @@ export class ChildWrapper extends React.Component{
         if(this.props.user.budget_id !== 'manual'){
             this.props.dispatch(fetchYnabCategoryBalance(this.props.user._id))
         }
+        this.props.dispatch(fetchGoalInfo)
     }
 
     handleClick(){
@@ -58,7 +59,7 @@ export class ChildWrapper extends React.Component{
         let toBudget;
         
         if(this.props.user.budget_id !== 'manual'){
-            toBudget=(this.props.budget.balance)-budgeted;
+            toBudget=(this.props.ynab.balance)-budgeted;
         }
         else if(this.props.user.balance){
             toBudget=(this.props.user.balance)-budgeted;
@@ -98,9 +99,9 @@ export class ChildWrapper extends React.Component{
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.user.data !==null,
-    user: state.user.data,
-    budget: state.ynab,
+    loggedIn: state.user._id !==null,
+    user: state.user,
+    ynab: state.ynab,
 });
 
 export default connect(mapStatetoProps)(ChildWrapper)

@@ -45,7 +45,7 @@ export class Navbar extends React.Component{
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.user.data !== null,
+    loggedIn: state.user._id !== null,
 });
 
 export default connect(mapStatetoProps)(Navbar)

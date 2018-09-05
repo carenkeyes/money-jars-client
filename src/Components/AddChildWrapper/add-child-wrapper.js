@@ -75,7 +75,7 @@ export class AddChildWrapper extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.user.data,
+    user: state.user,
     loading: state.ynab.loading,
     data: state.ynab.data,
 })

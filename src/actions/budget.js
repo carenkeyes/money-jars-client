@@ -22,14 +22,11 @@ export function createGoal(goal, userId){
     }
 }
 
-export const FETCH_CHILD_INFO_TRIGGERED = 'FETCH_CHILD_INFO_TRIGGERED'
-export const FETCH_CHILD_INFO_SUCCESS = 'FETCH_CHILD_INFO_SUCCESS'
-export const FETCH_CHILD_INFO_FAILURE = 'FETCH_CHILD_INFO_FAILURE'
+export const FETCH_GOAL_INFO_TRIGGERED = 'FETCH_GOAL_INFO_TRIGGERED'
+export const FETCH_GOAL_INFO_SUCCESS = 'FETCH_GOAL_INFO_SUCCESS'
+export const FETCH_GOAL_INFO_FAILURE = 'FETCH_GOAL_INFO_FAILURE'
 
-//let's make this fetchGoalInfo and push to the budget store instead
-//don't forget to check on creating child and be certain that the budget balance
-//gets put in the right place
-export function fetchChildInfo() {
+export function fetchGoalInfo() {
     console.log('fetch child info')
     const sessionKey = sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
     const token = sessionKey.split(' ')[1]
@@ -40,9 +37,9 @@ export function fetchChildInfo() {
         }
     });
     return {
-        onRequest: FETCH_CHILD_INFO_TRIGGERED,
-        onSuccess: FETCH_CHILD_INFO_SUCCESS,
-        onFailure: FETCH_CHILD_INFO_FAILURE,
+        onRequest: FETCH_GOAL_INFO_TRIGGERED,
+        onSuccess: FETCH_GOAL_INFO_SUCCESS,
+        onFailure: FETCH_GOAL_INFO_FAILURE,
         promise,
     };
 }
