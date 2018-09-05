@@ -9,6 +9,7 @@ export class WithdrawFromGoal extends React.Component{
         console.log(values)
         console.log(this.props)
         this.onSubmitWithProps(values, this.props)
+        .then(() => this.props.dispatch(this.props.closeOptions))
     }
 
    onSubmitWithProps(values, props){

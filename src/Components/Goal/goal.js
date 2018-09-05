@@ -26,6 +26,18 @@ export class Goal extends React.Component{
 
     render(){
         console.log(this.props._id)
+        console.log(this.props.budget.goals)
+        const goalOptions = []
+        let goals = this.props.budget.goals
+        console.log(goals)
+        for(let goal of goals){
+            goalOptions.push({
+                label: goal.title,
+                value: goal._id
+            })
+        }
+        console.log(goalOptions)
+
         let togo = this.props.amount-this.props.saved;
         return(
             <section className='goal-section'>
@@ -65,7 +77,10 @@ export class Goal extends React.Component{
                 <GoalDetails 
                     options={this.state.options}
                     goalId={this.props._id}
+                    category={this.props.category}
                     userId={this.props.userId}
+                    goalOptions={goalOptions}
+                    closeOptions={this.handleClick}
                      />          
             </section>
         )
@@ -73,6 +88,7 @@ export class Goal extends React.Component{
 }
 const mapStatetoProps = state => ({
     user: state.user,
+    budget: state.budget,
 });
 
 export default connect(mapStatetoProps)(Goal)

@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../Input/input';
 import {Field, reduxForm} from 'redux-form';
-import {updateGoal} from '../../actions/budget';
+import {updateGoal} from '../../actions/index.actions';
 
 export class AddToGoal extends React.Component{
     constructor(){
@@ -13,15 +13,13 @@ export class AddToGoal extends React.Component{
         console.log(values)
         console.log(this.props)
         this.onSubmitWithProps(values, this.props)
+        .then(() => this.props.dispatch(this.props.closeOptions))
     }
 
    onSubmitWithProps(values, props){
-        console.log(values)
         let amount=parseInt(values.amount)*1000
-        console.log(amount)
-        console.log(props.userId)
-        console.log(props.goalId)
         return this.props.dispatch(updateGoal(props.goalId, props.userId, amount))
+            
     }
 
    /* onSubmit(values){

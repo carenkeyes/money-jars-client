@@ -40,6 +40,7 @@ export default class GoalDetails extends React.Component{
     }
 
     render(){ 
+        console.log(this.props.goalOptions)
         
         if(this.props.options){
             return(
@@ -49,16 +50,20 @@ export default class GoalDetails extends React.Component{
                             editType={this.state.editType}
                             userId={this.props.userId}
                             goalId={this.props.goalId}
+                            closeOptions={this.props.closeOptions}
                         />
                         <WithdrawFromGoal 
                             editType={this.state.editType}
                             userId={this.props.userId}
                             goalId={this.props.goalId}
+                            closeOptions={this.props.closeOptions}
                         />
                         <MoveFromGoal 
                             editType={this.state.editType}
                             userId={this.props.userId}
                             goalId={this.props.goalId}
+                            goalOptions={this.props.goalOptions}
+                            closeOptions={this.props.closeOptions}
                         />
                         <DeleteGoal 
                             editType={this.state.editType}
