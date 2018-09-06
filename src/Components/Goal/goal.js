@@ -32,9 +32,8 @@ export class Goal extends React.Component{
                 value: goal._id
             })
         }
-        console.log(this.props.budget.toBudget)
+
         let max = (this.props.budget.toBudget/1000).toFixed([2])
-        console.log(max)
 
         let price = this.props.amount/1000
         price = price.toFixed([2])
@@ -49,11 +48,11 @@ export class Goal extends React.Component{
                 <div>
                     <h2 className='goal-title'>{this.props.title}: <span className={`${this.props.category}-title`}>{this.props.category}</span></h2>
                 </div>
-                <div className = 'goalContent'>
+                <div className = {`goalContent content-${this.props.category}`}>
                     <div className='goalImage'>
                         <Avatar 
-                            image={this.props.imageurl}
-                            className={this.props.imageurl ? 'avatarImage' : `${this.props.category}-pig piggy-bank` }
+                            image={this.props.imgUrl}
+                            className={this.props.imgUrl ? 'avatarImage' : `${this.props.category}-pig piggy-bank` }
                         />
                     </div>
                     <div className='goal-info'>
@@ -86,6 +85,7 @@ export class Goal extends React.Component{
                     userId={this.props.userId}
                     goalOptions={goalOptions}
                     closeOptions={this.handleClick}
+                    saved={this.props.saved}
                     max={max}
                      />          
             </section>

@@ -58,7 +58,7 @@ export default class GoalDetails extends React.Component{
                             goalId={this.props.goalId}
                             closeOptions={this.props.closeOptions}
                             category={this.props.category}
-                            max={this.props.max}
+                            max={this.props.saved}
                         />
                         <MoveFromGoal 
                             editType={this.state.editType}
@@ -67,7 +67,7 @@ export default class GoalDetails extends React.Component{
                             goalOptions={this.props.goalOptions}
                             closeOptions={this.props.closeOptions}
                             category={this.props.category}
-                            max={this.props.max}
+                            max={this.props.saved}
                         />
                         <DeleteGoal 
                             editType={this.state.editType}

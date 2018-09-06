@@ -38,7 +38,7 @@ export default function budget(state=initialState, action){
             console.log(action.response)
             return{
                 ...state,
-                goals: action.response
+                goals: action.response.goals
             }
         }
         case actionTypes.UPDATE_TO_BUDGET: {

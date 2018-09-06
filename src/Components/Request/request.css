@@ -6,9 +6,50 @@
 
 .ynab-option{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 30px;
 }
 
 .auth-message{
     width: 66%;
+}
+
+.manual-budget-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.manual-budget-button{
+    height: 50px;
+    width: 300px;
+    font-weight: bold;
+    flex: auto;
+}
+
+@media only screen and (min-width: 600px){
+
+    .ynab-option{
+        flex-direction: row;
+    }
+
+}
+
+@media only screen and (min-width: 1400px){
+
+    .manual-budget-section{
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .manual-budget-button{
+        height: 150px;
+        width: 150px;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+
 }

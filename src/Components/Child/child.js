@@ -8,12 +8,11 @@ import { connect } from 'react-redux';
 export class Child extends React.Component{
 
     componentDidMount(){
-        console.log(this.props.toBudget)
         this.props.dispatch(updateToBudget(this.props.toBudget))
     }
 
     render(){
-        console.log(this.props.goals)
+        
         return (
             <div className='child-page'>;
                 <Header 

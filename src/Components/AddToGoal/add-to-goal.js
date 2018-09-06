@@ -48,7 +48,7 @@ export class AddToGoal extends React.Component{
                                 id={this.props.id}
                                 name='amount'
                                 max={this.props.max}
-                                step={this.props.step}
+                                step={0.01}
                             />
                         </div>
                         <button

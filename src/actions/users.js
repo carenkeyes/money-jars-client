@@ -150,8 +150,6 @@ export const UPDATE_USER_PROFILE_SUCCESS = 'UPDATE_USER_PROFILE_SUCCESS'
 export const UPDATE_USER_PROFILE_FAILURE = 'UPDATE_USER_PROFILE_FAILURE'
 
 export function updateUserProfile(userId, data){
-    console.log(`userId: ${userId}`)
-    console.log(`data: ${data.budget_id}`)
     const promise = fetch(`${config.API_BASE_URL}/user/${userId}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
