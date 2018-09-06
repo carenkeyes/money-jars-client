@@ -40,9 +40,9 @@ export class WithdrawFromGoal extends React.Component{
                             InputProps={{inputProps: {min: 0, max: 10}}} 
                         />
                         <button
-                            className='submit-edit-goal green click'
+                            className={`submit-edit-goal form-button click ${this.props.category}`}
                             type="submit">
-                            Add
+                            Withdraw
                         </button>
                     </form>
                 </div>

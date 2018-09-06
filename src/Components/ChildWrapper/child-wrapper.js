@@ -70,9 +70,11 @@ export class ChildWrapper extends React.Component{
         toBudget=(this.props.budget.total)-budgeted;
 
         toBudget=toBudget/1000
+        console.log(this.props.budget.goals===undefined)
+        console.log(this.props.budget.goals.length)
 
         let message;
-        if(!this.props.budget.goals){
+        if(this.props.budget.goals.length===0){
             message =
                 <div className='budget-message'>
                     <p> You have <span className='amount-to-budget'>${toBudget}</span> that needs a job!</p>

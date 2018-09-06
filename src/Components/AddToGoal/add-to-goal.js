@@ -40,18 +40,18 @@ export class AddToGoal extends React.Component{
                         className='edit-goal-form'
                         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
                         <div className='form-input-fields'>
+                            <label>How much would you like to add?</label>
                             <Field
                                 component={Input}
                                 className='edit-goal-input'
                                 type='number'
                                 id={this.props.id}
-                                label='How much would you like to add?'
                                 name='amount'
                                 InputProps={{inputProps: {min: 0, max: 10}}} 
                             />
                         </div>
                         <button
-                            className='submit-edit-goal form-button click green'
+                            className={`submit-edit-goal form-button click ${this.props.category}`}
                             type="submit">
                             Add
                         </button>

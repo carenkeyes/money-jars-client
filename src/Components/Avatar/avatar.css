@@ -14,14 +14,14 @@ img{
 }
 @media only screen and (min-width: 600px){
 
-    .header-image{
-        height: 100%;
-        flex: auto;    
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        width: 80%;
-    }
+.header-image{
+    height: 100%;
+    flex: auto;    
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 80%;
+}
 
    
 .home-left-image{
@@ -53,8 +53,8 @@ img{
 }
 
 .piggy-bank{
-    height: 300px;
-    width: 300px;
+    height: 100%;
+    width: 100%;
     flex: auto;    
     background-repeat: no-repeat;
     background-size: contain;

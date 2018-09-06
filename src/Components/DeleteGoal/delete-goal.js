@@ -27,12 +27,11 @@ export class DeleteGoal extends React.Component{
             return(
                 <div className="add-to-goal">
                     <form
-                        className='delete-goal-form'
-                        onSubmit={this.props.handleSubmit(this.onSubmit)}
-                    >
-                        <p>Are you sure you want to delete this goal?</p>
+                        className='edit-goal-form'
+                        onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                        <label>Are you sure you want to delete this goal?</label>
                         <button
-                            className='submit-edit-goal click red'
+                        className={`submit-edit-goal form-button click red`}
                             type="submit">
                             Delete
                         </button>

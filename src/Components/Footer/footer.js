@@ -6,7 +6,8 @@ export default function Footer(){
     return (
         <div className='footer'>
             <div className='footer-credit'>
-                <h4 className='footer-credit-text'>Created by Caren Keyes</h4>
+                <p className='footer-credit-text'>
+                    Created by <span className='footer-credit-name'>Caren Keyes</span></p>
             </div>
             <ul>
                 <li>

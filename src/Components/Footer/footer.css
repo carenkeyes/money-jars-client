@@ -30,9 +30,17 @@ a{
 .footer-credit{
     display: flex;
     align-items: center;
+    font-size: 24px;
+    color: #33CCCC;
 }
 
 .footer-credit-text{
-    font-size: 36px;
+    font-size: 16px;
+    color: #33CCCC;
+}
+
+.footer-credit-name{
     font-weight: bold;
+    font-size: 24px;
+    color: white;
 }

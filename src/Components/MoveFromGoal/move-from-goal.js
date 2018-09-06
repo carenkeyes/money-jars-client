@@ -59,7 +59,7 @@ export class MoveFromGoal extends React.Component{
                         />
                         </div>
                         <button
-                            className='submit-edit-goal click green'
+                        className={`submit-edit-goal form-button click ${this.props.category}`}
                             type="submit">
                             Move
                         </button>
