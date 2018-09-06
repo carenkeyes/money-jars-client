@@ -14,7 +14,7 @@ export class WithdrawFromGoal extends React.Component{
 
    onSubmitWithProps(values, props){
         console.log(values)
-        let amount=(-parseInt(values.amount)*1000)
+        let amount=(-parseFloat(values.amount, 10)*1000)
         console.log(amount)
         console.log(props.userId)
         console.log(props.goalId)
@@ -40,7 +40,7 @@ export class WithdrawFromGoal extends React.Component{
                             InputProps={{inputProps: {min: 0, max: 10}}} 
                         />
                         <button
-                            className={`submit-edit-goal form-button click ${this.props.category}`}
+                            className={`submit-edit-goal form-button click pink`}
                             type="submit">
                             Withdraw
                         </button>

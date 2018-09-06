@@ -17,7 +17,7 @@ export class AddToGoal extends React.Component{
     }
 
    onSubmitWithProps(values, props){
-        let amount=parseInt(values.amount)*1000
+        let amount=parseFloat(values.amount, 10)*1000
         return this.props.dispatch(updateGoal(props.goalId, props.userId, amount))
             
     }
@@ -51,7 +51,7 @@ export class AddToGoal extends React.Component{
                             />
                         </div>
                         <button
-                            className={`submit-edit-goal form-button click ${this.props.category}`}
+                            className={`submit-edit-goal form-button click pink`}
                             type="submit">
                             Add
                         </button>

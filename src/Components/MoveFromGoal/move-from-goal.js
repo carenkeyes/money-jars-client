@@ -16,7 +16,7 @@ export class MoveFromGoal extends React.Component{
     }
 
     onSubmitWithProps(values, props){
-        let amountToAdd=parseInt(values.amount)*1000;
+        let amountToAdd=parseFloat(values.amount, 10)*1000;
         let amountToRemove=-amountToAdd;
         let addGoal=values.category.value;
         let removeGoal=props.goalId;
@@ -59,7 +59,7 @@ export class MoveFromGoal extends React.Component{
                         />
                         </div>
                         <button
-                        className={`submit-edit-goal form-button click ${this.props.category}`}
+                        className={`submit-edit-goal form-button click pink`}
                             type="submit">
                             Move
                         </button>

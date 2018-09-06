@@ -37,8 +37,14 @@ export class Goal extends React.Component{
             })
         }
         console.log(goalOptions)
+        let price = this.props.amount/1000
+        price = price.toFixed([2])
+        console.log(price)
+        let saved = this.props.saved/1000
+        saved = saved.toFixed([2])
 
         let togo = this.props.amount-this.props.saved;
+        togo = (togo/1000).toFixed([2])
         return(
             <section className='goal-section'>
                 <div>
@@ -53,7 +59,7 @@ export class Goal extends React.Component{
                     </div>
                     <div className='goal-info'>
                         <div className='goal-total'>
-                            <p className='goal-text'> I need: <span className='money-value'> ${this.props.amount/1000} </span> </p>
+                            <p className='goal-text'> I need: <span className='money-value'> ${price} </span> </p>
                             <Button 
                             label={this.state.options ? 'Close': 'Options'}
                             onClick={this.handleClick}
@@ -68,8 +74,8 @@ export class Goal extends React.Component{
                             />
                         </div>
                         <div className='goal-progress'>
-                        <p className='goal-text'>I have: <span className='money-value'> ${this.props.saved/1000} </span> </p> 
-                        <p className='goal-text'><span className='money-value'> ${togo/1000} </span> left to save! </p>
+                        <p className='goal-text'>I have: <span className='money-value'> ${saved} </span> </p> 
+                        <p className='goal-text'><span className='money-value'> ${togo} </span> left to save! </p>
                         </div>
                     </div>
                     

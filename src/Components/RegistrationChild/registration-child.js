@@ -25,7 +25,7 @@ export class RegistrationChild extends React.Component {
         } else if (this.props.manual){
             console.log('manual')
             user.budget_id = 'manual'
-            user.balance = parseInt(values.balance)*1000
+            user.balance = parseFloat(values.balance, 10)*1000
         }
         console.log(user);
         return this.props.dispatch(registerChild(user))
