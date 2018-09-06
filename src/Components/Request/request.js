@@ -65,12 +65,11 @@ export default class Request extends React.Component{
                 <div className='new-user'>
                     <div className='ynab-option'>
                         <p className='auth-message'>If you would like to synch accounts, please authorize YNAB first.</p>
-                            <Link to={this.state.ynabUrl}>
-                                <Button
-                                    className='ynab-button click'
-                                    type='button'
-                                />
-                            </Link>
+                            <Button
+                                onClick={this.getToken}
+                                className='ynab-button click'
+                                type='button'
+                            />
                     </div>
                     <div className='manual-budget-section'>
                         <p>Or just starting setting up kid's accounts</p>
