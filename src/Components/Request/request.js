@@ -72,9 +72,9 @@ export default class Request extends React.Component{
                             />
                     </div>
                     <div className='manual-budget-section'>
-                        <p>Or just starting setting up kid's accounts</p>
+                        <p>Or you can choose to budget manually</p>
                         <Button
-                            className='manual-budget-button'
+                            className='manual-budget-button click green'
                             label='Budget Manually'
                             onClick={this.props.budgetManually}
                         />

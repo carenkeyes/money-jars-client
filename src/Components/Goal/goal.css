@@ -12,6 +12,10 @@
     padding-bottom: 20px;
 }
 
+.goalContent.content-saving{
+    flex-direction: row-reverse;
+}
+
 .goalImage{
     flex-shrink: 1;
     flex-direction: column;

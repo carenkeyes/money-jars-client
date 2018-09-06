@@ -1,13 +1,11 @@
 .header{
-    height: 66vh;
     display: flex;
-    margin-top: 120px;
+    margin-top: 100px;
     margin-bottom: 10px;
     align-items: flex-end;
     box-shadow: 0 3px 3px black;
     justify-content: space-around;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 20px 10px;
 }
 
 p{
@@ -59,3 +57,12 @@ p{
 
 }
 
+@media only screen and (min-width: 1000px){
+
+    .header{
+        height: 66vh;
+        margin-top: 120px;
+        box-shadow: 0 3px 3px black;
+    }
+
+}

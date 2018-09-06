@@ -47,12 +47,14 @@ export class AddToGoal extends React.Component{
                                 type='number'
                                 id={this.props.id}
                                 name='amount'
-                                InputProps={{inputProps: {min: 0, max: 10}}} 
+                                max={this.props.max}
+                                step={0.01}
                             />
                         </div>
                         <button
                             className={`submit-edit-goal form-button click pink`}
-                            type="submit">
+                            type="submit"
+                            disabled={this.props.pristine || this.props.submitting}>
                             Add
                         </button>
                     </form>

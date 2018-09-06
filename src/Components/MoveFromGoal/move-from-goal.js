@@ -48,6 +48,8 @@ export class MoveFromGoal extends React.Component{
                             id={this.props.id}
                             label='How much would you like to move?'
                             name='amount'
+                            max={this.props.max/1000}
+                            step={0.01}
                         />
                         <label>Where are you moving your money?</label>
                         <Field
@@ -60,7 +62,8 @@ export class MoveFromGoal extends React.Component{
                         </div>
                         <button
                         className={`submit-edit-goal form-button click pink`}
-                            type="submit">
+                            type="submit"
+                            disabled={this.props.pristine || this.props.submitting}>
                             Move
                         </button>
                     </form>

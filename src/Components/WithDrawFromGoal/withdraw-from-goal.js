@@ -1,24 +1,22 @@
 import React from 'react';
 import Input from '../Input/input';
 import {Field, reduxForm} from 'redux-form';
-import {updateGoal} from '../../actions/budget';
+import {updateGoal, updateUserProfile} from '../../actions/index.actions';
 
 export class WithdrawFromGoal extends React.Component{
 
     onSubmit(values){
-        console.log(values)
-        console.log(this.props)
         this.onSubmitWithProps(values, this.props)
         .then(() => this.props.dispatch(this.props.closeOptions))
     }
 
    onSubmitWithProps(values, props){
-        console.log(values)
+        const data = {}
         let amount=(-parseFloat(values.amount, 10)*1000)
-        console.log(amount)
-        console.log(props.userId)
-        console.log(props.goalId)
-        return this.props.dispatch(updateGoal(props.goalId, props.userId, amount))
+        data.balance = amount;
+        console.log(data)
+        return this.props.dispatch(updateUserProfile(props.userId, data))
+            .then(() => this.props.dispatch(updateGoal(props.goalId, props.userId, amount)))
     }
 
     render(){
@@ -37,11 +35,13 @@ export class WithdrawFromGoal extends React.Component{
                             id={this.props.id}
                             label='How much would you like to withdraw?'
                             name='amount'
-                            InputProps={{inputProps: {min: 0, max: 10}}} 
+                            max={this.props.max/1000}
+                            step={0.01}
                         />
                         <button
                             className={`submit-edit-goal form-button click pink`}
-                            type="submit">
+                            type="submit"
+                            disabled={this.props.pristine || this.props.submitting}>
                             Withdraw
                         </button>
                     </form>

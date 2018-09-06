@@ -1,5 +1,6 @@
 import config from '../config'
 import GoalDetails from '../Components/GoalDetails/goal-details';
+import { ADD_CHILD_TO_PARENT_TRIGGERED } from './users';
 
 export const CREATE_GOAL_REQUEST_TRIGGERED = 'CREATE_GOAL_REQUEST_TRIGGERED'
 export const CREATE_GOAL_REQUEST_SUCCESS = 'CREATE_GOAL_REQUEST_SUCCESS'
@@ -86,3 +87,10 @@ export function updateGoal(goalId, userId, amount){
         promise,
     }
 }
+
+export const UPDATE_TO_BUDGET = 'UPDATE_TO_BUDGET'
+
+export const updateToBudget = (toBudget) => ({
+    type: UPDATE_TO_BUDGET,
+    toBudget
+})

@@ -33,6 +33,8 @@ export default class Input extends React.Component {
                     ref={input => (this.input = input)}
                     step={this.props.step}
                     placeholder={this.props.placeholder}
+                    min={0}
+                    max={this.props.max}
                 />
             </div>
         );

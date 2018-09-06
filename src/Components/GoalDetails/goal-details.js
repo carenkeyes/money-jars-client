@@ -39,9 +39,7 @@ export default class GoalDetails extends React.Component{
         })
     }
 
-    render(){ 
-        console.log(this.props.goalOptions)
-        
+    render(){       
         if(this.props.options){
             return(
                 <div className='goal-options'>
@@ -51,12 +49,16 @@ export default class GoalDetails extends React.Component{
                             userId={this.props.userId}
                             goalId={this.props.goalId}
                             closeOptions={this.props.closeOptions}
+                            category={this.props.category}
+                            max={this.props.max}
                         />
                         <WithdrawFromGoal 
                             editType={this.state.editType}
                             userId={this.props.userId}
                             goalId={this.props.goalId}
                             closeOptions={this.props.closeOptions}
+                            category={this.props.category}
+                            max={this.props.saved}
                         />
                         <MoveFromGoal 
                             editType={this.state.editType}
@@ -64,6 +66,8 @@ export default class GoalDetails extends React.Component{
                             goalId={this.props.goalId}
                             goalOptions={this.props.goalOptions}
                             closeOptions={this.props.closeOptions}
+                            category={this.props.category}
+                            max={this.props.saved}
                         />
                         <DeleteGoal 
                             editType={this.state.editType}
@@ -72,7 +76,7 @@ export default class GoalDetails extends React.Component{
                         />
                     </div>
                     <div className='edit-button-group-section'>
-                        <label className='extra-info-label'>Or choose another option </label>
+                        <label className='extra-info-label'>Or choose another option: </label>
                         <div className='edit-goal-button-group'>  
                             <Button 
                                 className='edit-goal-button click yellow'
