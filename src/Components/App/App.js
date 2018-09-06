@@ -13,6 +13,7 @@ import Privacy from '../Privacy/privacy';
 //import {refreshAuthToken} from '../../actions/auth';
 import { connect } from 'react-redux';
 import AddChildWrapper from '../AddChildWrapper/add-child-wrapper';
+import { YnabHandler } from '../ynabHandler/ynab-handler';
 
 export class App extends React.Component {
   /*componentDidUpdate(prevProps){
@@ -54,6 +55,7 @@ export class App extends React.Component {
               <Route path='/child' component={ChildWrapper} />
               <Route path='/parent' component={ParentRouter} />
               <Route path='/setup' component={ParentSetup} />
+              <Route path='/ynabresponse' component={YnabHandler} />
               <Route path='/register-child' component={AddChildWrapper} />
               <Route exact path="/privacy" component={Privacy} />
             </Switch>

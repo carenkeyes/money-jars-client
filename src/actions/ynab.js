@@ -4,10 +4,10 @@ export const FETCH_YNAB_BUDGETS_REQUEST_TRIGGERED = 'FETCH_YNAB_BUDGETS_REQUEST_
 export const FETCH_YNAB_BUDGETS_REQUEST_SUCCESS = 'FETCH_YNAB_BUDGETS_REQUEST_SUCCESS';
 export const FETCH_YNAB_BUDGETS_REQUEST_FAILURE = 'FETCH_YNAB_BUDGETS_REQUEST-FAILURE';
 
-export function fetchYnabBudgets(userId){
+export function fetchYnabBudgets(string){
     console.log('fetch ynab budgets')
-    const promise = fetch(`${config.API_BASE_URL}/ynab/budgets/${userId}`, {
-        method: 'GET',
+    const promise = fetch(`${config.API_BASE_URL}/ynab/auth/${string}`, {
+        method: 'POST',
         headers: {'Content-Type': 'application/json'},
     });
     return {

@@ -39,8 +39,6 @@ export default class Request extends React.Component{
         win.focus();
     }
 
-
-
     render(){
         if(this.state.declined){
             return(

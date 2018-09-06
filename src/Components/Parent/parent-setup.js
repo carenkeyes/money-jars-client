@@ -112,6 +112,7 @@ const mapStateToProps = state => ({
     user: state.user,
     ynab: state.ynab,
     children: state.children,
+    appState: state.appState,
 })
 
 export default connect(mapStateToProps)(ParentSetup)
