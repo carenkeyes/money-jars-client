@@ -12,6 +12,7 @@ const initialState = {
 export default function ynab(state=initialState, action){
     switch(action.type){
         case actionTypes.FETCH_YNAB_BUDGETS_REQUEST_SUCCESS: {
+            console.log(action.response)
             return {
                 ...state,
                 data: action.response,

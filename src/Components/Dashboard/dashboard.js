@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import {Route, Redirect, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchUserBasicInfo} from '../../actions/index.actions';
 import './dashboard.css'
@@ -24,10 +24,14 @@ export class Dashboard extends React.Component{
             )
         }
 
-        if(this.props.user.usertype === 'parent'){
+        if(this.props.user.usertype === 'parent'&& this.props.user.children.length === 0){
             console.log('parent')
             return (
-                <Redirect to={`/parent/`} />
+                <Redirect to={`/parent/setup`} />
+            )
+        }else if (this.props.user.usertype){
+            return(
+                <Redirect to={'/parent/complete'} />
             )
         }else if(this.props.user.usertype ==='child'){
             console.log('child')
@@ -44,4 +48,4 @@ const mapStatetoProps = state => ({
     user: state.user
 });
 
-export default connect(mapStatetoProps)(Dashboard);
+export default withRouter(connect(mapStatetoProps)(Dashboard));

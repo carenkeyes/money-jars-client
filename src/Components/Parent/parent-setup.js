@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Request from '../Request/request';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 import Parent from '../Parent/parent';
 import {fetchUserBasicInfo, updateUserProfile, fetchYnabBudgets} from '../../actions/index.actions';
 
@@ -15,10 +15,6 @@ export class ParentSetup extends React.Component {
         }
         this.getBudgets = this.getBudgets.bind(this);
         this.budgetManually = this.budgetManually.bind(this);
-    }
-
-    componentDidMount(){
-        this.props.dispatch(fetchUserBasicInfo())
     }
 
     addChild = () => {
@@ -48,6 +44,7 @@ export class ParentSetup extends React.Component {
     }
 
     render(){
+        console.log(this.props.loggedIn)
         if(!this.props.loggedIn){
             return(
                 <Redirect to={'/register/login'} />
@@ -59,7 +56,7 @@ export class ParentSetup extends React.Component {
         }
 
         if(this.state.setupComplete){
-            return <Redirect to={'/parent'} />
+            return <Redirect to={'/parent/complete'} />
         }
 
         let message='temp message';
@@ -72,7 +69,7 @@ export class ParentSetup extends React.Component {
                 <Request 
                     user_id = {this.props.user._id}
                     account = {this.props.user.account}
-                    ynabData = {this.props.ynab}
+                    ynabData = {this.props.ynab.data}
                     budget_id = {this.props.user.budget_id}
                     onClick = {this.getBudgets}
                     label = 'Get Budgets'
@@ -115,4 +112,4 @@ const mapStateToProps = state => ({
     appState: state.appState,
 })
 
-export default connect(mapStateToProps)(ParentSetup)
+export default connect(mapStateToProps)(ParentSetup);

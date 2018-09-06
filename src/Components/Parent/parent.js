@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Request from '../Request/request'
-import {Redirect} from 'react-router-dom'
+import {Redirect, withRouter} from 'react-router-dom'
 import {fetchUserBasicInfo} from '../../actions/index.actions';
 import Header from '../Header/header';
 
@@ -33,6 +33,7 @@ export class Parent extends React.Component {
     }
 
     render(){
+        console.log(this.props.user.children.length)
 
         if(!this.props.loggedIn){
             return(
@@ -113,4 +114,4 @@ const mapStateToProps = state => ({
     children: state.children,
 });
 
-export default connect(mapStateToProps)(Parent);
+export default withRouter(connect(mapStateToProps)(Parent));

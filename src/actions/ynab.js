@@ -6,6 +6,7 @@ export const FETCH_YNAB_BUDGETS_REQUEST_FAILURE = 'FETCH_YNAB_BUDGETS_REQUEST-FA
 
 export function fetchYnabBudgets(string){
     console.log('fetch ynab budgets')
+    console.log(string)
     const promise = fetch(`${config.API_BASE_URL}/ynab/auth/${string}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
