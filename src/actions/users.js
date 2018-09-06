@@ -30,15 +30,32 @@ export const FETCH_USER_LOGIN_REQUEST_TRIGGERED = 'FETCH_USER_LOGIN_REQUEST_TRIG
 export const FETCH_USER_LOGIN_REQUEST_SUCCESS = 'FETCH_USER_LOGIN_REQUEST_SUCCESS';
 export const FETCH_USER_LOGIN_REQUEST_FAILURE = 'FETCH_USER_LOGIN_REQUEST_FAILURE';
 
-const handleLoginResponse = (response, dispatch) => {
-  sessionStorage.setItem(config.TOKEN_CONTENT_KEY, response.token);
-  dispatch({
-      type: FETCH_USER_LOGIN_REQUEST_SUCCESS,
-      response,
+export function fetchUserLogin(username, password) {
+    console.log('fetch user login');
+  const promise = fetch(`${config.USER_ENDPOINT}`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username,
+        password,
+      }),
   });
-  dispatch(push('/dashboard'));
-};
+  return {
+      onRequest: FETCH_USER_LOGIN_REQUEST_TRIGGERED,
+      onSuccess: handleLoginResponse,
+      onFailure: FETCH_USER_LOGIN_REQUEST_FAILURE,
+      promise,
+  };
+}
 
+const handleLoginResponse = (response, dispatch) => {
+    sessionStorage.setItem(config.TOKEN_CONTENT_KEY, response.token);
+    dispatch({
+        type: FETCH_USER_LOGIN_REQUEST_SUCCESS,
+        response,
+    });
+    dispatch(push('/dashboard'));
+  };
 
 export const FETCH_USER_SIGNUP_REQUEST_TRIGGERED = 'FETCH_USER_SIGNUP_REQUEST_TRIGGERED';
 export const FETCH_USER_SIGNUP_REQUEST_SUCCESS = 'FETCH_USER_SIGNUP_REQUEST_SUCCESS';
@@ -127,24 +144,6 @@ function addChildToParent(childname, userId){
     };
   }
   
-
-export function fetchUserLogin(username, password) {
-    console.log('fetch user login');
-  const promise = fetch(`${config.USER_ENDPOINT}`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-  });
-  return {
-      onRequest: FETCH_USER_LOGIN_REQUEST_TRIGGERED,
-      onSuccess: handleLoginResponse,
-      onFailure: FETCH_USER_LOGIN_REQUEST_FAILURE,
-      promise,
-  };
-}
 
 export const UPDATE_USER_PROFILE_TRIGGERED = 'UPDATE_USER_PROFILE_TRIGGERED'
 export const UPDATE_USER_PROFILE_SUCCESS = 'UPDATE_USER_PROFILE_SUCCESS'

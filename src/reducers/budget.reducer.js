@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/index.actions';
 const initialState = {
     total: null,
     goals: null,
+    toBudget: null,
 }
 
 export default function budget(state=initialState, action){
@@ -13,13 +14,6 @@ export default function budget(state=initialState, action){
                 goals: [...state.goals, action.response.goal]
             }
         }
-        /*case actionTypes.FETCH_GOAL_INFO_SUCCESS:{
-            console.log('goal info success reducer')
-            return {
-                ...state,
-                goals: action.response.user.goals
-            }
-        }*/
         case actionTypes.DELETE_GOAL_SUCCESS: {
             return {
                 ...state,
@@ -45,6 +39,12 @@ export default function budget(state=initialState, action){
             return{
                 ...state,
                 goals: action.response
+            }
+        }
+        case actionTypes.UPDATE_TO_BUDGET: {
+            return{
+                ...state,
+                toBudget: action.toBudget
             }
         }
         default: {

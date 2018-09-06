@@ -60,7 +60,8 @@ export class MoveFromGoal extends React.Component{
                         </div>
                         <button
                         className={`submit-edit-goal form-button click pink`}
-                            type="submit">
+                            type="submit"
+                            disabled={this.props.pristine || this.props.submitting}>
                             Move
                         </button>
                     </form>

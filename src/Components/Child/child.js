@@ -1,12 +1,19 @@
 import React from 'react';
 import Header from '../Header/header';
 import AddGoal from '../AddGoal/addgoal';
+import {updateToBudget} from '../../actions/index.actions';
 import './child.css';
+import { connect } from 'react-redux';
 
-export default class Child extends React.Component{
+export class Child extends React.Component{
+
+    componentDidMount(){
+        console.log(this.props.toBudget)
+        this.props.dispatch(updateToBudget(this.props.toBudget))
+    }
 
     render(){
-
+        console.log(this.props.goals)
         return (
             <div className='child-page'>;
                 <Header 
@@ -22,7 +29,7 @@ export default class Child extends React.Component{
                     form='new-goal'
                     addNew={this.props.addNew}
                     userId={this.props.userId}
-                    max={this.props.max}
+                    closeForm={this.props.but1OnClick}
                 />
                 <div>
                     {this.props.form}
@@ -35,3 +42,9 @@ export default class Child extends React.Component{
 
     }
 }
+
+const mapStatetoProps = state => ({
+    budget: state.budget,
+})
+
+export default connect(mapStatetoProps)(Child)

@@ -41,7 +41,8 @@ export class WithdrawFromGoal extends React.Component{
                         />
                         <button
                             className={`submit-edit-goal form-button click pink`}
-                            type="submit">
+                            type="submit"
+                            disabled={this.props.pristine || this.props.submitting}>
                             Withdraw
                         </button>
                     </form>

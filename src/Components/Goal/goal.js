@@ -18,28 +18,27 @@ export class Goal extends React.Component{
     }
 
     handleClick(){
-        console.log('edit state ran');
         this.setState({
             options: !this.state.options
         })
     }
 
     render(){
-        console.log(this.props._id)
-        console.log(this.props.budget.goals)
         const goalOptions = []
         let goals = this.props.budget.goals
-        console.log(goals)
         for(let goal of goals){
             goalOptions.push({
                 label: goal.title,
                 value: goal._id
             })
         }
-        console.log(goalOptions)
+        console.log(this.props.budget.toBudget)
+        let max = (this.props.budget.toBudget/1000).toFixed([2])
+        console.log(max)
+
         let price = this.props.amount/1000
         price = price.toFixed([2])
-        console.log(price)
+
         let saved = this.props.saved/1000
         saved = saved.toFixed([2])
 
@@ -87,6 +86,7 @@ export class Goal extends React.Component{
                     userId={this.props.userId}
                     goalOptions={goalOptions}
                     closeOptions={this.handleClick}
+                    max={max}
                      />          
             </section>
         )

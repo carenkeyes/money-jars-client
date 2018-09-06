@@ -4,6 +4,7 @@ import {createGoal} from '../../actions/budget';
 import {Field, reduxForm, reset} from 'redux-form';
 import Input from '../Input/input';
 import Button from '../Button/button';
+import {required, nonEmpty} from '../../validators';
 //import Button from '../Button/button';
 
 import './addgoal.css'
@@ -15,21 +16,17 @@ const goalTypes = [
 ]
 
 export class AddGoal extends React.Component {
-    constructor(props){
-        super(props)
-            this.state = {
-                amount: '0.00'
-            }
-    }
 
     onSubmit(values){
         const userId = this.props.userId
         const {title, amount, category, imageurl} = values;
         const goal = {title, amount, category, imageurl};
         goal.amount = parseFloat(goal.amount, 10)*1000;
-        goal.category = goal.category.value;
-        console.log(goal.amount)
-        return this.props.dispatch(createGoal(goal, userId))          
+        if(goal.category !== undefined){
+            goal.category = goal.category.value;
+        }else{goal.category = 'saving'}
+        return this.props.dispatch(createGoal(goal, userId)) 
+            .then(() => this.props.dispatch(this.props.closeForm))         
     }
 
     render(){
@@ -50,12 +47,15 @@ export class AddGoal extends React.Component {
                                     type='text'
                                     label='Name of goal'
                                     name='title'
+                                    validate={[required, nonEmpty]}
                                 />
                                 <Field
                                     component={Input}
                                     type='number'
                                     label='How much does it cost?'
                                     name='amount'
+                                    step={0.01}
+                                    validate={[required, nonEmpty]}
                                 />
                             </div>
                             <div className='form-section'>
@@ -66,8 +66,6 @@ export class AddGoal extends React.Component {
                                     label='Category'
                                     name='category'
                                     options={goalTypes}
-                                    min={0}
-                                    step={0.01}
                                 />
                                 <Field
                                     component={Input}
@@ -81,6 +79,7 @@ export class AddGoal extends React.Component {
                             type='submit'
                             className='form-button pink'
                             label='Create goal'
+                            disabled={this.props.pristine || this.props.submitting}
                         />
 
                     </form>

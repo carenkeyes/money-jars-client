@@ -36,7 +36,6 @@ export class ChildWrapper extends React.Component{
                 <Redirect to='/register/login' />
             )
         }
-
         let goals;
         goals = this.props.budget.goals.map(goal =>
             <Goal 
@@ -51,27 +50,16 @@ export class ChildWrapper extends React.Component{
         )
 
         let budgeted = 0;
-
         for(let i=0; i<goals.length; i++){
             budgeted = budgeted+this.props.budget.goals[i].saved_amount
         }
 
-        let toBudget;
-        
-        /*if(this.props.user.budget_id !== 'manual'){
-            toBudget=(this.props.ynab.balance)-budgeted;
-        }
-        else if(this.props.user.balance){
-            toBudget=(this.props.user.balance)-budgeted;
-
-        }*/
-        console.log(this.props.budget.total)
-        console.log(budgeted)
+        let toBudget;       
         toBudget=(this.props.budget.total)-budgeted;
+        let maxToBudget=toBudget;
+        toBudget=(toBudget/1000).toFixed([2])
 
-        toBudget=toBudget/1000
-        console.log(this.props.budget.goals===undefined)
-        console.log(this.props.budget.goals.length)
+        console.log(maxToBudget);
 
         let message;
         if(this.props.budget.goals.length===0){
@@ -97,9 +85,9 @@ export class ChildWrapper extends React.Component{
                 addNew={this.state.addNew}
                 userId={this.props.user._id}
                 goals={goals}
+                toBudget={maxToBudget}
             />
         )
-
     }
 }
 
