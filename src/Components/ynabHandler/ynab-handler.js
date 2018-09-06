@@ -22,8 +22,8 @@ export class YnabHandler extends React.Component{
         console.log('query string called')
         let query = window.location.search
         console.log(query)
-        this.props.dispatch(fetchYnabBudgets(query))
-            .then(() => this.props.dispatch(push('/parent/setup')))
+        //this.props.dispatch(fetchYnabBudgets(query))
+            //.then(() => this.props.dispatch(push('/parent/setup')))
     }
    
     render(){

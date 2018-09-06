@@ -45,7 +45,7 @@ export default class Request extends React.Component{
                 <Redirect to={'/parent'} />
             )
         }
-        if(this.state.initiated){
+        /*if(this.state.initiated){
             return(
                 <div>
                     <p>We need to fetch your YNAB budgets</p>
@@ -56,7 +56,8 @@ export default class Request extends React.Component{
                         onClick={this.getBudgets}
                     />
                 </div>)
-        }
+        }*/
+        //if(!this.props.account && !this.state.initiated){
 
         if(!this.props.account && !this.state.initiated){
             return(
@@ -79,7 +80,7 @@ export default class Request extends React.Component{
                     </div>
                 </div>
             )
-        }else if(!this.props.budget_id && this.props.ynabData === null){
+        /*}else if(!this.props.budget_id && this.props.ynabData === null){
             return(
             <div>
                 <p>We need to fetch your YNAB budgets</p>
@@ -89,7 +90,7 @@ export default class Request extends React.Component{
                     type='text'
                     onClick={this.props.onClick}
                 />
-            </div>)
+            </div>)*/
 
         }else if(this.props.ynabData !== null && this.props.ynabData.length >0){
             console.log(this.props.ynabData.length)

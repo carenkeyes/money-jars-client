@@ -14,9 +14,9 @@ export class Parent extends React.Component {
         }
     }
 
-    componentDidMount(){
+    /*componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
-    }
+    }*/
 
     handleClick = () => {
         console.log('reroute to child');
@@ -114,4 +114,4 @@ const mapStateToProps = state => ({
     children: state.children,
 });
 
-export default withRouter(connect(mapStateToProps)(Parent));
+export default connect(mapStateToProps)(Parent);
