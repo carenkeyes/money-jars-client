@@ -20,6 +20,7 @@ export class ChildWrapper extends React.Component{
         if(this.props.user.budget_id !== 'manual'){
             this.props.dispatch(fetchYnabCategoryBalance(this.props.user._id))
         }
+        this.props.dispatch(fetchUserBasicInfo)
     }
 
     handleClick(){
@@ -37,7 +38,7 @@ export class ChildWrapper extends React.Component{
         }
 
         let goals;
-        goals = this.props.user.goals.map(goal =>
+        goals = this.props.budget.goals.map(goal =>
             <Goal 
                 key={goal._id}
                 category={goal.category}
@@ -52,23 +53,28 @@ export class ChildWrapper extends React.Component{
         let budgeted = 0;
 
         for(let i=0; i<goals.length; i++){
-            budgeted = budgeted+this.props.user.goals[i].saved_amount
+            budgeted = budgeted+this.props.budget.goals[i].saved_amount
         }
 
         let toBudget;
         
-        if(this.props.user.budget_id !== 'manual'){
-            toBudget=(this.props.budget.balance)-budgeted;
+        /*if(this.props.user.budget_id !== 'manual'){
+            toBudget=(this.props.ynab.balance)-budgeted;
         }
         else if(this.props.user.balance){
             toBudget=(this.props.user.balance)-budgeted;
 
-        }
+        }*/
+        console.log(this.props.budget.total)
+        console.log(budgeted)
+        toBudget=(this.props.budget.total)-budgeted;
 
         toBudget=toBudget/1000
+        console.log(this.props.budget.goals===undefined)
+        console.log(this.props.budget.goals.length)
 
         let message;
-        if(!this.props.user.goals){
+        if(this.props.budget.goals.length===0){
             message =
                 <div className='budget-message'>
                     <p> You have <span className='amount-to-budget'>${toBudget}</span> that needs a job!</p>
@@ -98,9 +104,10 @@ export class ChildWrapper extends React.Component{
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.user.data !==null,
-    user: state.user.data,
-    budget: state.ynab,
+    loggedIn: state.user._id !==null,
+    user: state.user,
+    ynab: state.ynab,
+    budget: state.budget,
 });
 
 export default connect(mapStatetoProps)(ChildWrapper)

@@ -79,7 +79,7 @@ export function registerChild(user) {
 
 const handleCreateChild = (response, dispatch, getState) => {
     const username = response.username;
-    const userId = getState().user.data._id;
+    const userId = getState().user._id;
     dispatch({
         type: CREATE_CHILD_REQUEST_SUCCESS,
         response,

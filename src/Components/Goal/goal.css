@@ -13,25 +13,31 @@
 }
 
 .goalImage{
-    height: 300px;
-    display: flex;
+    flex-shrink: 1;
     flex-direction: column;
     justify-content: space-between;
+    flex-basis: 300px;
+    height: 300px;
 }
 
 .money-value{
     color: #208E22;
-    font-size: 1.5em;
+    font-size: 36px;
+    font-weight: bold;
 }
 
 .goal-text{
     font-weight: bold;
-    text-align: left;
+    text-align: center;
+    font-size: 28px;
 }
 
 .goal-info{
     display: flex;
-    
+    flex: auto;
+    flex-basis: 300px;
+    height: 300px;
+    justify-content: center;
 }
 
 .goal-progress{
@@ -89,4 +95,16 @@
 
 .giving-button{
     background-color:#EC762A;
+}
+
+@media only screen and (min-width: 1000px){
+
+    .money-value{
+        font-size: 1.5em;
+    }
+
+    .goal-text{
+        font-size: 36px;
+    }
+
 }

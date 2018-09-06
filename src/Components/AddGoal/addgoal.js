@@ -15,19 +15,21 @@ const goalTypes = [
 ]
 
 export class AddGoal extends React.Component {
-    /*constructor(props){
+    constructor(props){
         super(props)
-        this.onSubmit = this.onSubmit.bind(this)
-    }*/
+            this.state = {
+                amount: '0.00'
+            }
+    }
 
     onSubmit(values){
         const userId = this.props.userId
         const {title, amount, category, imageurl} = values;
         const goal = {title, amount, category, imageurl};
-        goal.amount = parseInt(goal.amount)*1000;
+        goal.amount = parseFloat(goal.amount, 10)*1000;
         goal.category = goal.category.value;
-        return this.props
-            .dispatch(createGoal(goal, userId))          
+        console.log(goal.amount)
+        return this.props.dispatch(createGoal(goal, userId))          
     }
 
     render(){
@@ -70,7 +72,7 @@ export class AddGoal extends React.Component {
                                 <Field
                                     component={Input}
                                     type='text'
-                                    label='Image URL'
+                                    label='Image URL (optional)'
                                     name='imageurl'
                                 />
                             </div>

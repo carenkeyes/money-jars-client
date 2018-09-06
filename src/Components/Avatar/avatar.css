@@ -12,6 +12,7 @@ img{
     width: 100%;
     height: 100%;
 }
+@media only screen and (min-width: 600px){
 
 .header-image{
     height: 100%;
@@ -19,8 +20,10 @@ img{
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    width: 80%;
 }
 
+   
 .home-left-image{
     background-image: url('./happy-money.png');
 }
@@ -50,10 +53,12 @@ img{
 }
 
 .piggy-bank{
-    height: 300px;
-    width: 300px;
+    height: 100%;
+    width: 100%;
     flex: auto;    
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+
 }

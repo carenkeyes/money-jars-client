@@ -7,13 +7,14 @@ button{
 }
 
 .home{
-    background: url('./home-button.png');
+    background: url('./home-button-small.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     border: none;
     color: transparent;
-    width: 180px;
+    width: 50px;
+
     margin-top: 10px;
 }
 
@@ -32,20 +33,13 @@ button{
     border:solid 3px white;
 }
 
-.header-buttons{
-    width: 80%;
-    padding: 10px 20px; 
-    margin: 5px;
-    display: flex;
-}
-
 .home-button{
     flex: auto;
     height: 80px;
     max-width: 400px;
-    font-size: 48px;
+    font-size: 32px;
     box-shadow: 4px 4px 4px black;
-    margin: 0 5px;
+    margin: 5px;
 }
 
 .pink{
@@ -109,6 +103,7 @@ button{
     color: black;
     box-shadow: 1px 2px 2px black;
     flex: auto;
+    width: 100%;
 }
 
 .form-button:active{
@@ -116,8 +111,22 @@ button{
     transform: translateY(2px);
 }
 
-@media only screen and (min-width: 1000px){
+@media only screen and (min-width: 600px){    
+    .home{
+    background: url('./home-button.png');
+    width: 180px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border: none;
+    color: transparent;
+    }
+
+}
+
+@media only screen and (min-width: 1050px){
     .home-button{
-        font-size: 32px;
+        font-size: 42px;
     }
 }
+

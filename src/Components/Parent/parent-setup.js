@@ -108,9 +108,10 @@ export class ParentSetup extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.user.data !==null,
-    user: state.user.data,
-    ynab: state.ynab.data,
+    loggedIn: state.user._id !==null,
+    user: state.user,
+    ynab: state.ynab,
+    children: state.children,
 })
 
 export default connect(mapStateToProps)(ParentSetup)

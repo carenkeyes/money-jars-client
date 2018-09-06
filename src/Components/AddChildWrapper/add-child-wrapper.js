@@ -63,9 +63,7 @@ export class AddChildWrapper extends React.Component {
                     data={this.props.data}
                     categories={this.state.categories}
                     budget_id={this.props.user.budget_id}
-                    account={this.props.user.account}
                     onChange={this.handleChange}
-                    account_id={this.props.user.budget_id==='manual'?'null': this.props.user.account._id}
                     manual={this.props.user.budget_id==='manual'?true:false} 
                 />
             )
@@ -75,7 +73,7 @@ export class AddChildWrapper extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.user.data,
+    user: state.user,
     loading: state.ynab.loading,
     data: state.ynab.data,
 })

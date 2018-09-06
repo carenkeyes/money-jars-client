@@ -40,22 +40,40 @@ export default class GoalDetails extends React.Component{
     }
 
     render(){ 
-
+        console.log(this.props.goalOptions)
+        
         if(this.props.options){
             return(
                 <div className='goal-options'>
                     <div className='change-goal'>
-                        <AddToGoal editType={this.state.editType}/>
-                        <WithdrawFromGoal editType={this.state.editType}/>
-                        <MoveFromGoal editType={this.state.editType}/>
+                        <AddToGoal 
+                            editType={this.state.editType}
+                            userId={this.props.userId}
+                            goalId={this.props.goalId}
+                            closeOptions={this.props.closeOptions}
+                        />
+                        <WithdrawFromGoal 
+                            editType={this.state.editType}
+                            userId={this.props.userId}
+                            goalId={this.props.goalId}
+                            closeOptions={this.props.closeOptions}
+                        />
+                        <MoveFromGoal 
+                            editType={this.state.editType}
+                            userId={this.props.userId}
+                            goalId={this.props.goalId}
+                            goalOptions={this.props.goalOptions}
+                            closeOptions={this.props.closeOptions}
+                        />
                         <DeleteGoal 
                             editType={this.state.editType}
                             userId={this.props.userId}
                             goalId={this.props.goalId}  
                         />
                     </div>
-                    <div>
-                        <div className='edit-goal-button-group'>
+                    <div className='edit-button-group-section'>
+                        <label className='extra-info-label'>Or choose another option </label>
+                        <div className='edit-goal-button-group'>  
                             <Button 
                                 className='edit-goal-button click yellow'
                                 label={this.state.editType==='add' ? null: 'Add'}
@@ -70,13 +88,11 @@ export default class GoalDetails extends React.Component{
                                 className='edit-goal-button click yellow'
                                 label={this.state.editType==='withdraw' ? null: 'Withdraw'}                                onClick={() => this.displayWithdraw()}
                             />
-                            </div>
-                            <div className='delete-goal-button'>
-                                <Button
-                                    className='edit-goal-button click red'
-                                    label={this.state.editType==='delete' ? null: 'Delete'}
-                                    onClick={() => this.setDelete()}
-                                />
+                            <Button
+                                className='edit-goal-button click red'
+                                label={this.state.editType==='delete' ? null: 'Delete'}
+                                onClick={() => this.setDelete()}
+                            />
                             </div>
                     </div>
                 </div>

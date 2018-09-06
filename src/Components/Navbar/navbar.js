@@ -29,7 +29,7 @@ export class Navbar extends React.Component{
                     <Link to={`/register/signup`}>
                         <Button 
                             label={this.props.loggedIn? '':'Sign Up'}
-                            className='nav-button'
+                            className='nav-button visuallyhidden'
                         />
                     </Link>
                     <Link to={`/register/login`}>
@@ -45,7 +45,7 @@ export class Navbar extends React.Component{
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.user.data !== null,
+    loggedIn: state.user._id !== null,
 });
 
 export default connect(mapStatetoProps)(Navbar)

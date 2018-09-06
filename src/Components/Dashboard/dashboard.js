@@ -40,8 +40,8 @@ export class Dashboard extends React.Component{
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.user.data !== null,
-    user: state.user.data
+    loggedIn: state.user._id !== null,
+    user: state.user
 });
 
 export default connect(mapStatetoProps)(Dashboard);

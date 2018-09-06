@@ -1,4 +1,5 @@
 import config from '../config'
+import GoalDetails from '../Components/GoalDetails/goal-details';
 
 export const CREATE_GOAL_REQUEST_TRIGGERED = 'CREATE_GOAL_REQUEST_TRIGGERED'
 export const CREATE_GOAL_REQUEST_SUCCESS = 'CREATE_GOAL_REQUEST_SUCCESS'
@@ -22,14 +23,11 @@ export function createGoal(goal, userId){
     }
 }
 
-export const FETCH_CHILD_INFO_TRIGGERED = 'FETCH_CHILD_INFO_TRIGGERED'
-export const FETCH_CHILD_INFO_SUCCESS = 'FETCH_CHILD_INFO_SUCCESS'
-export const FETCH_CHILD_INFO_FAILURE = 'FETCH_CHILD_INFO_FAILURE'
+/*export const FETCH_GOAL_INFO_TRIGGERED = 'FETCH_GOAL_INFO_TRIGGERED'
+export const FETCH_GOAL_INFO_SUCCESS = 'FETCH_GOAL_INFO_SUCCESS'
+export const FETCH_GOAL_INFO_FAILURE = 'FETCH_GOAL_INFO_FAILURE'
 
-//let's make this fetchGoalInfo and push to the budget store instead
-//don't forget to check on creating child and be certain that the budget balance
-//gets put in the right place
-export function fetchChildInfo() {
+export function fetchGoalInfo() {
     console.log('fetch child info')
     const sessionKey = sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
     const token = sessionKey.split(' ')[1]
@@ -40,12 +38,12 @@ export function fetchChildInfo() {
         }
     });
     return {
-        onRequest: FETCH_CHILD_INFO_TRIGGERED,
-        onSuccess: FETCH_CHILD_INFO_SUCCESS,
-        onFailure: FETCH_CHILD_INFO_FAILURE,
+        onRequest: FETCH_GOAL_INFO_TRIGGERED,
+        onSuccess: FETCH_GOAL_INFO_SUCCESS,
+        onFailure: FETCH_GOAL_INFO_FAILURE,
         promise,
     };
-}
+}*/
 
 export const DELETE_GOAL_TRIGGERED = 'DELETE_GOAL_TRIGGERED'
 export const DELETE_GOAL_SUCCESS = 'DELETE_GOAL_SUCCESS'
@@ -66,14 +64,25 @@ export function deleteGoal(dataId, userId){
     }
 }
 
-export const ADD_GOAL = 'ADD_GOAL';
-export const addGoal= (goal) => ({
-    type: ADD_GOAL,
-    goal
-})
+export const UPDATE_GOAL_TRIGGERED = 'UPDATE_GOAL_TRIGGERED'
+export const UPDATE_GOAL_SUCCESS = 'UPDATE_GOAL_SUCCESS'
+export const UPDATE_GOAL_FAILURE = 'UPDATE_GOAL_FAILURE'
 
-export const UPDATE_GOAL = 'UPDATE_GOAL';
-export const updateGoal = (data) => ({
-    type: UPDATE_GOAL,
-    data
-})
+export function updateGoal(goalId, userId, amount){
+    const promise = fetch(`${config.API_BASE_URL}/goal/${goalId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userId: userId,
+            change: amount,
+        })
+    })
+    return{
+        onRequest: UPDATE_GOAL_TRIGGERED,
+        onSuccess: UPDATE_GOAL_SUCCESS,
+        onFailure: UPDATE_GOAL_FAILURE,
+        promise,
+    }
+}
