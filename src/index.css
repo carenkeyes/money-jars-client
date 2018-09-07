@@ -82,6 +82,7 @@ h1{
     font-weight: bold;
     font-size: 5em;
     text-align: center;
+    font-family: '.tk-hobeaux', sans-serif
 }
 
 h2{
@@ -96,16 +97,19 @@ h3{
     font-size: 1.5em;
     line-height: 2em;
     margin: 10px;
+    font-family: '.tk-acumin-pro-condensed', sans-serif
 }
 
 h6{
     font-size: 20px;
     margin-bottom: .2em;
+    font-family: '.tk-acumin-pro-condensed', sans-serif
 }
 
 p{
     line-height: 1.4em;
     text-align: center;
+    font-family: '.tk-acumin-pro-condensed', sans-serif
 }
 
 section{
