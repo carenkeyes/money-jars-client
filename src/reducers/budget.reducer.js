@@ -47,6 +47,12 @@ export default function budget(state=initialState, action){
                 toBudget: action.toBudget
             }
         }
+        case actionTypes.UPDATE_USER_BALANCE_SUCCESS: {
+            return {
+              ...state,
+              total: action.response.user.balance,
+            }
+        }
         default: {
             return state;
         }

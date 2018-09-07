@@ -23,7 +23,7 @@
 }
 
 .manual-budget-button{
-    height: 50px;
+    min-height: 50px;
     width: 300px;
     font-weight: bold;
     flex: auto;

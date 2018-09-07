@@ -13,6 +13,7 @@ export default function user(state=initialState, action) {
   switch (action.type) {
     //Fetch user info
     case actionTypes.FETCH_USER_BASIC_INFO_REQUEST_SUCCESS: {
+      console.log(action.response)
       return {
         ...state,
         _id: action.response.user._id,

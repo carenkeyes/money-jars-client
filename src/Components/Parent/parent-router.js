@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import Parent from '../Parent/parent';
@@ -41,4 +41,4 @@ const mapStateToProps = state => ({
     children: state.children,
 })
 
-export default connect(mapStateToProps)(ParentRouter);
+export default connect(mapStateToProps)(ParentRouter);*/

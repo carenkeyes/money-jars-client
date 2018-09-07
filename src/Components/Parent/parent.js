@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Request from '../Request/request'
 import {Redirect} from 'react-router-dom'
-import {fetchUserBasicInfo} from '../../actions/index.actions';
+import {fetchUserBasicInfo, updateUserProfile} from '../../actions/index.actions';
 import Header from '../Header/header';
 
 export class Parent extends React.Component {
@@ -16,6 +16,7 @@ export class Parent extends React.Component {
 
     componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
+        console.log('component did mount')
     }
 
     handleClick = () => {
@@ -27,6 +28,7 @@ export class Parent extends React.Component {
 
     finishSetUp = () => {
         console.log('finish setup')
+        this.props.dispatch(updateUserProfile({data: {setupComplete: true}}))
         this.setState({
             setupComplete: true
         })
@@ -35,6 +37,7 @@ export class Parent extends React.Component {
     render(){
 
         if(!this.props.loggedIn){
+            console.log('redirect')
             return(
             <Redirect to={'/register/login'} />
             )

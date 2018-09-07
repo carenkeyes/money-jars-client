@@ -30,7 +30,7 @@ export const FETCH_GOAL_INFO_FAILURE = 'FETCH_GOAL_INFO_FAILURE'
 
 export function fetchGoalInfo() {
     console.log('fetch child info')
-    const sessionKey = sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
+    const sessionKey = localStorage.getItem(config.TOKEN_CONTENT_KEY)
     const token = sessionKey.split(' ')[1]
     const promise = fetch(`${config.USER_DATA}`, {
         headers: {

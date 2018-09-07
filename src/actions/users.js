@@ -10,7 +10,7 @@ export const FETCH_USER_BASIC_INFO_REQUEST_FAILURE = 'FETCH_USER_BASIC_INFO_REQU
 
 export function fetchUserBasicInfo() {
     console.log('fetch user basic info')
-    const sessionKey = sessionStorage.getItem(config.TOKEN_CONTENT_KEY)
+    const sessionKey = localStorage.getItem(config.TOKEN_CONTENT_KEY)
     const token = sessionKey.split(' ')[1]
     const promise = fetch(`${config.USER_DATA}`, {
         headers: {
@@ -49,7 +49,7 @@ export function fetchUserLogin(username, password) {
 }
 
 const handleLoginResponse = (response, dispatch) => {
-    sessionStorage.setItem(config.TOKEN_CONTENT_KEY, response.token);
+    localStorage.setItem(config.TOKEN_CONTENT_KEY, response.token);
     dispatch({
         type: FETCH_USER_LOGIN_REQUEST_SUCCESS,
         response,
@@ -159,6 +159,24 @@ export function updateUserProfile(userId, data){
         onRequest: UPDATE_USER_PROFILE_TRIGGERED,
         onSuccess: UPDATE_USER_PROFILE_SUCCESS,
         onFailure: UPDATE_USER_PROFILE_FAILURE,
+        promise,
+    }
+}
+
+export const UPDATE_USER_BALANCE_TRIGGERED = 'UPDATE_USER_BALANCE_TRIGGERED'
+export const UPDATE_USER_BALANCE_SUCCESS = 'UPDATE_USER_BALANCE_SUCCESS'
+export const UPDATE_USER_BALANCE_FAILURE = 'UPDATE_USER_BALANCE_FAILURE'
+
+export function updateUserBalance(userId, data){
+    const promise = fetch(`${config.API_BASE_URL}/user/balance/${userId}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({data}) 
+    });
+    return {
+        onRequest: UPDATE_USER_BALANCE_TRIGGERED,
+        onSuccess: UPDATE_USER_BALANCE_SUCCESS,
+        onFailure: UPDATE_USER_BALANCE_FAILURE,
         promise,
     }
 }

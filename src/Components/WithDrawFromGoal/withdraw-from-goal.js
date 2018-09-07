@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../Input/input';
 import {Field, reduxForm} from 'redux-form';
-import {updateGoal, updateUserProfile} from '../../actions/index.actions';
+import {updateGoal, updateUserBalance} from '../../actions/index.actions';
 
 export class WithdrawFromGoal extends React.Component{
 
@@ -15,7 +15,7 @@ export class WithdrawFromGoal extends React.Component{
         let amount=(-parseFloat(values.amount, 10)*1000)
         data.balance = amount;
         console.log(data)
-        return this.props.dispatch(updateUserProfile(props.userId, data))
+        return this.props.dispatch(updateUserBalance(props.userId, data))
             .then(() => this.props.dispatch(updateGoal(props.goalId, props.userId, amount)))
     }
 

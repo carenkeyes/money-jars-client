@@ -24,7 +24,7 @@ export class Dashboard extends React.Component{
             )
         }
 
-        if(this.props.user.usertype === 'parent'){
+        if(this.props.user.usertype === 'parent' && this.props.setupComplete){
             console.log('parent')
             return (
                 <Redirect to={`/parent/`} />
@@ -33,6 +33,10 @@ export class Dashboard extends React.Component{
             console.log('child')
             return (
                 <Redirect to={`/child`} />
+            )
+        }else{
+            return(
+                <Redirect to={'/setup'} />
             )
         }
         return null;

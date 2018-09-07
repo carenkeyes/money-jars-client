@@ -13,13 +13,12 @@ export class ParentSetup extends React.Component {
             register: false,
             setupComplete: false,
         }
-        this.getBudgets = this.getBudgets.bind(this);
         this.budgetManually = this.budgetManually.bind(this);
     }
 
-    componentDidMount(){
+    /*componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
-    }
+    }*/
 
     addChild = () => {
         this.setState({
@@ -33,11 +32,6 @@ export class ParentSetup extends React.Component {
         })
     }
 
-    getBudgets(){
-        console.log('button clicked')
-        this.props.dispatch(fetchYnabBudgets(this.props.user._id))
-    }
-
     budgetManually(){
         const data = {budget_id: 'manual'}
         console.log(this)
@@ -48,6 +42,9 @@ export class ParentSetup extends React.Component {
     }
 
     render(){
+        console.log(this.props.user.budget_id)
+        console.log(this.props.user.budget_id===undefined)
+
         if(!this.props.loggedIn){
             return(
                 <Redirect to={'/register/login'} />
@@ -67,15 +64,13 @@ export class ParentSetup extends React.Component {
         let label1;
         let label2;
 
-        if(!this.props.user.budget_id &&this.props.user.account !== "manual"){
+        if(this.props.user.budget_id===undefined){
             message = 
                 <Request 
                     user_id = {this.props.user._id}
                     account = {this.props.user.account}
                     ynabData = {this.props.ynab}
                     budget_id = {this.props.user.budget_id}
-                    onClick = {this.getBudgets}
-                    label = 'Get Budgets'
                     budgetManually={this.budgetManually}
                 />
         }
