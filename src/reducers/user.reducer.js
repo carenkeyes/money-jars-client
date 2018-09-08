@@ -49,7 +49,7 @@ export default function user(state=initialState, action) {
         children: action.response.updatedUser.children, 
       }
     }
-    case actionTypes.LOGOUT_USER: {
+    case actionTypes.LOGOUT_USER_REQUEST_SUCCESS: {
       return {
         ...state,
         _id: null,

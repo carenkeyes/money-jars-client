@@ -1,22 +1,24 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import Button from '../Button/button';
-import {logoutUser} from '../../actions/index.actions';
+import {clearAuthToken} from '../../local-storage';
+import{logoutUserRequest} from '../../actions/index.actions';
 import './navbar.css';
 
 export class Navbar extends React.Component{
     constructor(){
         super()
+        this.logOut = this.logOut.bind(this)
     }
 
-    /*logOut = () => {
-        console.log('log out');
-        this.props.dispatch(logoutUser());
-    }*/
+   logOut(){
+       this.props.dispatch(logoutUserRequest())
+       clearAuthToken();
+    }
 
     render(){
-    return (
+        return (
             <div className='navbar'>
                 <Link to='/'>
                     <Button
@@ -32,9 +34,16 @@ export class Navbar extends React.Component{
                             className='nav-button visuallyhidden'
                         />
                     </Link>
+                    <Link to={`/`}>
+                        <Button 
+                            label={this.props.loggedIn ? 'Log Out':''}
+                            className='nav-button'
+                            onClick={this.logOut}
+                        />
+                    </Link>
                     <Link to={`/register/login`}>
                         <Button 
-                            label={this.props.loggedIn ? 'Switch User':'Log In'}
+                            label={this.props.loggedIn ? '':'Log In'}
                             className='nav-button'
                         />
                     </Link>
