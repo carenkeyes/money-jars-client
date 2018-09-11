@@ -14,7 +14,7 @@ export default class Request extends React.Component{
         super(props);
 
         this.state = {
-            ynabUrl: `https://app.youneedabudget.com/oauth/authorize?client_id=${config.CLIENT_ID}&redirect_uri=${config.REDIRECT_URL}&response_type=code&state=${this.user_id}`,
+            ynabUrl: `https://app.youneedabudget.com/oauth/authorize?client_id=${config.CLIENT_ID}&redirect_uri=${config.REDIRECT_URL}&response_type=code&state=${this.props.user_id}`,
             declined: false,
             initiated: false,
         }
@@ -26,7 +26,6 @@ export default class Request extends React.Component{
 
     getToken(){
         console.log('get token clicked')
-        console.log(this.state.ynabUrl)
         this.openYnabWindow(this.state.ynabUrl)
         this.setState({
             initiated: true,
@@ -34,6 +33,7 @@ export default class Request extends React.Component{
     }
 
     openYnabWindow(url) {
+        console.log(url);
         const win = window.open(url, '_self');
         win.focus();
     }

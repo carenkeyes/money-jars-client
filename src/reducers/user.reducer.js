@@ -57,6 +57,7 @@ export default function user(state=initialState, action) {
         usertype: null,
         budget_id: null,
         setupComplete: null,
+        children: null,
       }
     }
     default: {
