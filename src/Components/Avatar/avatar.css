@@ -17,7 +17,7 @@ img{
     width: 0px;
 }
 
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 1000px){
 
 .header-image{
     height: 100%;
@@ -27,7 +27,6 @@ img{
     background-position: center;
     width: 80%;
 }
-
    
 .home-left-image{
     background-image: url('./happy-money.png');

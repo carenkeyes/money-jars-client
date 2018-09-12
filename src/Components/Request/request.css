@@ -24,6 +24,7 @@
 
 .manual-budget-button{
     min-height: 50px;
+    width: 300px;
     font-weight: bold;
     flex: auto;
 }
@@ -46,9 +47,10 @@
 
     .manual-budget-button{
         height: 150px;
-        width: 150px;
+        max-width: 150px;
         font-weight: bold;
         margin-right: 20px;
+        justify-content: center;
     }
 
 }

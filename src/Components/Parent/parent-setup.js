@@ -27,6 +27,8 @@ export class ParentSetup extends React.Component {
     }
 
     finishSetUp = () => {
+        const data = {setupComplete: true}
+        this.props.dispatch(updateUserProfile(this.props.user._id, data))
         this.setState({
             setupComplete: true,
         })
