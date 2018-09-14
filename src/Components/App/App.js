@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Route, Switch, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 import Home from '../Home/home';
@@ -8,13 +9,13 @@ import RegistrationPage from '../RegistrationPage/registration-page';
 import Dashboard from '../Dashboard/dashboard';
 import ChildWrapper from '../ChildWrapper/child-wrapper';
 import Parent from '../Parent/parent';
-import ParentComplete from '../Parent/parent-complete';
 import ParentSetup from '../Parent/parent-setup';
 import Privacy from '../Privacy/privacy';
-//import {refreshAuthToken} from '../../actions/auth';
-import { connect } from 'react-redux';
 import AddChildWrapper from '../AddChildWrapper/add-child-wrapper';
 import Authorization from '../Authorization/authorization';
+import NotFound from '../ErrorScreens/not-found';
+import ServerError from '../ErrorScreens/server-error';
+import Forbidden from '../ErrorScreens/forbidden';
 
 export class App extends React.Component {
   /*componentDidUpdate(prevProps){
@@ -58,7 +59,10 @@ export class App extends React.Component {
               <Route exact path='/setup' component={ParentSetup} />
               <Route path='/authorization' component={Authorization} />
               <Route path='/register-child' component={AddChildWrapper} />
-              <Route exact path="/privacy" component={Privacy} />
+              <Route exact path='/privacy' component={Privacy} />
+              <Route exact path='/no-access' component={Forbidden} />
+              <Route exact path='/not-found' component={NotFound} />
+              <Route exact path='/server-error' component={ServerError} />
             </Switch>
           </main>          
           <Footer />

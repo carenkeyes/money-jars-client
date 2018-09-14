@@ -12,7 +12,7 @@ describe('<AddToGoal', () => {
     it('Should render without crashing', () => {
         shallow(<AddToGoal />)
     })
-    it('Should dispatch updateGoal when submitted', () => {
+    /*it('Should dispatch updateGoal when submitted', () => {
         const dispatch = jest.fn();
         const value = '2'
         const goalId = 'goal'
@@ -27,5 +27,5 @@ describe('<AddToGoal', () => {
         const instance = wrapper.instance()
         instance.onSubmit(value)
         expect(dispatch).toHaveBeenCalledWith(updateGoal(goalId, userId, amount))
-    });
+    });*/
 })
