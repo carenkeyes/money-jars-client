@@ -17,6 +17,22 @@ img{
     width: 0px;
 }
 
+.warning-image{
+    height: 40vh;
+    width: 40vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.broken-atm{
+    background-image: url('./broken-atm.png')
+}
+
+.money-escape{
+    background-image: url('./money-escape.png')
+}
+
 @media only screen and (min-width: 1000px){
 
 .header-image{

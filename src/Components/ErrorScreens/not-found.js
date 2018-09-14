@@ -1,7 +1,12 @@
 import React from 'react';
+import WarningScreen from './warning-screen';
 
-export default function Privacy(){
+export default function NotFound(){
     return(
-        <p> Privacy </p>
+        <WarningScreen 
+            title='Not Found'
+            message="The page you are looking seems to have gone missing..."
+            className='money-escape'
+        />
     )
 }
