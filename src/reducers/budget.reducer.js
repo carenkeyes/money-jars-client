@@ -53,6 +53,12 @@ export default function budget(state=initialState, action){
               total: action.response.user.balance,
             }
         }
+        case actionTypes.FETCH_YNAB_CATEGORY_BALANCE_SUCCESS:{
+            return{
+                ...state,
+                total: action.response
+            }
+    }
         default: {
             return state;
         }

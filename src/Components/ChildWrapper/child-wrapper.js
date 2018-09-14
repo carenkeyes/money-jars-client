@@ -60,6 +60,7 @@ export class ChildWrapper extends React.Component{
         toBudget=(toBudget/1000).toFixed([2])
 
         console.log(maxToBudget);
+        console.log(toBudget);
 
         let message;
         if(this.props.budget.goals.length===0){
