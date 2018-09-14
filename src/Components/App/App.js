@@ -8,6 +8,7 @@ import RegistrationPage from '../RegistrationPage/registration-page';
 import Dashboard from '../Dashboard/dashboard';
 import ChildWrapper from '../ChildWrapper/child-wrapper';
 import Parent from '../Parent/parent';
+import ParentComplete from '../Parent/parent-complete';
 import ParentSetup from '../Parent/parent-setup';
 import Privacy from '../Privacy/privacy';
 //import {refreshAuthToken} from '../../actions/auth';
