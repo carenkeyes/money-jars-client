@@ -5,7 +5,8 @@ export default function Forbidden(){
     return (
         <WarningScreen 
             title='Unavailable'
-            message='You do not have permission to view this page.'
+            message='Just trust us on this one'
+            className='danger'
         />
     )
 }

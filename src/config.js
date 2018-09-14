@@ -6,7 +6,7 @@ export default {
     USER_CREATE: `${API_BASE_URL}/user`,
     USER_DATA: `${API_BASE_URL}/user/protected`,
     USER_ENDPOINT: `${API_BASE_URL}/user/login`,
-    UNAUTHORIZED_ENDPOINT: '/login',
+    UNAUTHORIZED_ENDPOINT: '/register/login',
     FORBIDDEN_ENDPOINT: '/no-access',
     NOT_FOUND_ENDPOINT: '/not-found',
     SERVER_ERROR_ENDPOINT: '/server-error',

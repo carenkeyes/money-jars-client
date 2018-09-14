@@ -16,6 +16,7 @@ import Authorization from '../Authorization/authorization';
 import NotFound from '../ErrorScreens/not-found';
 import ServerError from '../ErrorScreens/server-error';
 import Forbidden from '../ErrorScreens/forbidden';
+import Loading from '../Loading/loading';
 
 export class App extends React.Component {
   /*componentDidUpdate(prevProps){
@@ -63,6 +64,7 @@ export class App extends React.Component {
               <Route exact path='/no-access' component={Forbidden} />
               <Route exact path='/not-found' component={NotFound} />
               <Route exact path='/server-error' component={ServerError} />
+              <Route exact path='/loading' component={Loading} />
             </Switch>
           </main>          
           <Footer />

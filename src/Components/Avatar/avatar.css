@@ -33,6 +33,10 @@ img{
     background-image: url('./money-escape.png')
 }
 
+.danger{
+    background-image: url('./danger.png')
+}
+
 @media only screen and (min-width: 1000px){
 
 .header-image{
