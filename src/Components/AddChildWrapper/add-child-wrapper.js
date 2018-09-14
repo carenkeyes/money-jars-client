@@ -65,6 +65,7 @@ export class AddChildWrapper extends React.Component {
                     budget_id={this.props.user.budget_id}
                     onChange={this.handleChange}
                     manual={this.props.user.budget_id==='manual'?true:false} 
+                    account={this.props.user.account}
                 />
             )
         }

@@ -21,8 +21,9 @@ export class RegistrationChild extends React.Component {
             console.log('ynab')
             user.group_id = values.group_id.value,
             user.category_id = values.category_id.value,
-            user.budget_id = this.props.budget_id
-            user.balance = 0
+            user.budget_id = this.props.budget_id,
+            user.balance = 0,
+            user.account = this.props.account
         } else if (this.props.manual){
             console.log('manual')
             user.budget_id = 'manual'

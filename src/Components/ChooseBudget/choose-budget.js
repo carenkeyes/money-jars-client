@@ -3,6 +3,7 @@ import SelectInput from '../SelectInput/select-input';
 import {Field, reduxForm} from 'redux-form';
 import {updateUserProfile} from '../../actions/index.actions';
 import Button from '../Button/button';
+import './choose-budget.css'
 
 
 export class ChooseBudget extends React.Component {
@@ -17,7 +18,7 @@ export class ChooseBudget extends React.Component {
             console.log(this.props.data)
             return(
                 <div className='choose-budget'>
-                    <h2> Now select a YNAB budget to use </h2>
+                    <p> Now select a YNAB budget to use </p>
                     <form
                         className='choose-budget-form'
                         onSubmit={this.props.handleSubmit(values =>

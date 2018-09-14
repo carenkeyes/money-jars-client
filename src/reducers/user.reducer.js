@@ -7,6 +7,7 @@ const initialState = {
   budget_id: null,
   setupComplete: null,
   children: null,
+  account: null,
 }
 
 export default function user(state=initialState, action) {
@@ -22,6 +23,7 @@ export default function user(state=initialState, action) {
         budget_id: action.response.user.budget_id,
         setupComplete: action.response.user.setupComplete,
         children: action.response.user.children,
+        account: action.response.user.account,
       }
     }
     case actionTypes.FETCH_USER_LOGIN_REQUEST_SUCCESS: {
@@ -33,6 +35,7 @@ export default function user(state=initialState, action) {
         budget_id: action.response.userInfo.budget_id,
         setupComplete: action.response.userInfo.setupComplete,
         children: action.response.userInfo.children,
+        account: action.response.userInfo.account,
       }
     }
     //should make a child reducer
