@@ -11,6 +11,6 @@ export default {
     NOT_FOUND_ENDPOINT: '/not-found',
     SERVER_ERROR_ENDPOINT: '/server-error',
     CLIENT_ID: '524cb6ed48eb7037b8391bc45974590dace8e9b2434cc03e5ae595b54412cced',
-    REDIRECT_URL: 'urn:ietf:wg:oauth:2.0:oob',
-    //REDIRECT_URL: 'https://money-jars.herokuapp.com/authorization'
+    //REDIRECT_URL: 'urn:ietf:wg:oauth:2.0:oob',
+    REDIRECT_URL: 'https://money-jars.herokuapp.com/authorization'
 };
