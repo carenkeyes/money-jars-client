@@ -29,6 +29,25 @@ export default function appState(state = initialState, action) {
         isFetchingUserInfo: initialState.isFetchingUserInfo
       };
     }
+    case actionTypes.FETCH_USER_LOGIN_REQUEST_TRIGGERED: {
+      return {
+        ...state,
+        isFetchingUserInfo: true,
+      };  
+    }
+    case actionTypes.FETCH_USER_LOGIN_REQUEST_SUCCESS: {
+      return {
+        ...state,
+        hasUserInfo: true,
+        isFetchingUserInfo: initialState.isFetchingUserInfo
+      };
+    }
+    case actionTypes.FETCH_USER_LOGIN_REQUEST_FAILURE: {
+      return {
+        ...state,
+        isFetchingUserInfo: initialState.isFetchingUserInfo
+      };
+    }
     default: {return state;}
   }
 }
