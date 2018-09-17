@@ -51,6 +51,9 @@ export class App extends React.Component {
         <div className="app">
           <Navbar />       
           <main role="main">
+            <Loading 
+              loading={this.props.appState.isFetchingUserInfo}
+            />
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/register' component={RegistrationPage} />
@@ -64,7 +67,6 @@ export class App extends React.Component {
               <Route exact path='/no-access' component={Forbidden} />
               <Route exact path='/not-found' component={NotFound} />
               <Route exact path='/server-error' component={ServerError} />
-              <Route exact path='/loading' component={Loading} />
             </Switch>
           </main>          
           <Footer />
@@ -74,7 +76,7 @@ export class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+  appState: state.appState
 });
 
 export default withRouter(connect(mapStateToProps)(App));

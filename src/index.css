@@ -84,9 +84,9 @@ header{
 
 h1{
     font-weight: bold;
-    font-size: 5em;
+    font-size: 6em;
     text-align: center;
-    font-family: '.tk-hobeaux', sans-serif
+    font-family: '.tk-hobeaux', 'Coiny', sans-serif
 }
 
 h2{
@@ -94,6 +94,7 @@ h2{
     font-size: 3em;
     margin-bottom: 20px;
     text-align: center;
+    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif
 }
 
 h3{
@@ -101,19 +102,19 @@ h3{
     font-size: 1.5em;
     line-height: 2em;
     margin: 10px;
-    font-family: '.tk-acumin-pro-condensed', sans-serif
+    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif
 }
 
 h6{
     font-size: 20px;
     margin-bottom: .2em;
-    font-family: '.tk-acumin-pro-condensed', sans-serif
+    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif
 }
 
 p{
     line-height: 1.4em;
     text-align: center;
-    font-family: '.tk-acumin-pro-condensed', sans-serif
+    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif
 }
 
 section{
