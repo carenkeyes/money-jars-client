@@ -1,6 +1,6 @@
 .progressBar{
     height: 300px;
-    width: 100px;
+    width: 50px;
     border-radius: 4px;
     border: 4px solid black;
 }
@@ -21,4 +21,12 @@
 
 .spending{
     background-color: #2EB6D9;
+}
+
+@media only screen and (min-width: 750px){
+    
+    .progressBar{
+        width: 100px;
+    }
+
 }

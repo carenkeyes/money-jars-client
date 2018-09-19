@@ -144,7 +144,7 @@ section:nth-child(even){
     display: flex;
     flex-direction: column;
     max-width: 600px;
-    margin: 1.5em;
+    margin: .5em;
 }
 
 @media only screen and (min-width: 600px){
@@ -154,5 +154,9 @@ section:nth-child(even){
 
     p{
         font-size: 36px;
+    }
+
+    .form-single{
+        margin: 1.5em;
     }
 }

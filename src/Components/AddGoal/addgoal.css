@@ -1,8 +1,8 @@
 .add-goal{
     background-color: #E4F718;
     margin: 0 auto;
-    padding: 3em 2em;
-    width: 800px;
+    padding: 1em 1em;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,5 +31,18 @@
 
 .double-form-section{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+}
+
+@media only screen and (min-width: 900px){
+    .double-form-section{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .add-goal{
+        min-width: 800px;
+        padding: 3em 2em;
+    }
 }

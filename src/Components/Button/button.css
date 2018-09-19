@@ -35,9 +35,9 @@ button{
 
 .home-button{
     flex: auto;
-    height: 80px;
+    height: 40px;
     max-width: 400px;
-    font-size: 32px;
+    font-size: 22px;
     box-shadow: 4px 4px 4px black;
     margin: 5px;
 }
@@ -124,6 +124,11 @@ button{
 
     .nav-button{
         font-size: 24px;
+    }
+
+    .home-button{
+        height: 80px;
+        font-size: 28px;
     }
 
 }
