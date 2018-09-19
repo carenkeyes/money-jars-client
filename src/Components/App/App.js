@@ -18,8 +18,10 @@ import ServerError from '../ErrorScreens/server-error';
 import Forbidden from '../ErrorScreens/forbidden';
 import Loading from '../Loading/loading';
 import PrivateRoute from '../PrivateRoute/private-route';
+import {fetchUserBasicInfo} from '../../actions/index.actions';
 
 export class App extends React.Component {
+
   /*componentDidUpdate(prevProps){
     if(!prevProps.logginIn && this.props.logginIn){
       this.startPeriodicRefresh();

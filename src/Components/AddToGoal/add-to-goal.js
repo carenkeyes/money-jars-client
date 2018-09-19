@@ -22,16 +22,6 @@ export class AddToGoal extends React.Component{
             
     }
 
-   /* onSubmit(values){
-        console.log(values);
-        const data = {}
-        data.amount = parseInt(values.amount)
-        data.id = this.props.id
-        user.id =
-        console.log(data)
-       // return this.props.dispatch(updateGoal(data))
-    }*/
-
     render(){
         if(this.props.editType === 'add'){
             return(

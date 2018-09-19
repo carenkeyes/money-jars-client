@@ -1,0 +1,14 @@
+.child-allowance{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.allowance{
+    flex-basis: 300px;
+    flex: auto;
+    margin: 30px;
+    padding: 30px;
+    border: solid 1px black;
+    border-radius: 5px;
+    background-color: #FFF7DB;
+}
