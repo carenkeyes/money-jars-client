@@ -22,10 +22,10 @@ export class Parent extends React.Component {
         let greeting=`Welcome ${this.props.user.username}!`
 
         if(this.props.user.children.length === 1){
-            message = <p>See an overview of {this.props.user.children[0].username}'s
+            message = <p>In future updates, you will see an overview of {this.props.user.children[0].username}'s
                  account below </p>
         }else if(this.props.user.children.length > 1){
-            message = <p>See an overview of your children's accounts below</p>
+            message = <p>In future updates, you will see an overview of your children's accounts below</p>
         }
 
 

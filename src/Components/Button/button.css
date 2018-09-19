@@ -4,6 +4,7 @@ button{
     margin: .5em 0;
     border-radius: 5px;
     font-size: 24px;
+    font-weight: bold;
 }
 
 .home{
@@ -14,7 +15,6 @@ button{
     border: none;
     color: transparent;
     width: 50px;
-
     margin-top: 10px;
 }
 

@@ -4,7 +4,6 @@ import Button from '../Button/button';
 import './request.css';
 import { connect } from 'react-redux';
 
-import {fetchYnabBudgets} from '../../actions/index.actions';
 import ChooseBudget from '../ChooseBudget/choose-budget';
 import {updateUserProfile} from '../../actions/index.actions';
 import {Redirect} from 'react-router-dom';

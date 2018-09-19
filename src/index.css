@@ -86,7 +86,7 @@ h1{
     font-weight: bold;
     font-size: 3em;
     text-align: center;
-    font-family: '.tk-hobeaux', 'Coiny', sans-serif
+    font-family: '.tk-hobeaux', 'Mouse Memoirs', sans-serif
 }
 
 h2{
@@ -94,7 +94,7 @@ h2{
     font-size: 3em;
     margin-bottom: 20px;
     text-align: center;
-    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif
+    font-family: '.tk-acumin-pro-condensed', 'Ramabhadra', sans-serif
 }
 
 h3{
@@ -102,19 +102,19 @@ h3{
     font-size: 1.5em;
     line-height: 2em;
     margin: 10px;
-    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif
+    font-family: '.tk-acumin-pro-condensed', 'Ramabhadra', sans-serif
 }
 
 h6{
     font-size: 20px;
     margin-bottom: .2em;
-    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif
+    font-family: '.tk-acumin-pro-condensed', 'Ramabhadra', sans-serif
 }
 
 p{
     line-height: 1.4em;
     text-align: center;
-    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif;
+    font-family: '.tk-acumin-pro-condensed', 'Ramabhadra', sans-serif;
     font-size: 24px;
 }
 
