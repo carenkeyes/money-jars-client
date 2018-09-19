@@ -6,6 +6,7 @@
     box-shadow: 0 3px 3px black;
     justify-content: space-around;
     padding: 20px 10px;
+    height: 80vh;
 }
 
 .budget-message{

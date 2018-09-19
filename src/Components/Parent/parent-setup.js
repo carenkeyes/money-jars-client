@@ -13,6 +13,7 @@ export class ParentSetup extends React.Component {
             register: false,
             setupComplete: false,
         }
+        fetchUserBasicInfo()
         this.budgetManually = this.budgetManually.bind(this);
     }
 

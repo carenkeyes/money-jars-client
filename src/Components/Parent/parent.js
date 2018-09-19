@@ -6,11 +6,15 @@ import {fetchUserBasicInfo, updateUserProfile} from '../../actions/index.actions
 import Header from '../Header/header';
 
 export class Parent extends React.Component {
+    constructor(){
+        super()
+        fetchUserBasicInfo()
+    }
 
-    componentDidMount(){
+    /*componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
         console.log('component did mount')
-    }
+    }*/
 
     render(){
 
