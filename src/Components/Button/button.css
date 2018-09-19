@@ -22,7 +22,7 @@ button{
     background-color: white;
     border: solid 3px rgb(46, 182, 217);
     color: rgb(46, 182, 217);
-    font-size: 32px;
+    font-size: 18px;
     border-radius: 10px;
     margin-left: 20px;
 }
@@ -113,13 +113,17 @@ button{
 
 @media only screen and (min-width: 600px){    
     .home{
-    background: url('./home-button.png');
-    width: 180px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    border: none;
-    color: transparent;
+        background: url('./home-button.png');
+        width: 180px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        border: none;
+        color: transparent;
+    }
+
+    .nav-button{
+        font-size: 24px;
     }
 
 }
@@ -127,6 +131,10 @@ button{
 @media only screen and (min-width: 1050px){
     .home-button{
         font-size: 42px;
+    }
+
+    .nav-button{
+        font-size: 36px;
     }
 }
 

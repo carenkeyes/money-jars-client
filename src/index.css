@@ -84,7 +84,7 @@ header{
 
 h1{
     font-weight: bold;
-    font-size: 6em;
+    font-size: 3em;
     text-align: center;
     font-family: '.tk-hobeaux', 'Coiny', sans-serif
 }
@@ -114,7 +114,8 @@ h6{
 p{
     line-height: 1.4em;
     text-align: center;
-    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif
+    font-family: '.tk-acumin-pro-condensed', 'Roboto', sans-serif;
+    font-size: 24px;
 }
 
 section{
@@ -146,6 +147,12 @@ section:nth-child(even){
     margin: 1.5em;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (min-width: 600px){
+    h1{
+        font-size: 6em;
+    }
 
+    p{
+        font-size: 36px;
+    }
 }

@@ -11,9 +11,6 @@ export default function Footer(){
             </div>
             <ul>
                 <li>
-                    <Link to={`$/register/login`}>Logout</Link>
-                </li>
-                <li>
                     <Link to={`/privacy`}>Privacy Policy</Link>
                 </li>
             </ul>

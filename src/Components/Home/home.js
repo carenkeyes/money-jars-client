@@ -1,12 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-
-//import RegistrationForm from '../RegistrationForm/registration-form';
-//import LoginForm from '../LoginForm/login-form';
 import Header from '../Header/header';
-//import RegistrationPage from '../RegistrationPage/registration-page';
-
+import Avatar from '../Avatar/avatar';
+import './home.css';
 
 
 export class Home extends React.Component{
@@ -22,7 +19,6 @@ export class Home extends React.Component{
             register: true,
         })
     }
-
 
     render(){
         let message = 
@@ -48,12 +44,52 @@ export class Home extends React.Component{
                     but1OnClick={this.handleClick}
                     message={message}
                 />
-                <section>
-                    <h2>Welcome</h2>
-                    <p>Blah blah blah</p>
+                <section className='home-section'>
+                    <div className='home-content'>
+                        <p className='content-text'>
+                            As a firm believer in telling my money want to do and a devout 
+                            <a href='https://www.youneedabudget.com/' target='_blank'>  YNAB  </a> enthusiast (they
+                            aren't even paying me to say that), I've struggled with teaching my kids to manage
+                            their money using the same principles. 
+                        </p>
+                    </div>
                 </section>
-                <section>
-            
+                <section className='home-section' >
+                    <div className='home-content'>
+                        <Avatar className='money-jars section-image' />
+                        <div className='content-paragraph'>
+                            <p className='content-text'> 
+                                We started by using jars, but found them bulky and awkard. A jar for each savings goals might mean
+                                10-15 of them stacked up on a shelf somewhere. We tried to envelopes but found that
+                                the large amount of change required was both a deterant for me as a parent and 
+                                also likely to destroy the envelopes.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section className='home-section'>
+                    <div className='home-content'>
+                        <Avatar className='money-envelopes section-image' />
+                        <div className='content-paragraph'>
+                            <p className='content-text'>
+                                When YNAB announced a public API, it seemed like the perfect opportunity.
+                                With Money Jars, you can now maintain one category for each child in your budget. Money
+                                Jars syncs automatically when you child logs in, displaying their unbudgeted dollars
+                                and allowing them to create and add to goals.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section className='home-section'>
+                    <div className='home-content'>
+                        <div className='content-paragraph'>
+                            <p className='content-text'>
+                                Not a YNAB user? We've still got your covered. Simply select "budget manually" once
+                                you have created and account and you will be able to add funds to your child's account
+                                whenever you like.
+                            </p>
+                        </div>
+                    </div>
                 </section>
             </div>
         );

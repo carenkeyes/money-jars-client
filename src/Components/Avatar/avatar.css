@@ -37,6 +37,22 @@ img{
     background-image: url('./danger.png')
 }
 
+.section-image{
+    min-height: 20vh;
+    min-width: 20vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.money-jars{
+    background-image: url('./money-jars.png')
+}
+
+.money-envelopes{
+    background-image: url('./money-envelopes.png')
+}
+
 @media only screen and (min-width: 1000px){
 
 .header-image{

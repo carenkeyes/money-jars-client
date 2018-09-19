@@ -186,13 +186,9 @@ export const LOGOUT_USER_REQUEST_SUCCESS = 'LOGOUT_USER_REQUEST_SUCESS'
 export const LOGOUT_USER_REQUEST_FAILURE = 'LOGOUT_USER_REQUEST_FAILURE'
 
 export function logoutUserRequest(){
-    ('log out user request')    
+
     return {
-        type: {
-        onRequest: LOGOUT_USER_REQUEST_TRIGGERED,
-        onSuccess: LOGOUT_USER_REQUEST_SUCCESS,
-        onFailure: LOGOUT_USER_REQUEST_FAILURE,
-        }
+        type: LOGOUT_USER_REQUEST_SUCCESS
     }
 }
 
