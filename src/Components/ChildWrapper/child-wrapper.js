@@ -31,11 +31,6 @@ export class ChildWrapper extends React.Component{
 
     render(){
 
-        if(!this.props.loggedIn){
-            return(
-                <Redirect to='/register/login' />
-            )
-        }
         let goals;
         goals = this.props.budget.goals.map(goal =>
             <Goal 

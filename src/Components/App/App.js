@@ -17,6 +17,7 @@ import NotFound from '../ErrorScreens/not-found';
 import ServerError from '../ErrorScreens/server-error';
 import Forbidden from '../ErrorScreens/forbidden';
 import Loading from '../Loading/loading';
+import PrivateRoute from '../PrivateRoute/private-route';
 
 export class App extends React.Component {
   /*componentDidUpdate(prevProps){
@@ -57,12 +58,12 @@ export class App extends React.Component {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/register' component={RegistrationPage} />
-              <Route path='/dashboard' component={Dashboard} />
-              <Route path='/child' component={ChildWrapper} />
-              <Route exact path='/parent' component={Parent} />
-              <Route exact path='/setup' component={ParentSetup} />
-              <Route path='/authorization' component={Authorization} />
-              <Route path='/register-child' component={AddChildWrapper} />
+              <PrivateRoute path='/dashboard' component={Dashboard} />
+              <PrivateRoute path='/child' component={ChildWrapper} />
+              <PrivateRoute exact path='/parent' component={Parent} />
+              <PrivateRoute exact path='/setup' component={ParentSetup} />
+              <PrivateRoute path='/authorization' component={Authorization} />
+              <PrivateRoute path='/register-child' component={AddChildWrapper} />
               <Route exact path='/privacy' component={Privacy} />
               <Route exact path='/no-access' component={Forbidden} />
               <Route exact path='/not-found' component={NotFound} />

@@ -14,14 +14,6 @@ export class Parent extends React.Component {
 
     render(){
 
-        if(!this.props.loggedIn){
-            console.log('redirect')
-            return(
-            <Redirect to={'/register/login'} />
-            )
-        }
-
-
         let message=<p>See your kids accounts!</p>
         let greeting=`Welcome ${this.props.user.username}!`
 

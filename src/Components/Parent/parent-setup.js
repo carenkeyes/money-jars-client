@@ -44,15 +44,6 @@ export class ParentSetup extends React.Component {
     }
 
     render(){
-        console.log(this.props.user.budget_id)
-        console.log(this.props.user.budget_id===undefined)
-
-        if(!this.props.loggedIn){
-            return(
-                <Redirect to={'/register/login'} />
-            )
-        }
-
         if(this.state.register){
             return <Redirect to={'/register-child'} />
         }
