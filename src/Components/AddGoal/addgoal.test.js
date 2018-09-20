@@ -6,7 +6,7 @@ import AddGoal from './addgoal';
 
 Enzyme.configure({adapter: new Adapter()});
 
-describe('<AddGoal', () => {
+describe('<AddGoal />', () => {
     it('Should render without crashing', () => {
         shallow(<AddGoal />)
     })
