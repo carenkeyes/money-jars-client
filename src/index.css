@@ -86,7 +86,8 @@ h1{
     font-weight: bold;
     font-size: 3em;
     text-align: center;
-    font-family: '.tk-hobeaux', 'Mouse Memoirs', sans-serif
+    font-family: '.tk-hobeaux', 'Mouse Memoirs', sans-serif;
+    letter-spacing: 3px;
 }
 
 h2{

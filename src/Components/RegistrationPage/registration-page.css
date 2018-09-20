@@ -2,11 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px;
+    padding: 20px;
 }
 
 .user-form{
-    margin-top: 40px;
+    margin-top: 60px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -44,5 +44,9 @@
     .child-form{
         width: 400px;
         padding: 20px;
+    }
+
+    .registration{
+        padding: 60px;
     }
 }
