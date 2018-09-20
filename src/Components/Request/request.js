@@ -41,23 +41,6 @@ export default class Request extends React.Component{
 
     render(){
         console.log(this.props.ynabData)
-        /*if(this.state.declined){
-            return(
-                <Redirect to={'/parent'} />
-            )
-        }
-        if(this.state.initiated){
-            return(
-                <div>
-                    <p>We need to fetch your YNAB budgets</p>
-                    <Button 
-                        label='Get Budgets'
-                        className='home-button orange'
-                        type='text'
-                        onClick={this.getBudgets}
-                    />
-                </div>)
-        }*/
 
         if(!this.props.budget_id && this.props.ynabData.data===null){
             return(
@@ -80,17 +63,6 @@ export default class Request extends React.Component{
                     </div>
                 </div>
             )
-        /*}else if(!this.props.budget_id && this.props.ynabData === null){
-            return(
-            <div>
-                <p>We need to fetch your YNAB budgets</p>
-                <Button 
-                    label={this.props.label}
-                    className='home-button orange'
-                    type='text'
-                    onClick={this.props.onClick}
-                />
-            </div>)*/
 
         }else if(this.props.ynabData.data.length > 0){
             console.log(this.props.ynabData.data.length)

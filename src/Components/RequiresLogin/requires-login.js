@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
@@ -24,4 +24,4 @@ export default () => Component => {
     });
 
     return connect(mapStateToProps)(RequiresLogin);
-}
+}*/
