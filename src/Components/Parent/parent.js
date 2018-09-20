@@ -1,35 +1,30 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Request from '../Request/request'
-import {Redirect} from 'react-router-dom'
 import {fetchUserBasicInfo, updateUserProfile} from '../../actions/index.actions';
 import Header from '../Header/header';
+import ManualBudget from '../ManualBudget/manual-budget';
 
 export class Parent extends React.Component {
+    constructor(){
+        super()
+        fetchUserBasicInfo()
+    }
 
-    componentDidMount(){
+    /*componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
         console.log('component did mount')
-    }
+    }*/
 
     render(){
 
-        if(!this.props.loggedIn){
-            console.log('redirect')
-            return(
-            <Redirect to={'/register/login'} />
-            )
-        }
-
-
         let message=<p>See your kids accounts!</p>
         let greeting=`Welcome ${this.props.user.username}!`
-
+        
         if(this.props.user.children.length === 1){
-            message = <p>See an overview of {this.props.user.children[0].username}'s
+            message = <p>In future updates, you will see an overview of {this.props.user.children[0].username}'s
                  account below </p>
         }else if(this.props.user.children.length > 1){
-            message = <p>See an overview of your children's accounts below</p>
+            message = <p>In future updates, you will see an overview of your children's accounts below</p>
         }
 
 
@@ -47,13 +42,7 @@ export class Parent extends React.Component {
                     but2Class='home-button orange'
                     but2OnClick={this.props.but2OnClick}
                 />
-                    
-                <section>
-
-                </section>
-                <section>
-
-                </section>
+                <ManualBudget />
             </div>
         )
     }
@@ -62,7 +51,6 @@ export class Parent extends React.Component {
 const mapStateToProps = state => ({
     loggedIn: state.user._id !== null,
     user: state.user,
-    children: state.children,
 });
 
 export default connect(mapStateToProps)(Parent);

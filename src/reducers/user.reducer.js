@@ -55,12 +55,7 @@ export default function user(state=initialState, action) {
     case actionTypes.LOGOUT_USER_REQUEST_SUCCESS: {
       return {
         ...state,
-        _id: null,
-        username: null,
-        usertype: null,
-        budget_id: null,
-        setupComplete: null,
-        children: null,
+        ...initialState
       }
     }
     default: {

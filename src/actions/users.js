@@ -181,18 +181,32 @@ export function updateUserBalance(userId, data){
     }
 }
 
+export const UPDATE_CHILD_BALANCE_TRIGGERED = 'UPDATE_CHILD_BALANCE_TRIGGERED'
+export const UPDATE_CHILD_BALANCE_SUCCESS = 'UPDATE_CHILD_BALANCE_SUCCESS'
+export const UPDATE_CHILD_BALANCE_FAILURE = 'UPDATE_CHILD_BALANCE_FAILURE'
+
+export function updateChildBalance(userId, data){
+    const promise = fetch(`${config.API_BASE_URL}/user/balance/${userId}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({data}) 
+    });
+    return {
+        onRequest: UPDATE_CHILD_BALANCE_TRIGGERED,
+        onSuccess: UPDATE_CHILD_BALANCE_SUCCESS,
+        onFailure: UPDATE_CHILD_BALANCE_FAILURE,
+        promise,
+    }
+}
+
 export const LOGOUT_USER_REQUEST_TRIGGERED = 'LOGOUT_USER_REQUEST_TRIGGERED'
 export const LOGOUT_USER_REQUEST_SUCCESS = 'LOGOUT_USER_REQUEST_SUCESS'
 export const LOGOUT_USER_REQUEST_FAILURE = 'LOGOUT_USER_REQUEST_FAILURE'
 
 export function logoutUserRequest(){
-    ('log out user request')    
+
     return {
-        type: {
-        onRequest: LOGOUT_USER_REQUEST_TRIGGERED,
-        onSuccess: LOGOUT_USER_REQUEST_SUCCESS,
-        onFailure: LOGOUT_USER_REQUEST_FAILURE,
-        }
+        type: LOGOUT_USER_REQUEST_SUCCESS
     }
 }
 

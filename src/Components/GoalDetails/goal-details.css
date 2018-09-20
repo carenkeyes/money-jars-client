@@ -1,7 +1,7 @@
 .edit-goal-form{
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 250px;
     margin-right: 0;
 }
 
@@ -31,12 +31,14 @@
 
 .edit-goal-button-group{
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-    width: 600px;
+    width: 250px;
 }
 
 .edit-goal-button{
     flex: auto;
+    margin-top: 10px;
 }
 
 .extra-info-label{
@@ -52,4 +54,25 @@
     margin-bottom: 10px;
     border: solid 1px black;
     border-radius: 4px;
+}
+
+.goal-info{
+    max-width: 320px;
+}
+
+@media only screen and (min-width: 750px){
+    .edit-goal-form{
+        width: 600px;
+        margin-right: 0;
+    }
+
+    .edit-goal-button-group{
+        justify-content: space-evenly;
+        flex-direction: row;
+        width: 600px;
+    }
+
+    .goal-info{
+        max-width: 750px;
+    }
 }

@@ -18,12 +18,6 @@ export class Dashboard extends React.Component{
 
     render(){
 
-        if(!this.state.loggedIn){
-            return(
-            <Redirect to={'/register/login'} />
-            )
-        }
-
         if(this.props.user.usertype === 'parent' && this.props.user.setupComplete){
             console.log('parent')
             return (
@@ -39,7 +33,6 @@ export class Dashboard extends React.Component{
                 <Redirect to={'/setup'} />
             )
         }
-        return null;
     }
 }
 

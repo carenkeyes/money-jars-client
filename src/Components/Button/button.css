@@ -4,6 +4,7 @@ button{
     margin: .5em 0;
     border-radius: 5px;
     font-size: 24px;
+    font-weight: bold;
 }
 
 .home{
@@ -14,7 +15,6 @@ button{
     border: none;
     color: transparent;
     width: 50px;
-
     margin-top: 10px;
 }
 
@@ -22,7 +22,7 @@ button{
     background-color: white;
     border: solid 3px rgb(46, 182, 217);
     color: rgb(46, 182, 217);
-    font-size: 32px;
+    font-size: 18px;
     border-radius: 10px;
     margin-left: 20px;
 }
@@ -35,9 +35,9 @@ button{
 
 .home-button{
     flex: auto;
-    height: 80px;
+    height: 40px;
     max-width: 400px;
-    font-size: 32px;
+    font-size: 22px;
     box-shadow: 4px 4px 4px black;
     margin: 5px;
 }
@@ -113,13 +113,22 @@ button{
 
 @media only screen and (min-width: 600px){    
     .home{
-    background: url('./home-button.png');
-    width: 180px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    border: none;
-    color: transparent;
+        background: url('./home-button.png');
+        width: 180px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        border: none;
+        color: transparent;
+    }
+
+    .nav-button{
+        font-size: 24px;
+    }
+
+    .home-button{
+        height: 80px;
+        font-size: 28px;
     }
 
 }
@@ -127,6 +136,10 @@ button{
 @media only screen and (min-width: 1050px){
     .home-button{
         font-size: 42px;
+    }
+
+    .nav-button{
+        font-size: 36px;
     }
 }
 

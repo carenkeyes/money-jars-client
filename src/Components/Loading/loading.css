@@ -1,0 +1,23 @@
+.loading-screen{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-message{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loading-image{
+    background-image: url('./loading.gif');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 64px;
+    width: 64px;
+    margin-bottom: 20px;
+}
