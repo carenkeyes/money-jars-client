@@ -1,6 +1,5 @@
 import React from 'react'
 import RegistrationChild from '../RegistrationChild/registration-child'
-import {Redirect} from 'react-router';
 import {connect} from 'react-redux';
 import {fetchYnabCategories} from '../../actions/index.actions'
 import './add-child-wrapper.css';
@@ -47,16 +46,12 @@ export class AddChildWrapper extends React.Component {
 
     render(){
 
-        if(this.props.user === null){
-            return(
-                <Redirect to='/register/login' />
-            )
-        }
         if(this.props.loading){
             return(
                 <p>Waiting on YNAB Categories</p>
             )
         }
+
         if(this.props.data !== null || this.props.user.budget_id==='manual'){
             return(
                 <RegistrationChild 

@@ -1,20 +1,22 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import {shallow} from 'enzyme';
 import {AddChildWrapper} from './add-child-wrapper';
-
-Enzyme.configure({adapter: new Adapter()});
+import { fetchYnabCategories } from '../../actions/ynab';
 
 describe('<AddChildWrapper />', () => {
-    let wrapper;
-    const mockRegisterfn = jest.fn();
-
-    beforeEach(() => {
-        wrapper = shallow(<AddChildWrapper />)
-    })
+    const user = {
+        budget_id: 'budget_id',
+        user_id: 'user_id'
+    }
     it('Should render without crashing', () => {
-        shallow(<AddChildWrapper />)
+        shallow(<AddChildWrapper 
+            user={user}
+        />)
     })
-
+    it('ComponentDidMount', () => {
+        const dispatch = jest.fn();
+        wrapper = shallow(<AddChildWrapper user={user} />)
+        wrapper.instance().componentDidMount()
+        expect(dispatch).toHaveBeenCalledWith(fetchYnabCategories)
+    })
 })

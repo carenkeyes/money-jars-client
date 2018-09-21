@@ -12,8 +12,8 @@ describe('<ProgressBar />', () =>{
   })
 })
 
-describe('<Filler />', () => {
+/*describe('<Filler />', () => {
   it('Should render wtihout crashing', () => {
     shallow(<Filler />)
   })
-})
+})*/
