@@ -1,15 +1,43 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import {shallow} from 'enzyme';
-import ChildWrapper from './child-wrapper';
-import childWrapper from './child-wrapper';
+import {ChildWrapper} from './child-wrapper';
 
-Enzyme.configure({adapter: new Adapter()});
+const mockFetchYnabBalance= (data) => ({
+    type: 'FETCH_YNAB_BALANCE',
+    data,
+})
+
+jest.mock('../../actions/index.actions', () => Object.assign({},
+    require.requireActual('../../actions/index.actions'), {
+        fetchYnabCategoryBalance: jest.fn().mockImplementation(() => {
+                return mockFetchYnabBalance;
+        })
+    }
+))
+
+const props = {
+    user: {
+        budget_id: 'manual',
+    }, 
+    ynab: {
+
+    }, 
+    budget: {
+        goals: []
+    }
+}
 
 describe('<ChildWrapper />', () => {
     it('Should render without crashing', () => {
-        shallow(<childWrapper />)
+        shallow(<ChildWrapper {...props} user={{budget_id: 'manual'}}/>)
     })
-
+    it('Should fetch YNAB category balance when not set to manual', () => {
+        const dispatch = jest.fn();
+        shallow(<ChildWrapper {...props} user={{budget_id: 'ynab'}} dispatch={dispatch} />)
+        expect(dispatch).toHaveBeenCalledWith(mockFetchYnabBalance)
+    })
+    it('Should have addNew initial set to false', () => {
+        const wrapper = shallow(<ChildWrapper {...props} user={{budget_id: 'manual'}} />);
+        expect(wrapper.state('addNew')).toEqual(false)
+    })
 })

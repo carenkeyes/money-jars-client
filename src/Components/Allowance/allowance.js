@@ -16,6 +16,8 @@ export class Allowance extends React.Component{
         })
     }
 
+    //display GiveAllowance intially, then return message stating
+    //that funds were added once complete
     render(){
         if(this.state.addFunds){
             return(

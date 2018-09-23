@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchUserBasicInfo} from '../../actions/index.actions';
 import './dashboard.css'
@@ -11,12 +11,18 @@ export class Dashboard extends React.Component{
         this.state = {
             loggedIn: this.props.loggedIn,
         }
+        this.fetchUserInfo = this.fetchUserInfo.bind(this)
     }
-    componentDidMount(){
+
+    fetchUserInfo(){
         this.props.dispatch(fetchUserBasicInfo())
     }
 
     render(){
+
+        if(!this.props.hasUserInfo){
+            this.fetchUserInfo()
+        }
 
         if(this.props.user.usertype === 'parent' && this.props.user.setupComplete){
             console.log('parent')
@@ -37,7 +43,7 @@ export class Dashboard extends React.Component{
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.user._id !== null,
+    hasUserInfo: state.user._id !== null,
     user: state.user
 });
 

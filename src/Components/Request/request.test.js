@@ -7,7 +7,8 @@ import Request from './request';
 Enzyme.configure({adapter: new Adapter()});
 
 describe('<Request />', () =>{
+  const data = {data: []}
   it('Should render without crashing', () => {
-    shallow(<Request />)
+    shallow(<Request ynabData={data}/>)
   })
 })

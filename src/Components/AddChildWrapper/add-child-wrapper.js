@@ -18,15 +18,17 @@ export class AddChildWrapper extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    //If the budget_id is not manual, user has authorized YNAB
+    //and 
     componentDidMount(){
         if(this.props.user.budget_id !== 'manual'){
         this.props.dispatch(fetchYnabCategories(this.props.user._id, this.props.user.budget_id));}
     }
 
+    //When a category group is selected for the first SelectInput,
+    //the second is populated with the individual categories
     handleChange(event){
-        console.log(event.value)
         let group_id = event.value
-        console.log(group_id)
         const newCategories = []
         if(group_id){
             this.setState({group_id: group_id})

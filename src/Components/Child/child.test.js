@@ -1,14 +1,24 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import {shallow} from 'enzyme';
 import {Child} from './child';
 
-Enzyme.configure({adapter: new Adapter()});
+const mockUpdateToBudget = {
+    type: 'MOCK_UPDATE_TO_BUDGET'
+}
+
+jest.mock('../../actions/index.actions', () => Object.assign({},
+    require.requireActual('../../actions/index.actions'), {
+        updateToBudget: jest.fn().mockImplementation(() => {
+            return mockUpdateToBudget
+        })
+    }
+))
 
 describe('<Child />', () => {
-    it('Should render without crashing', () => {
-        shallow(<Child/>)
+    it('Should render and call updateToBudget on mount', () => {
+        const mockedDispatch = jest.fn();
+        shallow(<Child dispatch={mockedDispatch} />);
+        expect(mockedDispatch).toHaveBeenCalledWith(mockUpdateToBudget);
     })
 
 })

@@ -204,7 +204,6 @@ export const LOGOUT_USER_REQUEST_SUCCESS = 'LOGOUT_USER_REQUEST_SUCESS'
 export const LOGOUT_USER_REQUEST_FAILURE = 'LOGOUT_USER_REQUEST_FAILURE'
 
 export function logoutUserRequest(){
-
     return {
         type: LOGOUT_USER_REQUEST_SUCCESS
     }
