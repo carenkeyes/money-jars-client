@@ -1,13 +1,19 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import {shallow} from 'enzyme';
 import SelectInput from './select-input';
 
-Enzyme.configure({adapter: new Adapter()});
+const input = {
+  name: 'name',
+  value: 'value',
+  onBlur: 'onBlue',
+  onChange: 'onChange',
+  onFocus: 'onFocus',
+}
+
+const options = []
 
 describe('<SelectInput />', () =>{
   it('Should render without crashing', () => {
-    shallow(<SelectInput />)
+    shallow(<SelectInput input={input} options={options}/>)
   })
 })
