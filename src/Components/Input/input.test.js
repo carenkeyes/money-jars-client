@@ -1,13 +1,20 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import {shallow} from 'enzyme';
 import Input from './input';
 
-Enzyme.configure({adapter: new Adapter()});
+const props = {
+  meta: {},
+  input: {
+    name: 'name'
+  },
+  label: 'label',
+  type: 'text',
+  step: 1,
+  max: 10,
+}
 
 describe('<Input />', () =>{
   it('Should render without crashing', () => {
-    shallow(<Input />)
+    shallow(<Input {...props}/>)
   })
 })
