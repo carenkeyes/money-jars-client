@@ -5,15 +5,6 @@ import Header from '../Header/header';
 import ManualBudget from '../ManualBudget/manual-budget';
 
 export class Parent extends React.Component {
-    constructor(){
-        super()
-        fetchUserBasicInfo()
-    }
-
-    /*componentDidMount(){
-        this.props.dispatch(fetchUserBasicInfo())
-        console.log('component did mount')
-    }*/
 
     render(){
 

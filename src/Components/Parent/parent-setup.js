@@ -13,13 +13,12 @@ export class ParentSetup extends React.Component {
             register: false,
             setupComplete: false,
         }
-        fetchUserBasicInfo()
         this.budgetManually = this.budgetManually.bind(this);
     }
 
-    /*componentDidMount(){
+    componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
-    }*/
+    }
 
     addChild = () => {
         this.setState({
@@ -100,7 +99,6 @@ const mapStateToProps = state => ({
     loggedIn: state.user._id !==null,
     user: state.user,
     ynab: state.ynab,
-    children: state.children,
 })
 
 export default connect(mapStateToProps)(ParentSetup)
