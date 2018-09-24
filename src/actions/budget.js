@@ -5,7 +5,6 @@ export const CREATE_GOAL_REQUEST_SUCCESS = 'CREATE_GOAL_REQUEST_SUCCESS'
 export const CREATE_GOAL_REQUEST_FAILURE = 'CREATE_GOAL_REQUEST_FAILURE'
 
 export function createGoal(goal, userId){
-    console.log('create goal')
     const promise = fetch(`${config.API_BASE_URL}/goal/`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

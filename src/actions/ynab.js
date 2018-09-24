@@ -5,7 +5,6 @@ export const FETCH_YNAB_BUDGETS_REQUEST_SUCCESS = 'FETCH_YNAB_BUDGETS_REQUEST_SU
 export const FETCH_YNAB_BUDGETS_REQUEST_FAILURE = 'FETCH_YNAB_BUDGETS_REQUEST-FAILURE';
 
 export function fetchYnabBudgets(query){
-    console.log('fetch ynab budgets')
     const promise = fetch(`${config.API_BASE_URL}/ynab/auth/${query}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -23,7 +22,6 @@ export const FETCH_YNAB_CATEGORIES_REQUEST_SUCCESS = 'FETCH_YNAB_CATEGORIES_REQU
 export const FETCH_YNAB_CATEGORIES_REQUEST_FAILURE = 'FETCH_YNAB_CATEGORIES_REQUEST-FAILURE';
 
 export function fetchYnabCategories(userId, budgetid){
-    console.log('fetch ynab categories')
     const promise = fetch(`${config.API_BASE_URL}/ynab/categories/${userId}?budgetid=${budgetid}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
@@ -42,7 +40,6 @@ export const FETCH_YNAB_CATEGORY_BALANCE_SUCCESS = 'FETCH_YNAB_CATEGORY_BALANCE_
 export const FETCH_YNAB_CATEGORY_BALANCE_FAILURE = 'FETCH_YNAB_CATEGORY_BALANCE_FAILURE'
 
 export function fetchYnabCategoryBalance(userId){
-    console.log('fetch ynab categories')
     const promise = fetch(`${config.API_BASE_URL}/ynab/category/${userId}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
@@ -56,7 +53,6 @@ export function fetchYnabCategoryBalance(userId){
 }
 
 const handleCategoryBalance = (response, dispatch) =>{
-    console.log(response)
     dispatch({
         type: FETCH_YNAB_CATEGORY_BALANCE_SUCCESS,
         response,
