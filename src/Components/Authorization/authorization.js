@@ -1,7 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux';
-import Parent from '../Parent/parent'
-import Header from '../Header/header'
 import {fetchYnabBudgets, fetchUserBasicInfo} from '../../actions/index.actions'
 import {push} from 'connected-react-router';
 
