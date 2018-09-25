@@ -1,0 +1,25 @@
+.alert {
+    font-size: 15px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.alert.error {
+    background: red;
+}
+.alert.success {
+    background: green;
+}
+.close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.close:hover {
+    cursor: pointer;
+}

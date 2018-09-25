@@ -1,6 +1,4 @@
-//import {SubmissionError} from 'redux-form';
 import config from '../config';
-//import {normalizeResponseErrors} from './utils';
 import {push} from 'connected-react-router';
 
 
@@ -209,3 +207,7 @@ export function logoutUserRequest(){
     }
 }
 
+export const RESET_ALERT_MESSAGE = 'RESET_ALERT_MESSAGE'
+export function resetAlertMessage(){
+    return{type: RESET_ALERT_MESSAGE}
+}

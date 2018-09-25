@@ -62,9 +62,8 @@ describe('fetch YNAB category balance', () => {
     it('should retrieve the balance for a specific ynab category', async() => {
         const response = {}
         const store = mockStore({});
-        const callback = jest.fn()
         fetch.mockResponseOnce(JSON.stringify(response));
-        await store.dispatch(actions.fetchYnabCategoryBalance('userId', callback))
+        await store.dispatch(actions.fetchYnabCategoryBalance('userId'))
         const storedActions = store.getActions()
         expect(storedActions[0]).toEqual({type: 'FETCH_YNAB_CATEGORY_BALANCE_TRIGGERED'})
         expect(storedActions[1]).toEqual({type: 'FETCH_YNAB_CATEGORY_BALANCE_SUCCESS', response})

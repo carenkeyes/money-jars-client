@@ -9,6 +9,7 @@ const initialState = {
 export default function budget(state=initialState, action){
     switch(action.type){
         case actionTypes.CREATE_GOAL_REQUEST_SUCCESS: {
+            console.log(action.response)
             return {
                 ...state,
                 goals: [...state.goals, action.response.goal]
