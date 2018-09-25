@@ -52,7 +52,7 @@ export default function appState(state = initialState, action) {
     case actionTypes.SHOW_ALERT_MESSAGE: {
       return {
         ...state,
-        serverErrorMessage: {message: action.response.generalMessage, hasError: false}
+        serverErrorMessage: {message: action.response.generalMessage, hasError: true}
       }
     }
     case actionTypes.RESET_ALERT_MESSAGE: {

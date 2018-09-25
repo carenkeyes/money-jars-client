@@ -1,9 +1,7 @@
 import * as actions from './index.actions';
-import config from '../config';
 import apiMiddleware from '../api-middleware';
 import asyncMiddleware from 'redux-thunk';
 import configureStore from 'redux-mock-store';
-import { routerActions } from 'connected-react-router';
 
 const middlewares = [
     asyncMiddleware,

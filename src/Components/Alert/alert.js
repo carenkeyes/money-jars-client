@@ -27,7 +27,7 @@ Alert.defaultProps = {
     hasError: false,
     closeHandler: null,
     msToClose: 4000,
-    isSelfClosing: false,
+    isSelfClosing: true,
 };
 
 Alert.propTypes = {

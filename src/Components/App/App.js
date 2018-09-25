@@ -60,7 +60,7 @@ export class App extends React.Component {
             />
             {this.props.appState.serverErrorMessage && 
               <div>
-                <Alert 
+              <Alert 
                   hasError={this.props.appState.serverErrorMessage.hasError}
                   message={this.props.appState.serverErrorMessage.message}
                 />

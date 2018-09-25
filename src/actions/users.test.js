@@ -11,19 +11,6 @@ const middlewares = [
 
 const mockStore = configureStore(middlewares);
 
-const mockLocalStorage = () => {
-    const store = {}
-    return{
-        getItem: (key => store[key] || null),
-        setItem: ((key, value) => store[key] = value.toString()),
-        clear: (() => store = {})
-    }
-}
-
-Object.defineProperty(window, 'localStorage', {
-    value: mockLocalStorage
-})
-
 describe('Fetch User Info', () => {
     it('should retrieve the user info', async() => {
         const token = 'mockToken'
