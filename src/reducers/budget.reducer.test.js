@@ -59,6 +59,81 @@ describe('budgetReducer', () => {
         expect(reducedState).toEqual(expectedState)
     })
 
+    describe('delete goal success', () => {
+        const initialState = {
+            total: total,
+            goals: goal1,
+            toBudget: toBudget,
+        }
+        const expectedState = {
+            total: total,
+            goals: null,
+            toBudget: toBudget,
+        }
+        const reducedState = budgetReducer(initialState, {type: actions.DELETE_GOAL_SUCCESS, response: {data: null}})
+        expect(reducedState).toEqual(expectedState)
+    })
+
+    describe('fetch user login request success', () => {
+        const initialState = {
+            total: null,
+            goals: null,
+            toBudget: null,
+        }
+        const userInfo = {
+            balance: total,
+            goals: {goal1}
+        }
+        const expectedState = {
+            total: total,
+            goals: {goal1},
+            toBudget: null,
+        }
+        const reducedState = budgetReducer(initialState, 
+            {type: actions.FETCH_USER_LOGIN_REQUEST_SUCCESS, response: {userInfo: userInfo}})
+        expect(reducedState).toEqual(expectedState)
+    })
+
+    describe('fetch user basic info success', () => {
+        const initialState = {
+            total: null,
+            goals: null,
+            toBudget: null,
+        }
+        const user = {
+            balance: total,
+            goals: {goal1}
+        }
+        const expectedState = {
+            total: total,
+            goals: {goal1},
+            toBudget: null,
+        }
+        const reducedState = budgetReducer(initialState, 
+            {type: actions.FETCH_USER_BASIC_INFO_REQUEST_SUCCESS, response: {user: user}})
+        expect(reducedState).toEqual(expectedState)
+    })
+
+    describe('fetch update goals success', () => {
+        const initialState = {
+            total: total,
+            goals: goal1,
+            toBudget: null,
+        }
+        const goals = [
+            {goal1},
+            {goal2}
+        ]
+        const expectedState = {
+            total: total,
+            goals: [{goal1}, {goal2}],
+            toBudget: null,
+        }
+        const reducedState = budgetReducer(initialState, 
+            {type: actions.UPDATE_GOAL_SUCCESS, response: {goals: goals}})
+        expect(reducedState).toEqual(expectedState)
+    })
+
     describe('Update toBudget', () => {
         let state = {};
         state = budgetReducer(state, updateToBudget(toBudget));
@@ -66,4 +141,29 @@ describe('budgetReducer', () => {
             toBudget: toBudget
         })
     })
+
+    describe('update user balance success', () => {
+        const initialState = {
+            total: null,
+        }
+        const expectedState = {
+            total: 5000,
+        }
+        const reducedState = budgetReducer(initialState, 
+            {type: actions.UPDATE_USER_BALANCE_SUCCESS, response: {user: {balance: 5000}}})
+        expect(reducedState).toEqual(expectedState)
+    })
+
+    describe('fetch YNAB balance success', () => {
+        const initialState = {
+            total: null,
+        }
+        const expectedState = {
+            total: 5000,
+        }
+        const reducedState = budgetReducer(initialState, 
+            {type: actions.FETCH_YNAB_CATEGORY_BALANCE_SUCCESS, response: 5000})
+        expect(reducedState).toEqual(expectedState)
+    })
+
 })

@@ -179,6 +179,9 @@ export function updateUserBalance(userId, data){
     }
 }
 
+//This is different than update User balance because it is done to the child's balance
+//while the parent is logged in, which causes a different reducer to be used
+//updating the children array, rather than the budget
 export const UPDATE_CHILD_BALANCE_TRIGGERED = 'UPDATE_CHILD_BALANCE_TRIGGERED'
 export const UPDATE_CHILD_BALANCE_SUCCESS = 'UPDATE_CHILD_BALANCE_SUCCESS'
 export const UPDATE_CHILD_BALANCE_FAILURE = 'UPDATE_CHILD_BALANCE_FAILURE'
