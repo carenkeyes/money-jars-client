@@ -22,6 +22,8 @@ export class Goal extends React.Component{
     }
 
     render(){
+        console.log(this.props.max)
+
         const goalOptions = []
         let goals = this.props.budget.goals
         for(let goal of goals){
@@ -32,7 +34,7 @@ export class Goal extends React.Component{
         }
 
         //putting price, togo amount, etc. in currency format
-        let max = (this.props.budget.toBudget/1000).toFixed([2])
+        let max = (this.props.toBudget/1000).toFixed([2])
 
         let price = this.props.amount/1000
         price = price.toFixed([2])
@@ -86,7 +88,7 @@ export class Goal extends React.Component{
                     goalOptions={goalOptions}
                     closeOptions={this.handleClick}
                     saved={this.props.saved}
-                    max={max}
+                    max={this.props.max}
                      />          
             </section>
         )

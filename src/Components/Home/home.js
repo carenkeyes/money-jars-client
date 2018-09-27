@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import Header from '../Header/header';
 import Avatar from '../Avatar/avatar';
+import Button from '../Button/button';
+import {fetchUserLogin} from '../../actions/index.actions';
 import './home.css';
 
 
@@ -18,6 +20,10 @@ export class Home extends React.Component{
         this.setState({
             register: true,
         })
+    }
+
+    demoLogIn = () => {
+        this.props.dispatch(fetchUserLogin('demo child', 'password'))
     }
 
     render(){
@@ -84,6 +90,20 @@ export class Home extends React.Component{
                     <div className='home-content'>
                         <div className='content-paragraph'>
                             <p className='content-text'>
+                                Want to see how it works? Login as a child and get a feel for what your kids can do
+                            </p>
+                        </div>
+                        <Button 
+                            label='Demo login'
+                            onClick={this.demoLogIn}
+                            className='demo-login pink click'
+                        />
+                    </div>
+                </section>
+                <section className='home-section'>
+                    <div className='home-content'>
+                        <div className='content-paragraph'>
+                            <p className='content-text'>
                                 Not a YNAB user? We've still got your covered. Simply select "budget manually" once
                                 you have created an account and you will be able to add funds to your child's account
                                 whenever you like.
@@ -95,14 +115,6 @@ export class Home extends React.Component{
         );
 }
 }
-
-
-/*<section>
-        <Route exact path={`${props.match.url}/login`} component={LoginForm} />
-        <Route exact path={`${props.match.url}/register`} component={RegistrationForm} />
-    <Link to={`${props.match.url}/login`}>Login</Link>
-    <Link to={`${props.match.url}/register`}>Register</Link>           
-</section>*/
 
 const mapStatetoProps = state => ({
 

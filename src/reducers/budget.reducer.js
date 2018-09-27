@@ -41,6 +41,7 @@ export default function budget(state=initialState, action){
             }
         }
         case actionTypes.UPDATE_TO_BUDGET: {
+            console.log(action)
             return{
                 ...state,
                 toBudget: action.toBudget
@@ -63,8 +64,4 @@ export default function budget(state=initialState, action){
             return state;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e23cd4a54f9254cd1474aa64cfb80cef830ce6c2

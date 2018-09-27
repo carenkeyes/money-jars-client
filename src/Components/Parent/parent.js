@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchUserBasicInfo, updateUserProfile} from '../../actions/index.actions';
 import Header from '../Header/header';
 import ManualBudget from '../ManualBudget/manual-budget';
 

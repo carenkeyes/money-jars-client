@@ -21,7 +21,7 @@ const props = {
         _id: 'userId',
     },
     ynab: {
-        data: {}
+        data: {git }
     }
 }
 

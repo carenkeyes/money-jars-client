@@ -162,7 +162,7 @@ describe('budgetReducer', () => {
             total: 5000,
         }
         const reducedState = budgetReducer(initialState, 
-            {type: actions.FETCH_YNAB_CATEGORY_BALANCE_SUCCESS, response: 5000})
+            {type: actions.FETCH_YNAB_CATEGORY_BALANCE_SUCCESS, response: {balance: 5000}})
         expect(reducedState).toEqual(expectedState)
     })
 

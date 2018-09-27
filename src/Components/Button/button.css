@@ -111,6 +111,11 @@ button{
     transform: translateY(2px);
 }
 
+.demo-login{
+    height: 100px;
+    width: 150px;
+}
+
 @media only screen and (min-width: 600px){    
     .home{
         background: url('./home-button.png');

@@ -3,8 +3,9 @@ import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Goal from '../Goal/goal';
 import Child from '../Child/child';
+import {updateToBudget} from '../../actions/index.actions';
 
-import {fetchYnabCategoryBalance, fetchUserBasicInfo} from '../../actions/index.actions';
+import {fetchYnabCategoryBalance} from '../../actions/index.actions';
 
 export class ChildWrapper extends React.Component{
     constructor(){
@@ -13,6 +14,7 @@ export class ChildWrapper extends React.Component{
             addNew: false,
         }
         this.handleClick = this.handleClick.bind(this);
+        this.updateBudget = this.updateBudget.bind(this);
     }
 
     componentDidMount(){
@@ -27,6 +29,11 @@ export class ChildWrapper extends React.Component{
         })
     }
 
+    updateBudget(toBudget){
+        console.log(toBudget)
+        this.props.dispatch(this.updateBudget(toBudget))
+    }
+
     render(){
 
         if(!this.props.hasUserInfo){
@@ -35,6 +42,16 @@ export class ChildWrapper extends React.Component{
             )
         }
 
+        let budgeted = 0;
+        for(let i=0; i<this.props.budget.goals.length; i++){
+            budgeted = budgeted+this.props.budget.goals[i].saved_amount
+        }
+
+        let toBudget;       
+        toBudget=(this.props.budget.total)-budgeted;
+        let maxToBudget=toBudget;
+        toBudget=(toBudget/1000).toFixed([2])
+        
         let goals;
         goals = this.props.budget.goals.map(goal =>
             <Goal 
@@ -45,21 +62,9 @@ export class ChildWrapper extends React.Component{
                 saved={goal.saved_amount}
                 imgUrl={goal.goal_image ? goal.goal_image: null}
                 userId={this.props.user._id}
+                max={toBudget}
              {...goal} />
         )
-
-        let budgeted = 0;
-        for(let i=0; i<goals.length; i++){
-            budgeted = budgeted+this.props.budget.goals[i].saved_amount
-        }
-
-        let toBudget;       
-        toBudget=(this.props.budget.total)-budgeted;
-        let maxToBudget=toBudget;
-        toBudget=(toBudget/1000).toFixed([2])
-
-        console.log(maxToBudget);
-        console.log(toBudget);
 
         let message;
         if(this.props.budget.goals.length===0){

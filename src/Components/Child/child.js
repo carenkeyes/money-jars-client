@@ -12,7 +12,7 @@ export class Child extends React.Component{
     }
 
     render(){
-        
+        console.log(this.props.toBudget)   
         return (
             <div className='child-page'>;
                 <Header 
