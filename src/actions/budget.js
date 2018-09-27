@@ -1,13 +1,10 @@
 import config from '../config'
-import GoalDetails from '../Components/GoalDetails/goal-details';
-import { ADD_CHILD_TO_PARENT_TRIGGERED } from './users';
 
 export const CREATE_GOAL_REQUEST_TRIGGERED = 'CREATE_GOAL_REQUEST_TRIGGERED'
 export const CREATE_GOAL_REQUEST_SUCCESS = 'CREATE_GOAL_REQUEST_SUCCESS'
 export const CREATE_GOAL_REQUEST_FAILURE = 'CREATE_GOAL_REQUEST_FAILURE'
 
 export function createGoal(goal, userId){
-    console.log('create goal')
     const promise = fetch(`${config.API_BASE_URL}/goal/`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

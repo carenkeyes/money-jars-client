@@ -3,7 +3,6 @@ import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Goal from '../Goal/goal';
 import Child from '../Child/child';
-import AddGoal from '../AddGoal/addgoal';
 
 import {fetchYnabCategoryBalance, fetchUserBasicInfo} from '../../actions/index.actions';
 
@@ -20,7 +19,6 @@ export class ChildWrapper extends React.Component{
         if(this.props.user.budget_id !== 'manual'){
             this.props.dispatch(fetchYnabCategoryBalance(this.props.user._id))
         }
-        this.props.dispatch(fetchUserBasicInfo)
     }
 
     handleClick(){
@@ -30,6 +28,12 @@ export class ChildWrapper extends React.Component{
     }
 
     render(){
+
+        if(!this.props.hasUserInfo){
+            return(
+                <Redirect to={'/dashboard'} />
+            )
+        }
 
         let goals;
         goals = this.props.budget.goals.map(goal =>
@@ -88,7 +92,7 @@ export class ChildWrapper extends React.Component{
 }
 
 const mapStatetoProps = state => ({
-    loggedIn: state.user._id !==null,
+    hasUserInfo: state.user._id !==null,
     user: state.user,
     ynab: state.ynab,
     budget: state.budget,

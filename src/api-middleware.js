@@ -44,7 +44,7 @@ export default function apiMiddleware({ dispatch, getState }) {
     }
 
     if (typeof onRequest === 'function') {
-      onRequest(dispatch, getState, ...rest);
+      onRequest(dispatch, getState);
     } else {
       dispatch({ type: onRequest, ...rest });
     }
@@ -60,7 +60,7 @@ export default function apiMiddleware({ dispatch, getState }) {
       .then((response) => {
         try {
           if (typeof onSuccess === 'function') {
-            onSuccess(response, dispatch, getState, ...rest);
+            onSuccess(response, dispatch, getState);
           } else {
             dispatch({ type: onSuccess, response, ...rest });
           }
@@ -73,7 +73,7 @@ export default function apiMiddleware({ dispatch, getState }) {
       .catch((error) => {
         if (error.type !== 'ActionError' || error.type === 'Unauthorized') {
           if (typeof onFailure === 'function') {
-            onFailure(error.response, dispatch, getState, ...rest);
+            onFailure(error.response, dispatch, getState);
           } else {
             dispatch({ type: onFailure, error: error.response, ...rest });
           }

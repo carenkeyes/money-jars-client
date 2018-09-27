@@ -18,6 +18,7 @@ const goalTypes = [
 export class AddGoal extends React.Component {
 
     onSubmit(values){
+        console.log('submit')
         const userId = this.props.userId
         const {title, amount, category, imageurl} = values;
         const goal = {title, amount, category, imageurl};
@@ -92,4 +93,4 @@ export class AddGoal extends React.Component {
     }
 }
 
-export default reduxForm ('add-goal-form')(AddGoal);
+export default reduxForm ('add-goal-form', {enableReintialize: true})(AddGoal);

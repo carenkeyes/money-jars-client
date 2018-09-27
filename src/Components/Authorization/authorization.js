@@ -1,7 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux';
-import Parent from '../Parent/parent'
-import Header from '../Header/header'
 import {fetchYnabBudgets, fetchUserBasicInfo} from '../../actions/index.actions'
 import {push} from 'connected-react-router';
 
@@ -12,17 +10,17 @@ export class Authorization extends React.Component{
         this.getQueryString = this.getQueryString.bind(this)
     }
 
+    //This component displays on redirect from YNAB
+    //User data is fetched when component mounts
     componentDidMount(){
-        console.log(this.props.loggedIn)
         this.props.dispatch(fetchUserBasicInfo())
             .then(() => this.getQueryString())
     }
 
+    //then info from the redirect url is obtained and the list of 
+    //budgets is retrieved from YNAB
     getQueryString(){
-        console.log(this.props.user)
-        console.log('query string called')
         let query = window.location.search
-        console.log(query)
         this.props.dispatch(fetchYnabBudgets(query))
             .then(() => this.props.dispatch(push('/setup')))
     }

@@ -35,7 +35,6 @@ export default function budget(state=initialState, action){
             }
         }
         case actionTypes.UPDATE_GOAL_SUCCESS: {
-            console.log(action.response)
             return{
                 ...state,
                 goals: action.response.goals
@@ -54,6 +53,7 @@ export default function budget(state=initialState, action){
             }
         }
         case actionTypes.FETCH_YNAB_CATEGORY_BALANCE_SUCCESS:{
+            console.log(action.response)
             return{
                 ...state,
                 total: action.response.balance
@@ -63,4 +63,8 @@ export default function budget(state=initialState, action){
             return state;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e23cd4a54f9254cd1474aa64cfb80cef830ce6c2
