@@ -1,9 +1,12 @@
-#Money Jars
+# Money Jars
 
-##View it Live
+## View it Live
 https://money-jars.herokuapp.com/
 
-##Motivation
+## Server-side Code
+https://github.com/Carenelizabeth/money-jars-server
+
+## Motivation
 I have been using a zero-based budgeting software called YNAB (You Need a Budget) for almost two years now and it has changed my life for the better. I keep track of less-frequent expenses and always have money set aside for when the car needs an oil
 change or my son breaks his glasses for the 5th time this year.
 
@@ -11,11 +14,11 @@ I've been trying to teach my kids the same money habits that I have learned and 
 budgeting now. We've used jars and envelop systems but I was getting really tired of always needing to have the correct amount
 of cash on hand. When YNAB announced its new public API, I decided it was time to do something about it
 
-##Summary
+## Summary
 With Money Jars, parents set up an account and can choose to link it to YNAB or budget manually. They then register their children. Children can create and save for goals, moving money between their goals and make a withdrawal when they are ready for
 a purchase (you'll have to be on hand to give them actually money for that part)
 
-##Screenshots
+## Screenshots
 
 **Landing page:**
 ![Landing page](/public/screenshots/landing-page.PNG)
@@ -52,7 +55,7 @@ Goals are displayed with a progress bar to give a visual representative of progr
 The child can add or withdraw money from a goal, or move it between various goals
 ![Goal Options](public/screenshots/goal-details.PNG)
 
-##Future Updates
+## Future Updates
 There's almost too many to name! I have many ideas of where this could go, in order of priority
 * More editing capability: Currently there is no way to edit a profile or a goal, aside from deleting it
 * Parent reports: Parents can log on and see an overview of their children's goals and how they are allocating money
@@ -61,7 +64,7 @@ There's almost too many to name! I have many ideas of where this could go, in or
 
 These are just a start but should keep me busy to a while!
 
-##Technologies
+## Technologies
 * **frontend** ReactJS, Redux, CSS
 * **testing** Express, Jest
 * **integration** TravisCI
