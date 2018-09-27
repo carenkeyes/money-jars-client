@@ -6,7 +6,6 @@ import {updateChildBalance} from '../../actions/index.actions';
 export class GiveAllowance extends React.Component{
     constructor(){
         super()
-        //this.onSubmitWithProps = this.onSubmitWithProps.bind(this)
     }
 
     onSubmit(values){

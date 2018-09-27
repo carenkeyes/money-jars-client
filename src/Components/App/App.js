@@ -23,33 +23,6 @@ import Alert from '../Alert/alert';
 
 export class App extends React.Component {
 
-  /*componentDidUpdate(prevProps){
-    if(!prevProps.logginIn && this.props.logginIn){
-      this.startPeriodicRefresh();
-    }else if (prevProps.logginIn && !this.props.logginIn){
-      this.stopPeriodicRefresh();
-    }
-  }
-
-  componentWillUnmount(){
-    this.stopPeriodicRefresh();
-  }
-
-  startPeriodicRefresh(){
-    this.refreshInterval = setInterval(
-      () => this.props.dispatch(refreshAuthToken()),
-      60*60*1000
-    );
-  }
-
-  stopPeriodicRefresh(){
-    if(!this.refreshInterval){
-      return;
-    }
-
-    clearInterval(this.refreshInterval);
-  }*/
-
   render() {
     return (
         <div className="app">

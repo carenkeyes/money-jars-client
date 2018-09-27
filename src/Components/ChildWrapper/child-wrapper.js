@@ -3,7 +3,6 @@ import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Goal from '../Goal/goal';
 import Child from '../Child/child';
-import {updateToBudget} from '../../actions/index.actions';
 
 import {fetchYnabCategoryBalance} from '../../actions/index.actions';
 
