@@ -15,3 +15,9 @@
     justify-content: space-between;
     align-content: center;
 }
+
+@media only screen and (max-height: 800px){
+    .navbar{
+        height: 60px;
+    }
+}

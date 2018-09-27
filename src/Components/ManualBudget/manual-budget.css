@@ -11,4 +11,12 @@
     border: solid 1px black;
     border-radius: 5px;
     background-color: #FFF7DB;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-allowance{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

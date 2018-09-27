@@ -85,7 +85,7 @@ export class Home extends React.Component{
                         <div className='content-paragraph'>
                             <p className='content-text'>
                                 Not a YNAB user? We've still got your covered. Simply select "budget manually" once
-                                you have created and account and you will be able to add funds to your child's account
+                                you have created an account and you will be able to add funds to your child's account
                                 whenever you like.
                             </p>
                         </div>

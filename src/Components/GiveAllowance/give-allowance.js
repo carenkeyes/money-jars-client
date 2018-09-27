@@ -22,10 +22,12 @@ export class GiveAllowance extends React.Component{
     }
 
     render(){
+        
+
         return(
             <div className="add-allowance">
             <form
-                    className='edit-goal-form'
+                    className={`edit-goal-form ${this.props.username}-form`}
                     onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
                     <div className='form-input-fields'>
                         <label>Add funds for {this.props.username}</label>
@@ -50,4 +52,4 @@ export class GiveAllowance extends React.Component{
     }
 }
 
-export default reduxForm({form: 'addAllowance'})(GiveAllowance);
+export default reduxForm({})(GiveAllowance);

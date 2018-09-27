@@ -14,7 +14,8 @@ export class LoginForm extends React.Component {
 
     render(){
         let error;
-        if (this.props.error){
+        console.log(this.props.error)
+        if (this.props.error !== null){
             error = (
                 <div className='form-error' aria-live='polite'>
                     {this.props.error}
@@ -27,7 +28,6 @@ export class LoginForm extends React.Component {
                 <form
                     className='login-form form-single'
                     onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-                    {error}
                     <Field
                         component={Input}
                         type='text'

@@ -1,13 +1,10 @@
 import config from '../config'
-import GoalDetails from '../Components/GoalDetails/goal-details';
-import { ADD_CHILD_TO_PARENT_TRIGGERED } from './users';
 
 export const CREATE_GOAL_REQUEST_TRIGGERED = 'CREATE_GOAL_REQUEST_TRIGGERED'
 export const CREATE_GOAL_REQUEST_SUCCESS = 'CREATE_GOAL_REQUEST_SUCCESS'
 export const CREATE_GOAL_REQUEST_FAILURE = 'CREATE_GOAL_REQUEST_FAILURE'
 
 export function createGoal(goal, userId){
-    console.log('create goal')
     const promise = fetch(`${config.API_BASE_URL}/goal/`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -23,28 +20,6 @@ export function createGoal(goal, userId){
         promise,
     }
 }
-
-/*export const FETCH_GOAL_INFO_TRIGGERED = 'FETCH_GOAL_INFO_TRIGGERED'
-export const FETCH_GOAL_INFO_SUCCESS = 'FETCH_GOAL_INFO_SUCCESS'
-export const FETCH_GOAL_INFO_FAILURE = 'FETCH_GOAL_INFO_FAILURE'
-
-export function fetchGoalInfo() {
-    console.log('fetch child info')
-    const sessionKey = localStorage.getItem(config.TOKEN_CONTENT_KEY)
-    const token = sessionKey.split(' ')[1]
-    const promise = fetch(`${config.USER_DATA}`, {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `JWT ${token}`
-        }
-    });
-    return {
-        onRequest: FETCH_GOAL_INFO_TRIGGERED,
-        onSuccess: FETCH_GOAL_INFO_SUCCESS,
-        onFailure: FETCH_GOAL_INFO_FAILURE,
-        promise,
-    };
-}*/
 
 export const DELETE_GOAL_TRIGGERED = 'DELETE_GOAL_TRIGGERED'
 export const DELETE_GOAL_SUCCESS = 'DELETE_GOAL_SUCCESS'

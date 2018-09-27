@@ -1,11 +1,9 @@
 import React from 'react';
-//import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Button from '../Button/button';
 import Avatar from '../Avatar/avatar';
 import ProgressBar from '../ProgressBar/progress-bar';
 import GoalDetails from '../GoalDetails/goal-details';
-import {deleteGoal} from '../../actions/index.actions';
 import './goal.css';
 
 export class Goal extends React.Component{
@@ -33,6 +31,7 @@ export class Goal extends React.Component{
             })
         }
 
+        //putting price, togo amount, etc. in currency format
         let max = (this.props.budget.toBudget/1000).toFixed([2])
 
         let price = this.props.amount/1000
@@ -43,6 +42,7 @@ export class Goal extends React.Component{
 
         let togo = this.props.amount-this.props.saved;
         togo = (togo/1000).toFixed([2])
+
         return(
             <section className='goal-section'>
                 <div>

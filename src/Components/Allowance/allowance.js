@@ -16,7 +16,10 @@ export class Allowance extends React.Component{
         })
     }
 
+    //display GiveAllowance intially, then return message stating
+    //that funds were added once complete
     render(){
+        const formId = this.props.childId
         if(this.state.addFunds){
             return(
                 <div className='allowance'>
@@ -26,6 +29,8 @@ export class Allowance extends React.Component{
                         balance={this.props.balance}
                         childId={this.props.childId}
                         updateState={this.fundsAdded}
+                        formKey={this.props.username}
+                        form={formId}
                     />
                 </div>
             )

@@ -14,7 +14,6 @@ export default function user(state=initialState, action) {
   switch (action.type) {
     //Fetch user info
     case actionTypes.FETCH_USER_BASIC_INFO_REQUEST_SUCCESS: {
-      console.log(action.response)
       return {
         ...state,
         _id: action.response.user._id,
@@ -50,6 +49,7 @@ export default function user(state=initialState, action) {
         budget_id: action.response.updatedUser.budget_id,
         setupComplete: action.response.updatedUser.setupComplete,
         children: action.response.updatedUser.children, 
+        account: action.response.updatedUser.account,
       }
     }
     case actionTypes.LOGOUT_USER_REQUEST_SUCCESS: {

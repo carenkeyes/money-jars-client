@@ -4,6 +4,7 @@ import * as actionTypes from '../actions/index.actions';
 const initialState = {
   isFetchingUserInfo: false,
   hasUserInfo: false,
+  serverErrorMessage: null,
 }
 
 
@@ -47,6 +48,18 @@ export default function appState(state = initialState, action) {
         ...state,
         isFetchingUserInfo: initialState.isFetchingUserInfo
       };
+    }
+    case actionTypes.SHOW_ALERT_MESSAGE: {
+      return {
+        ...state,
+        serverErrorMessage: {message: action.response.generalMessage, hasError: true}
+      }
+    }
+    case actionTypes.RESET_ALERT_MESSAGE: {
+      return {
+        ...state,
+        serverErrorMessage: initialState.serverErrorMessage
+      }
     }
     default: {return state;}
   }

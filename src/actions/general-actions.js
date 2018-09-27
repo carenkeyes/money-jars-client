@@ -18,3 +18,8 @@ export const SHOW_ALERT_MESSAGE = 'SHOW_ALERT_MESSAGE';
  
 // Reset alert message
 export const RESET_ALERT_MESSAGE = 'RESET_ALERT_MESSAGE';
+export function resetAlertMessage(){
+    return{
+        type: 'RESET_ALERT_MESSAGE'
+    }
+}

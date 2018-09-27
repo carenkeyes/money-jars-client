@@ -4,22 +4,16 @@ import {Field, reduxForm} from 'redux-form';
 import {updateGoal} from '../../actions/index.actions';
 
 export class AddToGoal extends React.Component{
-    constructor(){
-        super()
-        //this.onSubmitWithProps = this.onSubmitWithProps.bind(this)
-    }
 
     onSubmit(values){
-        console.log(values)
-        console.log(this.props)
         this.onSubmitWithProps(values, this.props)
         .then(() => this.props.dispatch(this.props.closeOptions))
     }
 
+    //form gets amount and dispatches action to update saved amount in goal
    onSubmitWithProps(values, props){
         let amount=parseFloat(values.amount, 10)*1000
-        return this.props.dispatch(updateGoal(props.goalId, props.userId, amount))
-            
+        return this.props.dispatch(updateGoal(props.goalId, props.userId, amount))        
     }
 
     render(){

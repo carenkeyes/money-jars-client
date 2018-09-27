@@ -5,16 +5,16 @@ import './registration-page.css';
 
 import RegistrationForm from '../RegistrationForm/registration-form';
 import LoginForm from '../LoginForm/login-form';
-import registrationChild from '../RegistrationChild/registration-child';
 
 export function RegistrationPage(props){
     if(props.loggedIn){
         return <Redirect to="/dashboard" />;
     }
-
+    console.log(props.error)
+    let serverError = props.error
     return(
         <div className='registration'>
-            <Route exact path={`${props.match.url}/login`} component={LoginForm} />
+            <Route exact path={`${props.match.url}/login`} render={(props)=><LoginForm {...props} serverError={serverError}/>} />
             <Route exact path={`${props.match.url}/signup`} component={RegistrationForm} />
         </div>
     )
@@ -22,6 +22,7 @@ export function RegistrationPage(props){
 
 const mapStatetoProps = state => ({
     loggedIn: state.user._id !==null,
+    error: state.appState.serverErrorMessage,
 });
 
 export default connect(mapStatetoProps)(RegistrationPage);
