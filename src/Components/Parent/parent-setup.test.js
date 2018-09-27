@@ -19,6 +19,9 @@ const props = {
     user: {
         username: 'username',
         _id: 'userId',
+    },
+    ynab: {
+        data: {}
     }
 }
 
