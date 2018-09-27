@@ -8,10 +8,10 @@ https://github.com/Carenelizabeth/money-jars-server
 
 ## Motivation
 I have been using a zero-based budgeting software called YNAB (You Need a Budget) for almost two years now and it has changed my life for the better. I keep track of less-frequent expenses and always have money set aside for when the car needs an oil
-change or my son breaks his glasses for the 5th time this year.
+change or my son breaks his glasses for the 5th time in a year.
 
 I've been trying to teach my kids the same money habits that I have learned and give them allowance so that they can practice
-budgeting now. We've used jars and envelop systems but I was getting really tired of always needing to have the correct amount
+budgeting now. We've used jars and envelope systems but I was getting really tired of always needing to have the correct amount
 of cash on hand. When YNAB announced its new public API, I decided it was time to do something about it
 
 ## Summary
@@ -25,7 +25,7 @@ a purchase (you'll have to be on hand to give them actually money for that part)
 
 **Parent Setup:**
 Here, you can choose to authorize YNAB or select the 'budget manually' option
-![Parent setup}(/public/screenshots/parent-setup.PNG)]
+![Parent setup](/public/screenshots/parent-setup.PNG)
 
 **Choose Budget:**
 If you are a YNAB user, you will directed to choose the budget that you will be using with Money Jars
@@ -33,10 +33,9 @@ If you are a YNAB user, you will directed to choose the budget that you will be 
 
 **Register Child:**
 Registration looks slightly different for the two kinds of users.
-For a YNAB user, you will select a category that will be used with your child's account
+For a YNAB user, you will select a category that will be used with your child's account.
+For a manual user, you will give your child a starting balance.
 ![Register a child with YNAB](/public/screenshots/register-ynab.PNG)
-
-For a manual user, you will give your child a starting balance
 ![Register child with a manual budget](/public/screenshots/register-manual.PNG)
 
 **Child Dashboard**
