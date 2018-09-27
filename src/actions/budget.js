@@ -24,28 +24,6 @@ export function createGoal(goal, userId){
     }
 }
 
-/*export const FETCH_GOAL_INFO_TRIGGERED = 'FETCH_GOAL_INFO_TRIGGERED'
-export const FETCH_GOAL_INFO_SUCCESS = 'FETCH_GOAL_INFO_SUCCESS'
-export const FETCH_GOAL_INFO_FAILURE = 'FETCH_GOAL_INFO_FAILURE'
-
-export function fetchGoalInfo() {
-    console.log('fetch child info')
-    const sessionKey = localStorage.getItem(config.TOKEN_CONTENT_KEY)
-    const token = sessionKey.split(' ')[1]
-    const promise = fetch(`${config.USER_DATA}`, {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `JWT ${token}`
-        }
-    });
-    return {
-        onRequest: FETCH_GOAL_INFO_TRIGGERED,
-        onSuccess: FETCH_GOAL_INFO_SUCCESS,
-        onFailure: FETCH_GOAL_INFO_FAILURE,
-        promise,
-    };
-}*/
-
 export const DELETE_GOAL_TRIGGERED = 'DELETE_GOAL_TRIGGERED'
 export const DELETE_GOAL_SUCCESS = 'DELETE_GOAL_SUCCESS'
 export const DELETE_GOAL_FAILURE = 'DELETE_GOAL_FAILURE'

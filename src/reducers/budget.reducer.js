@@ -56,7 +56,7 @@ export default function budget(state=initialState, action){
         case actionTypes.FETCH_YNAB_CATEGORY_BALANCE_SUCCESS:{
             return{
                 ...state,
-                total: action.response
+                total: action.response.balance
             }
     }
         default: {
@@ -64,37 +64,3 @@ export default function budget(state=initialState, action){
         }
     }
 }
-
-
-
-
-/*export default function reduce(state=initialState, action){
-    if(action.type === actions.ADD_GOAL){
-        return Object.assign({}, state, {
-            goals: [
-                ...state.goals, {
-                    title: action.goal.title,
-                    amount: action.goal.amount,
-                    saved: 0,
-                    category: action.goal.category,
-                    imageurl: action.goal.imageurl,
-                }
-            ]
-        });
-    }
-    else if(action.type === actions.UPDATE_GOAL){
-        console.log(action);
-        console.log(action.data.id);
-        let goals = state.goals.map((goal) => {
-            if(goal.id !== action.data.id){
-                console.log(goal);
-                return goal;
-            }
-            return Object.assign({}, goal, {
-                saved: goal.saved+action.data.amount
-            })
-        });
-        return Object.assign({}, state, {goals});
-    }
-    return state;
-}*/
