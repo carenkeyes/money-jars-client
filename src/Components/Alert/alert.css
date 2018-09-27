@@ -1,5 +1,6 @@
 .alert {
-    font-size: 15px;
+    font-size: 24px;
+    text-align: center;
     width: 100%;
     border: 1px solid black;
     border-radius: 5px;
@@ -9,10 +10,12 @@
     position: relative;
 }
 .alert.error {
-    background: red;
+    border: 2px solid red;
+    background-color: white;
 }
 .alert.success {
-    background: green;
+    border: 2px solid green;
+    background-color: white;
 }
 .close {
     position: absolute;

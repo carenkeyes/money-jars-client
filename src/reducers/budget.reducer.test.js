@@ -1,7 +1,7 @@
 import * as actions from '../actions/index.actions';
 import budgetReducer from './budget.reducer';
 import budget from './budget.reducer';
-import { createGoal, updateToBudget } from '../actions/index.actions';
+import {updateToBudget } from '../actions/index.actions';
 
 describe('budgetReducer', () => {
     const total = 15000;

@@ -4,6 +4,7 @@ import Request from '../Request/request';
 import {Redirect} from 'react-router-dom';
 import Parent from '../Parent/parent';
 import {fetchUserBasicInfo, updateUserProfile, fetchYnabBudgets} from '../../actions/index.actions';
+import ChooseBudget from '../ChooseBudget/choose-budget';
 
 
 export class ParentSetup extends React.Component {
@@ -52,12 +53,12 @@ export class ParentSetup extends React.Component {
             return <Redirect to={'/parent'} />
         }
 
-        let message='temp message';
+        let message='Parent setup';
         let greeting=`Welcome ${this.props.user.username}!`
         let label1;
         let label2;
 
-        if(this.props.user.budget_id===undefined){
+        if(this.props.user.budget_id===undefined && !this.props.ynab.data){
             message = 
                 <Request 
                     user_id = {this.props.user._id}
@@ -66,6 +67,13 @@ export class ParentSetup extends React.Component {
                     budget_id = {this.props.user.budget_id}
                     budgetManually={this.budgetManually}
                 />
+        }
+
+        else if(!this.props.user.budget_id && this.props.user.account){
+            message = <ChooseBudget 
+                data={this.props.ynab.data}
+                userId={this.props.user._id}
+            />
         }
 
         else if(this.props.user.budget_id && this.props.user.children.length === 0){

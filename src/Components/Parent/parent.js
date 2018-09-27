@@ -10,12 +10,14 @@ export class Parent extends React.Component {
 
         let message=<p>See your kids accounts!</p>
         let greeting=`Welcome ${this.props.user.username}!`
+        let pluralChild;
+        if(this.props.user.children.length > 0){
+            pluralChild = this.props.user.children.length >1 ? "your children's accounts" : `${this.props.user.children[0].username}'s account`}
         
-        if(this.props.user.children.length === 1){
-            message = <p>In future updates, you will see an overview of {this.props.user.children[0].username}'s
-                 account below </p>
-        }else if(this.props.user.children.length > 1){
-            message = <p>In future updates, you will see an overview of your children's accounts below</p>
+        if(this.props.user.budget_id === 'manual'){
+            message = <p> You can add money to {pluralChild} below </p>
+        }else{
+            message = <p>In future updates, you will see an overview of {pluralChild} below</p>
         }
 
 

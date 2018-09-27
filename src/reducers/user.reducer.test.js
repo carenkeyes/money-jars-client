@@ -39,7 +39,6 @@ describe('userReducer', () => {
             _id: 'id',
             username: 'username',
             usertype: 'parent',
-            
             budget_id: 'budgetId', 
             setupComplete: true,
             children: [],
