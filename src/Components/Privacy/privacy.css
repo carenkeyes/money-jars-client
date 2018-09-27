@@ -1,0 +1,11 @@
+.privacy-statement{
+    margin-top: 80px;
+}
+
+.privacy-statement > section{
+    padding: 20px 100px;
+}
+
+h3{
+    font-size: 38px;
+}
