@@ -37,13 +37,31 @@
     height: 300px;
 }
 
+.header-parent{
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.header-parent .header-info{
+    padding-top: 25px;
+    height: 500px;
+}
+
 .header-buttons{
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 10px 20px; 
     margin: 5px;
+    min-height: 40px;
 }
+
+.header-child{
+    margin-top: 70px;
+    padding-top: 0;
+    justify-content: space-between;
+}
+
 
 @media only screen and (min-width: 600px){  
 
@@ -73,5 +91,12 @@
         align-self: center;
     }
 
+    .header-parent .header-info{
+        padding-top: 10px;
+    }
+
+    .header-parent h1{
+        padding-bottom: 20px;
+    }
 }
 

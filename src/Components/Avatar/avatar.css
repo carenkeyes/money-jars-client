@@ -60,7 +60,35 @@ img{
     margin: 0 auto;
 }
 
+.left-counting-money{
+    background-image: url('./counting-money.png');
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+}
+
 .header-image{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.giving-pig{
+    background-image: url('./orange-pig.png');
+}
+
+.saving-pig{
+    background-image: url('./green-pig.png');
+}
+
+.spending-pig{
+    background-image: url('./blue-pig.png');
+}
+
+.piggy-bank{
+    height: 100%;
+    width: 100%;
+    flex: auto;    
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -86,29 +114,14 @@ img{
     background-image: url('./money-tree.png');
 }
 
-.counting-money{
+.left-counting-money{
+    background-image: none;
+    height: 0;
+    width: 0;
+}
+
+.right-counting-money{
     background-image: url('./counting-money.png');
-}
-
-.giving-pig{
-    background-image: url('./orange-pig.png');
-}
-
-.saving-pig{
-    background-image: url('./green-pig.png');
-}
-
-.spending-pig{
-    background-image: url('./blue-pig.png');
-}
-
-.piggy-bank{
-    height: 100%;
-    width: 100%;
-    flex: auto;    
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
 }
 
 }

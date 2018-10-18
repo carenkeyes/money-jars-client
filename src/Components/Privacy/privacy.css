@@ -2,10 +2,14 @@
     margin-top: 80px;
 }
 
-.privacy-statement > section{
+@media only screen and (min-width: 700px){
+
+.privacy-statement section{
     padding: 20px 100px;
 }
 
 h3{
     font-size: 38px;
+}
+
 }

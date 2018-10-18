@@ -22,7 +22,8 @@ export class Child extends React.Component{
                     but1Label={this.props.but1Label}
                     but1OnClick={this.props.but1OnClick}
                     but1Class='home-button blue'
-                    rightImage='header-image counting-money'
+                    leftImage='header-image left-counting-money'
+                    rightImage='header-image right-counting-money'
                 />
                 <AddGoal 
                     form='new-goal'

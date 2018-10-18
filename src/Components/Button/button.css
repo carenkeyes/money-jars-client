@@ -35,7 +35,7 @@ button{
 
 .home-button{
     flex: auto;
-    height: 40px;
+    min-height: 40px;
     max-width: 400px;
     font-size: 22px;
     box-shadow: 4px 4px 4px black;
@@ -76,8 +76,9 @@ button{
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
+    margin-top: 25px;
 }
 
 .click{

@@ -16,8 +16,8 @@
     flex-shrink: 1;
     flex-direction: column;
     justify-content: space-between;
-    flex-basis: 300px;
-    height: 300px;
+    height: 200px;
+    width: 200px;
     margin-bottom: 30px;
 }
 
@@ -110,8 +110,10 @@
         flex-direction: row-reverse;
     }
 
-    .goal-image{
+    .goalImage{
         margin-bottom: 0;
+        min-height: 200px;
+        min-width: 200px;
     }
 
     .goal-progress{
