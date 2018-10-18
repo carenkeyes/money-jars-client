@@ -55,7 +55,7 @@ export class Home extends React.Component{
                         <p className='content-text'>
                             As a firm believer in telling my money what to do and a devout 
                             <a href='https://www.youneedabudget.com/' target='_blank' rel="noopener noreferrer">  YNAB  </a> enthusiast (they
-                            aren't even paying me to say that), I've struggled with teaching my kids to manage
+                            aren't even paying me to say that), I've struggled to find the best method to teach my kids to manage
                             their money using the same principles. 
                         </p>
                     </div>

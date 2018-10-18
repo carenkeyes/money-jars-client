@@ -53,14 +53,24 @@ img{
     background-image: url('./money-envelopes.png')
 }
 
+.home-left-image{
+    background-image: url('./money-bags.png');
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.header-image{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
 @media only screen and (min-width: 1000px){
 
 .header-image{
     height: 100%;
     flex: auto;    
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
     width: 80%;
 }
    
