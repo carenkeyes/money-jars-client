@@ -1,7 +1,7 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import SelectInput from '../SelectInput/select-input';
 import {createGoal} from '../../actions/budget';
-import {Field, reduxForm, reset} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import Input from '../Input/input';
 import Button from '../Button/button';
 import {required, nonEmpty} from '../../validators';

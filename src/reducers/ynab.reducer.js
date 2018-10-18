@@ -1,5 +1,4 @@
 import * as actionTypes from '../actions/index.actions';
-import { FETCH_YNAB_BUDGETS_REQUEST_TRIGGERED } from '../actions/index.actions';
 
 const initialState = {
     loading: false,

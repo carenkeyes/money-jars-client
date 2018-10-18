@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Request from '../Request/request';
 import {Redirect} from 'react-router-dom';
 import Parent from '../Parent/parent';
-import {fetchUserBasicInfo, updateUserProfile, fetchYnabBudgets} from '../../actions/index.actions';
+import {fetchUserBasicInfo, updateUserProfile} from '../../actions/index.actions';
 import ChooseBudget from '../ChooseBudget/choose-budget';
 
 

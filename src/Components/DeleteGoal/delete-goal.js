@@ -1,7 +1,6 @@
 import React from 'react';
 import {reduxForm} from 'redux-form';
 import {deleteGoal} from '../../actions/budget';
-import Button from '../Button/button'
 
 export class DeleteGoal extends React.Component{
     constructor(){

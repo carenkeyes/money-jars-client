@@ -4,10 +4,6 @@ import {Field, reduxForm} from 'redux-form';
 import {updateChildBalance} from '../../actions/index.actions';
 
 export class GiveAllowance extends React.Component{
-    constructor(){
-        super()
-    }
-
     onSubmit(values){
         this.onSubmitWithProps(values, this.props)
             .then(() => this.props.dispatch(this.props.updateState))

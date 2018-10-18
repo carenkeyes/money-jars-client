@@ -12,15 +12,6 @@ export class LoginForm extends React.Component {
     }
 
     render(){
-        let error;
-        console.log(this.props.error)
-        if (this.props.error !== null){
-            error = (
-                <div className='form-error' aria-live='polite'>
-                    {this.props.error}
-                </div>
-            );
-        }
         return (
             <div className='user-form log-in'>                
                 <h2>Log in to your account</h2>

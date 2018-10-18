@@ -66,7 +66,6 @@ export function updateGoal(goalId, userId, amount){
 export const UPDATE_TO_BUDGET = 'UPDATE_TO_BUDGET'
 
 export const updateToBudget = (toBudget) => (
-    console.log(toBudget),
     {
     type: UPDATE_TO_BUDGET,
     toBudget

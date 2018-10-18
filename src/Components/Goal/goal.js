@@ -34,7 +34,7 @@ export class Goal extends React.Component{
         }
 
         //putting price, togo amount, etc. in currency format
-        let max = (this.props.toBudget/1000).toFixed([2])
+        //let max = (this.props.toBudget/1000).toFixed([2])
 
         let price = this.props.amount/1000
         price = price.toFixed([2])

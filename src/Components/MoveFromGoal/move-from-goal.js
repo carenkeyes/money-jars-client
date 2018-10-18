@@ -1,6 +1,5 @@
 
 import React from 'react';
-import Select from 'react-select';
 import Input from '../Input/input';
 import SelectInput from '../SelectInput/select-input';
 import {Field, reduxForm} from 'redux-form';

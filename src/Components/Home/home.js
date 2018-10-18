@@ -53,8 +53,8 @@ export class Home extends React.Component{
                 <section className='home-section'>
                     <div className='home-content'>
                         <p className='content-text'>
-                            As a firm believer in telling my money want to do and a devout 
-                            <a href='https://www.youneedabudget.com/' target='_blank'>  YNAB  </a> enthusiast (they
+                            As a firm believer in telling my money what to do and a devout 
+                            <a href='https://www.youneedabudget.com/' target='_blank' rel="noopener noreferrer">  YNAB  </a> enthusiast (they
                             aren't even paying me to say that), I've struggled with teaching my kids to manage
                             their money using the same principles. 
                         </p>
