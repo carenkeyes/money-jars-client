@@ -50,7 +50,7 @@ export default function budget(state=initialState, action){
         case actionTypes.UPDATE_USER_BALANCE_SUCCESS: {
             return {
               ...state,
-              total: action.response.user.balance,
+              total: action.response.updatedUser.balance,
             }
         }
         case actionTypes.FETCH_YNAB_CATEGORY_BALANCE_SUCCESS:{

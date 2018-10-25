@@ -1,6 +1,6 @@
 .avatarImage{
-    height: 300px;
-    width: 300px;
+    height: 100%;
+    width: 100%;
     border: 4px solid black;
 }
 
