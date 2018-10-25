@@ -150,7 +150,7 @@ describe('budgetReducer', () => {
             total: 5000,
         }
         const reducedState = budgetReducer(initialState, 
-            {type: actions.UPDATE_USER_BALANCE_SUCCESS, response: {user: {balance: 5000}}})
+            {type: actions.UPDATE_USER_BALANCE_SUCCESS, response: {updatedUser: {balance: 5000}}})
         expect(reducedState).toEqual(expectedState)
     })
 
