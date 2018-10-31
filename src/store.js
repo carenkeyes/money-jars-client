@@ -15,9 +15,9 @@ const persistConfig = {
   storage,
 }
 
-//const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const initialState = {};
+/*const initialState = {};
 const middleware = [
   persistReducer(persistConfig),
   thunk,
@@ -38,4 +38,26 @@ const store = createStore(
 
 export const persistor = persistStore(store)
 
-export default {store};
+export default {store};*/
+
+export default (initialState = {}, history) => {
+  const middlewares = [
+    thunk,
+    apiMiddleware,
+    routerMiddleware(history),
+  ];
+
+  const enhancers = composeWithDevTools(
+    applyMiddleware(...middlewares)
+  )
+
+  const store = createStore(
+    connectRouter(history)(persistedReducer),
+    initialState,
+    enhancers,
+  );
+
+  const persistor = persistStore(store);
+
+  return {store, persistor}
+}
