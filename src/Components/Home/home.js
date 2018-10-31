@@ -24,6 +24,8 @@ export class Home extends React.Component{
 
     demoLogIn = () => {
         this.props.dispatch(fetchUserLogin('demo child', 'password'))
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
 
     render(){
