@@ -1,5 +1,7 @@
 import { createStore, applyMiddleware} from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import apiMiddleware from './api-middleware';
 import createHistory from 'history/createBrowserHistory';
@@ -8,9 +10,16 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 
 export const history = createHistory();
+const persistConfig = {
+  key: 'root',
+  storage,
+}
 
-const initialState = {};
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+/*const initialState = {};
 const middleware = [
+  persistReducer(persistConfig),
   thunk,
   apiMiddleware,
   routerMiddleware(history),
@@ -27,4 +36,28 @@ const store = createStore(
   enhancers,
 );
 
-export default store;
+export const persistor = persistStore(store)
+
+export default {store};*/
+
+export default (initialState = {}, history) => {
+  const middlewares = [
+    thunk,
+    apiMiddleware,
+    routerMiddleware(history),
+  ];
+
+  const enhancers = composeWithDevTools(
+    applyMiddleware(...middlewares)
+  )
+
+  const store = createStore(
+    connectRouter(history)(persistedReducer),
+    initialState,
+    enhancers,
+  );
+
+  const persistor = persistStore(store);
+
+  return {store, persistor}
+}

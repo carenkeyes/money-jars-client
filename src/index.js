@@ -5,14 +5,22 @@ import {history} from './store';
 import {Provider} from 'react-redux';
 import './index.css';
 import App from './Components/App/App';
-import store from './store';
+import configureStore from './store';
 import registerServiceWorker from './registerServiceWorker';
+import {PersistGate} from 'redux-persist/integration/react';
+
+const initialState = {};
+const {store, persistor} = configureStore(initialState, history);
+const MOUNT_NODE = document.getElementById("root");
 
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <App />
-        </ConnectedRouter>
+        <PersistGate loading={null} persistor={persistor}>
+            <ConnectedRouter history={history}>
+                <App />
+            </ConnectedRouter>
+        </PersistGate>
     </Provider>,
-    document.getElementById('root'));
+    MOUNT_NODE
+);
 registerServiceWorker();
