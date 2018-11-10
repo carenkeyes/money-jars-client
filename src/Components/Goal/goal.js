@@ -4,7 +4,7 @@ import Button from '../Button/button';
 import Avatar from '../Avatar/avatar';
 import ProgressBar from '../ProgressBar/progress-bar';
 import GoalDetails from '../GoalDetails/goal-details';
-import ContentEditable from '../ContentEditable/content-editable';
+import Editable from '../Editable/editable';
 import './goal.css';
 
 export class Goal extends React.Component{
@@ -12,6 +12,7 @@ export class Goal extends React.Component{
         super()
         this.state = {
             options: false,
+            editing: false,
         }
     }
 
@@ -21,10 +22,20 @@ export class Goal extends React.Component{
         })
     }
 
-    handleTitleChange = (event) => {
-        event.preventDefault();
-        console.log('event happened');
-        console.log(event.target.domElm.textContent)
+    setEditing = e => {
+        console.log('set editing')
+        e.preventDefault();
+        this.setState({
+            editing: true,
+        })
+    }
+
+    editTitle = (id, value) => {
+        console.log(id)
+        console.log(value)
+        this.setState({
+            editing: false,
+        })
     }
 
     render(){
@@ -51,18 +62,22 @@ export class Goal extends React.Component{
         let togo = this.props.amount-this.props.saved;
         togo = (togo/1000).toFixed([2])
 
-        const EditableSpan = ContentEditable("span")
-
         return(
             <section className='goal-section'>
-                <div className="editable-goal-heading">
-                    <h2><EditableSpan 
-                            className='goal-title' 
+                <div>
+                    <h2 className='goal-title'>
+                        <Editable 
+                            editing={this.state.editing}
                             value={this.props.title}
-                            onSave={this.handleTitleChange}
-                            onChange={this.handleTitleChange}
+                            props={this.props}
+                            onClick={this.setEditing}
+                            type="text"
+                            className="title-edit-input"
+                            onEdit={this.editTitle.bind(null, this.props._id)}
+                            goalId={this.props._id}
                         />
-                        : <span className={`${this.props.category}-title`}>{this.props.category}</span></h2>
+                        : <span className={`${this.props.category}-title`}>{this.props.category}</span>
+                    </h2>
                 </div>
                 <div className = {`goalContent content-${this.props.category}`}>
                     <div className='goalImage'>

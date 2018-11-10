@@ -4,15 +4,13 @@ export default class Editable extends React.Component{
     render(){
         if(this.props.editing){
             return(
-                <div>
-                    <Edit />
-                </div>
+                <span>
+                    <Edit {...this.props}/>
+                </span>
             )            
         }
         return(
-            <div>
-                <p>Something</p>
-            </div>
+            <span onClick={this.props.onClick}>{this.props.value}</span>
         )
     }
 }
@@ -24,24 +22,22 @@ class Edit extends React.Component{
         }
     }
     finishEdit = e => {
+        console.log(e.target.goalId)
         const value = e.target.value;
-        this.logEdit(value)
         if(this.props.onEdit){
             this.props.onEdit(value);
         }
-    }
-    logEdit = value => {
-        console.log(value)
     }
 
     render(){
         return(
             <input
                 type={this.props.inputType}
-                autoFocus="true"
+                autoFocus={true}
                 defaultValue={this.props.value}
                 onKeyPress={this.checkEnter}
-                {...props}
+                onEdit={this.onEdit}
+                goalId={this.props.goalId}
             />
         )
     }   
