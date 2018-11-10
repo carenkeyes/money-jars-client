@@ -4,21 +4,27 @@ import Button from '../Button/button';
 import Avatar from '../Avatar/avatar';
 import ProgressBar from '../ProgressBar/progress-bar';
 import GoalDetails from '../GoalDetails/goal-details';
+import ContentEditable from '../ContentEditable/content-editable';
 import './goal.css';
 
 export class Goal extends React.Component{
     constructor(){
         super()
         this.state = {
-            options: false
+            options: false,
         }
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(){
+    handleClick = () => {
         this.setState({
             options: !this.state.options
         })
+    }
+
+    handleTitleChange = (event) => {
+        event.preventDefault();
+        console.log('event happened');
+        console.log(event.target.domElm.textContent)
     }
 
     render(){
@@ -45,10 +51,18 @@ export class Goal extends React.Component{
         let togo = this.props.amount-this.props.saved;
         togo = (togo/1000).toFixed([2])
 
+        const EditableSpan = ContentEditable("span")
+
         return(
             <section className='goal-section'>
-                <div>
-                    <h2 className='goal-title'>{this.props.title}: <span className={`${this.props.category}-title`}>{this.props.category}</span></h2>
+                <div className="editable-goal-heading">
+                    <h2><EditableSpan 
+                            className='goal-title' 
+                            value={this.props.title}
+                            onSave={this.handleTitleChange}
+                            onChange={this.handleTitleChange}
+                        />
+                        : <span className={`${this.props.category}-title`}>{this.props.category}</span></h2>
                 </div>
                 <div className = {`goalContent content-${this.props.category}`}>
                     <div className='goalImage'>
