@@ -4,20 +4,67 @@ import Button from '../Button/button';
 import Avatar from '../Avatar/avatar';
 import ProgressBar from '../ProgressBar/progress-bar';
 import GoalDetails from '../GoalDetails/goal-details';
+import Editable from '../Editable/editable';
+import {editGoal} from '../../actions/budget';
 import './goal.css';
 
 export class Goal extends React.Component{
     constructor(){
         super()
         this.state = {
-            options: false
+            options: false,
+            title: {editing: false},
+            price: {editing: false}
         }
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(){
+    handleClick = () => {
         this.setState({
             options: !this.state.options
+        })
+    }
+
+    setEditingTitle = e => {
+        e.preventDefault();
+        this.setState({
+            title: {editing: true},
+        })
+    }
+
+    setEditingPrice = e => {
+        console.log('set price')
+        e.preventDefault()
+        this.setState({
+            price: {editing: true}
+        })
+    }
+
+    editTitle = (id, value) => {
+        console.log(id)
+        console.log(value)
+        const edits = {title: value}
+        this.setState({
+            title: {editing: false},
+        })
+        return this.props.dispatch(editGoal(id, edits))
+    }
+
+    editPrice = (id, value) => {
+        let amount=parseFloat(value, 10)*1000
+        console.log(amount)
+        const edits = {goal_amount: amount}
+        this.setState({
+            price: {editing: false},
+        })
+        return this.props.dispatch(editGoal(id, edits))
+    }
+
+    escEdit = e => {
+        console.log('escape edit')
+        e.preventDefault()
+        this.setState({
+            title: {editing: false},
+            price: {editing: false}
         })
     }
 
@@ -48,7 +95,19 @@ export class Goal extends React.Component{
         return(
             <section className='goal-section'>
                 <div>
-                    <h2 className='goal-title'>{this.props.title}: <span className={`${this.props.category}-title`}>{this.props.category}</span></h2>
+                    <h2 className='goal-title'>
+                        <Editable 
+                            editing={this.state.title.editing}
+                            value={this.props.title}
+                            props={this.props}
+                            onClick={this.setEditingTitle}
+                            onBlur={this.escEdit}
+                            type="text"
+                            className="title-edit-input"
+                            onEdit={this.editTitle.bind(null, this.props._id)}
+                        />
+                        : <span className={`${this.props.category}-title`}>{this.props.category}</span>
+                    </h2>
                 </div>
                 <div className = {`goalContent content-${this.props.category}`}>
                     <div className='goalImage'>
@@ -59,7 +118,19 @@ export class Goal extends React.Component{
                     </div>
                     <div className='goal-info'>
                         <div className='goal-total'>
-                            <p className='goal-text'> I need: <span className='money-value'> ${price} </span> </p>
+                            <p className='goal-text'> I need: 
+                                <span className='money-value'> $ 
+                                    <Editable
+                                        editing={this.state.price.editing}
+                                        value={price}
+                                        props={this.props}
+                                        onClick={this.setEditingPrice}
+                                        onBlur={this.escEdit}
+                                        type="number"
+                                        className="price-edit-input"
+                                        onEdit={this.editPrice.bind(null, this.props._id)}
+                                    />
+                                </span></p>
                             <Button 
                             label={this.state.options ? 'Close': 'Options'}
                             onClick={this.handleClick}
