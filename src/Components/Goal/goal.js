@@ -13,7 +13,8 @@ export class Goal extends React.Component{
         super()
         this.state = {
             options: false,
-            editing: false,
+            title: {editing: false},
+            price: {editing: false}
         }
     }
 
@@ -23,11 +24,18 @@ export class Goal extends React.Component{
         })
     }
 
-    setEditing = e => {
-        console.log('set editing')
+    setEditingTitle = e => {
         e.preventDefault();
         this.setState({
-            editing: true,
+            title: {editing: true},
+        })
+    }
+
+    setEditingPrice = e => {
+        console.log('set price')
+        e.preventDefault()
+        this.setState({
+            price: {editing: true}
         })
     }
 
@@ -36,9 +44,28 @@ export class Goal extends React.Component{
         console.log(value)
         const edits = {title: value}
         this.setState({
-            editing: false,
+            title: {editing: false},
         })
         return this.props.dispatch(editGoal(id, edits))
+    }
+
+    editPrice = (id, value) => {
+        let amount=parseFloat(value, 10)*1000
+        console.log(amount)
+        const edits = {goal_amount: amount}
+        this.setState({
+            price: {editing: false},
+        })
+        return this.props.dispatch(editGoal(id, edits))
+    }
+
+    escEdit = e => {
+        console.log('escape edit')
+        e.preventDefault()
+        this.setState({
+            title: {editing: false},
+            price: {editing: false}
+        })
     }
 
     render(){
@@ -70,14 +97,14 @@ export class Goal extends React.Component{
                 <div>
                     <h2 className='goal-title'>
                         <Editable 
-                            editing={this.state.editing}
+                            editing={this.state.title.editing}
                             value={this.props.title}
                             props={this.props}
-                            onClick={this.setEditing}
+                            onClick={this.setEditingTitle}
+                            onBlur={this.escEdit}
                             type="text"
                             className="title-edit-input"
                             onEdit={this.editTitle.bind(null, this.props._id)}
-                            goalId={this.props._id}
                         />
                         : <span className={`${this.props.category}-title`}>{this.props.category}</span>
                     </h2>
@@ -91,7 +118,19 @@ export class Goal extends React.Component{
                     </div>
                     <div className='goal-info'>
                         <div className='goal-total'>
-                            <p className='goal-text'> I need: <span className='money-value'> ${price} </span> </p>
+                            <p className='goal-text'> I need: 
+                                <span className='money-value'> $ 
+                                    <Editable
+                                        editing={this.state.price.editing}
+                                        value={price}
+                                        props={this.props}
+                                        onClick={this.setEditingPrice}
+                                        onBlur={this.escEdit}
+                                        type="number"
+                                        className="price-edit-input"
+                                        onEdit={this.editPrice.bind(null, this.props._id)}
+                                    />
+                                </span></p>
                             <Button 
                             label={this.state.options ? 'Close': 'Options'}
                             onClick={this.handleClick}

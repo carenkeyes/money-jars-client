@@ -21,6 +21,9 @@ class Edit extends React.Component{
         if(e.key === 'Enter'){
             this.finishEdit(e);
         }
+        if(e.key === 'Escape'){
+            this.props.onBlur();
+        }
     }
 
     finishEdit = e => {
@@ -38,6 +41,7 @@ class Edit extends React.Component{
                 defaultValue={this.props.value}
                 onKeyPress={this.checkEnter}
                 onEdit={this.onEdit}
+                onBlur={this.onBlur}
             />
         )
     }   
