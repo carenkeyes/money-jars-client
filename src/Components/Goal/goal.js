@@ -5,6 +5,7 @@ import Avatar from '../Avatar/avatar';
 import ProgressBar from '../ProgressBar/progress-bar';
 import GoalDetails from '../GoalDetails/goal-details';
 import Editable from '../Editable/editable';
+import {editGoal} from '../../actions/budget';
 import './goal.css';
 
 export class Goal extends React.Component{
@@ -33,9 +34,11 @@ export class Goal extends React.Component{
     editTitle = (id, value) => {
         console.log(id)
         console.log(value)
+        const edits = {title: value}
         this.setState({
             editing: false,
         })
+        return this.props.dispatch(editGoal(id, edits))
     }
 
     render(){

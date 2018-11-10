@@ -70,3 +70,26 @@ export const updateToBudget = (toBudget) => (
     type: UPDATE_TO_BUDGET,
     toBudget
 })
+
+export const EDIT_GOAL_TRIGGERED = 'EDIT_GOAL_TRIGGERED'
+export const EDIT_GOAL_SUCCESS = 'EDIT_GOAL_SUCCESS'
+export const EDIT_GOAL_FAILURE = 'EDIT_GOAL_FAILURE'
+
+export function editGoal(goalId, edits){
+    console.log(edits)
+    const promise = fetch(`${config.API_BASE_URL}/goal/edit/${goalId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            edits: edits,
+        })
+    })
+    return{
+        onRequest: EDIT_GOAL_TRIGGERED,
+        onSuccess: EDIT_GOAL_SUCCESS,
+        onFailure: EDIT_GOAL_FAILURE,
+        promise,
+    }
+}
