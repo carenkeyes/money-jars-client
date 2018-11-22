@@ -10,7 +10,12 @@ export default class Editable extends React.Component{
             )            
         }
         return(
-            <span onClick={this.props.onClick}>{this.props.value}</span>
+            <span 
+                onDoubleClick={this.props.onDoubleClick}
+                onBlur={this.props.onBlur}
+            >
+                {this.props.value}
+            </span>
         )
     }
 }
@@ -22,7 +27,7 @@ class Edit extends React.Component{
             this.finishEdit(e);
         }
         if(e.key === 'Escape'){
-            this.props.onBlur();
+            console.log('esc')
         }
     }
 

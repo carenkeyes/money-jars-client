@@ -18,7 +18,7 @@ export class Goal extends React.Component{
         }
     }
 
-    handleClick = () => {
+    handleOptions = () => {
         this.setState({
             options: !this.state.options
         })
@@ -100,7 +100,7 @@ export class Goal extends React.Component{
                             editing={this.state.title.editing}
                             value={this.props.title}
                             props={this.props}
-                            onClick={this.setEditingTitle}
+                            onDoubleClick={this.setEditingTitle}
                             onBlur={this.escEdit}
                             type="text"
                             className="title-edit-input"
@@ -124,7 +124,7 @@ export class Goal extends React.Component{
                                         editing={this.state.price.editing}
                                         value={price}
                                         props={this.props}
-                                        onClick={this.setEditingPrice}
+                                        onDoubleClick={this.setEditingPrice}
                                         onBlur={this.escEdit}
                                         type="number"
                                         className="price-edit-input"
@@ -133,7 +133,7 @@ export class Goal extends React.Component{
                                 </span></p>
                             <Button 
                             label={this.state.options ? 'Close': 'Options'}
-                            onClick={this.handleClick}
+                            onClick={this.handleOptions}
                             className={`${this.props.category}-button click`}
                         />                            
                         </div>
@@ -157,7 +157,7 @@ export class Goal extends React.Component{
                     category={this.props.category}
                     userId={this.props.userId}
                     goalOptions={goalOptions}
-                    closeOptions={this.handleClick}
+                    closeOptions={this.handleOptions}
                     saved={this.props.saved}
                     max={this.props.max}
                      />          

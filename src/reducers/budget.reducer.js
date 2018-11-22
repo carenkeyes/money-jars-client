@@ -61,11 +61,8 @@ export default function budget(state=initialState, action){
             }
         }
         case actionTypes.EDIT_GOAL_SUCCESS:{
-            console.log(action.response)
-            console.log(action.response._id)
             const newGoals = state.goals.map(goal => 
                 goal._id === action.response._id? action.response : goal)
-            console.log(newGoals)
             return{
                 ...state,
                 goals: newGoals
