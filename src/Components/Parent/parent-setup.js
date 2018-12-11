@@ -17,9 +17,9 @@ export class ParentSetup extends React.Component {
         this.budgetManually = this.budgetManually.bind(this);
     }
 
-    componentDidMount(){
+    /*componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
-    }
+    }*/
 
     addChild = () => {
         this.setState({

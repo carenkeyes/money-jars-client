@@ -5,9 +5,9 @@ import Parent from '../Parent/parent';
 
 export class ParentComplete extends React.Component {
     
-    componentDidMount(){
+    /*componentDidMount(){
         this.props.dispatch(fetchUserBasicInfo())
-    }
+    }*/
  
     render(){
         let message;

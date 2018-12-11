@@ -7,9 +7,7 @@ import RegistrationForm from '../RegistrationForm/registration-form';
 import LoginForm from '../LoginForm/login-form';
 
 export function RegistrationPage(props){
-    if(props.loggedIn){
-        return <Redirect to="/dashboard" />;
-    }
+
     console.log(props.error)
     let serverError = props.error
     return(
