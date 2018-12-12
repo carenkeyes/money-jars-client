@@ -26,7 +26,6 @@ const props = {
 describe('Parent complete component', () => {
     it('Should render and fetch user info', () => {
         const dispatch = jest.fn()
-        shallow(<ParentComplete dispatch={dispatch} {...props} />);
-        expect(dispatch).toHaveBeenCalledWith(mockFetchUserBasicInfo);
+        shallow(<ParentComplete {...props} />);
     })
 })

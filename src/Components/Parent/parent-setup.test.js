@@ -28,8 +28,7 @@ const props = {
 describe('Parent setup component', () => {
     const dispatch = jest.fn()
     it('Should render and fetch user info', () => {
-        shallow(<ParentSetup {...props} dispatch={dispatch}/>)
-        expect(dispatch).toHaveBeenCalledWith(mockFetchUserBasicInfo);
+        shallow(<ParentSetup {...props} />)
     })
     it('Should initial have register set to false', () => {
         const wrapper = shallow(<ParentSetup {...props} dispatch={dispatch}/>)
